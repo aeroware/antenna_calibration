@@ -1,0 +1,6 @@
+Version 1.0.4
+
+* Moved to AutoConf (Using KDevelop -- an excellent development environment)
+* Nec++ is now available as a library (libnecpp.a) and can be called from within
+other programs. See the example directory in the source distribution.
+* Doxygen is being used for code documentation.

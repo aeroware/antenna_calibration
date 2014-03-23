@@ -1,0 +1,130 @@
+###########################################################################
+#	
+#	MAKEFILE for the NEC++ testharness
+#	
+#	Author: Tim Molteno.
+#
+#
+#	Copyright (C) 2004  Timothy C.A. Molteno
+#	
+#	This program is free software; you can redistribute it and/or modify
+#	it under the terms of the GNU General Public License as published by
+#	the Free Software Foundation; either version 2 of the License, or
+#	(at your option) any later version.
+#	
+#	This program is distributed in the hope that it will be useful,
+#	but WITHOUT ANY WARRANTY; without even the implied warranty of
+#	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#	GNU General Public License for more details.
+#	
+#	You should have received a copy of the GNU General Public License
+#	along with this program; if not, write to the Free Software
+#	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+#
+
+all:	test
+
+BUILD=debug
+TARGET = ${BUILD}/src/nec2++
+NEC2DIFF = ${BUILD}/src/nec2diff
+NEC2C = c_src/nec2c
+
+test_fast:	
+	make -f Makefile.test test 'BUILD=optimized'
+	
+
+############################################################################
+#	
+#	TESTHARNESS
+#
+#	This tests the output of the C++ port against the nec2c, C 
+#	port as well as the original FORTRAN
+#
+
+NEC_TESTS = test_data/buoy.nec \
+	test_data/GA487.nec \
+	test_data/Collinear_1L.nec \
+	test_data/plet_helix.nec \
+	test_data/plet_helixumts.nec \
+	test_data/Yg_4x6_b.nec \
+	test_data/ek_test.nec \
+	test_data/36dip.nec \
+	test_data/K5332187.nec \
+	test_data/passive_test1.nec \
+	test_data/Gs_8d_bb.nec \
+	test_data/example2.nec \
+	test_data/example3.nec \
+	test_data/example4.nec \
+	test_data/example5.nec \
+	test_data/example6.nec \
+	test_data/sommerfield1.nec \
+	test_data/sommerfeld2.nec \
+	test_data/yagi16.nec \
+	test_data/yagi.nec \
+	test_data/test299.nec
+
+SHORT_TESTS = test_data/example3.nec
+
+############################################################################
+#	
+#	Rewrite Rules are used to automate the generation
+#	and comparison of output files.
+
+#	Generate an output file from the FORTRAN nec2 (not working)
+%.nec %.out:
+	./nec2 -i $*.nec -o $(*F)
+	
+# 	Generate an output file from nec2c
+%.nec %.outc:
+	- ./${NEC2C} -i $*.nec -o temp.$(*F); mv temp.$(*F) $@
+	
+# 	Generate an output file from nec2cpp
+%.nec %.outcpp:
+	- ./$(TARGET) -i $*.nec -o $@
+
+#	Compare two outputs (c and cpp)
+%.nec %.diff: %.outc %.outcpp
+	./${NEC2DIFF} $*.outc $*.outcpp > $@
+
+#	Compare two outputs (FORTRAN and cpp)
+%.nec %.dif: %.out %.outcpp
+	./${NEC2DIFF} $*.out $*.outcpp > $@
+
+test:
+	rm -f *.diff
+	rm -f $(NEC_TESTS:.nec=.outcpp)
+	rm -f $(NEC_TESTS:.nec=.outc)
+	make -f Makefile.test test_aux
+
+test_short:
+	./$(TARGET) -i test_data/example3.nec -o test_data/example3.outcpp
+
+
+# 	Change the following line to
+#	test_aux:	${NEC2DIFF} nec2cpp $(NEC_TESTS:.nec=.outcpp) $(NEC_TESTS:.nec=.outc) $(NEC_TESTS:.nec=.diff) $(NEC_TESTS:.nec=.dif)
+#	in order to include the FORTRAN code in the test suite.
+
+test_aux: $(NEC_TESTS:.nec=.outcpp) $(NEC_TESTS:.nec=.outc) $(NEC_TESTS:.nec=.diff)
+	echo "Test Complete"
+	
+
+# A target for testing nec2cpp against the FORTRAN original.
+	
+test_f:	${NEC2DIFF} nec2cpp nec2
+	./$(TARGET) -i yagi.nec -o yagi++
+	./$(NEC2dx) -i yagi.nec -o yagi
+	./$(TARGET) -i yagi16.nec -o yagi16++
+	./$(NEC2dx) -i yagi16.nec -o yagi16
+	./$(TARGET) -i TEST299.NEC -o TEST299++
+	./$(NEC2dx) -i TEST299.NEC -o TEST299
+	./$(TARGET) -i example2.nec -o example2++
+	./$(NEC2dx) -i example2.nec -o example2
+	./$(TARGET) -i example3.nec -o example3++
+	./$(NEC2dx) -i example3.nec -o example3
+	./${NEC2DIFF} example2++.out example2.out
+	./${NEC2DIFF} example3++.out example3.out
+	./${NEC2DIFF} yagi++.out yagi.out
+	./${NEC2DIFF} yagi16++.out yagi16.out
+	./${NEC2DIFF} TEST299++.out TEST299.out
+

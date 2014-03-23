@@ -1,0 +1,547 @@
+  ld Command
+  
+  
+  Purpose
+  
+  Links object files.
+  
+   Syntax
+  
+  ld [ -K  M  m  Q  r  s  v  x  z [ -A  D  H  S Option]... [ -e Label] [ -f FileID]...
+  Option]... [ -e Label] [ -f FileID]...
+  [ -L Directory]... [ -l Key]...
+  [-oName]...[   -Z
+  String]]...
+  
+  Description
+  
+  The ld command (the linkage editor or binder) combines the desig-
+  nated object Files, import lists, and libraries into one object
+  file,  resolving  external references.  It produces an executable
+  object file that can be run or if specified without the -s strip
+  flag, can become a File parameter in another call to the ld
+  command.  The ld command by default places its output in
+  a file named a.out.
+  
+  The linkage editor links object files, import lists, and li-
+  braries in the order specified by the ld command.
+  
+  Imports are external symbols that are resolved during Execution
+  time from either the system or from the dynamic load  of  another
+  object file.  Import symbols are obtained from the loader section
+  of shared object files or from files beginning with a #! that
+  contain a list of external symbols.
+  
+  Libraries are archive files, with names ending in ".a".  A li-
+  brary may be designated by an absolute  or  relative pathname, or
+  as "-lxyz".  The latter form designates an archive file libxyz.a
+  to be sought for in several directories, first in any directories
+  specified by -L flags, then in standard directories.  The stan-
+  dard directories are /lib and /usr/lib.
+  
+  The reserved symbols _text, _data,_etext, _edata, _ end and end
+  (in C, _text, _data,  _etext, _edata, _end and end) are set to
+  the first location of the program,  the  first  location  of  the
+  data, the first location above the program,  the  first  location
+  above  initialized data, and the first location above  all  data,
+  respectively.
+  
+  Because you can use the ld command to link modules intended to
+  run on other machines, some of its action depends on  the  archi-
+  tecture of the  computer  system  on  which you intend to run the
+  module. The ld program recognizes that architecture au-
+  tomatically  from  the input modules and modifies its action  ac-
+  cordingly.    You  can use some of its flags to alter the default
+  behavior of the ld command for a particular architecture.
+  
+  Flags
+  
+  The order in which you specify flags does not affect the way they
+  work, except for -f, -bI, -L and -I entries, which represent
+  linkable files.  The -f flags are processed in the order speci-
+  fied on the command line.  The -l flags are processed in the ord-
+  er specified on the command line after all specified object files
+  are processed.  If conflicting flags are specified on the command
+  line, the ld command accepts the latest flag and ignores the ear-
+  lier one.
+  
+  Flags with an operand can be entered with or without a space
+  between the flag and the  operand.   Numeric values can be speci-
+  fied in decimal, octal (with a leading 0), or hexadecimal (with a
+  leading 0x or 0X) format.
+  
+  -ANumber	Ignored.
+  
+   -bOption	Sets binder (ld) special control and processing options.
+  There are multiple binder options.  This flag can be repeated.
+  
+  -BNumber	Ignored.
+  
+  -d	Ignored.
+  
+  -DNumber	Makes Number the starting address for the initiialized
+  data (the .data  section) of the output file. If not specified,
+  the data section begins at location zero.
+  
+  -eLabel	Makes Label the entry point of the executable output file
+  (-e start is the default).
+  
+  -fFileId	Takes the names of the .o and .a files from FileId. The
+  input object files and -f specified object files are processed by
+  the binder in the order specified on the ld command line.  This
+  flag may be repeated.
+  
+  -HNumber	Makes Number the boundary, usually the file block size,
+  to  which  the  .text,  .data,  and  .loader sections are aligned
+  within  the  output  object file.  To perform the specified  file
+  boundary alignment, the binder inserts a pad section of an ap-
+  propriate size prior to the .text, .data, and .loader sections of
+  the output object  file.    Default  is  not  to align the .text,
+  .data, and .loader sections of the output object file.
+  
+  -i	Ignored
+  
+  -j[Key:]Number	Ignored.
+  
+  -kKey:Path	Ignored.
+  
+  -K	Pads the header, text, data, and loader segments of the output
+  file  to  lie on page boundaries.  This provides mapped file sup-
+  port to permit  demand  paging on architectures that support pag-
+  ing.
+  
+  -lKey	Links the file named libKey.a, which is located in one of
+  the directories specified by a -L flag, or the standard direc-
+  tories (/lib and /usr/lib).  The files specified with this argu-
+  ment are searched following  all standard input files and all the
+  files specified with the -f flag.  This flag can be repeated; the
+  ld program then searches library files in the order that you list
+  them on the command line.
+  
+  Note:	The ld program processes all objects and libraries in the
+  same manner.  It initially includes  the  symbol table of all ob-
+  jects, discarding  only symbol definitions that duplicate already
+  defined symbols.  This  eliminates a left-to-right dependency re-
+  quirement contained in some versions of ld that require library
+  objects to be ordered so that references precede definitions.
+  
+  
+  
+  In this version of ld, the first definition of each symbol in the
+  link always takes precedence and is used even if the first refer-
+  ence follows the definition.
+  
+  -LDirectory	Adds Directory to the list of directories to be
+  searched for libraries designated by -l key.  This flag may be
+  repeated.  The list of directories is also recorded in the output
+  object file loader section for use by the dynamic loader.
+  
+  -M or -m	Lists to loadmap output file the names of all files and
+  archive members processed to create the output file.
+  
+  -n	Ignored.
+  
+  -N	Ignored.
+  
+  -o Name	Assigns Name rather than a.out to the output file.
+  
+  -Q	Overrides -x and enters all local symbols in the output symbol
+  table.
+  
+  -r	Permits the output file to be produced even though it contains
+  unresolved symbols.  A  file  produced with this flag is expected
+  to be used as a file parameter in another ld call.
+  
+  -RNumber	Ignored.
+  
+  -s	Strips the symbol table, line number information, and reloca-
+  tion information from the output.  This saves  space  but impairs
+  the usefulness of the debugger.  Using the strip command has the
+  same effect.
+  
+  -SNumber	Makes Number the maximum size the user stack is allowed
+  to grow.  This value represents the number of  bytes allowed.  If
+  not specified, the system default limit is used.
+  
+  -TNumber	Makes Number the starting address for the text segment of
+  the output file.  If not specified, the text  segment  begins  at
+  location zero.
+  
+  -uSymbol	Ignored.
+  
+  -v	Verbose.  Sets the verbose option on the binder to provide ad-
+  ditional diagnostic information.
+  
+  -VNumber	Ignored.
+  
+  -x	Does not enter local symbols in the output symbol table; enters
+  only external symbols.  This flag saves some space in the  output
+  file.
+  
+  -YNumber	Ignored.
+  
+  -z	Same as -K.
+  
+  -ZString	Prefixes with String the names specified by the -l key.
+  For example, with -Z/test and -lxyz, ld looks for the file
+  /test/lib/llbxyz.a or, if that file does not ex-
+  ist, /test/usr/lib/libxyz.a.  The ordinary default directories
+  will not be  searched.    This  flag  is  most useful when cross-
+  compiling.
+  
+   Binder Options (-bOptions)
+  
+  The following binder option values are possible for the Options
+  parameter of the -b flag.
+  
+  Note:	In the binder options listed below, two option names that
+  are separated by the word "or"  are  synonymous.    Either option
+  name can be used.
+  
+  asis 	All external symbols are processed in asis or mixed case.
+  This is a default option.
+  
+  autoimp or so 	The binder imports symbols from any shared object
+  files specified in the bind.  The shared object  file  is  refer-
+  enced  but is not bound in as part of  the  output  object  file.
+  This is a default option.
+  
+  binder:FileId  	Uses FileId as binder.  This option may be used to
+  specify the full pathname of the binder program called by ld. De-
+  fault is /usr/lib/bind.
+  
+  bindcmds:FileId	The ld program writes a copy of the binder com-
+  mands generated by ld to FileId. The resultant file can be
+  redirected  as  standard  input to the binder program when run in
+  standalone or interactive mode.  Default is that no  file is pro-
+  duced.
+  
+  bindopts:FileId 	The ld program puts a copy of the binder program
+  arguments into FileId.  The resultant file can be used to invoke
+  the binder program in standalone or interactive mode.  Default is
+  that no file is produced.
+  
+  calls:FileId or C:FileId
+  
+  The binder writes a calls symbol cross reference of the output
+  object field to FileId.  Default is that no file is produced.
+  
+  caps 	All external symbols are processed in caps or upper case.
+  Default is asis.
+  
+  comprld or crld	The binder combines multiple relocation entries
+  (RLDs) at the same address into a single RLD.  Default.
+  
+  debugopt:Option or dbg:Option
+  
+  Sets a special debugging option in the binder.  By default, no
+  debug option is set.
+  
+  delcsect	During the symbol resolve process, causes the binder to
+  delete all symbols within a csect whenever a replacement symbol
+  is encountered.  Default.
+  
+  erok	Unresolved external references are ok at the end of the bind.
+  The  binder produces the output object file even if there are un-
+  resolved external references.  Default is ernotok.
+  
+  ernotok or f	Unresolved external references are not ok at the end
+  of the bind.  Does  not  produce  the output object file if there
+  are unresolved external references.  Default.
+  
+  errmsg	The binder writes error messages to terminal if the error
+  code is  greater  than the halt value.  This option overrides the
+  quiet option.  Default is noerrmsg.
+  
+  ex1:FileId	The binder provides an exit in the normal binder com-
+  mand sequence to read binder commands  contained in a file speci-
+  fied by FileId. Exit 1 is prior to object file inserts.
+  
+  ex2:FileId	The binder provides an exit in the normal binder com-
+  mand sequence to read binder commands contained in a  file speci-
+  fied by FileId. Exit 2 is following file inserts and prior to
+  resolve.
+  
+  ex3:FileId	The binder provides an exit in the normal binder com-
+  mand sequence to read binder commands contained in a file  speci-
+  fied by FileId. Exit 3 is following resolve.
+  
+  ex4:FileId	The binder provides an exit in the normal binder com-
+  mand sequence  to read binder commands contained in a file speci-
+  fied by FileId. Exit 4 is prior to writing the a.out object file.
+  
+  ex5:FileId	The binder provides an exit in the normal binder com-
+  mand sequence to read binder commands contained  in a file speci-
+  fied by FileId. Exit 5 is following writing the a.out object
+  file.
+  
+  export:FileId or E:FileId
+  
+  Exports the external symbols specified in FileId.  There is no
+  default export file.
+  
+  filelist or fl	The binder uses the filelist command instead of the
+  insert command for reading the object files for processing.  The
+  filelist  command optimizes the allocation  of
+  internal  processing  tables  by pre-scanning  the  input  object
+  files.  Default is insert.
+  
+  gc	The binder performs garbage collection.  Garbage collection is
+  the process  of  discarding unreferenced (i.e., unneeded) control
+  sections (csects) from the  results  of  the  bind.   Default.  A
+  csect is a unit of coding, instructions, and data  that is itself
+  an entity.  All elements of a csect are loaded and executed in  a
+  constant  relationship to one another.  A csect is therefore  the
+  smallest separately relocatable unit of a program.
+  
+  gcbypass:Number
+  
+  If the gc option is selected, then this option specifies Number
+  files to bypass for garbage collection processing.   This
+  option is valid only when the filelist option is used.  If Number
+  is zero, all object files are subject to garbage collection.  De-
+  fault is gcbypass:000 or garbage collect all object files.
+  
+  glink:FileId 	The binder uses the global linkage prototype code
+  specified in FileId.  Global linkage interface code is generated
+  for each imported external function.  Default is /lib/glink.o.
+  
+  halt:Number or h:Number
+  
+  The binder specifies the maximum error level for binder command
+  processing  to  continue.  Default value is 2. If any binder com-
+  mand has an error  return  value greater than the value specified
+  by Number, binder command processing terminates.
+  
+  import:FileId or I:FileId
+  
+  The binder imports the external symbols specified in FileId.
+  There is no default import file.
+  
+  insert or i	The binder uses the insert command instead of the
+  filelist  command  to read the object files for
+  processing.  Default.
+  
+  loadmap:FileId or l:FileId
+  
+  The binder writes the results of each command to the specified
+  results FileId. Default is that no file is produced.
+  
+  map:FileId or R:FileId
+  
+  The binder writes a symbol map in address order to FileId of the
+  output object file.  Default is that no file is produced.
+  
+  modtype:ModuleType or M:ModuleType
+  
+  The binder sets the module type field `xx' and the shared object
+  flag in the object file.  The field `xx' can be:
+  
+  1L	Single Use.  Module requires a private copy of the data section
+  for each load.  Default.
+  
+  RE	Reusable.  Module requires a private copy of the data area for
+  each process dependent on the module.
+  
+  RO	Readonly.  Module is read-only, and can be used by multiple
+  processes at once.
+  
+  A value of "Sxx" sets the shared flag in the object file.
+  
+  noautoimp or nso	Binds in as part of the output object file, any
+  (unstripped) shared  object  file specified as input to the bind.
+  Default is autoimp.
+  
+  nobind	The ld command does not call the binder.  Default is to
+  have the ld command call the binder.
+  
+  nocomprld or nocrld	The binder does not combine multiple reloca-
+  tion entries (RLDs)  at  the same address into a single RLD.  De-
+  fault is comprld.
+  
+  noerrmsg	The binder does not write error messages to the terminal
+  if the quiet option is set.  Default.
+  
+  nogc	The binder does not do garbage collection.  Garbage collec-
+  tion is the process of discarding unreferenced  (that is, unneed-
+  ed) csects from the output object file.  Default is gc.
+  
+  nodelcsect	During the symbol resolve process, the binder deletes
+  only the replaced symbols of a csect.  Default is delcsect.
+  
+  noglink	The binder does not perform the addgl command to insert
+  global  linkage  code.  Default is to have the binder insert  the
+  global linkage code.
+  
+  noloadmap or nl	The binder does not write the results of each com-
+  mand to a results file.  Default.
+  
+  noquiet	The binder writes the results of each command to the ter-
+  minal (standard output).  Default is quiet.
+  
+  noreorder or n	The binder does not reorder csects as part of the
+  save command  processing.    The reorder process
+  arranges csects of the same storage mapping class by proximity of
+  reference.  Default is to reorder.
+  
+  notextro or nro	The binder does not check to insure that there are
+  no load time  relocation  entries  for  the  .text section of the
+  resultant object file.  Default.
+  
+  quiet	The binder does not write the results of each command to the
+  terminal (standard output).  Default.
+  
+  rename:Symbol, NewName	Renames external Symbol to NewName.  There
+  are no default rename symbols.
+  
+  reorder or r	The binder reorders csects as part of the save com-
+  mand processing.  The reorder process arranges csects of the same
+  storage mapping class by proximity of reference.  Default.
+  
+  textro or ro	The binder checks to insure that there are no load
+  time relocation entries  for  the  .text section of the resultant
+  object file.  Default is nro or to not check.
+  
+  typchk	The binder performs function parameter type checking
+  between  external  functional calls.  This is performed  for  all
+  functions  that  the  compilers  have provided the parameter type
+  checking information.  Default.
+  
+  notypchk	The binder doesn't perform function parameter type check-
+  ing between external functional calls.  Default is typchk.
+  
+  xref:FileId or X:FileId	The binder writes a symbolic and reloca-
+  tion (RLD) cross reference map to FileId of the output object
+  file. Default is that no file is produced.
+  
+  Imports/Exports File Format (-bI: and -bE: Flags)
+  
+  Each record within the file contains a single symbol.  You can
+  specify an address with the symbol, which allows data segments to
+  be  mapped  to a shared memory segment and eliminates the need to
+  use the assembler.
+  
+  *	A blank record is ignored.
+  
+  *	A record beginning with asterisk blank (* ) is treated as a com-
+  ment and is ignored.
+  
+  *	A record beginning with pound blank (# ) provides operands to
+  the setopt binder command (-b dbg:option): is active only while
+  processing the file.
+  
+  *	A record beginning with pound exclamation point (#!) provides
+  the xcoff object file name to be associated with the subsequent
+  imports  symbols.    This  file name information is placed in the
+  loader section of the xcoff object file and is used by the system
+  loader  to  locate the appropriate object file at execution time.
+  Assuming the imports filename is: ipath/ifile (imember), the file
+  name placed in the loader section is determined as follows:
+  
+  #! null	Use null path, null file, and null number.  This is
+  treated as a delayed resolve by the system loader.
+  
+  #! ()	Use ipath, ifile, and imember (null member if imports file
+  was not in an archive file).
+  
+  #! (member)	Use ipath, ifile, and specified member.
+  
+  #!  path/file	Use specified path, specified file, and null
+  member.
+  
+  #!  path/file (member)	Use specified path, specified file, and
+  specified member.
+  
+  Examples
+  
+  1.	To link several object files and produce an a.out file to run
+  under the AIX Operating System:
+  
+  ld -T512 -estart /lib/crt0.o pgm.o subs1.o subs2.o -lc
+  
+  A simpler way to accomplish this is to use the cc command to link
+  the files as follows:
+  
+  cc  pgm.o  subs1.o  subs2.o
+  
+  Since the cc command automatically uses the link options and
+  necessary  support  libraries, you do not need to specify them on
+  the command line (it gets this information from the configuration
+  file /etc/xlc.cfg).  For this reason, you should use cc to link
+  files  when  you  are  producing  programs that run under the AIX
+  Operating System.
+  
+  
+  
+  2.	To specify the name of the output file:
+  
+  cc  -o pgm  pgm.o  subs1.o  subs2.o
+  
+  This stores the linked output in the file pgm.
+  
+  
+  
+  3.	To link with library subroutines:
+  
+  cc  pgm.o  subs1.o  subs2.o  mylib.a  -ltools
+  
+  This links the object modules pgm.o, subs1.o, and subs2.o, the
+  subroutines  from  mylib.a  , and the subroutine from the library
+  specified by -ltools.  (This means /lib/libtools.a, if it exists.
+  If ld does not find this file, then it looks for
+  /usr/lib/libtools.a.)
+  
+  
+  
+  4.	To generate a shared object file:
+  
+  ld -o shrsub.o subs1.o subs2.o -bE:shrsub.exp -bM:SRE -T512 -H512 -lc
+  
+  This links the object files subs1.0, subs2.o, and the subroutines
+  from the library libc.a specified by -lc.  It exports the symbols
+  specified in the file shrsub.exp and stores the linked shared ob-
+  ject in file shrsub.o.  The -bM:SRE sets the shared object flag
+  in the linked object file.
+  
+  5.	To link with the shared object file shrsub.o generated above:
+  
+  cc -o pgm pgm.o shrsub.o -L ":"
+  
+  This links the object files pgm.o with the exported symbols of
+  shrsub.o.  The linked output is stored in the object file
+  pgm.  The -L ":" adds the current directory to the library search
+  path  that the system loader will use to locate the shared object
+  file shrsub.o.
+  
+  Files
+  
+  /lib/lib*.a	Libraries.
+  
+  /usr/lib/lib*.a	Libraries.
+  
+  a.out	Output file.
+  
+  Implementation Specifics
+  
+  This command is part of AIX Base Operating System (BOS) Runtime.
+  
+  Suggested Reading
+  
+  
+  
+  Prerequisite Information
+  
+  	The following glossary entries: link,  object file,  export.
+  
+  	 Subroutines Overview
+  
+  Related Information
+  
+  The   ar command,  as command,  cc command.
+  
+  The  load subroutine,  loadquery subroutine,  loadbind subrou-
+  tine,  unload subroutine,.
+  
+  The  a.out file
+  
+  

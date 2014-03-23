@@ -1,0 +1,227 @@
+	SUBROUTINE VIEW3D(XLIM,YLIM,ZLIM,CAMPOS,
+	1	XRATIO,YRATIO,X0,Y0,WIDTH,HEIGHT,IOPTNS,IERROR)
+	DIMENSION XLIM(2), YLIM(2), ZLIM(2), CAMPOS(3)
+C
+CPurpose: This subroutine sets up scaling from 3D (x,y,z) to 2D (vx,vy).
+C	The scaling is done based upon viewing a 3D box from a position
+C	in 3-space. A "camera" is place at the viewing position, and is
+C	"aimed" at the center of the 3D box. A "focal length" for the
+C	camera lens is automatically chosen so that the 2D projection of
+C	the box exactly fits (without distortion) within a 2D rectangle
+C	provided.
+C
+CAgruments:
+C
+C  Input:
+C
+C	XLIM		* Type: real array of two elements.
+C			* The 3D X limits, XLIM(1) = XMIN, XLIM(2) = XMAX
+C
+C	YLIM		* Type: real array of two elements.
+C			* The 3D Y limits, YLIM(1) = YMIN, YLIM(2) = YMAX
+C
+C	ZLIM		* Type: real array of two elements.
+C			* The 3D Z limits, ZLIM(1) = ZMIN, ZLIM(2) = ZMAX
+C
+C	CAMPOS		* Type: real array of 3 elements.
+C			* The 3D (relative) position of the camera. How this
+C				array is interpreted is dependant on the
+C				value of IOPTNS:
+C			    IOPTNS = 0 --> True (x,y,z) of camera.
+C			    IOPTNS = 1 --> Relative camera position to center
+C					   of 3D box in rectangular
+C					   coordinates: (dx,dy,dz)
+C			    IOPTNS = 2 --> Relative camera position to center
+C					   of 3D box in polar coordinates:
+C					   (r,theta,phi). Theta is angle with
+C					   respect to X axis, phi with respect
+C					   to Z axis.
+C
+C	XRATIO		* Type: real constant or variable.
+C			* The X to Z axis ratio. If zero, then one unit in
+C				X is the same "distance" as one unit in Z in
+C				the 2D projection.
+C				If nonzero, scaling is done so that one unit
+C				in X is XRATIO times one unit in Z.
+C
+C	YRATIO		* Type: real constant or variable.
+C			* The Y to Z axis ratio. If zero, then one unit in
+C				Y is the same "distance" as one unit in Z in
+C				the 2D projection.
+C				If nonzero, scaling is done so that one unit
+C				in Y is YRATIO times one unit in Z.
+C
+C	X0		* Type: real constant or variable.
+C			* The left edge of the 2D projection in virtual
+C				coordinates.
+C
+C	Y0		* Type: real constant or variable.
+C			* The bottom edge of the 2D projection in virtual
+C				coordinates.
+C
+C	WIDTH		* Type: real constant or variable.
+C			* The width in virtual coordinates of the 2D
+C				projection.
+C
+C	HEIGHT		* Type: real constant or variable.
+C			* The height in virtual coordinates of the 2D
+C				projection.
+C
+C	IOPTNS		* Type: integer constant or variable.
+C			* An options flag. Determines how CAMPOS is
+C				interpreted.
+C
+C  Output:
+C
+C	IERROR		* Type: integer variable.
+C			* A error indication is return:
+C				0 ==> no errors.
+C				1 ==> Part of box is behind camera.
+C
+C  Side Effects: The common block VIEW3D is set up with scaling parameters
+C		so that SCAL3D will function properly.
+C
+CCCCCCCCCCCCCCCCCCCCCCCCC
+C
+	INCLUDE 'VIEW3D.CMN'
+C
+C	GET CAMERA POSITION AND CALCULATE CENTER OF "OBJECT AREA"
+C
+	DO 50 I=1,3
+	  CAMERA(I) = CAMPOS(I)
+50	CONTINUE
+	CENTER(1) = (XLIM(1)+XLIM(2))/2.0
+	CENTER(2) = (YLIM(1)+YLIM(2))/2.0
+	CENTER(3) = (ZLIM(1)+ZLIM(2))/2.0
+D	TYPE *, 'D - VIEW3D: OBJECT CENTER IS ',CENTER
+C
+C	NOW CALCULATE CAMERA POSITION DESIRED
+C
+	GOTO (300,200,100) IOPTNS+1
+100	CONTINUE
+C
+C	CAMERA POSITION SPECIFIED AS POLAR DELTA
+C		CONVERT TO DX, DY, DZ
+C
+	RADCF = 3.14159/180.0
+	THETA = CAMERA(2)*RADCF
+	PHI = CAMERA(3)*RADCF
+	CAMERA(1)=CAMERA(1)*SIN(PHI)*COS(THETA)
+	CAMERA(2)=CAMERA(1)*SIN(PHI)*SIN(THETA)
+	CAMERA(3)=CAMERA(1)*COS(PHI)
+C
+200	CONTINUE
+C
+C	CAMERA POSITION SPECIFIED AS DELTA
+C		ADD IN "OBJECT CENTER"
+C
+	DO 210 I=1,3
+	  CAMERA(I) = CAMERA(I) + CENTER(I)
+210	CONTINUE
+C
+300	CONTINUE
+D	TYPE *, 'D - VIEW3D: CAMERA POSITION IS ',CAMERA
+C
+C	CAMERA POSITION SPECIFIED IN XYZ COORDINATES
+C		EVERYTHING IS ALL SET!
+C
+CCCCCCCC
+C
+C	HANDLE AXIS RATIOS
+C
+	SCALEX = 1.0
+	IF (XRATIO .NE. 0.0)
+	1	SCALEX = XRATIO*(ZLIM(2)-ZLIM(1))/(XLIM(2)-XLIM(1))
+	SCALEY = 1.0
+	IF (YRATIO .NE. 0.0)
+	1	SCALEY = YRATIO*(ZLIM(2)-ZLIM(1))/(YLIM(2)-YLIM(1))
+D	TYPE *, 'D - VIEW3D: SCALING FACTORS ARE: ',SCALEX,SCALEY
+C
+CCCCCCCC
+C
+C	PICK CAMERA FOCAL LENGTH
+C
+	CALL CAMSET
+	FOCALL = 1.0
+	XOFF = 0.0
+	YOFF = 0.0
+	XLO = 1E30
+	YLO = XLO
+	XHI = -XLO
+	YHI = XHI
+	DO 460 I=1,2
+	  DO 450 J=1,2
+	    DO 440 K=1,2
+D	TYPE *,'D - VIEW3D: SCALING PT: ',XLIM(I),YLIM(J),ZLIM(K)
+	      CALL SCAL3D(XLIM(I),YLIM(J),ZLIM(K),X,Y,IERR)
+	      IF (IERR .NE. 0) GOTO 900
+	      XLO = AMIN1(XLO,X)
+	      YLO = AMIN1(YLO,Y)
+	      XHI = AMAX1(XHI,X)
+	      YHI = AMAX1(YHI,Y)
+440	    CONTINUE
+450	  CONTINUE
+460	CONTINUE
+D	TYPE *, 'D - VIEW3D: VX LIMITS ARE: ',XLO,XHI
+D	TYPE *, 'D - VIEW3D: VY LIMITS ARE: ',YLO,YHI
+	DX = XHI-XLO
+	DY = YHI-YLO
+	FOCALL = AMIN1(WIDTH/DX,HEIGHT/DY)
+D	TYPE *, 'D - VIEW3D: FOCAL LENGTH IS: ',FOCALL
+	XOFF = X0 + (WIDTH - FOCALL*DX)/2.0 - FOCALL*XLO
+	YOFF = Y0 + (HEIGHT - FOCALL*DY)/2.0 - FOCALL*YLO
+D	TYPE *, 'D - VIEW3D: OFFSETS ARE: ',XOFF,YOFF
+	IERROR = 0
+	RETURN
+C 
+C	POINT ON THE SURFACE IS BEHIND THE CAMERA. QUIT. 
+C 
+900	IERROR = 1
+D	TYPE *, 'D - VIEW3D: POINT IS BEHIND CAMERA: ',
+D	1  XLIM(I),YLIM(J),ZLIM(K)
+	RETURN 
+	END
+
+	SUBROUTINE CAMSET
+C
+C	MAKE UP CAMERA ROTATION MATRIX 
+C 
+C	ROTATION IS DONE SO THAT Z PRIME AXIS IS DIRECTED FROM THE
+C	CAMERA TO THE AIMING POINT.   NOTE ALSO THAT THE PRIMED
+C	COORDINATE SYSTEM IS LEFT-HANDED IF EPSLON=-1.
+C	THIS IS SO THAT THE PICTURE COMES OUT RIGHT WHEN PROJECTED
+C	ON THE PRIMED COORDINATE SYSTEM.
+C 
+	INCLUDE 'VIEW3D.CMN'
+C
+C	HANDEDNESS PARAMETER, -1 FOR LEFT-HANDED USUALLY 
+	DATA EPSLON/-1.0/ 
+C 
+	S = 0.0 
+	DO 1 J = 1,3 
+	  AV(J) = 0.0 
+	  AW(J) = 0.0 
+	  AU(J) = CENTER(J)-CAMERA(J) 
+	  S = S + AU(J)**2
+1	CONTINUE
+	S = SQRT(S) 
+	DO 2 J = 1,3 
+	  AU(J) = AU(J)/S
+2	CONTINUE
+	SIGMA = SQRT(AU(1)**2 + AU(2)**2) 
+C	PREPARE LOOKING STRAIGHT UP OR DOWN 
+	AV(1) = 1.0 
+	AW(2) = -EPSLON 
+	IF(AU(3) .GT. 0.0) AW(2) = -AW(2) 
+	IF(SIGMA .LT. 1.0E-3) GO TO 4 
+C	X AXIS 
+	AV(1) = AU(2)/SIGMA 
+	AV(2) = -AU(1)/SIGMA 
+	AV(3) = 0.0 
+C	Y AXIS 
+	AW(1) = EPSLON*AU(1)*AU(3)/SIGMA 
+	AW(2) = EPSLON*AU(2)*AU(3)/SIGMA 
+	AW(3) = -EPSLON*SIGMA 
+4	CONTINUE
+	RETURN 
+	END 

@@ -1,0 +1,194 @@
+	SUBROUTINE GDVERSTALL(IFXN,XA,YA)
+	DIMENSION XA(8), YA(3)
+C
+C	DIGLIB VERSATEC GRAPHICS DEVICE DRIVER
+C
+C-----------------------------------------------------------------------
+C
+	DIMENSION DCHAR(8)
+	LOGICAL*2 LDUMPIT, LWIDE
+C
+C	MAKE NICE NAMES FOR THE DEVICES RESOLUTION IN X AND Y
+C	 ("XGUPCM" IS X GRAPHICS UNITS PER CENTIMETER)
+C
+	EQUIVALENCE (DCHAR(2),X_FULL_SCALE)
+	EQUIVALENCE (DCHAR(4),XGUPCM), (DCHAR(5),YGUPCM)
+	DATA DCHAR /80.0, 21.336, 26.67, 78.7402, 78.7402, 1.0, 3.0, 1.0/
+	SAVE LDUMPIT
+C
+C	SHOW WE WANT TALL NOT WIDE PLOTTING AREA
+C
+	LWIDE = .FALSE.
+10	CONTINUE
+C
+C	FIRST VERIFY WE GOT A GRAPHICS FUNCTION WE CAN HANDLE
+C
+	IF (IFXN .LE. 0 .OR. IFXN .GT. 7) RETURN
+C
+C	NOW DISPATCH TO THE PROPER CODE TO HANDLE THAT FUNCTION
+C
+	GO TO (100,200,300,400,500,600,700) IFXN
+C
+C	*********************
+C	INITIALIZE THE DEVICE
+C	*********************
+C
+100	CONTINUE
+	CALL PLOTS(0,0,0)
+	CALL FACTOR(1.0/2.54)
+	LDUMPIT = .FALSE.
+	YA(1) = 0.0
+	RETURN
+C
+C	**************************
+C	GET FRESH PLOTTING SURFACE
+C	**************************
+C
+200	CONTINUE
+	IF (LDUMPIT) THEN
+	    CALL PLOT(0.0, 0.0, -999)
+	    CALL FACTOR(1.0/2.54)
+	  ENDIF
+	LDUMPIT = .FALSE.
+	RETURN
+C
+C	****
+C	MOVE
+C	****
+C
+300	CONTINUE
+	IPEN = +3
+	GO TO 450
+C
+C	****
+C	DRAW
+C	****
+C
+400	CONTINUE
+	IPEN = +2
+450	IF (LWIDE) THEN
+		CALL PLOT(X_FULL_SCALE-YA(1), XA(1), IPEN)
+	  ELSE
+		CALL PLOT(XA(1), YA(1), IPEN)
+	  END IF
+	LDUMPIT = .TRUE.
+	RETURN
+C
+C	*****************************
+C	FLUSH GRAPHICS COMMAND BUFFER
+C	*****************************
+C
+500	CONTINUE
+C
+C	NOP ON VERSATEC - BGNPLT WILL TERMINATE PREVIOUS PLOT ON START
+C		OF NEW PLOT.
+C
+	RETURN
+C
+C	******************
+C	RELEASE THE DEVICE
+C	******************
+C
+600	CONTINUE
+	CALL PLOT(0.0, 0.0, +999)
+	CALL GDVERS_VPINIT
+	RETURN
+C
+C	*****************************
+C	RETURN DEVICE CHARACTERISTICS
+C	*****************************
+C
+700	CONTINUE
+	DO 720 I=1,8
+	XA(I) = DCHAR(I)
+720	CONTINUE
+	IF (.NOT. LWIDE) RETURN
+	XA(2) = DCHAR(3)
+	XA(3) = DCHAR(2)
+	RETURN
+C
+C	ALTERNATE ENTRY FOR WIDE PLOTTING AREA
+C
+	ENTRY GDVERSWIDE(IFXN,XA,YA)
+	LWIDE = .TRUE.
+	GO TO 10
+	END
+
+	SUBROUTINE GDVERS_VPINIT
+C
+C	Release versatec driver
+C
+C	Problem:
+C
+C	The Versaplot software has no way to re-initialize itself
+C	once and "end of plot, end of run" call has been made.
+C	That is, once DIGLIB releases the Versatec driver
+C	(either because of a call to RLSDEV or DEVSEL) the application
+C	program can NOT make more plots with the Versatec driver.
+C
+C	Solution:
+C
+C	Call this routine before calling after releasing the VERSATEC.
+C	Then, the next call to DEVSEL, to select the Versatec driver, will
+C	act as if it were the first call to DEVSEL.
+C
+C
+	COMMON	/PPEP0/	LBLK, NBLK, LREC, LVEC, IUNIT, JUNIT, KUNIT, LUNIT,
+	1	MUNIT, IPARM, IPCTR, IPREC, IEOF, IPBUF(128)
+C
+	COMMON	/PPEP1/	IX1, IY1, IX2, IY2, ISCAN, NSCAN, NBAND, NIPS, NIP0,
+	1	NIPM1, LYNES, NIBSX, MSGLVL, XDOTS, YDOTS, PREF(2), RORG(2),
+	2	PORT(2,2), IEND(4), ALMT, FACT, JPEN, XOFF, XFAC, YOFF, YFAC,
+	3	NBITS, NBITM1, NBYTES, NBYTM1, MSK, LMSK, IOPEN, XA(13),
+	4	YA(13), XC, YC, XO, YO, XT, YT, THETA, ANCC, ANCS, RADCO, FNN,
+	5	FCTR, FACC, ISTAT, IPAT(16), NTP, JRCD, JWRD, MINREC, MAXREC,
+	6	MAXPLT, NPLOT, FPLOT, NCLIP, NBAD, JBUF(128)
+C
+C	Make VERSAPLOT initialize itself on next call to
+C	DEVSEL.
+C
+C	PPEP0
+C
+	IPCTR  = 129
+	IPREC  = 1
+C
+C	PPEP1
+C
+	IOPEN  = 0
+	RADCO  = 0.01745329
+	FNN    = 999.0
+	FCTR   = 0.7
+	FACC   = 0.0
+	THETA  = 0.0
+	ANCC   = 1.0
+	ANCS   = 0.0
+	XC     = 0.0
+	YC     = 0.0
+	XT     = 0.0
+	YT     = 0.0
+	XO     = 0.0
+	YO     = 0.0
+C
+	DO 10 I=1,13
+	   XA(I) = 0.0
+	   YA(I) = 0.0
+ 10	CONTINUE
+C
+	ISTAT  = 1
+	NTP    = 1
+C
+	DO 20 I=1,16
+	   IPAT(I) = -1
+ 20	CONTINUE
+C
+	JRCD   = 1
+	JWRD   = 1
+	MINREC = 999999
+	MAXREC = -1
+	MAXPLT = -1
+	NPLOT  = 1
+	FPLOT  = 0.0
+	NCLIP  = 0
+	NBAD   = 0
+	RETURN
+	END

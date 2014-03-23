@@ -1,0 +1,74 @@
+	DIGLIB for UNIX -- Hal Brand 5-Apr-1990
+	Derived from Steve Azevedo's README file.
+
+This is the UNIX version of DIGLIB 3.4!
+
+It has been tested on a VS2000 running ULTRIX 3.1/UWS 2.1 and on a Sun 3
+(version 4.0 of SunOS with MIT X11R3).
+
+1) Naming conventions:
+	a) The diglib library is the file "diglib.a"
+	b) DIGLIB FORTRAN sources are *.f
+	c) DIGLIB C sources are *.c
+	d) DIGLIB include files are now in lowercase letters.
+	e) Aside from "demo.f" and "demo-x11.f", DIGLIB test program sources
+		are *.prg
+	f) DIGLIB routines not converted to UNIX are *.vms
+		(this is mainly the VMS drivers.)
+	g) DIGLIB/UNIX font files are named *.fon. They are made from the .fnt
+		files via the makefont command. Currently, this must be done
+		manually!
+	h) VMS's CONVERT.FOR is called "makefont.f"
+	i) All other files are the same as their counterpart in VMS.
+
+2) Incompatabilities:
+	a) The X11 driver (gdx11.c) will not work with previous versions
+		of DIGLIB, i.e. versions prior to V3.4! This is due to
+		modifications primarily to devsel.f and the addition of
+		gsgdev.f to support the X11 driver.
+
+3) DIGLIB/UNIX now has a full blown "Makefile"!	To build DIGLIB/UNIX:
+	a) edit "gsdrvr.f" as necessary.
+	b) rm diglib.a (if there is one)
+	c) edit "Makefile" to suit your configuration and driver selections
+		made in "gsdrvr.f"
+	d) Issue the "make" command and take a break!
+	e) X11 users will want to also do a "make demo-x11"
+	f) Test with "demo" and if using X11, with "demo-x11"
+	g) Users wanting the additional fonts should use makefont to manually
+		make each desired from. Remember to setup the DIGLIB
+		environment variable also!
+
+4) UNIX DIGLIB drivers that are currently supported are:
+	gdrtro	-- DEC VT100 with Retrographics
+	gdsun1	-- Sun 2/100 and 2/150 (1024 x 800) using SunView.
+			RUN FROM GFXTOOL!
+	gdsun2	-- Sun 2 and 3 machines (1152 x 900; color or mono).
+			(the 3/110 works with the gdsun2 driver)
+			RUN FROM GFXTOOL!
+	gdsuncg1 -- Sun medium res color (640 x 480); must have /dev/cgone0.
+			RUN FROM GFXTOOL!
+	gdpst	-- Tall postscript laser printer driver.
+	gdpsw	-- Wide postscript laser printer driver.
+			(both of the last two are in gdpostscr.f)
+	gdx0	-- X10 color or monochrome driver.
+	gdx11   -- X11 color or monochrome driver.
+
+	It should not be hard to add other drivers given these.
+
+5) The fonts are the same as those in VMS.  The way to get the fonts
+	is to have an environment variable called DIGLIB set up with the
+	directory of the diglib fonts.  All users must have this variable
+	(it can be put into the .login or .profile file).  Use a line like:
+
+			setenv DIGLIB /usr/u0/sam/diglib/
+
+	(don't leave out the trailing slash or it won't work.)  Now all
+	calls to GSFONT will work as advertised.
+
+6) For Sun users:  A graphics tool called newgfxtool.prg (and built with
+	"loadc newgfxtool") is in this directory.  It contains an argument
+	to make the text portion of the window larger than the default for
+	gfxtool.  To use it, try "newgfxtool -T400" (note that Sun defaults
+	it to 200 pixels).  It is otherwise identical to the Sun version
+	of gfxtool.

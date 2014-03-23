@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="69">
+  <logicalFolder name="root" displayName="root" projectFiles="true">
+    <df name="necpp-1.1.1" root=".">
+      <df name="example" kind="SOURCE_LOGICAL_FOLDER">
+        <in>nec.h</in>
+        <in>test_nec.c</in>
+      </df>
+      <df name="html" kind="SOURCE_LOGICAL_FOLDER">
+      </df>
+      <df name="src" kind="SOURCE_LOGICAL_FOLDER">
+        <df name=".libs">
+        </df>
+        <in>AntennaInput.h</in>
+        <in>BaseInput.h</in>
+        <in>CurrentInput.h</in>
+        <in>PowerBudget.h</in>
+        <in>RadiationInput.h</in>
+        <in>XGetopt.cpp</in>
+        <in>XGetopt.h</in>
+        <in>c_evlcom.cpp</in>
+        <in>c_evlcom.h</in>
+        <in>c_geometry.cpp</in>
+        <in>c_geometry.h</in>
+        <in>c_ggrid.cpp</in>
+        <in>c_ggrid.h</in>
+        <in>c_plot_card.cpp</in>
+        <in>c_plot_card.h</in>
+        <in>common.h</in>
+        <in>electromag.h</in>
+        <in>libNEC.cpp</in>
+        <in>math_util.h</in>
+        <in>matrix_algebra.cpp</in>
+        <in>matrix_algebra.h</in>
+        <in>misc.cpp</in>
+        <in>misc.h</in>
+        <in>nec.h</in>
+        <in>nec2cpp.cpp</in>
+        <in>nec2cpp.h</in>
+        <in>necDiff.cpp</in>
+        <in>nec_context.cpp</in>
+        <in>nec_context.h</in>
+        <in>nec_exception.cpp</in>
+        <in>nec_exception.h</in>
+        <in>nec_ground.cpp</in>
+        <in>nec_ground.h</in>
+        <in>nec_output.cpp</in>
+        <in>nec_output.h</in>
+        <in>nec_radiation_pattern.cpp</in>
+        <in>nec_radiation_pattern.h</in>
+        <in>nec_results.h</in>
+        <in>safe_array.h</in>
+      </df>
+      <df name="test_data" kind="SOURCE_LOGICAL_FOLDER">
+      </df>
+      <df name="win32" kind="SOURCE_LOGICAL_FOLDER">
+        <df name="nec2++" kind="SOURCE_LOGICAL_FOLDER">
+        </df>
+      </df>
+      <in>config.h</in>
+    </df>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+      <itemPath>Makefile-necpp-1.1.1.mk</itemPath>
+      <itemPath>configure</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile-necpp-1.1.1.mk</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <compilerSet>GNU|GNU</compilerSet>
+        <platform>2</platform>
+      </toolsSet>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>$(MAKE) -f Makefile</buildCommand>
+          <cleanCommand>$(MAKE) -f Makefile clean</cleanCommand>
+          <executablePath>./src/nec2++</executablePath>
+          <ccTool>
+            <incDir>
+              <pElem>src</pElem>
+              <pElem>.</pElem>
+            </incDir>
+            <preprocessorList>
+              <Elem>HAVE_CONFIG_H</Elem>
+            </preprocessorList>
+          </ccTool>
+        </makeTool>
+      </makefileType>
+      <item path="config.h" ex="true" tool="3">
+      </item>
+      <item path="example/nec.h" ex="true" tool="3">
+      </item>
+      <item path="example/test_nec.c" ex="true" tool="0">
+      </item>
+      <item path="src/AntennaInput.h" ex="true" tool="3">
+      </item>
+      <item path="src/BaseInput.h" ex="true" tool="3">
+      </item>
+      <item path="src/CurrentInput.h" ex="true" tool="3">
+      </item>
+      <item path="src/PowerBudget.h" ex="true" tool="3">
+      </item>
+      <item path="src/RadiationInput.h" ex="true" tool="3">
+      </item>
+      <item path="src/XGetopt.cpp" ex="true" tool="1">
+      </item>
+      <item path="src/XGetopt.h" ex="true" tool="3">
+      </item>
+      <item path="src/c_geometry.cpp" ex="true" tool="1">
+      </item>
+      <item path="src/c_geometry.h" ex="true" tool="3">
+      </item>
+      <item path="src/c_ggrid.cpp" ex="true" tool="1">
+      </item>
+      <item path="src/c_ggrid.h" ex="true" tool="3">
+      </item>
+      <item path="src/c_plot_card.cpp" ex="true" tool="1">
+      </item>
+      <item path="src/c_plot_card.h" ex="true" tool="3">
+      </item>
+      <item path="src/common.h" ex="true" tool="3">
+      </item>
+      <item path="src/electromag.h" ex="true" tool="3">
+      </item>
+      <item path="src/libNEC.cpp" ex="true" tool="1">
+      </item>
+      <item path="src/matrix_algebra.cpp" ex="true" tool="1">
+      </item>
+      <item path="src/misc.cpp" ex="true" tool="1">
+      </item>
+      <item path="src/misc.h" ex="true" tool="3">
+      </item>
+      <item path="src/nec.h" ex="true" tool="3">
+      </item>
+      <item path="src/nec2cpp.cpp" ex="true" tool="1">
+      </item>
+      <item path="src/nec2cpp.h" ex="true" tool="3">
+      </item>
+      <item path="src/necDiff.cpp" ex="true" tool="1">
+      </item>
+      <item path="src/nec_context.cpp" ex="true" tool="1">
+      </item>
+      <item path="src/nec_context.h" ex="true" tool="3">
+      </item>
+      <item path="src/nec_exception.cpp" ex="true" tool="1">
+      </item>
+      <item path="src/nec_ground.cpp" ex="true" tool="1">
+      </item>
+      <item path="src/nec_ground.h" ex="true" tool="3">
+      </item>
+      <item path="src/nec_output.cpp" ex="true" tool="1">
+      </item>
+      <item path="src/nec_radiation_pattern.cpp" ex="true" tool="1">
+      </item>
+      <item path="src/nec_radiation_pattern.h" ex="true" tool="3">
+      </item>
+      <item path="src/nec_results.h" ex="true" tool="3">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

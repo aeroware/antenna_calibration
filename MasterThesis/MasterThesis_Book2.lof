@@ -1,0 +1,56 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Rheometry model of the NASA/STEREO spacecraft}}{4}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Hertzian Dipole}}{39}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Coordinate System}}{43}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Power pattern of Hertzian Dipole}}{49}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Current distribution of the Halfwave Dipole}}{53}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Power Pattern of the Halfwave Dipole}}{56}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Loop antenna}}{56}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Coordinate frame}}{64}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces The direction of the incident wave, extracted from Cassini data \cite {uli1}}}{100}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Stokes parameters extracted from Cassini data \cite {uli1}}}{101}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces The STEREO spacecraft}}{113}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Spacecraft A}}{114}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Spacecraft A: X-View}}{114}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Spacecraft A: Y-View}}{115}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Spacecraft A: Z-View}}{115}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Range of HGA angle}}{116}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Spacecraft A: Effective Length Vectors,X-View/ Capacitances included}}{117}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Spacecraft A: Effective Length Vectors,Y-View/ Capacitances included}}{118}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Spacecraft A: Effective Length Vectors,Z-View/ Capacitances included}}{119}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Spacecraft B: Effective Length Vectors,X-View/ Capacitances included}}{120}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Spacecraft B: Effective Length Vectors,Y-View/ Capacitances included}}{121}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Spacecraft B: Effective Length Vectors,Z-View/ Capacitances included}}{122}
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Sample directions/Z View}}{125}
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Sample directions/Oblique View}}{125}
+\contentsline {figure}{\numberline {5.15}{\ignorespaces The spatial distribution of the real parts of the effective length vectors of the design 2 model with capacitances included-frequency up to 16MHz/Z View }}{126}
+\contentsline {figure}{\numberline {5.16}{\ignorespaces The spatial distribution of the real parts of the effective length vectors of the design 2 model with capacitances included-frequency up to 13MHz/Z View }}{127}
+\contentsline {figure}{\numberline {5.17}{\ignorespaces The spatial distribution of the real parts of the effective length vectors of the design 2 model with capacitances included-frequency up to 12MHz/Z View }}{128}
+\contentsline {figure}{\numberline {5.18}{\ignorespaces The spatial distribution of the real parts of the effective length vectors of the design 2 model B with capacitances included-frequency up to 16MHz/Z View }}{129}
+\contentsline {figure}{\numberline {5.19}{\ignorespaces The spatial distribution of the real parts of the effective length vectors of the design 2 model B with capacitances included-frequency up to 13MHz/Z View }}{130}
+\contentsline {figure}{\numberline {5.20}{\ignorespaces The spatial distribution of the real parts of the effective length vectors of the design 2 model B with capacitances included-frequency up to 12MHz/Z View }}{131}
+\contentsline {figure}{\numberline {5.21}{\ignorespaces Standard deviation of the length, spacecraft A (full line) and B (dashed line)/capacitances Included}}{133}
+\contentsline {figure}{\numberline {5.22}{\ignorespaces Complex standard deviation of the angular distribution, spacecraft A (full line) and B (dashed line)/capacitances included}}{133}
+\contentsline {figure}{\numberline {5.23}{\ignorespaces The absolute length of the electric antennas of the design 2 model/ Capacitances included}}{137}
+\contentsline {figure}{\numberline {5.24}{\ignorespaces The length of the real parts of the electric antennas of the design 2 model/Capacitances included}}{137}
+\contentsline {figure}{\numberline {5.25}{\ignorespaces The length of the imaginary parts of the electric antennas of the design 2 model/Capacitances included}}{137}
+\contentsline {figure}{\numberline {5.26}{\ignorespaces The spatial distribution of the real parts of the effective length vectors of the design 2 model, capacitances included/Z View}}{138}
+\contentsline {figure}{\numberline {5.27}{\ignorespaces The spatial distribution of the real parts of the effective length vectors of the design 2 model, capacitances included/X View}}{139}
+\contentsline {figure}{\numberline {5.28}{\ignorespaces The spatial distribution of the real parts of the effective length vectors of the design 2 model, capacitances included/Y View}}{139}
+\contentsline {figure}{\numberline {5.29}{\ignorespaces The spatial distribution of the real parts of the effective length vectors of the design 2 model, capacitances included/Z View}}{140}
+\contentsline {figure}{\numberline {5.30}{\ignorespaces Complex standard deviation of the angular distribution due to HGA angle variation, capacitances included}}{146}
+\contentsline {figure}{\numberline {5.31}{\ignorespaces Standard deviation of the length due to HGA angle variation, capacitances included}}{146}
+\contentsline {figure}{\numberline {5.32}{\ignorespaces Impedances of Design 2, spacecraft A, capacitances included}}{147}
+\contentsline {figure}{\numberline {5.33}{\ignorespaces Impedances of Design 2, spacecraft A, capacitances included}}{147}
+\contentsline {figure}{\numberline {5.34}{\ignorespaces Impedances of Design 2, spacecraft B, capacitances included}}{148}
+\contentsline {figure}{\numberline {5.35}{\ignorespaces Impedances of Design 2, spacecraft B, capacitances included}}{148}
+\contentsline {figure}{\numberline {5.36}{\ignorespaces Admittances of Design 2, spacecraft A, capacitances included}}{149}
+\contentsline {figure}{\numberline {5.37}{\ignorespaces Admittances of Design 2, spacecraft A, capacitances included}}{149}
+\contentsline {figure}{\numberline {5.38}{\ignorespaces Admittances of Design 2, spacecraft B, capacitances included}}{150}
+\contentsline {figure}{\numberline {5.39}{\ignorespaces Admittances of Design 2, spacecraft B, capacitances included}}{150}
+\addvspace {10\p@ }

@@ -1,0 +1,316 @@
+	subroutine gdvt240(ifxn,xa,ya)
+c******************************************************************************
+c
+c Title: GDVT240
+c Version: 1.0
+c Date: 5-Apr-84
+c Written by: Steve Wolfe
+c             Mini Micro Systems Group
+c             Applications Systems Division 
+c             Computations Department
+C MODIFIED: HAL BRAND  14-AUG-84
+c
+c Purpose:
+c
+c	GDVT240 is the DIGLIB device driver for the DEC VT240/241 graphics
+c	terminals. 
+c
+C WARNING: THIS DRIVER MAY HAVE BUGS - IT IS NOT SUPPORTED.
+C	It is my (Hal Brand's) opinion that 240 resolution in Y is far too
+C	little.   In addition, the VT240 doesn't separate the alphatext
+C	from the graphics leading to numerous problems.   If you have never
+C	used a real graphics terminal before, your probably won't hate using
+C	a VT240 for graphics, however, if you have ever used a real graphics
+C	terminal, you will be very very disappointed.
+c
+c******************************************************************************
+	dimension xa(8), ya(3)
+c
+c	DEC VT240 driver for diglib/vax
+c
+	byte esc
+	integer f1,f2,str_length
+	parameter (esc=27)
+	character*(*) terminal
+	parameter (terminal='TT')
+	logical cursor_moved
+c
+c	definitions for device control
+c
+	byte str_init_dev(66)
+	byte str_begin_plot(14)
+	byte str_rls_dev(6)
+	byte str_move_pos(14)
+	byte str_draw_vec(11)
+	byte str_regis_mode(5)
+	byte str_draw_point(4)
+	BYTE STR_COLOR_SET(6)
+	data str_init_dev/
+     1		esc,'[','?','3','8','l',	!4014 => VT200 mode
+     2		esc,'P','1','p',		!VT200 => REGIS mode
+     3		's','(','a','[','0',',','4','9','9',']',
+     4		'[','7','9','9',',','0',']',')',!Origin is lower left
+     5		'w','(','f','3',')',		!allow writing to both planes
+     6		'w','(','i','1',')',		!select color 3 (white)
+	7   'S','(','M','1','(','A','W',')',
+	8   '2','(','A','R',')','3','(','A','G',')',
+     9		esc,'/',ESC,'[','H',ESC,'[','J',0,0/ !back to VT200 mode
+	data str_begin_plot/
+     1		esc,'P','1','p',		!VT200 => REGIS mode
+     2		's','(','e',')',		!erase screen
+     3		esc,'/',			!Back to VT200 mode
+     4		esc,'[','H',0/			!Home the alpha cursor
+	data str_rls_dev /esc,'/',esc,'[','H',0/
+	data str_move_pos/'p','[',3*'x',',',3*'y',']','V','[',']',0/
+	data str_draw_vec/'v','[',3*'x',',',3*'y',']',0/
+	data str_regis_mode/esc,'P','1','p',0/
+	data str_draw_point/'p','[',']',0/
+	DATA STR_COLOR_SET / 'w','(','i','1',')',0 /
+c
+c	definitions for gin
+c
+	byte ginbufr(40), prompt(8)
+	data prompt /'r','(','p','(','i',2*')',0/
+	data igin_in_chars /18/
+	DATA ICURX /400/
+	DATA ICURY /240/
+c
+c	declare buffering function
+c
+	logical gb_test_flush, LDUMMY
+c
+c	declare vars need for driver operation
+c
+	dimension dchar(8)
+c
+c	make nice names for the devices resolution in x and y
+c	 ("xgupcm" is x graphics units per centimeter)
+c
+	equivalence (dchar(4),xgupcm), (dchar(5),ygupcm)
+	data dchar /240.0, 23.78, 14.88, 33.6, 16.8, 3.0, 129.0, 1.0/
+	DATA YFUDGE /2.0/
+c
+c*****************
+c
+c	first verify we got a graphics function we can handle
+c
+	if (ifxn .le. 0 .or. ifxn .gt. 9) return
+c
+c	now dispatch to the proper code to handle that function
+c
+	go to (100,200,300,400,500,600,700,800,900) ifxn
+c
+c	*********************
+c	initialize the device
+c	*********************
+c
+100	continue
+c
+c	first, initialize the buffer subroutines
+c
+	call gb_initialize(0,0,terminal,ierr)
+	ya(1) = ierr
+	if (ierr .ne. 0) return
+c
+C	INITIALIZE THE VT240
+c
+
+	call gb_in_string(str_init_dev)
+190	call gb_empty
+	lvector_going = .false.
+	return
+c
+c	**************************
+c	get fresh plotting surface
+c	**************************
+c
+200	continue
+	call gb_empty
+	call gb_in_string(str_begin_plot)
+	GO TO 190
+c
+c	****
+c	move
+c	****
+c
+300	continue
+c	convert cm. to graphics units rounded
+	ixposn = xgupcm*xa(1)+0.5
+	iyposn = YFUDGE*ygupcm*ya(1)+0.5
+	lvector_going = .false.
+	return
+c
+c	****
+c	draw
+c	****
+c
+400	continue
+	ix = xgupcm*xa(1)+0.5
+	iy = YFUDGE*ygupcm*ya(1)+0.5
+C	if (ix .ne. ixposn .or. iy .ne. iyposn) then
+c
+c Draw a vector from the current position to the new position
+c
+c Go into graphics mode
+c
+	  call gb_test_flush(4)
+	  call gb_in_string(str_regis_mode)
+c
+c Move to the current position first (if necessary)
+c
+	  If (.not. lvector_going) then
+	    f1 = num_dig(ixposn)
+	    f2 = num_dig(iyposn)
+	    str_length = f1 + f2 + 4
+	    encode((f1 + f2 + 2),9000,str_move_pos(3))ixposn,iyposn
+9000	    format(i<f1>','i<f2>']')
+C	    str_move_pos(str_length + 1) = 0
+	    CALL SCOPY('v[]',STR_MOVE_POS(STR_LENGTH+1))
+	    call gb_test_flush(str_length+4)
+	    call gb_in_string(str_move_pos)
+	  endif
+c
+c Now draw the vector
+c
+	  f1 = num_dig(ix)
+	  f2 = num_dig(iy)
+	  str_length = f1 + f2 + 4
+	  encode((f1 + f2 + 2),9000,str_draw_vec(3))ix,iy
+	  str_draw_vec(str_length + 1) = 0
+	  call gb_test_flush(str_length)
+	  call gb_in_string(str_draw_vec)
+c
+c update the current position
+c
+	  ixposn = ix
+	  iyposn = iy
+c
+c Go back to alpha mode
+c
+	  call gb_test_flush(5)
+	  call gb_in_string(str_rls_dev)
+	  call gb_empty
+	  lvector_going = .true.
+	return
+c
+c	*****************************
+c	flush graphics command buffer
+c	*****************************
+c
+500	continue
+	call gb_empty
+	return
+c
+c	******************
+c	release the device
+c	******************
+c
+600	continue
+	call gb_finish(str_rls_dev)
+	return
+c
+c	*****************************
+c	return device characteristics
+c	*****************************
+c
+700	continue
+	do 720 i=1,8
+	xa(i) = dchar(i)
+720	continue
+	return
+c
+c	****************************
+c	select current drawing color
+c	****************************
+c
+800	continue
+	CALL GB_TEST_FLUSH(10)
+	CALL GB_IN_STRING(STR_REGIS_MODE)
+	ICOLOR = XA(1)
+	IF (ICOLOR .LT. 0 .OR. ICOLOR .GT. 3) RETURN
+	STR_COLOR_SET(4) = ICOLOR+48
+	CALL GB_IN_STRING(STR_COLOR_SET)
+	LVECTOR_GOING = .FALSE.
+	CALL GB_TEST_FLUSH(5)
+	CALL GB_IN_STRING(STR_RLS_DEV)
+	CALL GB_EMPTY
+	return
+c
+c	**********************
+c	perform graphics input
+c	**********************
+c
+900	continue
+c
+c Move the cursor to previous position
+c
+	lvector_going = .false.
+	call gb_test_flush(4)
+	call gb_in_string(str_regis_mode)
+	if (ixposn .ne. icurx .or. iyposn .ne. icury) then
+	  f1 = num_dig(icurx)
+	  f2 = num_dig(icury)
+	  str_length = f1 + f2 + 4
+	  encode((f1 + f2 + 2),9000,str_move_pos(3))icurx,icury
+	  str_move_pos(str_length + 1) = 0
+	  call gb_test_flush(str_length)
+	  call gb_in_string(str_move_pos)
+	endif
+	call gb_empty
+c
+c Wait for graphic input
+c
+  905	continue
+	call gb_gin(prompt,igin_in_chars,.false.,ginbufr)
+	IF (GINBUFR(1) .EQ. 13) THEN
+		CALL GB_GIN(0,IGIN_IN_CHARS-1,.FALSE.,GINBUFR(2))
+	ENDIF
+	call gb_in_string(str_rls_dev)
+	call gb_empty
+c
+c Parse the graphic input. It comes in the form: p[xxxxE-1,yyyyE-1], where
+c 'p' is the pick character, 'xxxxE-1' & 'yyyyE-1' are the X & Y coordinates.
+c The 'xE-1' or 'yE-1' may or may not be present in the coordinates. If the
+c user is fast enough (dumb enough) to type two pick characters quickly then
+c the graphic input will contain two pick characters (or more) and the 
+c cursor position will be shifted to the right by the extra characters.
+c This routine will always return the pick character JUST BEFORE THE
+C LEFT BRACKET.
+c
+c Look for the left bracket
+c
+	do ilbrakt = 2,40
+	  if (ginbufr(ilbrakt) .eq. '[') goto 910
+	enddo
+	goto 905
+c
+c Look for the right bracket
+c
+  910	continue
+	do irbrakt = ilbrakt + 1,40
+	  if (ginbufr(irbrakt) .eq. ']') goto 920
+	enddo
+	goto 905
+c
+c Decode and return the values
+c
+  920	continue
+	length = irbrakt - ilbrakt - 1
+	decode(length,9100,ginbufr(ilbrakt + 1))curx,cury
+ 9100	format(2f10.0)
+	xa(1) = ginbufr(ILBRAKT-1)
+	xa(2) = curx / xgupcm
+	xa(3) = cury / (YFUDGE*ygupcm)
+	icurx = curx
+	icury = cury
+	return
+	end
+
+
+	integer function num_dig(integer)
+	implicit integer (a-z)
+	num_dig = 1
+	if (integer .gt. 9) num_dig = 2
+	if (integer .gt. 99) num_dig = 3
+	return
+	end

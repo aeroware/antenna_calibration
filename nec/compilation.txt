@@ -1,0 +1,23 @@
+4/22/2002
+
+To compile nec2dx:
+
+Edit nec2dpar.inc to set the variables MAXSEG and MAXMAT to the desired values. Save the modified file.
+
+Use GNU g77  and compile the nec2dx source code:
+
+	g77 nec2dx.f -fno-automatic [-o outputfilename]
+
+(you MUST use the -fno-automatic command line switch or else you will incur various
+runtime errors from the resulting .exe file)
+
+somnec2d.for is compiled in a similar way:
+
+	g77 somnec2d.for [-o outputfilename]
+
+
+If you choose to not specify the output filename with the -o switch the executable will
+default to a.exe.
+
+Ray Anderson    WB6TPU
+raymond.anderson@sun.com

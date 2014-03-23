@@ -1,0 +1,251 @@
+############################################################################
+#
+# Configuration for device drivers to be included into diglib.a
+#
+
+F77DRIVEROBJS = gd4con.o gdaids.o gdio.o gdpostscr.o gdrtro.o gdwait.o
+
+CCDRIVEROBJS = gdx11.o
+
+
+############################################################################
+#
+# Configuration for DIGLIB extensions. If you don't want the DIGLIB
+#  extensions, comment out this definition.
+#
+
+EXTENSIONOBJS = camrot.o draw3c.o draw3d.o drawbs.o drawpq.o extrma.o \
+                filcon.o fill3d.o ivis.o levelc.o pickpl.o purjoy.o \
+                purjoycol.o rotate.o sclplt.o tickl.o tickln.o xyprm.o \
+		trim.o strpbl.o
+
+
+
+############################################################################
+#
+# Configuration for compilers and compiler switches
+#
+
+CC = cc
+CFLAGS = -O
+F77 = xlf
+#FFLAGS = -O
+FFLAGS = 
+
+
+############################################################################
+#
+# Configuration for linking
+#
+
+# Uncomment no more than one of the LIBS definition lines.
+#   You will need "-lX11" for the X11 driver "gdx11.c"
+#   You will need "-lsuntools -lsunwindow -lpixrect" for a SunView driver
+#   Obvious, you'll need all if using both drivers!
+LIBS = -L/usr/lib/X11 -lX11
+#LIBS = -lsuntools -lsunwindow -lpixrect
+#LIBS = -lX11 -lsuntools -lsunwindow -lpixrect
+
+
+
+
+############################################################################
+###         END CONFIGURATION - Edit below at your own risk!!!!          ###
+############################################################################
+
+############################################################################
+#
+# DIGLIB dependancies and compilation rules
+#
+
+FOBJS = axis.o bargra.o bgnplt.o clline.o contor.o \
+	cszmap.o cursor.o curve.o curvey.o \
+	devsel.o endplt.o fulmap.o gsgdev.o \
+	goodcs.o grafin.o gscclc.o gsccmp.o \
+	gschit.o gscolr.o gscrsr.o gsdlns.o gsdraw.o gsdrgb.o gsdrvr.o \
+	gsdrw2.o gsdrw3.o gsetdp.o gsfill.o gsfont.o gsgin.o gshght.o \
+	gsinpt.o gsivis.o gslens.o gsltyp.o gsmove.o gspoly.o gspstr.o \
+	gsrclp.o gsrst.o gssclp.o gssetc.o gsstrk.o gswndo.o gsxlcm.o \
+	gsylcm.o hatch.o iand.o ior.o laxis.o len.o linlab.o loglab.o \
+	mapit.o mapprm.o mapset.o mapsiz.o mapsml.o mapsz2.o minmax.o \
+	mpclip.o numstr.o pltbox.o pltbx2.o pointc.o points.o \
+	rlsdev.o rstmap.o savmap.o scale.o scopy.o seldev.o syaxis.o \
+	symbol.o traccy.o trace.o tracec.o tracey.o blkcmn.o
+
+#
+# RULES
+#
+
+.c.o:
+	$(CC) -c $(CFLAGS) $<
+
+.f.o:
+	$(F77) -c $(FFLAGS) $<
+
+#
+# DEPENDANCIES
+#
+
+needed: diglib.a demo testfonts makefont
+
+all: diglib.a demo testfonts makefont test3d test3dcol testfilcon \
+     testfill3d
+
+demo: diglib.a demo.o
+	$(F77) -o demo $(FFLAGS) demo.o diglib.a $(LIBS)
+
+makefont: makefont.o
+	$(F77) -o makefont $(FFLAGS) makefont.o
+
+testfonts: testfonts.o diglib.a
+	$(F77) -o testfonts $(FFLAGS) testfonts.o diglib.a $(LIBS)
+
+
+diglib.a: $(FOBJS) $(F77DRIVEROBJS) $(CCDRIVEROBJS) $(EXTENSIONOBJS)
+	ar crv diglib.a $(FOBJS) $(F77DRIVEROBJS) $(CCDRIVEROBJS) \
+	                $(EXTENSIONOBJS)
+	ranlib diglib.a
+
+demo-x11: demo-x11.o diglib.a
+	$(F77) -o demo-x11 $(FFLAGS) demo-x11.o diglib.a $(LIBS)
+
+quick: demo-x11.o gdx11.o
+	$(F77) -o demo-x11 $(FFLAGS) demo-x11.o gdx11.o diglib.a $(LIBS)
+
+test3d: test3d.o diglib.a
+	$(F77) -o test3d $(FFLAGS) test3d.o diglib.a $(LIBS)
+
+test3dcol: test3dcol.o diglib.a
+	$(F77) -o test3dcol $(FFLAGS) test3dcol.o diglib.a $(LIBS)
+
+testfilcon: testfilcon.o diglib.a
+	$(F77) -o testfilcon $(FFLAGS) testfilcon.o diglib.a $(LIBS)
+
+testfill3d: testfill3d.o diglib.a
+	$(F77) -o testfill3d $(FFLAGS) testfill3d.o diglib.a $(LIBS)
+
+demo-x11.o:
+	$(F77) $(FFLAGS) -c demo-x11.f
+
+cszmap.o: pltprm.prm
+
+cursor.o: pltcom.prm pltsiz.prm
+
+devsel.o: gcdsel.prm
+
+gsgdev.o: gcdsel.prm gcdprm.prm gccpar.prm gcvpos.prm gcapos.prm gcclip.prm \
+          gcdchr.prm gcltyp.prm
+
+fulmap.o: gcdprm.prm
+
+blkcmn.o: gcfont.cmn gcsidx.dat gccstd.dat
+
+gdio.o: gbcomm.cmn
+
+goodcs.o: gcdchr.prm gcdprm.prm
+
+grafin.o: pltcom.prm pltsiz.prm
+
+gscclc.o: gccpar.prm gccoff.prm
+
+gsccmp.o: gccpar.prm gcapos.prm
+
+gschit.o: gcfont.cmn
+
+gscolr.o: gcdchr.prm
+
+gscrsr.o: gcdchr.prm gcdprm.prm
+
+gsdlns.o: gcltyp.prm
+
+gsdraw.o: gcvpos.prm gcapos.prm
+
+gsdrgb.o: gcdchr.prm
+
+gsdrvr.o: gcdsel.prm
+
+gsdrw2.o: gcclip.prm gcltyp.prm
+
+gsdrw3.o: gcltyp.prm
+
+gsetdp.o: gcdprm.prm piodef.prm
+
+gsfill.o: gcdchr.prm gcdprm.prm gcltyp.prm
+
+gsfont.o: gccpar.prm gcfont.cmn
+
+gsgin.o: gcdchr.prm gcdprm.prm
+
+gshght.o: gccpar.prm
+
+gsivis.o: gcclip.prm
+
+gslens.o: gccpar.prm gcfont.cmn
+
+gsltyp.o: gcltyp.prm
+
+gsmove.o: gcltyp.prm gcvpos.prm gcapos.prm
+
+gspstr.o: gcvpos.prm gccoff.prm gcltyp.prm gcfont.cmn
+
+gsrclp.o: gcclip.prm
+
+gsrst.o: gcdprm.prm gcdprm.prm
+
+gssclp.o: gcclip.prm gcdchr.prm
+
+gssetc.o: gccpar.prm piodef.prm
+
+gsstrk.o: gcfont.cmn
+
+gswndo.o: gcclip.prm gcdchr.prm gcdprm.prm
+
+gsxlcm.o: gcdchr.prm
+
+gsylcm.o: gcdchr.prm
+
+hatch.o: gcdchr.prm gcdprm.prm
+
+mapit.o: pltcom.prm pltsiz.prm pltclp.prm pltprm.prm gcltyp.prm
+
+mapprm.o: pltsiz.prm pltprm.prm gcdprm.prm
+
+mapset.o: gcdchr.prm
+
+mapsiz.o: gcdprm.prm
+
+mapsml.o: pltcom.prm pltsiz.prm pltclp.prm pltprm.prm
+
+mapsz2.o: gcdprm.prm
+
+mpclip.o: pltsiz.prm pltprm.prm
+
+purjoy.o: gcdchr.prm
+
+rlsdev.o: gcdsel.prm
+
+rstmap.o: pltclp.prm pltcom.prm pltsiz.prm
+
+savmap.o: pltclp.prm pltcom.prm pltsiz.prm
+
+scale.o: pltcom.prm pltsiz.prm
+
+syaxis.o: pltcom.prm pltsiz.prm pltclp.prm pltprm.prm
+
+symbol.o: gcvpos.prm gcltyp.prm
+
+gdx11.o: gdx11.h gd_dev_char_bits.h
+
+camrot.o: comdp.inc
+draw3c.o: comdp.inc comdpa.inc
+draw3d.o: comdp.inc comdpa.inc
+drawbs.o: comdp.inc dbase.inc
+drawpq.o: comdp.inc comdpa.inc
+extrma.o: comdp.inc
+fill3d.o: gcdchr.prm comdp.inc dbase.inc
+ivis.o: comdp.inc
+purjoy.o: gcdchr.prm comdp.inc
+purjoycol.o: gcdchr.prm comdp.inc
+sclplt.o: comdp.inc dbase.inc
+tickl.o: dbase.inc
+xyprm.o: comdp.inc dbase.inc

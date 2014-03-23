@@ -1,0 +1,257 @@
+	SUBROUTINE GD4692 (IFXN,XA,YA)
+c  TEKtronix 4692 DRIVER FOR DIGLIB/VAX
+c	Author believed to be Giles Peterson.
+c	Slightly modified by Hal Brand:
+c		* Logical name TEK4692_TTY for terminal port
+
+	DIMENSION XA(8), YA(3)
+
+	PARAMETER (TERM_NUMBER = 4692.0)
+	PARAMETER (SCREEN_WIDTH_CM = 24.564)
+	PARAMETER (SCREEN_HEIGHT_CM = 18.41)
+	PARAMETER (X_DOTS = 4096.0)
+	PARAMETER (Y_DOTS = 3133.0)
+	PARAMETER (NUMBER_FG_COLORS = 255)
+
+      parameter (xdm1 = x_dots-1.)
+      parameter (ydm1 = y_dots-1.)
+	PARAMETER (X_RES = xdm1/SCREEN_WIDTH_CM)
+	PARAMETER (Y_RES = ydm1/SCREEN_HEIGHT_CM)
+	PARAMETER (RESOLUTION = (X_RES+Y_RES)/2.0)
+      parameter (tallx = resolution*x_dots/y_dots)
+      parameter (tally = resolution*y_dots/x_dots)
+	PARAMETER (XLENGTH = xdm1/RESOLUTION)
+	PARAMETER (YLENGTH = ydm1/RESOLUTION)
+	PARAMETER (COLORS_FG = NUMBER_FG_COLORS)
+	PARAMETER (IX_CENTER = RESOLUTION*XLENGTH/2.0)
+	PARAMETER (IY_CENTER = RESOLUTION*YLENGTH/2.0)
+	BYTE eb,ESC,CSUB,GS,CR,FF,US
+	PARAMETER (eb=23,ESC=27, CSUB=26, GS=29, CR=13, FF=12, US=31)
+	CHARACTER*(*) TERMINAL
+	PARAMETER (TERMINAL='TEK4692_TTY')
+
+C	DEFINITIONS FOR DEVICE CONTROL
+      byte fillpattern(4),lineindex(4),textindex(4)
+	BYTE STR_END(2), STR_INIT_DEV(25), STR_WINDOW(4)
+	BYTE STR_BEGIN_PLOT(3)
+	BYTE STR_END_PLOT(3), unreserve(5)
+	BYTE beginpanel(4),endpanel(4)
+      logical tall
+      data beginpanel /ESC,'L','P',0/,
+     *  fillpattern/esc,'M','P',0/,
+     *  lineindex/esc,'M','L',0/,
+     *  textindex/esc,'M','T',0/
+	DATA STR_END /US,0/
+	DATA STR_INIT_DEV/esc,'K','C',
+     *  esc,'Q','O','0',
+     *  ESC,'K','A','1',		!ENABLE dialog area
+     *  ESC,'M','L','1',		!COLOR 1
+     *  ESC,'N','U',':',		!BYPASS CANCEL CHARACTER (LF)
+     *  ESC,'N','T','1','=',0/	!EOL STRING <CR> <NULL>
+	DATA STR_WINDOW / ESC,'R','W',0/
+	DATA STR_BEGIN_PLOT/ESC,FF,0/
+	DATA STR_END_PLOT /esc,eb,0/
+	DATA unreserve /ESC,'Q','R','0',0/
+	DATA endpanel /ESC,'L','E',0/
+
+C	DEFINITIONS FOR GIN
+	BYTE GINBUFR(8), PROMPT(4), STR_END_GIN(2), STR_MOVE_GIN_CURSOR(6)
+	DATA PROMPT /ESC, CSUB, 0, 0/
+	DATA IGIN_IN_CHARS /6/
+	DATA STR_END_GIN /10,0/
+	DATA STR_MOVE_GIN_CURSOR / ESC, 'S', 'X', '0', 0,0/
+	DATA IX_GIN_CURSOR, IY_GIN_CURSOR / IX_CENTER, IY_CENTER /
+
+C	DECLARE BUFFERING FUNCTION
+	LOGICAL GB_TEST_FLUSH
+
+C	DECLARE VARS NEED FOR DRIVER OPERATION
+	LOGICAL LVECTOR_GOING, LDUMMY
+	DIMENSION DCHAR(8)
+
+c  "GUPCM" IS GRAPHICS UNITS PER CENTIMETER
+      EQUIVALENCE (DCHAR(4),XGUPCM), (DCHAR(5),YGUPCM)
+      DATA DCHAR / TERM_NUMBER, XLENGTH, YLENGTH, RESOLUTION,
+     *  RESOLUTION, COLORS_FG, 389.0, 1.0/
+
+C*****************
+      tall = .false.
+10    IF (IFXN .GT. 1026) GOTO 1000
+      IF (IFXN .LE. 0 .OR. IFXN .GT. 9) RETURN
+      GO TO (100,200,300,400,500,600,700,800,900) IFXN
+
+c  *********************
+c  INITIALIZE
+100	CALL GB_INITIALIZE (0,STR_END,TERMINAL,IERR)
+	YA(1) = IERR
+	IF (IERR .NE. 0) RETURN
+
+	CALL GB_IN_STRING (STR_INIT_DEV)
+	CALL GB_EMPTY
+	LVECTOR_GOING = .FALSE.
+	RETURN
+
+C	**************************
+C	GET FRESH PLOTTING SURFACE
+200	CONTINUE
+	CALL GB_NEW_BUFFER
+	CALL GB_IN_STRING (STR_BEGIN_PLOT)
+	CALL GB_EMPTY
+	LVECTOR_GOING = .FALSE.
+	RETURN
+
+C	****
+C	MOVE
+300	CONTINUE
+C	CONVERT CM. TO GRAPHICS UNITS ROUNDED
+      if (tall) then
+	IxPOSN = xdm1 -tallx*YA(1)+0.5
+	IyPOSN = tally*XA(1)+0.5
+      else
+	IXPOSN = XGUPCM*XA(1)+0.5
+	IYPOSN = YGUPCM*YA(1)+0.5
+      endif
+      LVECTOR_GOING = .FALSE.
+      RETURN
+
+C	****
+C	DRAW
+400	CONTINUE
+      if (tall) then
+	Ix = xdm1 -tallx*YA(1)+0.5
+	Iy = tally*XA(1)+0.5
+      else
+	IX = XGUPCM*XA(1)+0.5
+	IY = YGUPCM*YA(1)+0.5
+      endif
+      LVECTOR_GOING = LVECTOR_GOING .AND. (.NOT. GB_TEST_FLUSH(4))
+      IF (.not.LVECTOR_GOING) then
+        LDUMMY = GB_TEST_FLUSH(9)
+        LVECTOR_GOING = .TRUE.
+        CALL GB_INSERT (GS)
+        CALL xyto4692 (IXPOSN,IYPOSN)
+      endif
+      CALL xyto4692 (IX,IY)
+      IXPOSN = IX
+      IYPOSN = IY
+      RETURN
+
+C	*****************************
+C	FLUSH GRAPHICS COMMAND BUFFER
+500	CONTINUE
+	CALL GB_EMPTY
+	CALL GB_IN_STRING (STR_END_PLOT)
+	CALL GB_EMPTY
+	LVECTOR_GOING = .FALSE.
+	RETURN
+
+C	******************
+C	RELEASE THE DEVICE
+600	CONTINUE
+
+C	DE-ASSIGN THE CHANNAL
+	CALL GB_EMPTY
+	CALL GB_FINISH (unreserve)
+	CALL GB_EMPTY
+      call sys$dalloc (namdev)
+	RETURN
+
+C	*****************************
+C	RETURN DEVICE CHARACTERISTICS
+700	CONTINUE
+	DO 720 I=1,8
+	XA(I) = DCHAR(I)
+720	CONTINUE
+	RETURN
+
+C	****************************
+C	SELECT CURRENT DRAWING COLOR
+800   LDUMMY = GB_TEST_FLUSH(24)
+      call gb_in_string (lineindex)
+      call intto4692 (xa(1))
+      call gb_in_string (textindex)
+      call intto4692 (xa(1))
+      call gb_in_string (fillpattern)
+      call intto4692 (xa(1))
+      LVECTOR_GOING = .FALSE.
+      RETURN
+
+c  **********************
+c  PERFORM GRAPHICS INPUT
+900   RETURN
+
+c  *******************
+c  DRAW FILLED POLYGON
+1000  ldummy = gb_test_flush (11)
+      CALL GB_IN_STRING (beginpanel)
+      if (tall) then
+	Ix = xdm1 -tallx*YA(1)+0.5
+	Iy = tally*XA(1)+0.5
+      else
+	IX = XGUPCM*XA(1)+0.5
+	IY = YGUPCM*YA(1)+0.5
+      endif
+      call xyto4692 (ix,iy)
+      call gb_insert ('0')
+      call gb_insert (gs)
+      LVECTOR_GOING = .FALSE.
+      NPTS = IFXN - 1024
+      DO 1010 I = 2, NPTS
+      LVECTOR_GOING = LVECTOR_GOING .AND. (.NOT. GB_TEST_FLUSH(5))
+      IF (.NOT. LVECTOR_GOING) then
+        ldummy = gb_test_flush (11)
+        lvector_going = .true.
+        CALL GB_INSERT(GS)
+      endif
+      if (tall) then
+	Ix = xdm1 -tallx*YA(i)+0.5
+	Iy = tally*XA(i)+0.5
+      else
+	IX = XGUPCM*XA(i)+0.5
+	IY = YGUPCM*YA(i)+0.5
+      endif
+1010  call xyto4692 (ix,iy)
+      CALL GB_IN_STRING (endpanel)
+      LVECTOR_GOING = .FALSE.
+      RETURN
+
+c******************************************************************************
+      entry GD4692n (IFXN,XA,YA)
+c  Tektronix 4692 narrow driver.
+
+      tall = .true.
+      go to 10
+      END
+
+c******************************************************************************
+c******************************************************************************
+      subroutine intto4692 (f)
+c  insert char(f) into buffer.
+      byte ic(5)
+
+      i = abs(f)
+      ic(4) = mod(i,2**4) +2**5
+      if (f.ge..0) ic(4) = ic(4) +2**4
+      ic(3) = mod(i/(2**4),2**6) +64
+      ic(2) = mod(i/(2**10),2**6) +64
+      ic(1) = mod(i/(2**16),2**6) +64
+      n = 4
+      if (ic(3).ne.64) n = 3
+      if (ic(2).ne.64) n = 2
+      if (ic(1).ne.64) n = 1
+      call gb_in_string (ic(n))
+      return
+      end
+
+c******************************************************************************
+c******************************************************************************
+      subroutine xyto4692 (ix,iy)
+c  convert (ix,iy) to Tektronix 4692 code.
+
+      call gb_insert (32 +iy/128)
+      call gb_insert (96 +mod(ix,4) +4*mod(iy,4))
+      call gb_insert (96 +mod(iy/4,32))
+      call gb_insert (32 +ix/128)
+      call gb_insert (64 +mod(ix/4,32))
+      return
+      end

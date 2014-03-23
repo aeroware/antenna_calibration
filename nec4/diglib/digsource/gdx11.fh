@@ -1,0 +1,60 @@
+/*************************************/
+/*************************************/
+/** DIGLIB GDX11 Function Templates **/
+/*************************************/
+/*************************************/
+
+/* Define ANSI_C if you want the full templates! */
+/*  Note: Most UN*X C compilers won't like this! */
+
+#define ANSI_C
+
+/*********************/
+/* End configuration */
+/*********************/
+
+#define EXTERN extern
+
+#ifdef ANSI_C
+
+#ifndef DIGWIN_TYPE
+#define DIGWin struct DIGWin
+DIGWin;
+#endif
+
+EXTERN void gdx11_adjust_digwin(DIGWin *dw);
+EXTERN void gdx11_refresh_digwin(DIGWin *dw);
+EXTERN DIGWin *gdx11_make_digwin_from_xwin(Display *display,
+					   Window xwindow,
+					   unsigned long back_pixel,
+					   unsigned long fore_pixel,
+					   int x_border, int y_border,
+					   int min_x, int max_x,
+					   int min_y, int max_y,
+					   int abs_min_max);
+EXTERN DIGWin *gdx11_create_digwin(char *xservername, int window_width,
+				   int window_height);
+EXTERN DIGWin *gdx11_set_current_digwin(DIGWin *dw);
+EXTERN DIGWin *gdx11_get_current_digwin(void);
+EXTERN void gdx11_set_def_window_size(int width, int height);
+EXTERN void gdx11_free_digwin(DIGWin *dw);
+EXTERN int gdx11_handle_digwin_event(DIGWin *dw, XEvent *eventptr,
+				     char termchar, unsigned int term_button);
+EXTERN void gdx11_maintain_digwins(DIGWin *dws[], int ndigwin,
+				   char term_char, unsigned int term_button);
+
+#else
+
+EXTERN void gdx11_adjust_digwin();
+EXTERN void gdx11_refresh_digwin();
+EXTERN DIGWin *gdx11_make_digwin_from_xwin();
+EXTERN DIGWin *gdx11_create_digwin();
+EXTERN DIGWin *gdx11_set_current_digwin();
+EXTERN DIGWin *gdx11_get_current_digwin();
+EXTERN void gdx11_set_def_window_size();
+EXTERN void gdx11_free_digwin();
+EXTERN int gdx11_handle_digwin_event();
+EXTERN void gdx11_maintain_digwins();
+
+#endif
+

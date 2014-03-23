@@ -1,0 +1,48 @@
+
+
+
+                                __________________________________________
+                               |                                          |
+                               | NUMERICAL ELECTROMAGNETICS CODE (nec2++) |
+                               | Translated to 'C++' in Double Precision  |
+                               |        Version 1.1.0 [2005-01-20]        |
+                               |__________________________________________|
+
+
+
+                               ---------------- COMMENTS ----------------
+                                GA - NEC FILE
+                                go blue ! 
+
+
+
+                                -------- STRUCTURE SPECIFICATION --------
+                                COORDINATES MUST BE INPUT IN
+                                METERS OR BE SCALED TO METERS
+                                BEFORE STRUCTURE INPUT IS ENDED
+  WIRE                                                                                 SEG FIRST  LAST  TAG
+   No:        X1         Y1         Z1         X2         Y2         Z2       RADIUS   No:   SEG   SEG  No:
+
+     1      0.0000     0.0000     0.0000     0.0190     0.0266     0.0034     0.0010     2     1     2    0
+
+     GROUND PLANE SPECIFIED.
+     WHERE WIRE ENDS TOUCH GROUND, CURRENT WILL BE INTERPOLATED TO IMAGE IN GROUND PLANE.
+
+
+     TOTAL SEGMENTS USED: 2   SEGMENTS IN A SYMMETRIC CELL: 2   SYMMETRY FLAG: 0
+
+
+                               ---------- SEGMENTATION DATA ----------
+                                        COORDINATES IN METERS
+                            I+ AND I- INDICATE THE SEGMENTS BEFORE AND AFTER I
+
+   SEG    COORDINATES OF SEGM CENTER     SEGM    ORIENTATION ANGLES    WIRE    CONNECTION DATA   TAG
+   No:       X         Y         Z      LENGTH     ALPHA      BETA    RADIUS    I-     I    I+   NO:
+     1    0.0047    0.0066    0.0008    0.0164    5.9380   54.4623    0.0010     1     1     2     0
+     2    0.0142    0.0199    0.0025    0.0164    5.9380   54.4623    0.0010     1     2     0     0
+
+
+
+*****  DATA CARD N0.   1 FR   0     1     0     0  2.40000E+03  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00
+*****  DATA CARD N0.   2 EX   0     0     5     0  1.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00                               NEC++ Runtime Error: 
+                               CHECK DATA, PARAMETER SPECIFYING EXCITATION SOURCE SEGMENT [5] IS TOO LARGE

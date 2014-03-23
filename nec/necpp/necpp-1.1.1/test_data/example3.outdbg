@@ -1,0 +1,333 @@
+
+
+
+                                __________________________________________
+                               |                                          |
+                               | NUMERICAL ELECTROMAGNETICS CODE (nec2++) |
+                               | Translated to 'C++' in Double Precision  |
+                               |       Version 1.0.7 [2004-12-15]        |
+                               |__________________________________________|
+
+
+
+                               ---------------- COMMENTS ----------------
+                               EXAMPLE 3. VERTICAL HALF WAVELENGTH ANTENNA OVER GROUND 
+                                          EXTENDED THIN WIRE KERNEL USED 
+                                          1. PERFECT GROUND 
+                                          2. IMPERFECT GROUND INCLUDING GROUND WAVE AND RECEIVING 
+                                             PATTERN CALCULATIONS 
+
+
+
+                                -------- STRUCTURE SPECIFICATION --------
+                                COORDINATES MUST BE INPUT IN
+                                METERS OR BE SCALED TO METERS
+                                BEFORE STRUCTURE INPUT IS ENDED
+  WIRE                                                                                 SEG FIRST  LAST  TAG
+   No:        X1         Y1         Z1         X2         Y2         Z2       RADIUS   No:   SEG   SEG  No:
+
+     1      0.0000     0.0000     2.0000     0.0000     0.0000     7.0000     0.3000     9     1     9    0
+
+     GROUND PLANE SPECIFIED.
+     WHERE WIRE ENDS TOUCH GROUND, CURRENT WILL BE INTERPOLATED TO IMAGE IN GROUND PLANE.
+
+
+     TOTAL SEGMENTS USED: 9   SEGMENTS IN A SYMMETRIC CELL: 9   SYMMETRY FLAG: 0
+
+
+                               ---------- SEGMENTATION DATA ----------
+                                        COORDINATES IN METERS
+                            I+ AND I- INDICATE THE SEGMENTS BEFORE AND AFTER I
+
+   SEG    COORDINATES OF SEGM CENTER     SEGM    ORIENTATION ANGLES    WIRE    CONNECTION DATA   TAG
+   No:       X         Y         Z      LENGTH     ALPHA      BETA    RADIUS    I-     I    I+   NO:
+     1    0.0000    0.0000    2.2778    0.5556   90.0000    0.0000    0.3000     0     1     2     0
+     2    0.0000    0.0000    2.8333    0.5556   90.0000    0.0000    0.3000     1     2     3     0
+     3    0.0000    0.0000    3.3889    0.5556   90.0000    0.0000    0.3000     2     3     4     0
+     4    0.0000    0.0000    3.9444    0.5556   90.0000    0.0000    0.3000     3     4     5     0
+     5    0.0000    0.0000    4.5000    0.5556   90.0000    0.0000    0.3000     4     5     6     0
+     6    0.0000    0.0000    5.0556    0.5556   90.0000    0.0000    0.3000     5     6     7     0
+     7    0.0000    0.0000    5.6111    0.5556   90.0000    0.0000    0.3000     6     7     8     0
+     8    0.0000    0.0000    6.1667    0.5556   90.0000    0.0000    0.3000     7     8     9     0
+     9    0.0000    0.0000    6.7222    0.5556   90.0000    0.0000    0.3000     8     9     0     0
+
+
+
+*****  DATA CARD N0.   1 EK   0     0     0     0  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00
+*****  DATA CARD N0.   2 FR   0     1     0     0  3.00000E+01  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00
+*****  DATA CARD N0.   3 EX   0     0     5     0  1.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00
+*****  DATA CARD N0.   4 GN   1     0     0     0  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00
+*****  DATA CARD N0.   5 RP   0    10     2  1301  0.00000E+00  0.00000E+00  1.00000E+01  9.00000E+01  0.00000E+00  0.00000E+00
+
+
+                               --------- FREQUENCY --------
+                               FREQUENCY=  3.0000E+01 MHZ
+                               WAVELENGTH= 9.9933E+00 METERS
+
+
+                        APPROXIMATE INTEGRATION EMPLOYED FOR SEGMENTS
+                        THAT ARE MORE THAN 1.000 WAVELENGTHS APART
+                        THE EXTENDED THIN WIRE KERNEL WILL BE USED
+
+
+
+                          ------ STRUCTURE IMPEDANCE LOADING ------
+                                 THIS STRUCTURE IS NOT LOADED
+
+
+
+                            -------- ANTENNA ENVIRONMENT --------
+                            PERFECT GROUND
+
+
+                             ---------- MATRIX TIMING ----------
+                               FILL= 0 msec  FACTOR: 0 msec
+
+
+                        --------- ANTENNA INPUT PARAMETERS ---------
+  TAG   SEG       VOLTAGE (VOLTS)         CURRENT (AMPS)         IMPEDANCE (OHMS)        ADMITTANCE (MHOS)     POWER
+  NO.   NO.     REAL      IMAGINARY     REAL      IMAGINARY     REAL      IMAGINARY    REAL       IMAGINARY   (WATTS)
+    0     5  1.0000E+00  0.0000E+00  9.3146E-03 -8.6686E-04  1.0644E+02  9.9055E+00  9.3146E-03 -8.6686E-04  4.6573E-03
+
+
+                           -------- CURRENTS AND LOCATION --------
+                                  DISTANCES IN WAVELENGTHS
+
+   SEG  TAG    COORDINATES OF SEGM CENTER     SEGM    ------------- CURRENT (AMPS) -------------
+   No:  No:       X         Y         Z      LENGTH     REAL      IMAGINARY    MAGN        PHASE
+
+     1    0    0.0000    0.0000    0.2279   0.05559  2.8965E-03 -2.5964E-03  3.8899E-03  -41.873
+     2    0    0.0000    0.0000    0.2835   0.05559  5.5162E-03 -4.2028E-03  6.9348E-03  -37.304
+     3    0    0.0000    0.0000    0.3391   0.05559  7.4817E-03 -4.6585E-03  8.8135E-03  -31.909
+     4    0    0.0000    0.0000    0.3947   0.05559  8.7867E-03 -3.7800E-03  9.5653E-03  -23.277
+     5    0    0.0000    0.0000    0.4503   0.05559  9.3146E-03 -8.6686E-04  9.3549E-03   -5.317
+     6    0    0.0000    0.0000    0.5059   0.05559  9.0040E-03 -3.8010E-03  9.7734E-03  -22.887
+     7    0    0.0000    0.0000    0.5615   0.05559  7.8625E-03 -4.6896E-03  9.1549E-03  -30.814
+     8    0    0.0000    0.0000    0.6171   0.05559  5.9562E-03 -4.2264E-03  7.3034E-03  -35.359
+     9    0    0.0000    0.0000    0.6727   0.05559  3.2218E-03 -2.6004E-03  4.1403E-03  -38.908
+
+
+                               ---------- POWER BUDGET ---------
+                               INPUT POWER   =  4.6573E-03 Watts
+                               RADIATED POWER=  4.6573E-03 Watts
+                               STRUCTURE LOSS=  0.0000E+00 Watts
+                               NETWORK LOSS  =  0.0000E+00 Watts
+                               EFFICIENCY    =  100.00 Percent
+
+
+                             ---------- RADIATION PATTERNS -----------
+
+ ---- ANGLES -----     ----- POWER GAINS -----       ---- POLARIZATION ----   ---- E(THETA) ----    ----- E(PHI) ------
+  THETA      PHI       VERTC    HORIZ    TOTAL       AXIAL      TILT  SENSE   MAGNITUDE    PHASE    MAGNITUDE     PHASE
+ DEGREES   DEGREES        DB       DB       DB       RATIO   DEGREES            VOLTS/M   DEGREES     VOLTS/M   DEGREES
+    0.00      0.00   -999.99  -999.99  -999.99      0.0000      0.00         0.0000E+00      0.00  0.0000E+00      0.00
+   10.00      0.00     -9.87  -999.99    -9.87      0.0000     -0.00 LINEAR  1.6964E-01   -114.38  0.0000E+00      0.00
+   20.00      0.00     -4.20  -999.99    -4.20      0.0000     -0.00 LINEAR  3.2565E-01   -114.64  0.0000E+00      0.00
+   30.00      0.00     -1.70  -999.99    -1.70      0.0000     -0.00 LINEAR  4.3438E-01   -115.01  0.0000E+00      0.00
+   40.00      0.00     -1.74  -999.99    -1.74      0.0000     -0.00 LINEAR  4.3239E-01   -115.37  0.0000E+00      0.00
+   50.00      0.00     -6.73  -999.99    -6.73      0.0000     -0.00 LINEAR  2.4351E-01   -115.33  0.0000E+00      0.00
+   60.00      0.00    -10.04  -999.99   -10.04      0.0000      0.00 LINEAR  1.6630E-01     61.67  0.0000E+00      0.00
+   70.00      0.00      2.67  -999.99     2.67      0.0000      0.00 LINEAR  7.1895E-01     62.56  0.0000E+00      0.00
+   80.00      0.00      7.20  -999.99     7.20      0.0000      0.00 LINEAR  1.2110E+00     62.51  0.0000E+00      0.00
+   90.00      0.00      8.52  -999.99     8.52      0.0000      0.00 LINEAR  1.4097E+00     62.47  0.0000E+00      0.00
+    0.00     90.00   -999.99  -999.99  -999.99      0.0000      0.00         0.0000E+00      0.00  0.0000E+00      0.00
+   10.00     90.00     -9.87  -999.99    -9.87      0.0000     -0.00 LINEAR  1.6964E-01   -114.38  0.0000E+00      0.00
+   20.00     90.00     -4.20  -999.99    -4.20      0.0000     -0.00 LINEAR  3.2565E-01   -114.64  0.0000E+00      0.00
+   30.00     90.00     -1.70  -999.99    -1.70      0.0000     -0.00 LINEAR  4.3438E-01   -115.01  0.0000E+00      0.00
+   40.00     90.00     -1.74  -999.99    -1.74      0.0000     -0.00 LINEAR  4.3239E-01   -115.37  0.0000E+00      0.00
+   50.00     90.00     -6.73  -999.99    -6.73      0.0000     -0.00 LINEAR  2.4351E-01   -115.33  0.0000E+00      0.00
+   60.00     90.00    -10.04  -999.99   -10.04      0.0000      0.00 LINEAR  1.6630E-01     61.67  0.0000E+00      0.00
+   70.00     90.00      2.67  -999.99     2.67      0.0000      0.00 LINEAR  7.1895E-01     62.56  0.0000E+00      0.00
+   80.00     90.00      7.20  -999.99     7.20      0.0000      0.00 LINEAR  1.2110E+00     62.51  0.0000E+00      0.00
+   90.00     90.00      8.52  -999.99     8.52      0.0000      0.00 LINEAR  1.4097E+00     62.47  0.0000E+00      0.00
+
+
+  AVERAGE POWER GAIN:  2.0279E+00 - SOLID ANGLE USED IN AVERAGING: (+0.5000)*PI STERADIANS
+
+
+                              ---------- NORMALIZED GAIN ----------
+                                          VERTICAL GAIN
+                                   NORMALIZATION FACTOR: 8.52 db
+
+    ---- ANGLES ----                ---- ANGLES ----                ---- ANGLES ----
+    THETA      PHI        GAIN      THETA      PHI        GAIN      THETA      PHI       GAIN
+   DEGREES   DEGREES        DB     DEGREES   DEGREES        DB     DEGREES   DEGREES       DB
+      0.00      0.00  -1008.51       70.00      0.00     -5.85       40.00     90.00    -10.26
+     10.00      0.00    -18.39       80.00      0.00     -1.32       50.00     90.00    -15.25
+     20.00      0.00    -12.73       90.00      0.00      0.00       60.00     90.00    -18.56
+     30.00      0.00    -10.23        0.00     90.00  -1008.51       70.00     90.00     -5.85
+     40.00      0.00    -10.26       10.00     90.00    -18.39       80.00     90.00     -1.32
+     50.00      0.00    -15.25       20.00     90.00    -12.73       90.00     90.00      0.00
+     60.00      0.00    -18.56       30.00     90.00    -10.23   
+
+
+
+*****  DATA CARD N0.   6 GN   0     0     0     0  6.00000E+00  1.00000E-03  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00
+*****  DATA CARD N0.   7 RP   0    10     2  1301  0.00000E+00  0.00000E+00  1.00000E+01  9.00000E+01  0.00000E+00  0.00000E+00
+
+
+                          ------ STRUCTURE IMPEDANCE LOADING ------
+                                 THIS STRUCTURE IS NOT LOADED
+
+
+
+                            -------- ANTENNA ENVIRONMENT --------
+                            FINITE GROUND - REFLECTION COEFFICIENT APPROXIMATION
+
+                            RELATIVE DIELECTRIC CONST: 6.000
+                            CONDUCTIVITY:  1.000E-03 MHOS/METER
+                            COMPLEX DIELECTRIC CONSTANT:  6.0000E+00-5.9920E-01j
+
+
+                             ---------- MATRIX TIMING ----------
+                               FILL= 10 msec  FACTOR: 0 msec
+
+
+                        --------- ANTENNA INPUT PARAMETERS ---------
+  TAG   SEG       VOLTAGE (VOLTS)         CURRENT (AMPS)         IMPEDANCE (OHMS)        ADMITTANCE (MHOS)     POWER
+  NO.   NO.     REAL      IMAGINARY     REAL      IMAGINARY     REAL      IMAGINARY    REAL       IMAGINARY   (WATTS)
+    0     5  1.0000E+00  0.0000E+00  8.9120E-03 -8.8289E-04  1.1112E+02  1.1008E+01  8.9120E-03 -8.8289E-04  4.4560E-03
+
+
+                           -------- CURRENTS AND LOCATION --------
+                                  DISTANCES IN WAVELENGTHS
+
+   SEG  TAG    COORDINATES OF SEGM CENTER     SEGM    ------------- CURRENT (AMPS) -------------
+   No:  No:       X         Y         Z      LENGTH     REAL      IMAGINARY    MAGN        PHASE
+
+     1    0    0.0000    0.0000    0.2279   0.05559  2.8769E-03 -2.5728E-03  3.8595E-03  -41.807
+     2    0    0.0000    0.0000    0.2835   0.05559  5.4154E-03 -4.1894E-03  6.8467E-03  -37.726
+     3    0    0.0000    0.0000    0.3391   0.05559  7.2728E-03 -4.6627E-03  8.6391E-03  -32.665
+     4    0    0.0000    0.0000    0.3947   0.05559  8.4696E-03 -3.7953E-03  9.2810E-03  -24.137
+     5    0    0.0000    0.0000    0.4503   0.05559  8.9120E-03 -8.8289E-04  8.9557E-03   -5.658
+     6    0    0.0000    0.0000    0.5059   0.05559  8.5576E-03 -3.8085E-03  9.3669E-03  -23.991
+     7    0    0.0000    0.0000    0.5615   0.05559  7.4273E-03 -4.6836E-03  8.7807E-03  -32.235
+     8    0    0.0000    0.0000    0.6171   0.05559  5.5943E-03 -4.2085E-03  7.0005E-03  -36.954
+     9    0    0.0000    0.0000    0.6727   0.05559  3.0094E-03 -2.5815E-03  3.9649E-03  -40.623
+
+
+                               ---------- POWER BUDGET ---------
+                               INPUT POWER   =  4.4560E-03 Watts
+                               RADIATED POWER=  4.4560E-03 Watts
+                               STRUCTURE LOSS=  0.0000E+00 Watts
+                               NETWORK LOSS  =  0.0000E+00 Watts
+                               EFFICIENCY    =  100.00 Percent
+
+
+                             ---------- RADIATION PATTERNS -----------
+
+ ---- ANGLES -----     ----- POWER GAINS -----       ---- POLARIZATION ----   ---- E(THETA) ----    ----- E(PHI) ------
+  THETA      PHI       VERTC    HORIZ    TOTAL       AXIAL      TILT  SENSE   MAGNITUDE    PHASE    MAGNITUDE     PHASE
+ DEGREES   DEGREES        DB       DB       DB       RATIO   DEGREES            VOLTS/M   DEGREES     VOLTS/M   DEGREES
+    0.00      0.00   -999.99  -999.99  -999.99      0.0000      0.00         0.0000E+00      0.00  0.0000E+00      0.00
+   10.00      0.00    -12.87  -999.99   -12.87      0.0000     -0.00 LINEAR  1.1747E-01   -124.70  0.0000E+00      0.00
+   20.00      0.00     -7.18  -999.99    -7.18      0.0000     -0.00 LINEAR  2.2615E-01   -128.91  0.0000E+00      0.00
+   30.00      0.00     -4.47  -999.99    -4.47      0.0000     -0.00 LINEAR  3.0887E-01   -137.31  0.0000E+00      0.00
+   40.00      0.00     -3.45  -999.99    -3.45      0.0000     -0.00 LINEAR  3.4727E-01   -153.41  0.0000E+00      0.00
+   50.00      0.00     -2.94  -999.99    -2.94      0.0000     -0.00 LINEAR  3.6844E-01    177.07  0.0000E+00      0.00
+   60.00      0.00     -0.79  -999.99    -0.79      0.0000     -0.00 LINEAR  4.7193E-01    142.06  0.0000E+00      0.00
+   70.00      0.00      1.54  -999.99     1.54      0.0000     -0.00 LINEAR  6.1699E-01    120.37  0.0000E+00      0.00
+   80.00      0.00      0.64  -999.99     0.64      0.0000     -0.00 LINEAR  5.5647E-01    110.41  0.0000E+00      0.00
+   90.00      0.00   -999.99  -999.99  -999.99      0.0000      0.00         2.6622E-11    -73.02  0.0000E+00      0.00
+    0.00     90.00   -999.99  -999.99  -999.99      0.0000      0.00         0.0000E+00      0.00  0.0000E+00      0.00
+   10.00     90.00    -12.87  -999.99   -12.87      0.0000     -0.00 LINEAR  1.1747E-01   -124.70  0.0000E+00      0.00
+   20.00     90.00     -7.18  -999.99    -7.18      0.0000     -0.00 LINEAR  2.2615E-01   -128.91  0.0000E+00      0.00
+   30.00     90.00     -4.47  -999.99    -4.47      0.0000     -0.00 LINEAR  3.0887E-01   -137.31  0.0000E+00      0.00
+   40.00     90.00     -3.45  -999.99    -3.45      0.0000     -0.00 LINEAR  3.4727E-01   -153.41  0.0000E+00      0.00
+   50.00     90.00     -2.94  -999.99    -2.94      0.0000     -0.00 LINEAR  3.6844E-01    177.07  0.0000E+00      0.00
+   60.00     90.00     -0.79  -999.99    -0.79      0.0000     -0.00 LINEAR  4.7193E-01    142.06  0.0000E+00      0.00
+   70.00     90.00      1.54  -999.99     1.54      0.0000     -0.00 LINEAR  6.1699E-01    120.37  0.0000E+00      0.00
+   80.00     90.00      0.64  -999.99     0.64      0.0000     -0.00 LINEAR  5.5647E-01    110.41  0.0000E+00      0.00
+   90.00     90.00   -999.99  -999.99  -999.99      0.0000      0.00         2.6622E-11    -73.02  0.0000E+00      0.00
+
+
+  AVERAGE POWER GAIN:  7.2070E-01 - SOLID ANGLE USED IN AVERAGING: (+0.5000)*PI STERADIANS
+
+
+                              ---------- NORMALIZED GAIN ----------
+                                          VERTICAL GAIN
+                                   NORMALIZATION FACTOR: 1.54 db
+
+    ---- ANGLES ----                ---- ANGLES ----                ---- ANGLES ----
+    THETA      PHI        GAIN      THETA      PHI        GAIN      THETA      PHI       GAIN
+   DEGREES   DEGREES        DB     DEGREES   DEGREES        DB     DEGREES   DEGREES       DB
+      0.00      0.00  -1001.53       70.00      0.00      0.00       40.00     90.00     -4.99
+     10.00      0.00    -14.41       80.00      0.00     -0.90       50.00     90.00     -4.48
+     20.00      0.00     -8.72       90.00      0.00  -1001.53       60.00     90.00     -2.33
+     30.00      0.00     -6.01        0.00     90.00  -1001.53       70.00     90.00      0.00
+     40.00      0.00     -4.99       10.00     90.00    -14.41       80.00     90.00     -0.90
+     50.00      0.00     -4.48       20.00     90.00     -8.72       90.00     90.00  -1001.53
+     60.00      0.00     -2.33       30.00     90.00     -6.01   
+
+
+
+*****  DATA CARD N0.   8 RP   1    10     1     0  1.00000E+00  0.00000E+00  2.00000E+00  0.00000E+00  1.00000E+05  0.00000E+00
+
+
+                             ------- RADIATED FIELDS NEAR GROUND --------
+
+    ------- LOCATION -------     --- E(THETA) ---     ---- E(PHI) ----    --- E(RADIAL) ---
+      RHO    PHI        Z           MAG    PHASE         MAG    PHASE        MAG     PHASE
+    METERS DEGREES    METERS      VOLTS/M DEGREES      VOLTS/M DEGREES     VOLTS/M  DEGREES
+ 100000.00    0.00      1.00   2.3956E-09  142.05   0.0000E+00    0.00   8.5943E-10  -46.45
+ 100000.00    0.00      3.00   2.7216E-09  164.43   0.0000E+00    0.00   8.5934E-10  -46.45
+ 100000.00    0.00      5.00   3.3543E-09 -179.80   0.0000E+00    0.00   8.5924E-10  -46.46
+ 100000.00    0.00      7.00   4.1557E-09 -169.55   0.0000E+00    0.00   8.5914E-10  -46.46
+ 100000.00    0.00      9.00   5.0461E-09 -162.76   0.0000E+00    0.00   8.5905E-10  -46.47
+ 100000.00    0.00     11.00   5.9859E-09 -158.05   0.0000E+00    0.00   8.5895E-10  -46.47
+ 100000.00    0.00     13.00   6.9549E-09 -154.65   0.0000E+00    0.00   8.5886E-10  -46.48
+ 100000.00    0.00     15.00   7.9425E-09 -152.08   0.0000E+00    0.00   8.5876E-10  -46.49
+ 100000.00    0.00     17.00   8.9425E-09 -150.09   0.0000E+00    0.00   8.5867E-10  -46.50
+ 100000.00    0.00     19.00   9.9510E-09 -148.51   0.0000E+00    0.00   8.5857E-10  -46.52
+
+
+
+*****  DATA CARD N0.   9 EX   1    10     1     0  0.00000E+00  0.00000E+00  0.00000E+00  1.00000E+01  0.00000E+00  0.00000E+00
+*****  DATA CARD N0.  10 PT   2     0     5     5  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00
+*****  DATA CARD N0.  11 XQ   0     0     0     0  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00
+
+
+             -------- RECEIVING PATTERN PARAMETERS --------
+                      ETA:    0.00 DEGREES
+                      TYPE: LINEAR
+                      AXIAL RATIO:  0.000
+
+            THETA     PHI      ----- CURRENT ----    SEG
+            (DEG)    (DEG)     MAGNITUDE    PHASE    No:
+             0.00     0.00    0.0000E+00     0.00      5
+            10.00     0.00    6.2309E-03   -34.69      5
+            20.00     0.00    1.1997E-02   -38.90      5
+            30.00     0.00    1.6389E-02   -47.30      5
+            40.00     0.00    1.8430E-02   -63.41      5
+            50.00     0.00    1.9558E-02   -92.93      5
+            60.00     0.00    2.5058E-02  -127.94      5
+            70.00     0.00    3.2766E-02  -149.63      5
+            80.00     0.00    2.9555E-02  -159.59      5
+            90.00     0.00    1.4140E-12    16.98      5
+
+
+                     ---- NORMALIZED RECEIVING PATTERN ----
+                      NORMALIZATION FACTOR:  3.2766E-02
+                      ETA:    0.00 DEGREES
+                      TYPE: LINEAR
+                      AXIAL RATIO:  0.000
+                      SEGMENT No: 5
+
+                      THETA     PHI       ---- PATTERN ----
+                      (DEG)    (DEG)       DB     MAGNITUDE
+                       0.00     0.00   -999.99   0.0000E+00
+                      10.00     0.00    -14.42   1.9016E-01
+                      20.00     0.00     -8.73   3.6614E-01
+                      30.00     0.00     -6.02   5.0017E-01
+                      40.00     0.00     -5.00   5.6248E-01
+                      50.00     0.00     -4.48   5.9691E-01
+                      60.00     0.00     -2.33   7.6476E-01
+                      70.00     0.00      0.00   1.0000E+00
+                      80.00     0.00     -0.90   9.0201E-01
+                      90.00     0.00   -207.30   4.3154E-11
+
+
+
+*****  DATA CARD N0.  12 EN   0     0     0     0  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00  0.00000E+00
+
+  TOTAL RUN TIME: 10 msec

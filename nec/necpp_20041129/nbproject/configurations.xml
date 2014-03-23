@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="69">
+  <logicalFolder name="root" displayName="root" projectFiles="true">
+    <df name="necpp_20041129" root=".">
+      <df name="src" kind="SOURCE_LOGICAL_FOLDER">
+        <in>AntennaInput.h</in>
+        <in>BaseInput.h</in>
+        <in>CurrentInput.h</in>
+        <in>PowerBudget.h</in>
+        <in>RadiationInput.h</in>
+        <in>c_evlcom.cpp</in>
+        <in>c_evlcom.h</in>
+        <in>c_geometry.cpp</in>
+        <in>c_geometry.h</in>
+        <in>c_ggrid.cpp</in>
+        <in>c_ggrid.h</in>
+        <in>c_plot_card.cpp</in>
+        <in>c_plot_card.h</in>
+        <in>common.h</in>
+        <in>electromag.h</in>
+        <in>libNEC.cpp</in>
+        <in>math_util.h</in>
+        <in>matrix_algebra.cpp</in>
+        <in>matrix_algebra.h</in>
+        <in>misc.cpp</in>
+        <in>misc.h</in>
+        <in>nec.h</in>
+        <in>nec2cpp.cpp</in>
+        <in>nec2cpp.h</in>
+        <in>necDiff.cpp</in>
+        <in>nec_context.cpp</in>
+        <in>nec_context.h</in>
+        <in>nec_exception.h</in>
+        <in>nec_ground.cpp</in>
+        <in>nec_ground.h</in>
+        <in>nec_output.cpp</in>
+        <in>nec_output.h</in>
+        <in>nec_radiation_pattern.cpp</in>
+        <in>nec_radiation_pattern.h</in>
+        <in>nec_results.h</in>
+        <in>net_solve.cpp</in>
+        <in>safe_array.h</in>
+      </df>
+      <df name="test_data" kind="SOURCE_LOGICAL_FOLDER">
+      </df>
+    </df>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile-necpp_20041129.mk</itemPath>
+      <itemPath>makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile-necpp_20041129.mk</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <compilerSet>GNU|GNU</compilerSet>
+        <platform>2</platform>
+      </toolsSet>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>$(MAKE) -f Makefile</buildCommand>
+          <cleanCommand>$(MAKE) -f Makefile clean</cleanCommand>
+          <executablePath></executablePath>
+          <ccTool>
+            <incDir>
+              <pElem>.</pElem>
+            </incDir>
+            <preprocessorList>
+              <Elem>NEC_ERROR_CHECK</Elem>
+            </preprocessorList>
+          </ccTool>
+        </makeTool>
+      </makefileType>
+      <item path="src/AntennaInput.h" ex="true" tool="3">
+      </item>
+      <item path="src/BaseInput.h" ex="true" tool="3">
+      </item>
+      <item path="src/CurrentInput.h" ex="true" tool="3">
+      </item>
+      <item path="src/PowerBudget.h" ex="true" tool="3">
+      </item>
+      <item path="src/RadiationInput.h" ex="true" tool="3">
+      </item>
+      <item path="src/c_evlcom.cpp" ex="true" tool="1">
+      </item>
+      <item path="src/c_geometry.cpp" ex="true" tool="1">
+      </item>
+      <item path="src/c_ggrid.cpp" ex="true" tool="1">
+      </item>
+      <item path="src/c_plot_card.cpp" ex="true" tool="1">
+      </item>
+      <item path="src/libNEC.cpp" ex="true" tool="1">
+      </item>
+      <item path="src/matrix_algebra.cpp" ex="true" tool="1">
+      </item>
+      <item path="src/misc.cpp" ex="true" tool="1">
+      </item>
+      <item path="src/nec.h" ex="true" tool="3">
+      </item>
+      <item path="src/nec2cpp.cpp" ex="true" tool="1">
+      </item>
+      <item path="src/nec2cpp.h" ex="true" tool="3">
+      </item>
+      <item path="src/necDiff.cpp" ex="true" tool="1">
+      </item>
+      <item path="src/nec_ground.cpp" ex="true" tool="1">
+      </item>
+      <item path="src/nec_output.cpp" ex="true" tool="1">
+      </item>
+      <item path="src/nec_radiation_pattern.cpp" ex="true" tool="1">
+      </item>
+      <item path="src/net_solve.cpp" ex="true" tool="1">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

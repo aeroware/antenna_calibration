@@ -1,0 +1,11 @@
+      integer FUNCTION LEN(STRNG)
+      CHARACTER*1 STRNG(1)
+      IPTR = 1
+95001 CONTINUE
+      IF (STRNG(IPTR).EQ.char(0))  GOTO 95002
+      IPTR = IPTR + 1
+      GOTO95001
+95002 CONTINUE
+      LEN = IPTR - 1
+      RETURN
+      END

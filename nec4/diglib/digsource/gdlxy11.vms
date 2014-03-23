@@ -1,0 +1,117 @@
+	SUBROUTINE GDLXY11(IFXN,XA,YA)
+	DIMENSION XA(8), YA(3)
+C
+C	DIGLIB LXY-11 GRAPHICS DEVICE DRIVER
+C
+C-----------------------------------------------------------------------
+C
+	DIMENSION DCHAR(8)
+	LOGICAL*2 LDUMPIT, LWIDE
+C
+C	MAKE NICE NAMES FOR THE DEVICES RESOLUTION IN X AND Y
+C	 ("XGUPCM" IS X GRAPHICS UNITS PER CENTIMETER)
+C
+	EQUIVALENCE (DCHAR(2),X_FULL_SCALE)
+	EQUIVALENCE (DCHAR(4),XGUPCM), (DCHAR(5),YGUPCM)
+	DATA DCHAR /302.0, 21.59, 26.67, 78.7402, 78.7402, 1.0, 3.0, 1.0/
+	SAVE LDUMPIT
+C
+C	SHOW WE WANT wide NOT tall PLOTTING AREA
+C
+	LWIDE = .TRUE.
+10	CONTINUE
+C
+C	FIRST VERIFY WE GOT A GRAPHICS FUNCTION WE CAN HANDLE
+C
+	IF (IFXN .LE. 0 .OR. IFXN .GT. 7) RETURN
+C
+C	NOW DISPATCH TO THE PROPER CODE TO HANDLE THAT FUNCTION
+C
+	GO TO (100,200,300,400,500,600,700) IFXN
+C
+C	*********************
+C	INITIALIZE THE DEVICE
+C	*********************
+C
+100	CONTINUE
+        FACT = 1.0                        ! ENLARGE   
+        IS = 0                            ! SELEST POSTPROCESSING
+        LU = XA(1)                        ! LU IS IGNORED, INCLUDED ANYWAY
+	CALL PLOTST (1,'CM',IS)
+	CALL FACTOR (FACT)
+	LDUMPIT = .FALSE.
+	YA(1) = 0.0
+	RETURN
+C
+C	**************************
+C	GET FRESH PLOTTING SURFACE
+C	**************************
+C
+200	CONTINUE
+	IF (LDUMPIT) THEN
+	    CALL PLOT(0.0, 0.0, -3)
+C	    CALL FACTOR(1.0/2.54)
+	  ENDIF
+	LDUMPIT = .FALSE.
+	RETURN
+C
+C	******************************
+C	MOVE CURRENT REFERENCE POINTER
+C	******************************
+C
+300	CONTINUE
+	IPEN = +3
+	GO TO 450
+C
+C	****************************
+C	DRAW VECTER TO POSITION X,Y
+C	****************************
+C
+400	CONTINUE
+	IPEN = +2
+450	IF (LWIDE) THEN
+                    CALL PLOT(X_FULL_SCALE-YA(1), XA(1), IPEN)
+           ELSE
+                    CALL PLOT(XA(1), YA(1), IPEN)
+        END IF
+C
+	LDUMPIT = .TRUE.
+	RETURN
+C
+C	*****************************************************************
+C	FLUSH GRAPHICS COMMAND BUFFER,CLOSE VECTOR FILE TO TERMINATE PLOT
+C	*****************************************************************
+C
+500	CONTINUE
+        CALL PLOTND
+C
+	RETURN
+C
+C	******************
+C	RELEASE THE DEVICE
+C	******************
+C
+600	CONTINUE
+        ISTATUS = LIB$SPAWN(' $ RUN SYS$SYSTEM:PLXY')     !CREATE VECTOR FILE
+        ISTATUS = LIB$SPAWN(' $ PRINT PLTDAT.PLT/NOFEED ') !PRINT OUTPUT FILE
+	RETURN
+C
+C	*****************************
+C	RETURN DEVICE CHARACTERISTICS
+C	*****************************
+C
+700	CONTINUE
+	DO 720 I=1,8
+	XA(I) = DCHAR(I)
+720	CONTINUE
+	IF (.NOT. LWIDE) RETURN
+	XA(2) = DCHAR(3)
+	XA(3) = DCHAR(2)
+	RETURN
+C
+C	ALTERNATE ENTRY FOR WIDE PLOTTING AREA
+C
+	ENTRY GDLXY11_tall(IFXN,XA,YA)
+	LWIDE = .FALSE.
+	GO TO 10
+	END

@@ -1,0 +1,82 @@
+DIGLIB VERSION 3.4
+	NOTE - The VAX/VMS FORTRAN compiler (V4.x) has an overzealous optimizer.
+		If you note problems with DIGLIB, suspect the compiler and try
+		compiling the routines with /NOOPT.   It is already known that
+		the V4.1 compiler doesn't handle LINLAB properly.
+		The problem appears fixed in V4.2 of the compiler.
+		There are no know problems with DIGLIB and VMS FORTRAN V4.3.
+  History:
+	3.0A - fixed SYAXIS to properly call AXIS.
+	3.0B - fixed polygon fill color in VMS 4105 driver.
+	3.0C - fixed typo in RT 4105 driver.
+	3.0D - VMS GDIO.FOR improved, HPGL plotter support for VMS added.
+	3.0E - Fixed IFLAGS ignored bug in HATCH and fixed bug in GSWDTH.
+	3.1  - VMS version now has loadable fonts via GSFONT.   The functions
+		GSWDTH and GSSLEN have been eliminated.
+	3.1A - Enhanced VMS Tek. 4025 driver to use TEK_4025CC and TEK_4025COM
+		logical names for more run-time control.   Also, driver now
+		switches the 4025 out of ANSI mode on device select.
+	3.1B - Added Tek. 4115B driver for VMS.
+	3.1C - Fixed bug in VMS Font code.   Width of a space is now
+		consistant.
+	3.1D - Enhanced VMS GD4010CON module to transmit only the absolutely
+		necessary characters for (X,Y) coordinate pairs.  Documentation
+		upgraded.
+	3.1E - Fixed bug in GSFILL.   Created problems when virtual coordinates
+		were not also absolute coordinates.
+	3.1F - Fixed problem where MAPIT called sucessively without intervening
+		calls to MAPPRM (etc.) and with 2nd X axis, caused plot Y axis
+		to shrink each time.
+	3.1G - VT125 and VT240 drivers added as unsupported drivers, and
+		distribution to floppy for VMS changed.
+	3.1H - GDIO modified to accept a BEGIN_STRING in VMS version to better
+		support devices like the HP plotters.
+	3.1I - Documentation updated.
+	3.2  - Fixed bug in MAPPRM, MAPSIZ, MAPSZ2, GSWNDO, and DEVSEL so that
+		high level XY plotting works properly after GSWNDO is called.
+		Also fixed bug in CONTOR that added horizontal and vertical
+		lines in rare instances.   Also fixed bug in GDIO.
+		Documentation updated to remove reference to PLTLIB manual.
+		Fixed numerous drivers to function properly with GDIO2BUF.
+		Drivers now must call GB_SEND_CHARS, not GD_SEND_TTY!
+	3.2A - Added a 400 millisec. delay to VMS Retro-Graphics driver to
+		avoid hanging the terminal under certain circumstances.
+	3.2B - Added "change font blips" so that fonts can be selected within
+		a character string.
+	3.2C - Fixed bug in VAX/VMS Tek 4115B driver where filling in foreground
+		color didn't work unless GSCOLR was called first.
+	3.2D - Modified "change font blips" to be of the form "\n\" so that
+		they could be input as text.
+	3.2E - Fixed minor bug in MAPIT ans SYAXIS concerning horizontal
+		placement of Y axis label.
+	3.2F - Fixed MAPIT to use solid lines while preserving caller's line
+		type.
+	3.2G - DIGLIB.H added for C programmers thanks to Carol Chapman.
+		VMS Postscript driver enhanced for unique file names.
+	3.2H - Fixed "missing INCLUDE statement" problem in GDIO and GDIO2BUF
+		that rendered the GDHPPL driver non-functional.
+	3.2I - Fixed AXIS so that axis endpoints, stripped of their power of
+		ten, are always less than 100 in absolute value.   This fixes
+		a problem in LINLAB that would have been too hard to fix there.
+		The problem only occured on 16 bit machines.
+	3.2J - Fixed SYMBOL always to draw symbols in solid lines, and to be
+		able to draw filled-in symbols.   Modified CURVE and CURVEY to
+		support the new capabilities of SYMBOL.
+	3.2K - Fixed clipping when applied to MAPIT axes so that clipping box
+		extends to the end of the tick marks.
+	3.3  - "Official" NESC release of DIGLIB on 4/23/86. PURJOY upgraded.
+	3.3A - Tek 4105 and 4107 drivers upgraded.
+	3.3B - Some new drivers added, GDLASER upgraded, and GDIO modified
+		so that it can be LIBR/REPLACEd by GDIO2BUF without problems.
+	3.3C - Fixed nasty bug in SGLUE in STRINGLIB for VMS that caused
+		caller's R2 and R3 to be destroyed.
+	3.3D - GSFILL now uses NFLINE when filling as it always should have.
+		Also, HATCH will now solid fill if CMSPAC=0.0
+	3.3E - Unsupported subroutines VIEW3D.FOR and SCAL3D.FOR, plus test
+		program T3D.FOR for 3D to 2D projection now included in
+		DIGLIB. Note, these routines are neither compiled, added to
+		the DIGLIB.OLB library, nor documented. However, the files
+		contain "sufficient" documentation.
+	3.3F - Fixed Tek 4115B, 4105, AND 4107 drivers for VMS for proper GIN 
+		operation and filled polygons WITH borders.
+	3.4 - Modifications to Support X11 driver.

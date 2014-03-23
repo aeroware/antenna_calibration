@@ -1,0 +1,13 @@
+Copy and modify Nec2dpar.inc to create new executable
+types.
+
+For the windows-95/98/ME/NT/2000/XP compilation the 
+DGJPP port of the GNU G77 Fortran compiler was used.
+See http://www.delorie.com/djgpp/
+
+Commands:
+
+copy nec2dXXX.inc nec2dpar.inc
+g77 -O -fno-automatic -Wall nec2dxs.f -o nec2dxsXXX.exe
+
+						Arie.

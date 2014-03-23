@@ -1,0 +1,50 @@
+	SUBROUTINE SCAL3D(X,Y,Z,VX,VY,IERR)
+C
+CPurpose: This subroutine projects from 3D to 2D. The coordinate
+C	transformations are based upon values calculated by VIEW3D and
+C	left in the common block "VIEW3D" by VIEW3D.
+C
+CArguments:
+C
+C  Input
+C
+C	X		* Type: real constant or variable.
+C			* The 3D X coordinate to be projected.
+C
+C	Y		* Type: real constant or variable.
+C			* The 3D Y coordinate to be projected.
+C
+C	Z		* Type: real constant or variable.
+C			* The 3D Z coordinate to be projected.
+C
+C  Output
+C
+C	VX		* Type: real variable.
+C			* The 2D projection X value is return.
+C
+C	VY		* Type: real variable.
+C			* The 2D projection Y value is return.
+C
+C	IERR		* Type: integer variable.
+C			* An error flag:
+C				0 --> no errors.
+C				1 --> point is behind the camera
+C
+CCCCCCCCCCCCCCCCCCCCCCCCCCCC
+C
+	INCLUDE 'VIEW3D.CMN'
+C
+	XC = SCALEX*(X-CENTER(1))+CENTER(1) - CAMERA(1)
+	YC = SCALEY*(Y-CENTER(2))+CENTER(2) - CAMERA(2)
+	ZC = Z - CAMERA(3)
+	XP = AV(1)*XC + AV(2)*YC + AV(3)*ZC
+	YP = AW(1)*XC + AW(2)*YC + AW(3)*ZC
+	ZP = AU(1)*XC + AU(2)*YC + AU(3)*ZC
+	IF (ZP .LE. 0.0) GOTO 900
+	VX = FOCALL * XP/ZP + XOFF
+	VY = FOCALL * YP/ZP + YOFF
+	IERR = 0
+	RETURN 
+900	IERR = 1
+	RETURN
+	END 
