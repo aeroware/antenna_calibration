@@ -1,0 +1,54 @@
+\documentclass[a4paper,10pt]{article}
+
+%\usepackage[T1]{fontenc}
+%\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{booktabs}
+
+%opening
+\title{Inclusion of the CONCEPT II software into the Matlab toolbox for spacecraft antenna calibration}
+\author{Oswald, T.H.,W. Macher, H.O. Rucker}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\begin{abstract}
+
+\end{abstract}
+
+\newpage
+\tableofcontents
+\newpage
+
+
+\section{References}
+
+\begin{thebibliography}{999}
+\bibitem{antenna_report_1}
+Oswald Th., W. Macher, G.Fischer, H.O. Rucker\\
+First results of STEREO/WAVES Antenna calibration\\
+Technical Report Nr. 160 of the Space Research Institute/Austrian Academy of Science, 2004
+
+\bibitem{antenna_report_2}
+Oswald T.H., W. Macher, G.Fischer, H.O. Rucker\\
+Results of STEREO/WAVES Antenna calibration, using a refined spacecraft model (Design 1)\\
+Technical Report Nr. 167 of the Space Research Institute/Austrian Academy of Science, 2004
+
+\bibitem{cecconi04} B.Cecconi, P. Zarka\\
+Direction Finding and antenna calibration through analytical inversion of radio measurements performed using a system of 2 or 3 electric dipole wire antennas on a 3 axis stabelized spacecraft\\
+March 2004
+
+\bibitem{DF_stereo05} Oswald Th. et. al.\\
+Direction Finding as relevant for the\\ STEREO/SWAVES experiment
+\end{thebibliography}
+
+\newpage
+\listoffigures
+\newpage
+\listoftables
+\end{document}

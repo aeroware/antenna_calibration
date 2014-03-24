@@ -1,0 +1,2307 @@
+\documentclass[a4paper,10pt]{article}
+
+%\usepackage[T1]{fontenc}
+%\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{booktabs}
+
+%opening
+\title{Results of STEREO/WAVES antenna calibration, using a refined spacecraft model (Design 2)}
+\author{Oswald, T.H.,W. Macher, G. Fischer, H.O. Rucker}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\begin{abstract}
+Design model 1 proved to be very successful in predicting the properties of the SWAVES antennas. Nevertheless there where some discrepancies between the numerical results and the experimental results. So it was decided to construct a more detailed wire-grid model. This new design is the subject of this report, which is to be seen as continuation of \cite{antenna_report_1} and \cite{antenna_report_2}.
+\end{abstract}
+
+\newpage
+\tableofcontents
+\newpage
+\part{Spacecraft A}
+\section{The revised spacecraft}
+\subsection{The new model}
+The model was refined step by step, using the effective axes at a frequency of 500kHz for documentation of the changes in antenna behavior.
+
+\subsubsection{The battery}
+The first new part of the spacecraft model was the battery which is a small box located at the +Z view of the spacecraft (figure \ref{fig_D3_batt}).
+
+\begin{figure}
+  % Requires \usepackage{graphicx}
+  \begin{center}
+\includegraphics[width=16cm]{StereoPics/battery.eps}\\
+  \caption{Spacecraft A with battery (blue)}\label{fig_D3_batt}
+  \end{center}
+\end{figure}
+
+\begin{table}
+\caption{Design 2 after inclusion of the battery without capacitances}
+\label{tab_battery}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ &  & With battery & Without battery & Physical antennas\\
+\hline E1 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.32  \\
+ 138.5 \\
+ 24.4 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.32  \\
+ 138.6 \\
+ 24.4 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 0.0 \\
+\end{tabular}  \\
+\hline E2 &
+\begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.83  \\
+ 121.2 \\
+ 127.9 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.83  \\
+ 121.2 \\
+ 128.1 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 120.0 \\
+\end{tabular}  \\
+\hline E3 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.96  \\
+ 129.9 \\
+ -146.1 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.97  \\
+ 129.8 \\
+ -146.3 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ -120.0 \\
+\end{tabular}  \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}
+\caption{Design 2 after inclusion of the battery with capacitances}
+\label{tab_battery_caps}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ &  & With battery & Without battery & Physical antennas\\
+\hline E1 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.781  \\
+ 130.0 \\
+ 17.4 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.780  \\
+ 130.0 \\
+ 17.4 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 0.0 \\
+\end{tabular}  \\
+\hline E2 &
+\begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.19  \\
+ 117.0 \\
+ 126.4 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.19  \\
+ 116.9 \\
+ 126.5 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 120.0 \\
+\end{tabular}  \\
+\hline E3 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.950  \\
+ 124.2 \\
+ -139.5 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.952  \\
+ 124.1 \\
+ -139.7 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ -120.0 \\
+\end{tabular}  \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection{The HI}
+The next new part of the spacecraft model was the HI which is a small box which attached plate located opposite the battery (figure \ref{fig_D3_HI}).
+
+\begin{figure}
+  % Requires \usepackage{graphicx}
+  \begin{center}
+\includegraphics[width=12cm]{StereoPics/HI.eps}\\
+  \caption{Spacecraft A with HI box (blue)}\label{fig_D3_HI}
+  \end{center}
+\end{figure}
+
+\begin{table}
+\caption{Design 2 after inclusion of the HI without capacitances}
+\label{tab_battery}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ &  & With HI & Without HI & Physical antennas\\
+\hline E1 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.32  \\
+ 138.6 \\
+ 24.4 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.32  \\
+ 138.5 \\
+ 24.4 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 0.0 \\
+\end{tabular}  \\
+ \hline E2 &
+\begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.83  \\
+ 121.2 \\
+ 128.0 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.83  \\
+ 121.2 \\
+ 127.9 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 120.0 \\
+\end{tabular}  \\
+\hline E3 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.96  \\
+ 129.9 \\
+ -146.2 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.96  \\
+ 129.9 \\
+ -146.1 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ -120.0 \\
+\end{tabular}  \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}
+\caption{Design 2 after inclusion of the HI with capacitances}
+\label{tab_battery_caps}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ &  & With HI & Without HI & Physical antennas\\
+\hline E1 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.780  \\
+ 130.1 \\
+ 17.4 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.781  \\
+ 130.0 \\
+ 17.4 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 0.0 \\
+\end{tabular}  \\
+\hline E2 &
+\begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.19  \\
+ 117.0 \\
+ 126.5 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.19  \\
+ 117.0 \\
+ 126.4 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 120.0 \\
+\end{tabular}  \\
+\hline E3 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.951  \\
+ 124.2 \\
+ -139.6 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.950  \\
+ 124.2 \\
+ -139.5 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ -120.0 \\
+\end{tabular}  \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection{The new Hull shape}
+The next new feature of the spacecraft to be included in the model was the exact geometry of the hull (see figure \ref{fig_D3_newhull}). The feed area had to be redesigned (figure \ref{fig_D3_newfeed}).
+
+\begin{figure}
+  % Requires \usepackage{graphicx}
+  \begin{center}
+\includegraphics[width=12cm]{StereoPics/newhull.eps}\\
+  \caption{New shape of the hull}\label{fig_D3_newhull}
+  \end{center}
+\end{figure}
+
+\begin{figure}
+  % Requires \usepackage{graphicx}
+  \begin{center}
+\includegraphics[width=12cm]{StereoPics/newfeed.eps}\\
+  \caption{The newly constructed feed}\label{fig_D3_newfeed}
+  \end{center}
+\end{figure}
+
+\begin{table}
+\caption{Design 2 after redesign of the hull without capacitances}
+\label{tab_newhull}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ &  & New hull & Old hull & Physical antennas\\
+\hline E1 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.33  \\
+ 138.6 \\
+ 24.7 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.32  \\
+ 138.6 \\
+ 24.4 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 0.0 \\
+\end{tabular}  \\
+ \hline E2 &
+\begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.85  \\
+ 121.2 \\
+ 128.0 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.83  \\
+ 121.2 \\
+ 128.0 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 120.0 \\
+\end{tabular}  \\
+\hline E3 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.97  \\
+ 129.9 \\
+ -146.4 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.96  \\
+ 129.9 \\
+ -146.2 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ -120.0 \\
+\end{tabular}  \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}
+\caption{Design 2 after redesign of the hull with capacitances}
+\label{tab_newhull_caps}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ &  & New Hull & Old Hull & Physical antennas\\
+\hline E1 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.780  \\
+ 130.0 \\
+ 17.5 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.780  \\
+ 130.1 \\
+ 17.4 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 0.0 \\
+\end{tabular}  \\
+\hline E2 &
+\begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.19  \\
+ 116.9 \\
+ 126.5 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.19  \\
+ 117.0 \\
+ 126.5 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 120.0 \\
+\end{tabular}  \\
+\hline E3 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.950  \\
+ 124.2 \\
+ -139.7 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.951  \\
+ 124.2 \\
+ -139.6 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ -120.0 \\
+\end{tabular}  \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection{The new HGA}
+A better model of the HGA was designed (fig. \ref{fig_D3_newHGA}). Some minor changes on other parts of the model had to be done to fit the new antenna in the existing model.
+
+\begin{figure}
+  % Requires \usepackage{graphicx}
+  \begin{center}
+\includegraphics[width=12cm]{StereoPics/newHGA.eps}\\
+  \caption{New HGA}\label{fig_D3_newHGA}
+  \end{center}
+\end{figure}
+
+
+\begin{table}
+\caption{Design 2 after redesign of the HGA without capacitances}
+\label{tab_newHGA}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ &  & New HGA & Old HGA & Physical antennas\\
+\hline E1 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.32  \\
+ 139.2 \\
+ 25.6 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.33  \\
+ 138.6 \\
+ 24.7 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 0.0 \\
+\end{tabular}  \\
+\hline E2 &
+\begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.88  \\
+ 121.1 \\
+ 128.4 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.85  \\
+ 121.2 \\
+ 128.0 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 120.0 \\
+\end{tabular}  \\
+\hline E3 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.00  \\
+ 129.7 \\
+ -146.9 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.97  \\
+ 129.9 \\
+ -146.4 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ -120.0 \\
+\end{tabular}  \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}
+\caption{Design 2 after redesign of the hull with capacitances}
+\label{tab_newHGA_caps}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ &  & New HGA & Old HGA & Physical antennas\\
+\hline E1 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.786  \\
+ 130.4 \\
+ 18.2 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.780  \\
+ 130.0 \\
+ 17.5 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 0.0 \\
+\end{tabular}  \\
+\hline E2 &
+\begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.20  \\
+ 116.8 \\
+ 128.4 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.19  \\
+ 116.9 \\
+ 126.5 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 120.0 \\
+\end{tabular}  \\
+\hline E3 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.960  \\
+ 124.1 \\
+ -140.2 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.950  \\
+ 124.2 \\
+ -139.7 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ -120.0 \\
+\end{tabular}  \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection{The new Boom}
+As a next step, the boom was redesigned in two steps. The first refinement was to model the boom as rectangular cylinder instead of a triangular one. Instead of the twofold segmentation the boom is converging continuously towards the tip.  (fig. \ref{fig_D3_newBoom1}).
+
+\begin{figure}
+  % Requires \usepackage{graphicx}
+  \begin{center}
+\includegraphics[width=12cm]{StereoPics/newBoom1.eps}\\
+  \caption{New BOOM}\label{fig_D3_newBoom1}
+  \end{center}
+\end{figure}
+
+
+\begin{table}
+\caption{Design 2 after first redesign of the boom without capacitances}
+\label{tab_newboom}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ &  & New boom & Old boom & Physical antennas\\
+\hline E1 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.34  \\
+ 140.4 \\
+ 25.9 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.32  \\
+ 139.2 \\
+ 25.6 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 0.0 \\
+\end{tabular}  \\
+ \hline E2 &
+\begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.91  \\
+ 121.7 \\
+ 128.7 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.88  \\
+ 121.1 \\
+ 128.4 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 120.0 \\
+\end{tabular}  \\
+\hline E3 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.05  \\
+ 130.3 \\
+ -147.1 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.00  \\
+ 129.7 \\
+ -146.9 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ -120.0 \\
+\end{tabular}  \\
+\hline
+\end{tabular}
+\end{table}
+\begin{table}
+\caption{Design 2 after first redesign of the boom with capacitances}
+\label{tab_newboom_caps}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ &  & New boom & Old boom & Physical antennas\\
+\hline E1 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.779  \\
+ 131.5 \\
+ 18.3 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.786  \\
+ 130.4 \\
+ 18.2 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 0.0 \\
+\end{tabular}  \\
+\hline E2 &
+\begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.21  \\
+ 117.3 \\
+ 127.0 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.20  \\
+ 116.8 \\
+ 128.4 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 120.0 \\
+\end{tabular}  \\
+\hline E3 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.97  \\
+ 124.6 \\
+ -140.2 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.960  \\
+ 124.1 \\
+ -140.2 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ -120.0 \\
+\end{tabular}  \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Remodeling of the feed area}
+The position of the feed points was changed. The location was set in a way that they are at the point where the antennas exits the base blocks. (fig. \ref{fig_D3_newFeedPositions}).
+
+\begin{figure}
+  % Requires \usepackage{graphicx}
+  \begin{center}
+\includegraphics[width=12cm]{StereoPics/newfeedpositions.eps}\\
+  \caption{New Feed positions}\label{fig_D3_newFeedPositions}
+  \end{center}
+\end{figure}
+
+
+\begin{table}
+\caption{Design 2 after first redesign of the feed positions without capacitances}
+\label{tab_newfeedpos}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ &  & New feed positions & Old feed positions & Physical antennas\\
+\hline E1 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.47  \\
+ 136.6 \\
+ 20.2 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.34  \\
+ 140.4 \\
+ 25.9 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 0.0 \\
+\end{tabular}  \\
+\hline E2 &
+\begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.89  \\
+ 121.9 \\
+ 128.8 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.91  \\
+ 121.7 \\
+ 128.7 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 120.0 \\
+\end{tabular}  \\
+\hline E3 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.13  \\
+ 129.0 \\
+ -140.5 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.05  \\
+ 130.3 \\
+ -147.1 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ -120.0 \\
+\end{tabular}  \\
+\hline
+\end{tabular}
+\end{table}
+\begin{table}
+\caption{Design 2 after first redesign of the feed positions with capacitances}
+\label{tab_newfeedpos_caps}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ &  & New feed positions & Old feed positions & Physical antennas\\
+\hline E1 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.834  \\
+ 128.7 \\
+ 15.1 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.779  \\
+ 131.5 \\
+ 18.3 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 0.0 \\
+\end{tabular}  \\
+\hline E2 &
+\begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.21  \\
+ 117.7 \\
+ 127.3 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.21  \\
+ 117.3 \\
+ 127.0 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 120.0 \\
+\end{tabular}  \\
+\hline E3 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.01  \\
+ 123.6 \\
+ -135.1 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.97  \\
+ 124.6 \\
+ -140.2 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ -120.0 \\
+\end{tabular}  \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Further remodeling of the feed area}
+The position of the feed points was changed a second time. The location was moved upwards along the antennas. (fig. \ref{fig_D3_newFeedPositions2}).
+
+\begin{figure}
+  % Requires \usepackage{graphicx}
+  \begin{center}
+\includegraphics[width=12cm]{StereoPics/newfeedpositions2.eps}\\
+  \caption{New Feed positions}\label{fig_D3_newFeedPositions2}
+  \end{center}
+\end{figure}
+
+
+\begin{table}
+\caption{Design 2 after second redesign of the feed positions without capacitances}
+\label{tab_newfeedpos2}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ &  & New feed positions & Old feed positions & Physical antennas\\
+\hline E1 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.56  \\
+ 136.5 \\
+ 19.9 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.47  \\
+ 136.6 \\
+ 20.2 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 0.0 \\
+\end{tabular}  \\
+\hline E2 &
+\begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 4.01  \\
+ 122.0 \\
+ 128.9 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.89  \\
+ 121.9 \\
+ 128.8 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 120.0 \\
+\end{tabular}  \\
+\hline E3 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.24  \\
+ 129.0 \\
+ -140.4 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.13  \\
+ 129.0 \\
+ -140.5 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ -120.0 \\
+\end{tabular}  \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}
+\caption{Design 2 after second redesign of the feed positions with capacitances}
+\label{tab_newfeedpos2_caps}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ &  & New feed positions & Old feed positions & Physical antennas\\
+\hline E1 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.848  \\
+ 128.6 \\
+ 14.9 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.834  \\
+ 128.7 \\
+ 15.1 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 0.0 \\
+\end{tabular}  \\
+\hline E2 &
+\begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.22  \\
+ 117.7 \\
+ 127.4 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.21  \\
+ 117.7 \\
+ 127.3 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 120.0 \\
+\end{tabular}  \\
+\hline E3 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.02  \\
+ 123.6 \\
+ -135.0 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.01  \\
+ 123.6 \\
+ -135.1 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ -120.0 \\
+\end{tabular}  \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Refinement of the feed area}
+The segmentation in the feed area and the details of the feed connection was changed. (fig. \ref{fig_D3_newFeeds3}).
+
+\begin{figure}
+  % Requires \usepackage{graphicx}
+  \begin{center}
+\includegraphics[width=12cm]{StereoPics/newfeeds3.eps}\\
+  \caption{New Feed area}\label{fig_D3_newFeeds3}
+  \end{center}
+\end{figure}
+
+
+\begin{table}
+\caption{Design 2 after refinement of the feed area without capacitances}
+\label{tab_newfeeds3}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ &  & New feed area & Old feed area & Physical antennas\\
+\hline E1 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.56  \\
+ 136.5 \\
+ 19.9 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.56  \\
+ 136.5 \\
+ 19.9 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 0.0 \\
+\end{tabular}  \\
+\hline E2 &
+\begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 4.00  \\
+ 121.9 \\
+ 128.9 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 4.01  \\
+ 122.0 \\
+ 128.9 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 120.0 \\
+\end{tabular}  \\
+\hline E3 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.24  \\
+ 129.0 \\
+ -140.4 \\
+
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.24  \\
+ 129.0 \\
+ -140.4 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ -120.0 \\
+\end{tabular}  \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}
+\caption{Design 2 after refinement of the feed area with capacitances}
+\label{tab_newfeeds3_caps}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ &  & New feed area & Old feed area & Physical antennas\\
+\hline E1 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.847  \\
+ 128.6 \\
+ 14.9 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.848  \\
+ 128.6 \\
+ 14.9 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 0.0 \\
+\end{tabular}  \\
+\hline E2 &
+\begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.22  \\
+ 117.7 \\
+ 127.4 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.22  \\
+ 117.7 \\
+ 127.4 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 120.0 \\
+\end{tabular}  \\
+\hline E3 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.02  \\
+ 123.6 \\
+ -135.0 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.02  \\
+ 123.6 \\
+ -135.0 \\
+
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ -120.0 \\
+\end{tabular}  \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Back positioning of the feeds}
+The positions of the feeds were changed back to their previous positions because these positions are closer to reality. (fig. \ref{fig_D3_feedsback}).
+
+\begin{figure}
+  % Requires \usepackage{graphicx}
+  \begin{center}
+\includegraphics[width=12cm]{StereoPics/feedsback.eps}\\
+  \caption{Feeds moved back}\label{fig_D3_feedsback}
+  \end{center}
+\end{figure}
+
+
+\begin{table}
+\caption{Design 2 repositioning the feeds without capacitances}
+\label{tab_feedsback}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ &  & New feeds & Old feeds & Physical antennas\\
+\hline E1 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.47  \\
+ 136.7 \\
+ 20.3 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.56  \\
+ 136.5 \\
+ 19.9 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 0.0 \\
+\end{tabular}  \\
+ \hline E2 &
+\begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.89  \\
+ 121.9 \\
+ 129.0 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 4.00  \\
+ 121.9 \\
+ 128.9 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 120.0 \\
+\end{tabular}  \\
+\hline E3 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.13  \\
+ 129.1 \\
+ -140.7 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.24  \\
+ 129.0 \\
+ -140.7 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ -120.0 \\
+\end{tabular}  \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}
+\caption{Design 2 after repositioning the feeds with capacitances}
+\label{tab_feedsback_caps}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ &  & New feed area & Old feed area & Physical antennas\\
+\hline E1 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.837  \\
+ 128.8 \\
+ 15.1 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.847  \\
+ 128.6 \\
+ 14.9 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 0.0 \\
+\end{tabular}  \\
+\hline E2 &
+\begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.21  \\
+ 117.7 \\
+ 127.5 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.22  \\
+ 117.7 \\
+ 127.4 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 120.0 \\
+\end{tabular}  \\
+\hline E3 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.01  \\
+ 123.7 \\
+ -135.2 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.02  \\
+ 123.6 \\
+ -135.0 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ -120.0 \\
+\end{tabular}  \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Variation of the wire radius}
+Additionally we increased the wire radius from 2mm to 8mm to test the effect on the calculation of the effective length vectors.
+
+
+\begin{table}
+\caption{Design 2 with 8mm wire radius without capacitances}
+\label{tab_8mm}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ &  & 8mm & 2mm & Physical antennas\\
+\hline E1 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.48  \\
+ 137.3 \\
+ 19.5 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.47  \\
+ 136.7 \\
+ 20.3 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 0.0 \\
+\end{tabular}  \\
+\hline E2 &
+\begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.84  \\
+ 122.9 \\
+ 128.9 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.89  \\
+ 121.9 \\
+ 129.0 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 120.0 \\
+\end{tabular}  \\
+\hline E3 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.10  \\
+ 129.8 \\
+ -140.4 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.13  \\
+ 129.1 \\
+ -140.7 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ -120.0 \\
+\end{tabular}  \\
+\hline
+\end{tabular}
+\end{table}
+\begin{table}
+\caption{Design 2 with 8mm radius with capacitances}
+\label{tab_8mm_caps}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ &  & 8mm & 2mm & Physical antennas\\
+\hline E1 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.953  \\
+ 128.5 \\
+ 13.0 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.837  \\
+ 128.8 \\
+ 15.1 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 0.0 \\
+\end{tabular}  \\
+\hline E2 &
+\begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.34  \\
+ 118.0 \\
+ 127.9 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.21  \\
+ 117.7 \\
+ 127.5 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 120.0 \\
+\end{tabular}  \\
+\hline E3 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.15  \\
+ 124.4 \\
+ -135.0 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.01  \\
+ 123.7 \\
+ -135.2 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ -120.0 \\
+\end{tabular}  \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Removal of a bug}
+At this stage a bug in the code that constructs the spacecraft was detected by a colleague. It had the effect of shortening the boom.
+
+
+\begin{table}
+\caption{Design 2 without bug 2mm without capacitances}
+\label{tab_bug}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ &  & No bug & Bug & Physical antennas\\
+\hline E1 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.31  \\
+ 133.7 \\
+ 21.4 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 2.47  \\
+ 136.7 \\
+ 20.3 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 0.0 \\
+\end{tabular}  \\
+\hline E2 &
+\begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.82  \\
+ 119.1 \\
+ 129.3 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.89  \\
+ 121.9 \\
+ 129.0 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 120.0 \\
+\end{tabular}  \\
+\hline E3 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.03  \\
+ 126.0 \\
+ -141.6 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 3.13  \\
+ 129.1 \\
+ -140.7 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ -120.0 \\
+\end{tabular}  \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}
+\caption{Design 2 without bug with capacitances}
+\label{tab_bug_caps}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ &  & No bug & bug & Physical antennas\\
+\hline E1 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.795  \\
+ 126.2 \\
+ 16.2 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.837  \\
+ 128.8 \\
+ 15.1 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 0.0 \\
+\end{tabular}  \\
+\hline E2 &
+\begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.20  \\
+ 115.4 \\
+ 127.8 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.21  \\
+ 117.7 \\
+ 127.5 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ 120.0 \\
+\end{tabular}  \\
+\hline E3 &
+ \begin{tabular}{c}
+ length/m \\
+ $\zeta$/$^\circ$ \\
+ $\xi$/$^\circ$ \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 0.990  \\
+ 121.2 \\
+ -136.2 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 1.01  \\
+ 123.7 \\
+ -135.2 \\
+\end{tabular}
+&
+\begin{tabular}{c}
+ 6.00 \\
+ 125.26 \\
+ -120.0 \\
+\end{tabular}  \\
+\hline
+\end{tabular}
+\end{table}
+
+This is the final configuration of the new model. the results of the two numerical models (ASAP and CONCEPT) and the Rheometry are very consistent. Results are presented in the next section.
+
+\section{The quasistatic regime}
+\subsection{Calculation of the effective length vectors}
+Table \ref{tab_stAD2} shows a comparison of the numerical and experimental computations of the effective length vectors at 300kHz. The spacecraft coordinate axes are defined as follows: The X-axis is directed opposite to the boom, the Y-axis parallel to the axes of the solar panels, the Z-axis completes the right-handed triad. The antenna axes are given in spherical coordinates with regard to the reference frame (-Z,Y,X), i.e. colatitudes $\zeta$ from +X and azimuth $\xi$ from -Z towards Y.\\
+
+\begin{table}
+\caption{STEREO A, Design 2 without Capacities}
+\label{tab_stAD2}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+ &  & ASAP & CONCEPT II & Rheometry & Physical antennas\\
+\hline
+ & length/m & 2.30 & 2.37 & 2.36 & 6.00 \\
+  E1 & $\zeta$/$^\circ$ & 133.7& 133.8 & 132.2 & 125.3\\
+& $\xi$/$^\circ$ & 21.4 & 21.2 & 21.6 & 0.0\\
+\hline
+& length/m & 3.82 & 3.89 & 3.84 & 6.00\\
+  E2 & $\zeta$/$^\circ$ & 119.1 & 119.0 & 118.7 & 125.3\\
+& $\xi$/$^\circ$ & 129.3 & 129.2 & 127.9 & 120.0\\
+\hline
+& length/m & 3.03 & 3.09 & 2.89 & 6.00\\
+  E3 & $\zeta$/$^\circ$ & 126.0 & 125.9 & 126.2 & 125.3\\
+& $\xi$/$^\circ$ & -141.6 & -141.4 & -140.7 & -120.0 \\
+\hline
+\end{tabular}
+\end{table}
+
+Figures \ref{fig_Heff_D3_A_X_View}-\ref{fig_Heff_D3_A_Z_View} show plots of the effective length vectors without inclusion of the base capacitances, \ref{fig_Heff_D3_A_X_View_caps}-\ref{fig_Heff_D3_A_Z_View_caps} with. The frequency used for these plots is 300kHz, being well in the quasistatic regime, the current calculation was done with ASAP. The direction of the incident wave is from the positive x-axis, simulating radiation from the sun.\\
+
+\begin{figure}
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[width=12cm]{StereoPics/HeffD3HGA0-300kHz-XView.eps}\\
+    \caption{Spacecraft A: Effective Length Vectors, X-View, ASAP}\label{fig_Heff_D3_A_X_View}
+  \end{center}
+\end{figure}
+
+
+\begin{figure}
+\begin{center}
+ \includegraphics[width=12cm]{StereoPics/HeffD3HGA0-300kHz-YView.eps}\\
+    \caption{Spacecraft A: Effective Length Vectors, Y-View, ASAP}\label{fig_Heff_D3_A_Y_View}\end{center}
+\end{figure}
+
+\begin{figure}
+  % Requires \usepackage{graphicx}
+        \begin{center}
+        \includegraphics[width=12cm]{StereoPics/HeffD3HGA0-300kHz-ZView.eps}\\
+        \caption{Spacecraft A: Effective Length Vectors, Z-View, ASAP}\label{fig_Heff_D3_A_Z_View}
+    \end{center}
+\end{figure}
+
+\begin{figure}
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[width=12cm]{StereoPics/HeffD3HGA0-300kHz-XView_caps.eps}\\
+    \caption{Spacecraft A: Effective Length Vectors, X-View, Capacitances included, ASAP}\label{fig_Heff_D3_A_X_View_caps}
+  \end{center}
+\end{figure}
+
+
+\begin{figure}
+\begin{center}
+ \includegraphics[width=12cm]{StereoPics/HeffD3HGA0-300kHz-YView_caps.eps}\\
+    \caption{Spacecraft A: Effective Length Vectors, Y-View, Capacitances included, ASAP}\label{fig_Heff_D3_A_Y_View_caps}\end{center}
+\end{figure}
+
+\begin{figure}
+  % Requires \usepackage{graphicx}
+        \begin{center}
+        \includegraphics[width=12cm]{StereoPics/HeffD3HGA0-300kHz-ZView_caps.eps}\\
+        \caption{Spacecraft A: Effective Length Vectors, Z-View, Capacitances included, ASAP}\label{fig_Heff_D3_A_Z_View_caps}
+    \end{center}
+\end{figure}
+
+Figures \ref{fig_Heff_D3_A_X_View_con}-\ref{fig_Heff_D3_A_Z_View_caps_con} show the same results, where the current computation was done by using the CONCEPT software.
+
+\begin{figure}
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[width=12cm]{StereoPics/HeffD3HGA0-300kHz-XView_con.eps}\\
+    \caption{Spacecraft A: Effective Length Vectors, X-View, CONCEPT}\label{fig_Heff_D3_A_X_View_con}
+  \end{center}
+\end{figure}
+
+
+\begin{figure}
+\begin{center}
+ \includegraphics[width=12cm]{StereoPics/HeffD3HGA0-300kHz-YView_con.eps}\\
+    \caption{Spacecraft A: Effective Length Vectors, Y-View, CONCEPT}\label{fig_Heff_D3_A_Y_View_con}\end{center}
+\end{figure}
+
+\begin{figure}
+  % Requires \usepackage{graphicx}
+        \begin{center}
+        \includegraphics[width=12cm]{StereoPics/HeffD3HGA0-300kHz-ZView_con.eps}\\
+        \caption{Spacecraft A: Effective Length Vectors, Z-View, CONCEPT}\label{fig_Heff_D3_A_Z_View_con}
+    \end{center}
+\end{figure}
+
+\begin{figure}
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[width=12cm]{StereoPics/HeffD3HGA0-300kHz-XView_caps_con.eps}\\
+    \caption{Spacecraft A: Effective Length Vectors, X-View, Capacitances included, CONCEPT}\label{fig_Heff_D3_A_X_View_caps_con}
+  \end{center}
+\end{figure}
+
+
+\begin{figure}
+\begin{center}
+ \includegraphics[width=12cm]{StereoPics/HeffD3HGA0-300kHz-YView_caps_con.eps}\\
+    \caption{Spacecraft A: Effective Length Vectors, Y-View, Capacitances included, CONCEPT}\label{fig_Heff_D3_A_Y_View_caps_con}\end{center}
+\end{figure}
+
+\begin{figure}
+  % Requires \usepackage{graphicx}
+        \begin{center}
+        \includegraphics[width=12cm]{StereoPics/HeffD3HGA0-300kHz-ZView_caps_con.eps}\\
+        \caption{Spacecraft A: Effective Length Vectors, Z-View, Capacitances included, CONCEPT}\label{fig_Heff_D3_A_Z_View_caps_con}
+    \end{center}
+\end{figure}
+
+\subsection{Variation of the effective length vectors with frequency}
+
+\begin{figure}
+   \begin{center}
+    \includegraphics[width=12cm]{StereoPics/HeffLengthAbsD3.eps}\\
+    \caption{Spacecraft A: Absolute length of $\mathbf{h}_{eff}$ as function of frequency., ASAP}\label{fig_HeffLength_D3_A_abs}
+  \end{center}
+\end{figure}
+
+\begin{figure}
+   \begin{center}
+    \includegraphics[width=12cm]{StereoPics/HeffLengthRealD3.eps}\\
+    \caption{Spacecraft A: Real part of length of $\mathbf{h}_{eff}$ as function of frequency., ASAP}\label{fig_HeffLength_D3_A_real}
+  \end{center}
+\end{figure}
+
+\begin{figure}
+   \begin{center}
+    \includegraphics[width=12cm]{StereoPics/HeffLengthImagD3.eps}\\
+    \caption{Spacecraft A: Imaginary part of length of $\mathbf{h}_{eff}$ as function of frequency., ASAP}\label{fig_HeffLength_D3_A_imag}
+  \end{center}
+\end{figure}
+
+\begin{figure}
+   \begin{center}
+    \includegraphics[width=12cm]{StereoPics/HeffLengthAbsD3_caps.eps}\\
+    \caption{Spacecraft A: Absolute length of $\mathbf{h}_{eff}$ as function of frequency., ASAP, Capacitances included}\label{fig_HeffLength_D3_A_abs_caps}
+  \end{center}
+\end{figure}
+
+\begin{figure}
+   \begin{center}
+    \includegraphics[width=12cm]{StereoPics/HeffLengthRealD3_caps.eps}\\
+    \caption{Spacecraft A: Real part of length of $\mathbf{h}_{eff}$ as function of frequency., ASAP, Capacitances included}\label{fig_HeffLength_D3_A_real_caps}
+  \end{center}
+\end{figure}
+
+\begin{figure}
+   \begin{center}
+    \includegraphics[width=12cm]{StereoPics/HeffLengthImagD3_caps.eps}\\
+    \caption{Spacecraft A: Imaginary part of length of $\mathbf{h}_{eff}$ as function of frequency., ASAP, Capacitances included}\label{fig_HeffLength_D3_A_imag_caps}
+  \end{center}
+\end{figure}
+
+\begin{figure}
+   \begin{center}
+    \includegraphics[width=12cm]{StereoPics/HeffLengthAbsD3_con.eps}\\
+    \caption{Spacecraft A: Absolute length of $\mathbf{h}_{eff}$ as function of frequency., CONCEPT}\label{fig_HeffLength_D3_A_abs_con}
+  \end{center}
+\end{figure}
+
+\begin{figure}
+   \begin{center}
+    \includegraphics[width=12cm]{StereoPics/HeffLengthRealD3_con.eps}\\
+    \caption{Spacecraft A: Real part of length of $\mathbf{h}_{eff}$ as function of frequency., CONCEPT}\label{fig_HeffLength_D3_A_real_con}
+  \end{center}
+\end{figure}
+
+\begin{figure}
+   \begin{center}
+    \includegraphics[width=12cm]{StereoPics/HeffLengthImagD3_con.eps}\\
+    \caption{Spacecraft A: Imaginary part of length of $\mathbf{h}_{eff}$ as function of frequency., CONCEPT}\label{fig_HeffLength_D3_A_imag_con}
+  \end{center}
+\end{figure}
+\subsection{Variation of the effective length vectors with direction of the wave vector}
+
+
+
+\subsection{Variation of the effective length vectors with different HGA angles}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+  \hline
+HGA angle & $\sigma_{h_{eff}}$ & $\sigma_{\zeta}$ & $\sigma_{\xi}$ \\
+\hline
+-90 & 2.82 & 136.3 & 19.6 \\
+-80 & 2.82 & 136.3 & 19.5 \\
+-70 & 2.82 & 136.2 & 19.5 \\
+-60 & 2.82 & 136.1 & 19.5 \\
+-50 & 2.82 & 136.1 & 19.5 \\
+-40 & 2.82 & 136.1 & 19.5 \\
+-30 & 2.81 & 136.2 & 19.2 \\
+-20 & 2.81 & 135.9 & 19.8 \\
+-10 & 2.81 & 135.9 & 20.0 \\
+0 & 2.80 & 135.8 & 20.2 \\
+10 & 2.81 & 135.6 & 20.2 \\
+20 & 2.81 & 135.3 & 20.2 \\
+30 & 2.81 & 135.1 & 20.3 \\
+40 & 2.81 & 134.9 & 20.3 \\
+50 & 2.81 & 134.7 & 20.4 \\
+60 & 2.80 & 134.6 & 20.5 \\
+70 & 2.80 & 134.6 & 20.5 \\
+80 & 2.80 & 134.7 & 20.6 \\
+90 & 2.79 & 134.8 & 20.7 \\
+\hline\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+  \hline
+% after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+HGA angle & $\sigma_{h_{eff}}$ & $\sigma_{\zeta}$ & $\sigma_{\xi}$ \\
+\hline
+-90 & 4.38 & 121.5 & 127.3 \\
+-80 & 4.37 & 121.5 & 127.3 \\
+-70 & 4.37 & 121.5 & 127.2 \\
+-60 & 4.37 & 121.5 & 127.2 \\
+-50 & 4.37 & 121.5 & 127.1 \\
+-40 & 4.37 & 121.4 & 127.2 \\
+-30 & 4.36 & 121.5 & 127.4 \\
+-20 & 4.37 & 121.3 & 127.1 \\
+-10 & 4.37 & 121.2 & 127.1 \\
+0 & 4.38 & 121.1 & 127.1 \\
+10 & 4.37 & 121.0 & 126.9 \\
+20 & 4.36 & 120.9 & 126.7 \\
+30 & 4.36 & 120.8 & 126.6 \\
+40 & 4.35 & 120.7 & 126.4 \\
+50 & 4.35 & 120.6 & 126.3 \\
+60 & 4.35 & 120.6 & 126.3 \\
+70 & 4.35 & 120.6 & 126.3 \\
+80 & 4.36 & 120.7 & 126.4 \\
+90 & 4.36 & 120.6 & 126.6 \\
+\hline\end{tabular}\\
+\end{center}
+
+\begin{center}
+Table 5: Variation of E3 due to HGA angle variation\\
+\begin{tabular}{|c|c|c|c|}
+  \hline
+% after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+HGA angle & $\sigma_{h_{eff}}$ & $\sigma_{\zeta}$ & $\sigma_{\xi}$ \\
+\hline
+-90 & 3.54 & 129.1 & -142.0 \\
+-80 & 3.54 & 129.1 & -141.9\\
+-70 & 3.53 & 129.1 & -141.9\\
+-60 & 3.52 & 129.1 & -141.9\\
+-50 & 3.52 & 129.1 & -141.9\\
+-40 & 3.52 & 129.1 & -142.0\\
+-30 & 3.53 & 129.0 & -141.7\\
+-20 & 3.50 & 129.0 & -142.2\\
+-10 & 3.50 & 129.0 & -142.4\\
+0 & 3.50 & 128.8 &  -142.6\\
+10 & 3.47 & 128.8 & -142.6\\
+20 & 3.44 & 128.8 & -142.6\\
+30 & 3.40 & 128.8 & -142.6\\
+40 & 3.37 & 128.8 & -142.6 \\
+50 & 3.35 & 128.8 & -142.7\\
+60 & 3.34 & 128.7 & -142.7 \\
+70 & 3.35 & 128.6 & -142.8 \\
+80 & 3.37 & 128.6 & -142.9 \\
+90 & 3.39 & 128.5 & -124.0 \\
+\hline\end{tabular}\\
+\end{center}
+
+
+
+
+\newpage
+\subsection{The impedances and admittances}
+\paragraph*{}
+The Impedances and Admittances of the three antennas as a function of frequency are shown in Figures \ref{fig_Impedance1_D2} to \ref{fig_Admittance2_D2}.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.65]{StereoPics/ImpedancesD21.eps}\\
+\caption{Impedances of Design 1} \label{fig_Impedance1_D2}
+\includegraphics[scale=0.65]{StereoPics/ImpedancesD22.eps} \\
+\caption{Impedances of Design 1} \label{fig_Impedance2_D2}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.65]{StereoPics/AdmittancesD21.eps}\\
+\caption{Admittances of Design 1} \label{fig_Admittance1_D2}
+\includegraphics[scale=0.65]{StereoPics/AdmittancesD22.eps} \\
+\caption{Admittances of Design 1} \label{fig_Admittance2_D2}
+\end{center}
+\end{figure}
+
+
+\paragraph*{}
+The first resonances occur at the same frequency as at the previous model.
+
+
+\section{The domain of the FFR}
+\part{Spacecraft B}
+
+\section{Characteristics of spacecraft B}
+\paragraph*{}
+The only difference of spacecraft B with regard to spacecraft A, that can be considered within the limitations of ASAP is the second ring which is mounted on the opposite side of the hull, directed towards the sun. (see Fig. \ref{fig_scB})
+
+
+\begin{figure}
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=12cm]{StereoPics/spacecraft_B.eps}\\
+  \caption{Spacecraft B}\label{fig_scB}
+\end{figure}
+
+
+
+\section{References}
+
+\begin{thebibliography}{999}
+\bibitem{antenna_report_1}
+Oswald Th., W. Macher, G.Fischer, H.O. Rucker\\
+First results of STEREO/WAVES Antenna calibration\\
+Technical Report Nr. 160 of the Space Research Institute/Austrian Academy of Science, 2004
+
+\bibitem{antenna_report_2}
+Oswald T.H., W. Macher, G.Fischer, H.O. Rucker\\
+Results of STEREO/WAVES Antenna calibration, using a refined spacecraft model (Design 1)\\
+Technical Report Nr. 167 of the Space Research Institute/Austrian Academy of Science, 2004
+
+\bibitem{cecconi04} B.Cecconi, P. Zarka\\
+Direction Finding and antenna calibration through analytical inversion of radio measurements performed using a system of 2 or 3 electric dipole wire antennas on a 3 axis stabelized spacecraft\\
+March 2004
+
+\bibitem{DF_stereo05} Oswald Th. et. al.\\
+Direction Finding as relevant for the\\ STEREO/SWAVES experiment
+\end{thebibliography}
+
+\newpage
+\listoffigures
+\newpage
+\listoftables
+\end{document}

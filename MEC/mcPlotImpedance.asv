@@ -1,0 +1,46 @@
+% mcPlotImpedance
+
+% mcPlotImpedance is a routine which plots the real and imaginary parts of
+% the input impedance as a function of frequency.
+clear
+% input parameters
+
+nSegs=201;
+antLength=6;
+antRadius=2e-3;
+feed=100;
+
+f=11e6:1e5:100e6;
+freqrelsqu=0.9;
+f_pe=10e6;
+ioneffect=1;
+integral=1;
+inte=50;
+
+% create grid
+
+ant=mcCreateDipole(nSegs,antLength,antRadius,feed);
+
+% compute impedance
+
+for n=1:length(f)
+    freqrelsqu=(f_pe/f(n))^2;
+    [cs,imp(n)]=mcfGetCurrent(ant,f(n),0,ioneffect,1,integral,inte,1);
+    [cs,impp(n)]=mcfGetCurrent(ant,f(n),freqrelsqu,ioneffect,1,integral,inte,1);
+end
+
+figure
+plot(f,real(imp),'b');
+line(f,real(impp),'color','r');
+title('Real part of the input impedance');
+xlabel('Frequency [Hz]');
+ylabel('Impedance [ohms]');
+legend('Vacuum','Plasma');
+
+figure
+plot(f,imag(imp),'b');
+line(f,imag(impp),'color','r');
+title('Imaginary part of the input impedance');
+xlabel('Frequency [Hz]');
+ylabel('Impedance');
+legend('Vacuum','Plasma');

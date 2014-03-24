@@ -1,0 +1,1418 @@
+\documentclass[a4paper,10pt]{report}
+
+
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage{ngerman}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{geometry}
+
+% Title Page
+\title{Aspekte des Direction Findings}
+\author{Oswald, T.H ., H.O. Rucker ,W. Macher, G. Fischer, U. Taubenschuss}
+
+%\geometry{landscape}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\begin{abstract}
+Direction Finding ist eine Methode, um die Parameter zu bestimmen, die eine elektromagnetische Welle charakterisieren. Diese Parameter sind die Stokes Parameter und die zwei Winkel welche die Herkunftsrichtung charakterisieren. Die ersten Methoden des Direction Finding wurden in den 20er Jahren des letzten Jahrhunderts \cite{hesse} zum Zwecke der Navigation entwickelt und sind bis heute in leicht veränderter Variante im Einsatz. Natürlich ist diese 2D Variante für die Raumfahrt nicht anwendbar, aber ich möchte, der Vollständigkeit halber, kurz darauf eingehen. In den folgenden Teilen gehe ich spezifisch auf Methoden der Raumfahrt ein. Ich werde im Text folgende Bezeichnungen für die Parameter verwenden, dessen Bedeutung ich als bekannt voraussetze : $\left\lbrace S,Q,U,V,\theta,\varphi\right\rbrace $\\
+\end{abstract}
+
+\chapter{2D Direction Finding}
+\paragraph*{}
+2D Direction Finding wurde in den 20er Jahren des 20. Jahrhunderts zum Zwecke der Navigation in der Luft und auf See in küstennahen Gewässern entwickelt. Als Quellen dienten die damaligen Radiosender, die vertikal polarisierte elektromagnetische Strahlung im Mittel und Langwellenbereich (190-1600kHz) in alle Richtungen gleichförmig abgaben. Kurz darauf wurden eigene Funkfeuer, so genannte Non Directional Beacon, errichtet. Diese Funkfeuer können mit Hilfe des DF angepeilt werden, wodurch sich eine Standlinie an möglichen Positionen ergibt. Durch Peilung zweier Stationen erhält man zwei sich kreuzende Standlinien. Die zweidimensionale Position ist somit bestimmt.
+\paragraph*{}
+Ziel des Verfahrens ist lediglich das Auffinden der Herkunftsrichtung (Azimut) der EM Strahlung. Die bekannte Polarisationsrichtung dient als Schlüssel zum Verfahren. Das Empfangssystem besteht aus einer Rahmenantenne (loop) und einer Hilfsantenne (sense antenna). Die Rahmenantenne ist drehbar gelagert und kann durch den Bordfunker (radio operator) bedient werden.
+\paragraph*{}
+Grundlage ist, dass in der Rahmenantenne nur dann eine Spannung induziert werden kann, wenn eine Komponente des B-Feldes durch die Fläche des loops geht. Die Grösse der induzierten Spannung ist bekanntlich gleich der zeitlichen Änderung des magnetischen Flusses durch die Fläche des Rahmens. Wenn die Ausbreitungsrichtung der Welle genau normal auf die Rahmenantenne liegt, gibt es keine Komponente des B-Feldes, die normal auf jene Fläche steht, die durch die Rahmenantenne umschlossen wird. Daher ist die zeitliche Ableitung davon Null, und es wird keine Spannung induziert.
+\begin{figure}
+\begin{center}
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=12cm]{loop2.eps}\\
+  \caption{Rahmenantenne}\label{fig_loop}
+\end{center}
+\end{figure}
+
+
+\paragraph*{}
+Das Peilverfahren funktioniert so, dass der Bordfunker zunächst nur die Hilfsantenne benutzt um die Frequenz der Station zu tunen. Zur Identifikation der Station dient ein 2 oder 3 stelliger Morsecode. Anschliessend wird auf die Loopantenne umgeschaltet und der Bordfunker dreht sie solange, bis er nichts mehr hört. Dann weiss er, dass die Antenne normal zur einfallenden Welle steht. Es gibt daher zwei mögliche Richtungen, aus der die Strahlung kommen kann. Durch zusätzliche Verwendung der Hilfsantenne kann die Richtung eindeutig bestimmt werden.
+\paragraph*{}
+Dieses Verfahren ist zur Zeit immer noch in Verwendung und stellt damit die älterste Radionavigationsart dar, die noch in Verwendung ist. Natürlich wurde der Peilvorgang automatisiert, man braucht nur noch die richtige Frequenz einstellen und die Kennung kontrollieren. Der aktuelle Peilvorgang passiert automatisch. Mit einem Goniometer, dass im wesentlichen aus zwei, zueinander orthogonalen, loop antennen besteht, wird die einfallende Radiostrahlung in ein Magnetfeld innerhalb des Gerätes transformiert. Im Gerät richtet sich eine Peilspule entlang dieses Magnetfeldes aus.
+\paragraph*{}
+Als weiterführende Literatur kann ich \cite{hesse} empfehlen. Das Buch handelt dieses und ähnliche Themen in sehr technischer Art und Weise ab.
+\chapter{Indirekte Methoden}
+\paragraph*{}
+Wenn es sich um das Lokalisieren einer Radioquelle innerhalb einer Magnetosphäre handelt, gibt es die Möglichkeit der Bestimmung des Radio Horizonts und das sogenannte Ray Tracing.
+\section{Bestimmung des Radio Horizonts}
+\paragraph*{}
+Die Frequenz der Planetary Radio Emission ist, gemäss aktueller Theorien, ungefähr gleich der Cyclotron Frequenz der gyrierenden Elektronen [Wu and Lee, 1979]. Für diese gilt $f_c=\frac{1}{2\pi}\frac{eB}{m}$. Die Frequenz der Radiostrahlung ist also eine Funktion der magnetischen Induktion. Das Gebiet der möglichen Quelle der empfangenen Radiostrahlung ergibt sich also aus dem sichtbaren Teil der Magnetosphäre, in dem gilt: $B=\frac{2 \pi m f_c}{e}$. Die Berücksichtigung des möglichen Abstrahlungwinkels, der sich oft in Form eines Kegels manifestiert, kann den möchlichen Ort der Quelle noch weiter einschränken.
+
+\section{Ray Tracing}
+\paragraph*{}
+Ray Tracing ist ein Verfahren, das vom Ort der Messung ausgeht und die Ausbreitung der EM Strahlung in umgekehrter Richtung verfolgt. Dadurch kann man mögliche von unmöglichen Herkunftsorten trennen. Auch hierfür ist eine genaue Kenntnis der Magnetosphärenstruktur und der Plasmaverteilung notwendig.
+
+\paragraph*{}
+Kurze Einführungen in beide Gebiete findet man in \cite{hor91}.
+
+
+\chapter{Direction Finding mit 2 orthogonalen Antennen}
+\section{Die Gleichungen}
+Die Gleichung auf der die Methode beruht, ist folgende:
+\begin{equation}
+V=\textbf{h}_{eff}\cdot \textbf{E}
+\end{equation}
+\textbf{V} ist die Spannung, die in die Antenne induziert wird, $\textbf{h}_{eff}$ die vektorielle effektive Höhe, und \textbf{E} die elektrische Feldstärke der einfallenden Welle. Diese wird bestimmt durch
+\begin{equation}
+\textbf{E}=\textbf{E}_0 e^{i(\textbf{k} \cdot \textbf{r} - \omega t)}
+\end{equation}
+$\textbf{E}_0$ kann in die Komponenten $E_{0,x}$ und $E_{0,y}$ zerlegt werden, wobei die Indizes x und y sich auf das Koordinatensystem der einfallenden Welle, den sogenannten \emph{wave frame} beziehen. Die Richtung der einfallenden Welle, die z Achse im wave frame, ist durch die Winkel $\theta$ und $\varphi$ im Koordinatensystem der Raumsonde $\left\lbrace 0,X,Y,Z\right\rbrace $ gegeben. Wenn die Raumsonde rotiert, ist die Rotationsachse Z. Die 4 Parameter, welche die Polarisation der Welle beschreiben, lassen sich folgendermaßen darstellen.
+\begin{equation}
+S_0=S= \left\langle E_x^2\right\rangle +\left\langle E_y^2\right\rangle
+\end{equation}
+\begin{equation}
+S_1=Q=\left\langle E_x^2\right\rangle-\left\langle E_y^2\right\rangle
+\end{equation}
+\begin{equation}
+S_2=U=\left\langle2E_x E_y\cos\delta\right\rangle
+\end{equation}
+\begin{equation}
+S_3=V=\left\langle2E_x E_y\sin\delta\right\rangle
+\end{equation}
+\\
+$E_x$ und $E_y$ sind die elektrischen Feldvektoren in die x, bzw. y Richtung. $\delta$ ist die Phasendifferenz.
+Die rotierende Antenne soll in die Z-Richtung zeigen, um den Umstieg auf 3-Antennensysteme zu erleichtern. Die gemessenen Werte sind in Tabelle \ref{tab_corr_param} aufgelistet.\\
+
+\begin{table}
+\centering
+\caption{Korrelationsparameter}\label{tab_corr_param}
+\begin{tabular}{c}
+$\left\langle V_X V_X^* \right\rangle $  \\
+$\left\langle V_Z V_Z^* \right\rangle $  \\
+$Re\left\langle V_X V_Z^* \right\rangle $  \\
+$Im\left\langle V_X V_Z^* \right\rangle $  \\
+\end{tabular}\\
+\end{table}
+
+
+Kenntnis über deren Bedeutung setze ich voraus. Jede Antenne hat die, normalerweise komplexe, effektive Höhe $\textbf{h}_{eff}$, die durch die Winkel $(\alpha,\Omega)$ und die Länge $h_{eff}$ vollständig definiert ist. \\
+
+
+\begin{figure}
+\begin{center}
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=12cm]{df_coordinate_system.eps}\\
+  \caption{Das Referenzsystem}\label{fig_angles}
+\end{center}
+\end{figure}
+
+
+Gleichung $(3.1)$ kann man auch anders anschreiben:
+\begin{equation}
+V=h_{eff,x} E_x + h_{eff,y} E_y
+\end{equation}
+$h_{eff,x}$ (klein x) ist hier die Komponente der effektiven Höhe in die x-Richtung des wave frames (siehe Abbildung), und nicht zu verwechseln mit den Grossbuchstaben X,Y und Z, welche sowohl die Antennen, als auch die Koordinatenachsen des \emph{spacecraft frame} bezeichnen. Die Komponenten des E-Feldes haben die Formel:
+\begin{eqnarray}
+E_x&=&E_{0,x} e^{i(kz - \omega t)}  \\
+E_y&=&E_{0,y} e^{i(kz - \omega t - \delta)}
+\end{eqnarray}
+%beginn änderung
+
+\paragraph*{}
+Diese Formel kann man für unsere Zwecke vereinfachen, da die Messung am Phasenzentrum ($z=0$) stattfindet :
+
+\begin{eqnarray}
+E_x&=&E_{0,x} e^{i\omega t}  \\
+E_y&=&E_{0,y} e^{i(\omega t - \delta )}
+\end{eqnarray}
+
+%ende änderung
+\paragraph*{}
+Das Vorzeichen von $\omega$ ist für die spätere Interpretation der Messergebnisse wichtig.
+Messbar ist nur der Realteil an der Position der Antenne. Man kann also sagen:
+\begin{eqnarray}
+E_x&=&E_{0,x} \cos( \omega t)  \\
+E_y&=&E_{0,y} \cos(\omega t - \delta)
+\end{eqnarray}
+Wenn man die effektive Höhe in die Einheitsvektoren im Koordinatensystem der Raumsonde (\emph{spacecraft frame}) auflöst, erhält man
+\begin{equation}
+\textbf{h}_{eff} = h_{eff}\left[ \begin{array}{c}
+\sin \alpha \cos \Omega\\
+\sin \alpha \sin \Omega\\
+\cos \alpha
+\end{array}  \right]
+\end{equation}
+
+Die Einheitsvektoren im sphärischen Koordinatensystem sind
+
+\begin{eqnarray}
+\textbf{e}_r &=& \left[ \begin{array}{c}
+\sin \theta \cos \varphi\\
+\sin \theta \sin \varphi\\
+\cos \theta
+\end{array}  \right] \\
+\textbf{e}_\theta &=& \left[ \begin{array}{c}
+\cos \theta \cos \varphi\\
+\cos \theta \sin \varphi\\
+-\sin \theta
+\end{array}  \right] \\
+\textbf{e}_\varphi &=& \left[ \begin{array}{c}
+-\sin  \varphi\\
+\cos \varphi\\
+0
+\end{array}  \right]
+\end{eqnarray}
+Wenn man die Abbildung des Koordinatensystems studiert, sieht man, dass die x-Richtung gleichzeitig die negative $\theta$-Richtung ist $(\textbf{e}_x=-\textbf{e}_\theta)$. Also
+\begin{equation}
+{h}_{eff,x} = -h_{eff} \left[ \begin{array}{c}
+\sin \alpha \cos \Omega\\
+\sin \alpha \sin \Omega\\
+\cos \alpha
+\end{array}  \right] \cdot \left[ \begin{array}{c}
+\cos \theta \cos \varphi\\
+\cos \theta \sin \varphi\\
+-\sin \theta
+\end{array}  \right]
+\end{equation}
+Das ergibt
+\begin{equation}
+{h}_{eff,x} = h_{eff}( \sin \theta \cos \alpha - \sin \alpha \cos\theta\cos (\varphi - \Omega ) )
+\end{equation}
+Dementsprechend ist $\textbf{e}_y=\textbf{e}_\varphi$.
+\begin{equation}
+{h}_{eff,y} = h_{eff} \left[ \begin{array}{c}
+\sin \alpha \cos \Omega\\
+\sin \alpha \sin \Omega\\
+\cos \alpha
+\end{array}  \right] \cdot \left[ \begin{array}{c}
+-\sin \varphi\\
+\cos \varphi\\
+0
+\end{array}  \right]
+\end{equation}
+oder
+\begin{equation}
+{h}_{eff,y} = -h_{eff}( \sin \alpha \sin (\varphi - \Omega ) )
+\end{equation}
+
+%beginn änderung
+
+\paragraph*{}
+Aus der Kombination von $(3.7)$, $(3.10)$, $(3.11)$, $(3.19)$ und $(3.21)$ erhält man einen allgemeinen Ausdruck für die Spannung in der Antenne.
+\begin{eqnarray}\label{V}
+V & = & h_{eff} [ (\sin \theta \cos \alpha - \sin \alpha \cos \theta \cos (\varphi - \Omega) )E_{0,x}e^{i \omega t} \\ &-&(\sin \alpha \sin (\varphi - \Omega))E_{0,y}e^{i (\omega t-\delta) } ] \nonumber
+\\
+& = & h_{eff} e^{i \omega t} [ (\sin \theta \cos \alpha - \sin \alpha \cos \theta \cos (\varphi - \Omega) )E_{0,x}-(\sin \alpha \sin (\varphi - \Omega))E_{0,y}e^{-i \delta } ] \nonumber
+\end{eqnarray}
+
+%ende änderung
+\paragraph*{}
+
+Diese Formeln gelten für Antennen, deren effektive Höhen in beliebige Richtungen zeigen. Um Dinge einfach zu halten, beschränke ich mich im weiteren Verlauf dieses Kapitels auf die Näherung, dass $\textbf{h}_{eff}$ der einen Antenne entlang der Z-Achse zeigt, die andere liegt in der X-Y-Ebene. Der Wert des Winkels $\alpha$ ist also für die X-Antenne 90°, für die Z-Antenne 0°. Dadurch lässt sich Gleichung $(3.22)$ auf die Antennen anpassen. Natürlich ist die Gültigkeit daraus folgende Formeln auf orthogonale Antennen beschränkt.
+
+\begin{eqnarray}
+V_X & = &  h_{eff,X} e^{i \omega t}[ - cos \theta \cos (\varphi - \Omega) E_{0,x} - \sin (\varphi - \Omega)E_{0,y}e^{-i \delta } ] \label{Vx} \\
+V_Z & = & h_{eff,Z} e^{i \omega t} \sin \theta  E_{0,x}\label{Vz}
+\end{eqnarray}
+
+% anfang
+\paragraph*{}
+Führt man die nötigen Multiplikationen aus, erhält man:
+
+\begin{eqnarray}
+V_XV_X^{*} &=& h_{eff,X}^2(E_{0,x}^2 \cos^2 \theta \cos^2 (\varphi - \Omega) + E_{0,y}^2 \sin^2 (\varphi - \Omega)\label{VxVx} \\
+&+&  E_{0,x} E_{0,y} \cos \theta \sin (\varphi - \Omega) \cos (\varphi - \Omega) (e^{i \delta} + e^{-i \delta }) )\nonumber
+\\
+V_ZV_Z^{*} &=& h_{eff,Z}^2 E_{0,x}^2 \sin^2 \theta \\
+V_XV_Z^{*} &=& h_{eff,X} h_{eff,Z}( - E_{0,x}^2 \sin \theta \cos \theta \cos (\varphi - \Omega) \label{VxVz} \\
+&-& E_{0,x}E_{0,y} \sin \theta \sin (\varphi - \Omega) e^{-i \delta}) \nonumber
+\end{eqnarray}
+% ende
+
+\paragraph*{}
+Die zeitlichen Mittelwerte, die zu verwenden sind, da die Messung normalerweise über eine Zeitspanne erfolgt in der sich die Kenngrössen der Welle geringfügig verändern, sind
+
+\begin{eqnarray}
+\left\langle V_X V_X^* \right\rangle & = & h_{eff,X}^2  [ \left\langle E_{0,x}^2 \right\rangle  \cos^2\theta \cos^2 (\varphi - \Omega)+\left\langle E_{0,y}^2 \right\rangle \sin^2 (\varphi - \Omega) \label{XxVx_average}\\
+&+& 2 \left\langle  E_{0,x} E_{0,y} \cos\delta\right\rangle \cos\theta \sin (\varphi - \Omega) \cos (\varphi - \Omega) ] \nonumber
+\\
+\left\langle V_Z V_Z^* \right\rangle & = & h_{eff,Z}^2 \left\langle E_{0,x}^2 \right\rangle \sin^2\theta
+\\
+Re\left\langle V_X V_Z^* \right\rangle & = &  -h_{eff,X} h_{eff,Z} \sin \theta [ \cos \left( \varphi - \Omega \right) \left\langle E_{0,x}^2 \right\rangle \cos\theta \label{Re_VxBz_average} \\
+&+&  \sin \left( \varphi - \Omega \right) \left\langle  E_{0,x} E_{0,y} \cos\delta\right\rangle ] \nonumber
+\\
+Im\left\langle V_X V_Z^* \right\rangle & = &  h_{eff,X} h_{eff,Z} \sin \left( \varphi - \Omega \right) \left\langle  E_{0,x} E_{0,y} \sin\delta\right\rangle\sin\theta
+\end{eqnarray}
+
+\paragraph*{}
+Parameter $h_{eff,i}$ bedeutet die Grösse der effektiven Höhe der Antenne i. Die Antennen werden mit X,Y und Z bezeichnet. Der Grund, dass die Amplituden nicht als Konstante gehandhabt werden können, liegt daran, dass die EM-Strahlung in der realen Welt nie vollkommen monochromatisch ist. Daher ergibt sich eine zeitliche Änderung der Amplitudenvektoren, die von der Zusammensetzung der Strahlung abhängt. Als nächsten Schritt verwenden wir die normierten Stokes Parameter
+
+\begin{eqnarray}
+\frac{S_0}{2\eta_0} = \hat{S} &=& \frac{\left\langle E_{0,x}^2\right\rangle +\left\langle E_{0,y}^2\right\rangle}{2\eta_0}
+\\
+\frac{S_1}{S_0}=\hat{Q}&=&\frac{\left\langle E_{0,x}^2\right\rangle-\left\langle E_{0,y}^2\right\rangle}{\left\langle E_{0,x}^2\right\rangle +\left\langle E_{0,y}^2\right\rangle}
+\\
+\frac{S_2}{S_0}=\hat{U}&=&\frac{\left\langle2E_{0,x} E_{0,y}\cos\delta\right\rangle}{\left\langle E_{0,x}^2\right\rangle +\left\langle E_{0,y}^2\right\rangle}
+\\
+\frac{S_3}{S_0}=\hat{V}&=&\frac{\left\langle2E_{0,x}E_{0,y}\sin\delta\right\rangle}{\left\langle E_{0,x}^2\right\rangle +\left\langle E_{0,y}^2\right\rangle}
+\end{eqnarray}
+
+\paragraph*{}
+
+$\eta_0$ ist derWellenwiderstand des Vakuum's: $\eta_0 =\sqrt{\frac{\mu_0}{\varepsilon_0}}$. Wenn man diese Parameter in das vorherige Gleichungssystem einsetzt, erhält man
+
+\begin{eqnarray}
+\left\langle V_X V_X^* \right\rangle & = & \hat{S}\eta_0 h_{eff,X}^2 [ (\hat{Q} +1) \cos^2 \theta \cos^2 \left( \varphi - \Omega \right)-(\hat{Q} -1) \sin^2 \left( \varphi - \Omega\right) \label{VxVx_average_simpli}\\
+&+& 2 \hat{U} \cos \theta \sin \left( \varphi - \Omega \right) \cos \left( \varphi - \Omega \right) \nonumber
+ \\
+\left\langle V_Z V_Z^* \right\rangle & = & h_{eff,Z}^2  \hat{S} \eta_0(\hat{Q} +1)  \sin^2\theta
+\\
+Re\left\langle V_X V_Z^* \right\rangle & = &  -\hat{S} \eta_0 h_{eff,X} h_{eff,Z} [( \hat{Q} + 1) \sin \theta \cos \theta \cos(\varphi - \Omega ) \label{Re_VxVz_average_simpli}\\
+&+&  \hat{U}\sin \theta \sin(\varphi - \Omega )] \nonumber
+\\
+Im\left\langle V_X V_Z^* \right\rangle & = & \hat{S}\eta_0 h_{eff,X} h_{eff,Z} \hat{V}\sin \theta \sin(\varphi - \Omega )  \label{Im_VxVz_average_simpli}
+\end{eqnarray}
+
+\paragraph*{}
+Das sind die Gleichungen auf der die folgende Betrachtung des DF basiert. Sie gelten für 2 orthogonale Antennen. Das Koordinatensystem ist so gewählt, dass die Z-Antenne entlang der Z-Achse liegt, die andere in der X-Y-Ebene und schliesst mit der X-Achse einen Winkel $\Omega$ ein. Erst in Kapitel 5 werden Antennen betrachtet, die in beliebige Richtungen zeigen können.
+
+\section{Reduktion der Variablen}
+\paragraph*{}
+Das System besteht aus 4 Gleichungen, mit 6 Unbekannten. Es ist also nach einer Messung nicht lösbar. Wenn man allerdings die Anzahl der Unbekannten auf 4 reduzieren kann, ist es möglich, diese zu berechnen.
+\paragraph*{}
+Wenn, zum Beispiel, die Quelle der emittierten Radiostrahlung bekannt ist, sind die Parameter $\theta$ und $\varphi$ bekannt, und es bleiben 4 Variablen, nämlich die Stokes Parameter, für 4 Gleichungen. Das System ist also lösbar.
+
+\paragraph*{}
+Man kann dazu die Methode verwenden, die in Abschnitt \ref{sec_analytisch_stokes} für zwei beliebig ausgerichtete Antennen abgeleitet wird.
+
+
+\paragraph*{}
+Ein anderes Beispiel ist die zirkular polarisierte, planetare Radiostrahlung. Man kann also die Variablen $\hat{Q}$ und $\hat{U}$ gleich Null setzen. Dann erhält man
+
+\begin{eqnarray}
+\left\langle V_X V_X^* \right\rangle & = & \hat{S}\eta_0 h_{eff,X}^2 [  \cos^2 \theta \cos^2 \left( \varphi - \Omega \right)+ \sin^2 \left( \varphi - \Omega\right)] \label{VxVx_average_simpli_reduced}\\
+\left\langle V_Z V_Z^* \right\rangle & = & h_{eff,Z}^2  \hat{S} \eta_0  \sin^2\theta \label{VzVz_average_simpli_reduced}
+\\
+Re\left\langle V_X V_Z^* \right\rangle & = &  -\hat{S} \eta_0 h_{eff,X} h_{eff,Z}  \sin \theta \cos \theta \cos(\varphi - \Omega ) \label{Re_VxVz_average_simpli_reduced}\\
+Im\left\langle V_X V_Z^* \right\rangle & = & \hat{S}\eta_0 h_{eff,X} h_{eff,Z} \hat{V}\sin \theta \sin(\varphi - \Omega )  \label{Im_VxVz_average_simpli_reduced}
+\end{eqnarray}
+
+Dieses System ist lösbar. Zuerst kann man aus (\ref{VzVz_average_simpli_reduced}) $\hat{S}$ isolieren.
+
+\begin{equation}\label{hats}
+    \hat{S}=\frac{\left\langle V_Z V_Z^* \right\rangle}{h_{eff,Z}^2   \eta_0  \sin^2\theta }
+\end{equation}
+
+Diese Gleichung kann man in (\ref{VxVx_average_simpli_reduced}) und (\ref{Re_VxVz_average_simpli_reduced}) einsetzen.
+
+\begin{eqnarray}
+\frac{\left\langle V_X V_X^* \right\rangle }{\left\langle V_Z V_Z^* \right\rangle}& = & \frac{h_{eff,X}^2}{h_{eff,Z}^2} \left[ \frac{ \cos^2 \theta}{\sin^2\theta} \cos^2 \left( \varphi - \Omega \right)+\frac{ \sin^2 \left( \varphi - \Omega\right) }{\sin^2\theta} \right]\\
+\frac{Re\left\langle V_X V_Z^* \right\rangle}{\left\langle V_Z V_Z^* \right\rangle} & = &  - \frac{h_{eff,X}}{h_{eff,Z} }   \frac{\cos \theta}{\sin \theta} \cos(\varphi - \Omega )
+\end{eqnarray}
+
+\begin{eqnarray}
+\frac{\left\langle V_X V_X^* \right\rangle }{\left\langle V_Z V_Z^* \right\rangle}& = & \frac{h_{eff,X}^2}{h_{eff,Z}^2} \left[ \frac{ 1}{tan^2\theta} \cos^2 \left( \varphi - \Omega \right)+ \frac{ \sin^2 \left( \varphi - \Omega\right) }{\sin^2\theta} \right] \\
+\frac{Re\left\langle V_X V_Z^* \right\rangle}{\left\langle V_Z V_Z^* \right\rangle} & = &  - \frac{h_{eff,X}}{h_{eff,Z} }   \frac{1}{\tan \theta} \cos(\varphi - \Omega )\label{gettheta}
+\end{eqnarray}
+
+Jetzt kann man (\ref{gettheta}) quadrieren um dann die folgenden 2 Gleichungen zu erhalten.
+
+\begin{eqnarray}
+\frac{\left\langle V_X V_X^* \right\rangle }{\left\langle V_Z V_Z^* \right\rangle}& = & \frac{h_{eff,X}^2}{h_{eff,Z}^2} \left[ \frac{ 1}{tan^2\theta} \cos^2 \left( \varphi - \Omega \right)+\frac{ \sin^2 \left( \varphi - \Omega\right) }{\sin^2\theta} \right] \label{gettheta1}\\
+\left( \frac{Re\left\langle V_X V_Z^* \right\rangle}{\left\langle V_Z V_Z^* \right\rangle}\right)^2 & = &   \frac{h_{eff,X}^2}{h_{eff,Z}^2 }   \frac{1}{\tan^2 \theta} \cos^2(\varphi - \Omega ) \label{gettheta2}
+\end{eqnarray}
+
+Anschliessend kann man (\ref{gettheta2}) von (\ref{gettheta1}) abziehen.
+
+\begin{eqnarray}
+\frac{\left\langle V_X V_X^* \right\rangle }{\left\langle V_Z V_Z^* \right\rangle} - \left( \frac{Re\left\langle V_X V_Z^* \right\rangle}{\left\langle V_Z V_Z^* \right\rangle}\right)^2 & = & \frac{h_{eff,X}^2}{h_{eff,Z}^2} \left[ \frac{ 1}{tan^2\theta} \cos^2 \left( \varphi - \Omega \right)+ \frac{ \sin^2 \left( \varphi - \Omega\right) }{\sin^2\theta} \right]\\
+&-& \frac{h_{eff,X}^2}{h_{eff,Z}^2 }   \frac{1}{\tan^2 \theta} \cos^2(\varphi - \Omega ) \nonumber \\
+ & =& \frac{h_{eff,X}^2}{h_{eff,Z}^2}  \frac{ \sin^2 \left( \varphi - \Omega\right) }{\sin^2\theta}\label{gettheta3}
+\end{eqnarray}
+
+Jetzt kann man in (\ref{gettheta3}) und (\ref{gettheta2}) jeweils die Terme mit $\varphi$ isolieren
+
+\begin{eqnarray}
+\sin^2 \left( \varphi - \Omega\right)  & =& \frac{h_{eff,Z}^2}{h_{eff,X}^2}  \left[ \frac{\left\langle V_X V_X^* \right\rangle }{\left\langle V_Z V_Z^* \right\rangle} - \left( \frac{Re\left\langle V_X V_Z^* \right\rangle}{\left\langle V_Z V_Z^* \right\rangle}\right)^2 \right]\sin^2\theta   \\
+ \cos^2(\varphi - \Omega )  & = &   \frac{\left[ \frac{Re\left\langle V_X V_Z^* \right\rangle}{\left\langle V_Z V_Z^* \right\rangle}\right]^2}{\frac{h_{eff,X}^2}{h_{eff,Z}^2 }  }\tan^2 \theta
+\end{eqnarray}
+
+und addieren
+
+\begin{eqnarray}
+&&\sin^2 \left( \varphi - \Omega\right) +  \cos^2(\varphi - \Omega ) = 1 \\
+&=&  \frac{h_{eff,Z}^2}{h_{eff,X}^2}  \left[ \frac{\left\langle V_X V_X^* \right\rangle }{\left\langle V_Z V_Z^* \right\rangle} - \left( \frac{Re\left\langle V_X V_Z^* \right\rangle}{\left\langle V_Z V_Z^* \right\rangle}\right)^2 \right]\sin^2\theta   + \frac{h_{eff,Z}^2}{h_{eff,X}^2 } \left[ \frac{Re\left\langle V_X V_Z^* \right\rangle}{\left\langle V_Z V_Z^* \right\rangle}\right]^2\tan^2 \theta
+\end{eqnarray}
+
+
+\begin{eqnarray}
+\frac{h_{eff,X}^2}{h_{eff,Z}^2} \left( \frac{\left\langle V_Z V_Z^* \right\rangle}{Re\left\langle V_X V_Z^* \right\rangle}\right)^2 &= &   \sin^2\theta \left\{ \left[ \frac{\left\langle V_X V_X^* \right\rangle \left\langle V_Z V_Z^* \right\rangle}{Re\left\langle V_X V_Z^* \right\rangle^2}  - 1 \right]   + \frac{1}{\cos^2 \theta} \right\}\\
+\sin^2\theta &=& \frac{\frac{h_{eff,X}^2}{h_{eff,Z}^2} \left( \frac{\left\langle V_Z V_Z^* \right\rangle}{Re\left\langle V_X V_Z^* \right\rangle}\right)^2}{ \left\{ \left[ \frac{\left\langle V_X V_X^* \right\rangle \left\langle V_Z V_Z^* \right\rangle}{Re\left\langle V_X V_Z^* \right\rangle^2}  - 1 \right]   + \frac{1}{\cos^2 \theta} \right\}}\\
+\theta &=& \arcsin\sqrt{\frac{\frac{h_{eff,X}^2}{h_{eff,Z}^2} \left( \frac{\left\langle V_Z V_Z^* \right\rangle}{Re\left\langle V_X V_Z^* \right\rangle}\right)^2}{ \left\{ \left[ \frac{\left\langle V_X V_X^* \right\rangle \left\langle V_Z V_Z^* \right\rangle}{Re\left\langle V_X V_Z^* \right\rangle^2}  - 1 \right]   + \frac{1}{\cos^2 \theta} \right\}}}
+\end{eqnarray}
+
+Dies ist eine Iterationsformel, welche konvergiert, solange $\left\{ \left[ \frac{\left\langle V_X V_X^* \right\rangle \left\langle V_Z V_Z^* \right\rangle}{Re\left\langle V_X V_Z^* \right\rangle^2}  - 1 \right]   + \frac{1}{\cos^2 \theta} \right\} >0$.
+
+
+
+Hat man $\theta$, kann man $\varphi$ (\ref{gettheta}) berechnen.
+\begin{equation}
+    \rightarrow \varphi    =   \mp \arccos \left( \tan \theta \frac{h_{eff,Z}}{h_{eff,X} } \frac{Re\left\langle V_X V_Z^* \right\rangle}{\left\langle V_Z V_Z^* \right\rangle} \right)+\Omega
+\end{equation}
+
+Leider ist die Gleichung nicht eindeutig. Man muss also wissen in welcher Hemisphäre sich die Quelle befindet.\\
+
+
+$\hat{S}$ kann man jetzt mit (\ref{hats}) berechnen. Abschliessend kann man den letzten verbleibenden Stokes Parameter aus der Gleichung (\ref{Im_VxVz_average_simpli_reduced}) ermitteln.
+
+\begin{equation}
+ \hat{V}=    \frac{Im\left\langle V_X V_Z^* \right\rangle}{\hat{S}\eta_0 h_{eff,X} h_{eff,Z} \sin \theta \sin(\varphi - \Omega )}
+\end{equation}
+
+Das Problem ist hiermit gelöst.
+\section{Direction Finding mit 2 Messungen}
+\paragraph*{}
+
+Führt man 2 Messungen durch, und geht man davon aus, dass die Messungen in einem so geringem Zeitabstand durchgeführt werden, dass die Z-Antenne ihre Lage im Raum beibehält und die selbe Strahlung misst, kann man das System auf 7 Gleichungen erweitern. Die Indizes 1 und 2 bezeichnen die Messung, $\Omega_1$ und $\Omega_2$ sind die Winkel der X-Antenne mit der X-Achse bei Messung 1 und 2.
+\begin{eqnarray}
+\left\langle V_x V_x^* \right\rangle_1 & = & \hat{S}\eta_0 h_{eff,X}^2 [ (\hat{Q} +1) \cos^2 \theta \cos^2 \left( \varphi - \Omega_1 \right)-\\
+& & -(\hat{Q} -1) \sin^2 \left( \varphi - \Omega_1\right) + 2 \hat{U} \cos \theta \sin \left( \varphi - \Omega_1 \right) \cos \left( \varphi - \Omega_1\right) \nonumber \\
+\left\langle V_x V_x^* \right\rangle_2 & = & \hat{S}\eta_0 h_{eff,X}^2 [ (\hat{Q} +1) \cos^2 \theta \cos^2 \left( \varphi - \Omega_2 \right)-\\
+& & -(\hat{Q} -1) \sin^2 \left( \varphi - \Omega_2 \right) + 2 \hat{U} \cos \theta \sin \left( \varphi - \Omega_2 \right) \cos \left( \varphi - \Omega_2 \right) \nonumber \\
+\left\langle V_z V_z^* \right\rangle & = & h_{eff,Z}^2  \hat{S} \eta_0 (\hat{Q} +1)  \sin^2\theta \\
+Re\left\langle V_x V_z^* \right\rangle_1 & = &  -\hat{S} \eta_0 h_{eff,X} h_{eff,Z} [ ( \hat{Q} + 1) \sin \theta \cos \theta \cos(\varphi - \Omega_1 ) +\\
+& & + \hat{U}\sin \theta \sin(\varphi - \Omega_1 )] \nonumber \\
+Re\left\langle V_x V_z^* \right\rangle_2 & = &-\hat{S} \eta_0 h_{eff,X} h_{eff,Z} [ ( \hat{Q} + 1) \sin \theta \cos \theta \cos(\varphi - \Omega_2 ) +\\
+& & + \hat{U}\sin \theta \sin(\varphi - \Omega_2 )] \nonumber \\
+Im\left\langle V_x V_z^* \right\rangle_1 & = & \hat{S}\eta_0 h_{eff,X} h_{eff,Z} \hat{V}\sin \theta \sin(\varphi - \Omega_1 )
+\\
+Im\left\langle V_x V_z^* \right\rangle_2 & = & \hat{S}\eta_0 h_{eff,X} h_{eff,Z} \hat{V}\sin \theta \sin(\varphi - \Omega_2 )
+\end{eqnarray}
+
+\paragraph*{}
+Man hat also 6 Unbekannte bei 7 Gleichungen. Das ist ein nonlineares überdeterminiertes System. Ein Gleichungssystem dieser Art kann man nur numerisch lösen. Eine Möglichkeit ist, eine Funktion zu bilden, die sich aus der Summe der Quadrate der Differenzen zwischen gemessenen und berechneten Korrelationsparameter zusammensetzt.
+\begin{equation}
+F(\theta,\varphi,\hat{S},\hat{Q},\hat{U},\hat{V})=\sum (\left\langle V_i V_j^* \right\rangle_{measured}-\left\langle V_i V_j^* \right\rangle_{model})^2
+\end{equation}
+\paragraph*{}
+Diese Funktion hat den Wert 0, wenn man die Parameter der exakten Lösung einsetzt. Aufgrund der begrenzten Rechengenauigkeit eines Computers und der begrenzten Messgenauigkeit gibt es keine exakten numerischen Lösungen, daher besteht das Lösungsverfahren darin, diese Funktion bis zu einer gewünschten Genauigkeit zu minimieren. Das Lösungsverfahren heisst also:\\
+\\
+Minimize $F(\theta,\varphi,\hat{S},\hat{Q},\hat{U},\hat{V})$
+\\
+\\
+\paragraph*{}
+Die Numerische Analysis stellt viele Methoden für eine Aufgabe dieser Art zur Verfügung. Einige bekannte sind\\
+\\
+\begin{list}{$\cdot$)}{}
+
+\item Eine Variation der Monte Carlo Methode
+\item Hill Climbing (in diesem Fall Descending)
+\item Newton
+\item Newton Raphson
+\end{list}
+
+\paragraph*{}
+Leider ist die Sache nicht so einfach wie sie klingt. Geometrisch gesehen entspricht das Verfahren dem Suchen des globalen Minimums auf einer 6-dimensionalen Hyperfläche, dessen Topologie man nicht kennt. Alle Methoden arbeiten auf die eine oder andere Art damit, immer bergab zu marschieren, bis das Minimum erreicht ist (es also in jede Richtung bergauf geht). Hierbei gibt es einige Stolpersteine, die zum ``Nicht-Funktionieren'' der Methode führen können. Zum Beispiel\\
+\\
+\begin{list}{$\cdot$)}{}
+\item Lokale Minima, welche keine globalen Minima sind
+\item Loops
+\item Sattel, die auf einer 6D Hypersurface eher die Regel als die Ausnahme sind
+\end{list}
+
+\paragraph*{}
+um nur einige zu nennen. Man wird also in der Praxis damit beginnen müssen, einen Raster über die Hyperfläche zu legen und abzuschätzen, wo man den Startpunkt legen kann.
+\paragraph*{}
+Wenn mehr als 2 Messungen gemacht werden, oder die Z-Achse ihre Lage im Raum nicht beibehält, steigt die Anzahl der Gleichungen. Das Verfahren ist aber ohne Modifikation anwendbar. In Kapitel 5 werde ich genauer auf dieses Thema eingehen, spezifisch auf 3-Antennen Systeme zugeschnitten.
+\paragraph*{}
+Als weiterführende Literatur empfehle ich \cite{recipes}, das sehr praxisbezogen ist, oder \cite{burdenfaires}, welches auch die theoretischen Grundlagen in grossem Detail abhandelt.
+
+\section{Rotierende Raumsonden}
+
+\paragraph*{}
+Wenn das Antennensystem um die Z-Achse rotiert, zum Beispiel mit der Kreisfrequenz $\omega_{sc}$, dann kann man eine andere Methode benutzen, die darauf basiert, dass viele (N) Messungen über einen längeren Zeitraum gemacht werden. Ich betrachte im folgenden, den Zeitraum einer Rotationsperiode. Wenn man Gleichungen $(3.36)$ bis $(3.39)$ betrachtet, erkennt man, dass es 3 Möglichkeiten gibt, wie sich die Korrelationsparameter während einer Umdrehung der Raumsonde verhalten können. Sie bleiben konstant, was offensichtlich mit der Z-Antenne in Verbindung zu bringen ist, sie durchlaufen eine Oszillation, oder sie durchlaufen 2 Oszillationen. Die Amplituden der Oszillationen sind Funktionen der gesuchten Parameter. Abbildung \ref{fig_messreihe} zeigt eine simulierte Messreihe.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.8]{modulation2.eps} \\
+\caption{Messreihe der Korrelationsparameter} \label{fig_messreihe}
+\end{center}
+\end{figure}
+
+
+\paragraph*{}
+Ziel ist also, die Amplituden der oszillierenden Messreihen zu ermitteln, und daraus die gewünschten Parameter zu berechnen. Zunächst muss man Gleichungen $(3.36)$ bis $(3.39)$ anpassen, indem man die bekannten Konstanten auf die linke Seite bringt und mit den Bezeichnungen X1, Z1, R1, I1 benennt.
+
+\begin{eqnarray}
+\frac{1}{2}X1 = \frac{\left\langle V_x V_x^* \right\rangle}{\eta_0 h_{e,X}^2} & = & \hat{S}[ (\hat{Q} +1) \cos^2 \theta \cos^2 \left(\varphi - \omega_{sc}t \right) -(\hat{Q} -1) \sin^2 \left( \varphi - \omega_{sc}t \right) \\
+&+& 2 \hat{U} \cos \theta \sin \left(\varphi -\omega_{sc}t \right) \cos \left(\varphi - \omega_{sc}t \right) ] \nonumber \\
+\frac{1}{2}Z1 =\frac{\left\langle V_z V_z^* \right\rangle}{\eta_0 h_{e,Z}^2} & = & \hat{S} (\hat{Q} +1)  \sin^2\theta
+\\
+\frac{1}{2}R1=\frac{Re\left\langle V_x V_z^* \right\rangle}{\eta_0 h_{e,X} h_{e,Z}} & = &  -\hat{S} [ ( \hat{Q} + 1) \sin \theta \cos \theta \cos(\varphi - \omega_{sc}t ) + \hat{U}\sin \theta \sin(\varphi - \omega_{sc}t )] \\
+\frac{1}{2}I1=\frac{Im\left\langle V_x V_z \right\rangle}{\eta_0 h_{e,X} h_{e,Z}} & = & \hat{S} \hat{V}\sin \theta \sin(\varphi - \omega_{sc}t )
+\end{eqnarray}
+
+\paragraph*{}
+Diese Gleichungen kann man noch anpassen, wenn man folgende Identitäten berücksichtigt :
+
+\begin{eqnarray}
+\sin \psi \cos \psi & = & \frac{1}{2} \sin{2\psi}
+\end{eqnarray}
+\paragraph*{}
+Asserdem kann man die Gleichungen mit 2 multiplizieren und erhält dann:
+\begin{eqnarray}
+X1 = \frac{2\left\langle V_x V_x^* \right\rangle}{\eta_0 h_{e,X}^2} & = & \hat{S}[ 2(\hat{Q} +1) \cos^2 \theta \cos^2 \left( \varphi - \omega_{sc}t \right) -2(\hat{Q} -1) \sin^2 \left( \varphi - \omega_{sc}t \right)  \label{X1_1}\\
+&+&  2\hat{U} \cos \theta \sin \left(2 \varphi - 2\omega_{sc}t \right)] \nonumber \\
+Z1 =\frac{2\left\langle V_z V_z^* \right\rangle}{\eta_0 h_{e,Z}^2} & = & \hat{S} 2(\hat{Q} +1)  \sin^2\theta \label{Z1_1}
+\\
+R1 =\frac{2Re\left\langle V_x V_z^* \right\rangle}{\eta_0 h_{e,X} h_{e,Z}} & = &  -\hat{S} [ ( \hat{Q} + 1) \sin {2\theta } \cos(\varphi -\omega_{sc}t ) + 2\hat{U}\sin \theta \sin(\varphi - \omega_{sc}t )] \\
+I1 =\frac{2Im\left\langle V_x V_z \right\rangle}{\eta_0 h_{e,X} h_{e,Z}} & = & \hat{S} 2\hat{V}\sin \theta \sin(\varphi - \omega_{sc}t)\label{I1}
+\end{eqnarray}
+
+\paragraph*{}
+Jetzt sind noch die Quadrate der Winkelfunktionen in Gleichung (\ref{X1_1}) zu beseitigen. Dies geschieht im Wesentlichen durch folgende Identitäten:
+
+\begin{eqnarray}
+% \nonumber to remove numbering (before each equation)
+  \sin^2 \alpha &=& \frac{1}{2} (1-\cos 2\alpha)\\
+\cos^2 \alpha &=& \frac{1}{2} (1+\cos 2\alpha)
+\end{eqnarray}
+
+\paragraph*{}
+Angewandt auf X1 heiss das:
+
+\begin{eqnarray}
+X1 = \frac{2\left\langle V_X V_X^* \right\rangle}{\eta_0 h_{e,X}^2} &=& \hat{S}[(\hat{Q} +1) \cos^2 \theta (1+\cos \left( 2\varphi - 2\omega_{sc}t \right))  \label{X1_2} \\
+&-&(\hat{Q} -1) (1-\cos \left( 2\varphi - 2\omega_{sc}t \right)+  2\hat{U} \cos \theta \sin \left(2 \varphi - 2\omega_{sc}t \right) ] \nonumber \\
+&=& \hat{S}[(\hat{Q}+1) \cos^2 \theta +  (\hat{Q}+1) \cos^2 \theta \cos \left( 2\varphi - 2\omega_{sc}t \right)  \nonumber\\
+&-& (\hat{Q} -1) + (\hat{Q} -1) \cos \left( 2\varphi - 2\omega_{sc}t \right) +  2\hat{U} \cos \theta \sin \left(2 \varphi - 2\omega_{sc}t \right) ]\nonumber
+\\
+&=& \hat{S}[(\hat{Q}\cos^2 \theta + \cos^2 \theta +1 - \hat{Q}) \nonumber\\
+&+&  (\hat{Q} \cos^2 \theta +\cos^2 \theta + \hat{Q} - 1) \cos \left( 2\varphi - 2\omega_{sc}t \right) + 2 \hat{U} \cos \theta \sin \left(2 \varphi - 2\omega_{sc}t \right) ]\nonumber
+\\
+&=& \hat{S}[(1+\cos^2 \theta - \hat{Q}\sin^2 \theta) + (\hat{Q} \cos^2 \theta + \hat{Q} - \sin^2 \theta  ) \cos \left( 2\varphi - 2\omega_{sc}t \right)   \nonumber\\
+&+&  2  \hat{U} \cos \theta \sin \left(2 \varphi - 2\omega_{sc}t \right) ]\nonumber
+\end{eqnarray}
+
+\paragraph*{}
+Jetzt definiert man neue Funktionen, $A-G$, als Vorfaktor zu den jeweiligen Modulationsfrequenzen.
+
+\begin{eqnarray}
+A(\hat{Q},\theta) & = &  1+ \cos^2 \theta-\hat{Q} \sin^2 \theta \label{A} \\
+B(\hat{Q},\theta) & = & ( \hat{Q} \cos^2\theta + \hat{Q} - \sin^2\theta ) \label{B}
+\\
+C(\hat{U},\theta) & = & -2\hat{U}\cos\theta \label{C}
+\\
+D(\hat{Q},\theta) & = & 2( \hat{Q} + 1) \sin^2\theta \label{D}
+\\
+E(\hat{Q},\theta) & = & -( \hat{Q} + 1) \sin2\theta \label{E}
+\\
+F(\hat{U},\theta) & = & -2\hat{U}\sin \theta \label{F}
+\\
+G(\hat{V},\theta) & = & -2\hat{V}\sin \theta \label{G}
+\end{eqnarray}
+
+In Gleichungen (\ref{Z1_1}) bis (\ref{I1}) und (\ref{X1_2}) eingesetzt...
+
+\begin{eqnarray}
+X1 & = & \hat{S} [A(\hat{Q},\theta) + B(\hat{Q},\theta)\cos \left( 2\omega_{sc}t-2\varphi \right) + C(\hat{U},\theta)\sin \left( 2\omega_{sc}t-2\varphi \right) \\
+Z1 & = & \hat{S} D(\hat{Q},\theta)
+\\
+R1 & = &  \hat{S} [E(\hat{Q},\theta)\cos(\omega_{sc}t - \varphi )+ F(\hat{U},\theta) \sin(\omega_{sc}t - \varphi ) ]
+\\
+I1 & = & \hat{S}G(\hat{V},\theta)\sin(\omega_{sc}t - \varphi )
+\end{eqnarray}
+
+\paragraph*{}
+Jetzt haben die Gleichungen eine Form, so dass man die Grössen $A ... G$ durch eine diskrete Fourier Analyse ermitteln kann. Die Formel für die einzelnen Amplituden sind:
+
+\begin{eqnarray}
+A & = &  \frac{1}{\hat{S}N} \sum_N X1(t_i)
+\\
+B & = & \frac{2}{\hat{S}N} \sum_N X1(t_i)\cos(2\omega_{sc}t - 2\varphi )
+\\
+C & = & \frac{2}{\hat{S}N} \sum_N X1(t_i)\sin(2\omega_{sc}t - 2\varphi )
+\\
+D & = &  \frac{1}{\hat{S}N} \sum_N Z1(t_i)
+\\
+E & = & \frac{2}{\hat{S}N} \sum_N R1(t_i)\cos(\omega_{sc}t_i - \varphi )
+\\
+F & = & \frac{2}{\hat{S}N} \sum_N R1(t_i)\sin(\omega_{sc}t_i - \varphi )
+\\
+G & = & \frac{2}{\hat{S}N} \sum_N I1(t_i)\sin(\omega_{sc}t_i - \varphi )
+\end{eqnarray}
+
+Hat man die Amplituden aus der Messreihe ermittelt, muss man als nächsten Schritt die einzelnen Parameter bestimmen. Zunächst muss man $\varphi$ durch die Überlegung finden, dass der Autokorrelationsparameter der X-Antenne 0 sein muss, wenn die effektive Höhe der Antenne genau zur Quelle, oder von der Quelle weg zeigt. Anschliessend kann man mit Hilfe der Formeln (\ref{A}) bis (\ref{G}) die anderen Parameter berechnen.
+
+
+\chapter{Direction Finding mit 3 orthogonalen Antennen}
+\paragraph*{}
+Manche Raumsonden, wie Cassini oder Stereo haben 3, annähernd orthogonale Monopolantennen. Je nach Betriebsmodus kann man alle möglichen Korrelationsparameter als Messergebnis erhalten.
+\paragraph*{}
+Um einen Formelapparat zu errichten, der sich auf Gleichungen (\ref{VxVx_average_simpli}) bis (\ref{Im_VxVz_average_simpli}) stützt, nehme ich eine Antenne Y an, die normal auf die X und Z Antenne steht. Der Winkel den sie mit der X-Achse einschliesst, ist also $\Omega + \frac{\pi}{2}$. Ich nehme an, dass zusätzlich zu den anderen Korrelationsparametern $\left\langle V_Y V_Y^* \right\rangle $,  Re$\left\langle V_Y V_Z^* \right\rangle $ und Im$\left\langle V_Y V_Z^* \right\rangle $ aufgezeichnet werden. Dann hat man\\
+
+
+\begin{eqnarray}
+\left\langle V_X V_X^* \right\rangle & = & \hat{S}\eta_0 h_{eff,X}^2 [ (\hat{Q} +1) \cos^2 \theta \cos^2 \left( \varphi - \Omega \right)-(\hat{Q} -1) \sin^2 \left( \varphi - \Omega\right) \label{VxVx_3_ortho}\\
+&+& 2 \hat{U} \cos \theta \sin \left( \varphi - \Omega \right) \cos \left( \varphi - \Omega \right)] \nonumber
+\\
+\left\langle V_Y V_Y^* \right\rangle & = & \hat{S}\eta_0 h_{eff,Y}^2 [ (\hat{Q} +1) \cos^2 \theta \cos^2 \left( \varphi - \Omega - \frac{\pi}{2} \right)\label{VyVy_3_ortho}\\
+&-&(\hat{Q} -1) \sin^2 \left( \varphi - \Omega - \frac{\pi}{2} \right) + 2 \hat{U} \cos \theta \sin \left( \varphi - \Omega - \frac{\pi}{2} \right) \cos \left( \varphi - \Omega - \frac{\pi}{2} \right)] \nonumber \\
+\left\langle V_Z V_Z^* \right\rangle & = & h_{eff,Z}^2  \hat{S} \eta_0(\hat{Q} +1)  \sin^2\theta \label{VzVz_3_ortho}
+\\
+Re\left\langle V_X V_Z^* \right\rangle & = &  -\hat{S} \eta_0 h_{eff,X} h_{eff,Z} [( \hat{Q} + 1) \sin \theta \cos \theta \cos(\varphi - \Omega ) + \hat{U}\sin \theta \sin(\varphi - \Omega )] \label{Re_VxVz_3_ortho}
+\\
+Re\left\langle V_Y V_Z^* \right\rangle & = &  -\hat{S} \eta_0 h_{eff,Y} h_{eff,Z} [( \hat{Q} + 1) \sin \theta \cos \theta \cos(\varphi - \Omega - \frac{\pi}{2}) \label{Re_VyVz_3_ortho}\\
+&+& \hat{U}\sin \theta \sin(\varphi - \Omega - \frac{\pi}{2})] \nonumber
+\\
+Im\left\langle V_X V_Z^* \right\rangle & = & \hat{S}\eta_0 h_{eff,X} h_{eff,Z} \hat{V}\sin \theta \sin(\varphi - \Omega )  \label{Im_VxVz_3_ortho} \\
+Im\left\langle V_Y V_Z^* \right\rangle & = & \hat{S}\eta_0 h_{eff,Y} h_{eff,Z} \hat{V}\sin \theta \sin(\varphi - \Omega - \frac{\pi}{2} )  \label{Im_VyVz_3_ortho}
+\end{eqnarray}
+
+
+\paragraph*{}
+Wenn man die X-Antenne auf die X-Achse legt ($\Omega=0$) kann man das Gleichungssystem vereinfachen.\\
+
+\begin{eqnarray}
+\left\langle V_X V_X^* \right\rangle & = & \hat{S}\eta_0 h_{eff,X}^2 [ (\hat{Q} +1) \cos^2 \theta \cos^2 \varphi -(\hat{Q} -1) \sin^2  \varphi  +  \hat{U} \cos \theta \sin 2 \varphi    \label{VxVx_3_ortho_simpli}
+\\
+\left\langle V_Y V_Y^* \right\rangle & = & \hat{S}\eta_0 h_{eff,Y}^2 [ (\hat{Q} +1) \cos^2 \theta \sin^2  \varphi -(\hat{Q} -1) \cos^2  \varphi  -  \hat{U} \cos \theta \sin  2 \varphi  \label{VyVy_3_ortho_simpli}
+\\
+\left\langle V_Z V_Z^* \right\rangle & = & h_{eff,Z}^2  \hat{S} \eta_0(\hat{Q} +1)  \sin^2\theta \label{VzVz_3_ortho_simpli}
+\\
+Re\left\langle V_X V_Z^* \right\rangle & = &  - \frac{1}{2} \hat{S} \eta_0 h_{eff,X} h_{eff,Z} [( \hat{Q} + 1) \sin 2 \theta \cos \varphi  + 2 \hat{U}\sin \theta \sin \varphi ] \label{Re_VxVz_3_ortho_simpli}
+\\
+Re\left\langle V_Y V_Z^* \right\rangle & = & -\frac{1}{2} \hat{S} \eta_0 h_{eff,Y} h_{eff,Z} [( \hat{Q} + 1) \sin 2 \theta \sin \varphi  - 2 \hat{U}\sin \theta \cos \varphi ] \label{Re_VyVz_3_ortho_simpli}
+\\
+Im\left\langle V_X V_Z^* \right\rangle & = & \hat{S}\eta_0 h_{eff,X} h_{eff,Z} \hat{V}\sin \theta \sin \varphi    \label{Im_VxVz_3_ortho_simpli}
+\\
+Im\left\langle V_Y V_Z^* \right\rangle & = & -\hat{S}\eta_0 h_{eff,Y} h_{eff,Z} \hat{V}\sin \theta \cos \varphi   \label{Im_VyVz_3_ortho_simpli}
+\end{eqnarray}
+
+\paragraph*{}
+Man hat also 7 Gleichungen für 6 Parameter, womit wir wieder beim nonlinearen überdeterminierten System wären...
+
+\chapter{Der allgemeine Fall: Schiefe Antennen}
+\paragraph*{}
+An dieser Stelle möchte ich die Vereinfachung weglassen, dass die effektiven Vektoren der Antennen entlang der kartesischen Koordinatenachsen ausgerichtet sind. Im folgenden haben Antennen i und j die effektive Höhen $h_{eff,i}$, bzw. $h_{eff,j}$,der in Richtung $[\alpha_i , \Omega_i]$, bzw. $[\alpha_j , \Omega_j]$ zeigt. Führt man die entsprechenden Multiplikationen mit $(3.22)$ aus, erhält man
+
+\begin{eqnarray}
+V_i V_i^{*} &=& h_{eff,i}^2[E_{0,x}^2 (\sin^2 \theta \cos^2 \alpha_i -\frac{1}{2} \sin (2\alpha_i) \sin(2\theta) \cos^2(\varphi - \Omega_i) + \\
+& & + \sin^2\alpha_i \cos^2\theta \cos^2(\varphi - \Omega_i))+ \nonumber \\
+& & + E_{0,y}^2 \sin^2\alpha_i \sin^2 (\varphi - \Omega_i) \nonumber \\
+& & +  \frac{1}{2} E_{0,x} E_{0,y} (-\sin \theta \sin 2\alpha_i \sin(\varphi - \Omega_i) + \sin^2\alpha_i \cos \theta sin(2\varphi - 2\Omega_i)) (e^{i \delta} + e^{-i \delta } )]\nonumber
+\end{eqnarray}
+und
+\begin{eqnarray}
+V_i V_j^{*} &=& h_{eff,i} h_{eff,j}[E_{0,x}^2 (\sin^2 \theta \cos \alpha_i \cos \alpha_j - \\
+& & - \frac{1}{2}  \sin(2\theta) (\sin \alpha_j \cos \alpha_i \cos(\varphi - \Omega_j)+\sin \alpha_i \cos \alpha_j \cos(\varphi - \Omega_i) )+ \nonumber \\
+& & + \sin \alpha_i \sin \alpha_j \cos^2\theta \cos(\varphi - \Omega_i) \cos(\varphi - \Omega_j))+ \nonumber \\
+& & + E_{0,y}^2 \sin \alpha_i \sin \alpha_j \sin (\varphi - \Omega_i) \sin (\varphi - \Omega_j)\nonumber \\
+& & -E_{0,x} E_{0,y} e^{i \delta}( \sin \alpha_j \sin(\varphi - \Omega_j)( \cos \alpha_i \sin \theta - \sin \alpha_i \cos \theta \cos(\varphi - \Omega_i)))-\nonumber \\
+& &  -E_{0,x} E_{0,y} e^{-i \delta}( \sin \alpha_i \sin(\varphi - \Omega_i)( \cos \alpha_j \sin \theta - \sin \alpha_j \cos \theta \cos(\varphi - \Omega_j)))]\nonumber
+\end{eqnarray}
+
+\paragraph*{}
+Über die Zeit gemittelt, ergibt das
+
+\begin{eqnarray}
+\left\langle V_i V_i^{*} \right\rangle &=&  h_{eff,i}^2[\left\langle E_{0,x}^2\right\rangle (\sin^2 \theta \cos^2 \alpha_i -\frac{1}{2} \sin (2\alpha_i) \sin(2\theta) \cos^2(\varphi - \Omega_i) + \\
+& & + \sin^2\alpha_i \cos^2\theta \cos^2(\varphi - \Omega_i))+ \nonumber \\
+& & + \left\langle E_{0,y}^2 \right\rangle \sin^2\alpha_i \sin^2 (\varphi - \Omega_i) \nonumber \\
+& & +  \left\langle E_{0,x} E_{0,y} \cos \delta \right\rangle (-\sin \theta \sin 2\alpha_i \sin(\varphi - \Omega_i) + \sin^2\alpha_i \cos \theta sin(2\varphi - 2\Omega_i)) ]\nonumber
+\end{eqnarray}
+
+\begin{eqnarray}
+Re \left\langle V_i V_j^{*}\right\rangle &=&  h_{eff,i} h_{eff,j}[\left\langle E_{0,x}^2\right\rangle (\sin^2 \theta \cos \alpha_i \cos \alpha_j - \\
+& & - \frac{1}{2}  \sin(2\theta) (\sin \alpha_j \cos \alpha_i \cos(\varphi - \Omega_j)+\sin \alpha_i \cos \alpha_j \cos(\varphi - \Omega_i) ) + \nonumber \\
+& & + \sin \alpha_i \sin \alpha_j \cos^2\theta \cos(\varphi - \Omega_i) \cos(\varphi - \Omega_j))+ \nonumber \\
+& & + \left\langle E_{0,y}^2 \right\rangle \sin \alpha_i \sin \alpha_j \sin (\varphi - \Omega_i) \sin (\varphi - \Omega_j)\nonumber \\
+& & -\left\langle E_{0,x} E_{0,y} \cos\delta \right\rangle(\sin \theta(\sin \alpha_i \cos \alpha_j \sin (\varphi - \Omega_i) +  \nonumber \\
+& & + \sin \alpha_j \cos \alpha_i \sin (\varphi - \Omega_j))-\cos \theta \sin \alpha_i \sin \alpha_j(\sin (\varphi - \Omega_j) \cos (\varphi - \Omega_i)+ \nonumber \\
+& & + \sin (\varphi - \Omega_i) \cos (\varphi - \Omega_j) ) )]\nonumber
+\end{eqnarray}
+
+\begin{eqnarray}
+Im \left\langle V_i V_j^{*}\right\rangle &=& - h_{eff,i} h_{eff,j}\left\langle E_{0,x} E_{0,y} \sin \delta \right\rangle[ (\sin \theta(\sin \alpha_i \cos \alpha_j \sin (\varphi - \Omega_i) -  \\
+& & - \sin \alpha_j \cos \alpha_i \sin (\varphi - \Omega_j))+\cos \theta \sin \alpha_i \sin \alpha_j(\sin (\varphi - \Omega_j) \cos (\varphi - \Omega_i)+ \nonumber \\
+& & + \sin (\varphi - \Omega_i) \cos (\varphi - \Omega_j) ) )]\nonumber
+\end{eqnarray}
+
+\paragraph*{}
+Die Gültigkeitkeit, dieser Gleichungen kann man bestätigen, indem man für $\alpha_i$ und $\alpha_j$ 0° oder 90° einsetzt, und so Gleichungen $(3.28)$ und $(3.29)$ erhält. Verbindet man die Gleichungen mit $(3.32)-(3.35)$, erhält man\\
+
+\begin{eqnarray}
+\left\langle V_i V_i^{*} \right\rangle &=& \hat{S}\eta_0 h_{eff,i}^2[(\hat{Q}+1) (\sin^2 \theta \cos^2 \alpha_i -\\
+& & -\frac{1}{2} \sin (2\alpha_i) \sin(2\theta) \cos^2(\varphi - \Omega_i) + \nonumber \\
+& & + \sin^2\alpha_i \cos^2\theta \cos^2(\varphi - \Omega_i))+ \nonumber \\
+& & + (1-\hat{Q}) \sin^2\alpha_i \sin^2 (\varphi - \Omega_i) \nonumber \\
+& & +  \hat{U}  (-\sin \theta \sin 2\alpha_i \sin(\varphi - \Omega_i) + \sin^2\alpha_i \cos \theta sin(2\varphi - 2\Omega_i)) ]\nonumber
+\end{eqnarray}
+
+\begin{eqnarray}
+Re \left\langle V_i V_j^{*}\right\rangle &=& \hat{S}\eta_0 h_{eff,i} h_{eff,j}[(\hat{Q}+1) (\sin^2 \theta \cos \alpha_i \cos \alpha_j - \\
+& & - \frac{1}{2}  \sin(2\theta) (\sin \alpha_j \cos \alpha_i \cos(\varphi - \Omega_j)+\sin \alpha_i \cos \alpha_j \cos(\varphi - \Omega_i) ) + \nonumber \\
+& & + \sin \alpha_i \sin \alpha_j \cos^2\theta \cos(\varphi - \Omega_i) \cos(\varphi - \Omega_j))+ \nonumber \\
+& & + (1-\hat{Q}) \sin \alpha_i \sin \alpha_j \sin (\varphi - \Omega_i) \sin (\varphi - \Omega_j)\nonumber \\
+& & -\hat{U} (\sin \theta(\sin \alpha_i \cos \alpha_j \sin (\varphi - \Omega_i) +  \nonumber \\
+& & + \sin \alpha_j \cos \alpha_i \sin (\varphi - \Omega_j))-\cos \theta \sin \alpha_i \sin \alpha_j(\sin (\varphi - \Omega_j) \cos (\varphi - \Omega_i)+ \nonumber \\
+& & + \sin (\varphi - \Omega_i) \cos (\varphi - \Omega_j) ) )]\nonumber
+\end{eqnarray}
+
+\begin{eqnarray}
+Im \left\langle V_i V_j^{*}\right\rangle &=& - \hat{S}\eta_0 h_{eff,i} h_{eff,j} \hat{V}[ (\sin \theta(\sin \alpha_i \cos \alpha_j \sin (\varphi - \Omega_i) - \\
+& & - \sin \alpha_j \cos \alpha_i \sin (\varphi - \Omega_j))+\cos \theta \sin \alpha_i \sin \alpha_j(\sin (\varphi - \Omega_j) \cos (\varphi - \Omega_i)+ \nonumber \\
+& & + \sin (\varphi - \Omega_i) \cos (\varphi - \Omega_j) ) )]\nonumber
+\end{eqnarray}
+\paragraph*{}
+Wenn man folgende Symbole definiert, kann man diesen Formelapparat in eine übersichtliche Form bringen.
+\begin{eqnarray}
+A_i &=& \cos \alpha_i \sin \theta - \sin \alpha_i \cos \theta \cos (\varphi - \Omega_i)\\
+B_i &=& -\sin \alpha_i \sin (\varphi - \Omega_i)
+\end{eqnarray}
+\paragraph*{}
+
+Dann erhält man:
+\begin{eqnarray}
+\left\langle V_i V_i^{*} \right\rangle &=& \hat{S}\eta_0 h_{eff,i}^2[(\hat{Q}+1) A^2_i + (1-\hat{Q}) B^2_i+ 2 \hat{U}A_i B_i] \label{auto_corr_allgemein} \\
+Re \left\langle V_i V_j^{*}\right\rangle &=& \hat{S}\eta_0 h_{eff,i} h_{eff,j}[(\hat{Q}+1) A_i A_j + (1-\hat{Q}) B_i B_j + \label{re_corr_allgemein}\\
+& & + \hat{U} (A_i B_j + A_j B_i)] \nonumber \\
+Im \left\langle V_i V_j^{*}\right\rangle &=& -\hat{S}\eta_0 h_{eff,i} h_{eff,j} \hat{V}[-A_i B_j + A_j B_i ] \label{im_allgemein}
+\end{eqnarray}
+
+\section{Analytische Lösung}
+\subsection{Die Herkunftsrichtung der Welle}
+
+\paragraph*{}
+Wählt man das Koordinatensystem in einer Weise, dass der effektive Höhenvektor der Z-Antenne mit der Z-Achse übereinstimmt ($\alpha_Z$)=0, kann man eine analytische Lösung ableiten. \cite{cecconi04} Diese Methode wurde erfolgreich bei der Cassini Raumsonde angewandt. Zunächst muss man Gleichungen (\ref{auto_corr_allgemein}) - (\ref{im_allgemein}) anpassen. $A_Z$ hat hier den Wert $sin \theta$, $B_Z$ den Wert Null.
+
+\begin{eqnarray}
+\left\langle V_Z V_Z^{*} \right\rangle &=& \hat{S}\eta_0 h_{eff,Z}^2[(\hat{Q}+1) \sin^2 \theta]   \\
+Re \left\langle V_X V_Z^{*}\right\rangle &=& \hat{S}\eta_0 h_{eff,X} h_{eff,Z}[(\hat{Q}+1) (\sin^2 \theta \cos \alpha_X  - \\
+& & - \frac{1}{2}  \sin(2\theta) \sin \alpha_X  \cos(\varphi - \Omega_X))  - \nonumber \\
+& & -\hat{U} \sin \theta \sin \alpha_X  \sin (\varphi - \Omega_X)   ]\nonumber \\
+Re \left\langle V_Y V_Z^{*}\right\rangle &=& \hat{S}\eta_0 h_{eff,Y} h_{eff,Z}[(\hat{Q}+1) (\sin^2 \theta \cos \alpha_Y  - \\
+& & - \frac{1}{2}  \sin(2\theta) \sin \alpha_Y  \cos(\varphi - \Omega_Y))  - \nonumber \\
+& & -\hat{U} \sin \theta \sin \alpha_Y  \sin (\varphi - \Omega_Y)   ]\nonumber \\
+Im \left\langle V_X V_Z^{*}\right\rangle &=&  \hat{S}\eta_0 h_{eff,X} h_{eff,Z} \hat{V}[ \sin \theta \sin \alpha_X  \sin (\varphi - \Omega_X) ] \\
+Im \left\langle V_Y V_Z^{*}\right\rangle &=&  \hat{S}\eta_0 h_{eff,Y} h_{eff,Z} \hat{V}[ \sin \theta \sin \alpha_Y  \sin (\varphi - \Omega_Y) ]
+\end{eqnarray}
+\paragraph*{}
+Eine Formel für $\varphi$ kann mit Hilfe der beiden imaginären Crosscorrelationsparameter gefunden werden.
+\begin{eqnarray}
+\frac{Im \left\langle V_X V_Z^{*}\right\rangle }{Im \left\langle V_Y V_Z^{*}\right\rangle}&=&\frac{- \hat{S}\eta_0 h_{eff,X} h_{eff,Z} \hat{V}[ \sin \theta \sin \alpha_X  \sin (\varphi - \Omega_X) ]}{- \hat{S}\eta_0 h_{eff,Y} h_{eff,Z} \hat{V}[ \sin \theta \sin \alpha_Y  \sin (\varphi - \Omega_Y) ] }\\
+&=&\frac{h_{eff,X}}{h_{eff,Y}}\frac{ \sin \alpha_X  \sin (\varphi - \Omega_X) }{ \sin \alpha_Y  \sin (\varphi - \Omega_Y)  }\\
+&=&\frac{h_{eff,X} \sin \alpha_X}{h_{eff,Y} \sin \alpha_Y}\frac{(\tan \varphi -\tan \Omega_X)  \cos \varphi \cos \Omega_X}{( \tan \varphi -\tan \Omega_Y) \cos \varphi \cos  \Omega_Y  }\\
+&=&\frac{h_{eff,X} \sin \alpha_X}{h_{eff,Y} \sin \alpha_Y}\frac{(\tan \varphi -\tan \Omega_X)  \cos \Omega_X}{( \tan \varphi -\tan \Omega_Y) \cos  \Omega_Y  } \\
+&=&\frac{h_{eff,X} \sin \alpha_X}{h_{eff,Y} \sin \alpha_Y}\frac{(\tan \varphi \cos \Omega_X-\tan \Omega_X \cos \Omega_X) }{( \tan \varphi \cos \Omega_Y-\tan \Omega_Y \cos \Omega_Y) }
+\end{eqnarray}
+\paragraph*{}
+Also gilt:
+\begin{eqnarray}
+& & Im \left\langle V_X V_Z^{*}\right\rangle h_{eff,Y} \sin \alpha_Y ( \tan \varphi \cos \Omega_Y-\tan \Omega_Y \cos \Omega_Y) \\
+&=& Im \left\langle V_Y V_Z^{*}\right\rangle h_{eff,X} \sin \alpha_X (\tan \varphi \cos \Omega_X-\tan \Omega_X \cos \Omega_X) \nonumber
+\end{eqnarray}
+\paragraph*{}
+Oder
+
+\begin{eqnarray}
+& & Im \left\langle V_X V_Z^{*}\right\rangle h_{eff,Y} \sin \alpha_Y \tan \varphi \cos \Omega_Y\\
+&-& Im \left\langle V_X V_Z^{*}\right\rangle h_{eff,Y} \sin \alpha_Y \tan \Omega_Y \cos \Omega_Y \nonumber\\
+&=& Im \left\langle V_Y V_Z^{*}\right\rangle h_{eff,X} \sin \alpha_X \tan \varphi \cos \Omega_X \nonumber \\
+&-& Im \left\langle V_Y V_Z^{*}\right\rangle h_{eff,X} \sin \alpha_X \tan \Omega_X \cos \Omega_X \nonumber
+\end{eqnarray}
+
+\begin{eqnarray}
+& & Im \left\langle V_X V_Z^{*}\right\rangle h_{eff,Y} \sin \alpha_Y \tan \varphi \cos \Omega_Y\\
+&-& Im \left\langle V_Y V_Z^{*}\right\rangle h_{eff,X} \sin \alpha_X \tan \varphi \cos \Omega_X \nonumber \\
+&=& Im \left\langle V_X V_Z^{*}\right\rangle h_{eff,Y} \sin \alpha_Y \tan \Omega_Y \cos \Omega_Y \nonumber\\
+&-& Im \left\langle V_Y V_Z^{*}\right\rangle h_{eff,X} \sin \alpha_X \tan \Omega_X \cos \Omega_X \nonumber
+\end{eqnarray}
+
+\begin{eqnarray}
+\tan \varphi & & (Im \left\langle V_X V_Z^{*}\right\rangle h_{eff,Y} \sin \alpha_Y \cos \Omega_Y\\
+&-& Im \left\langle V_Y V_Z^{*}\right\rangle h_{eff,X} \sin \alpha_X  \cos \Omega_X) \nonumber \\
+&=& Im \left\langle V_X V_Z^{*}\right\rangle h_{eff,Y} \sin \alpha_Y \tan \Omega_Y \cos \Omega_Y \nonumber\\
+&-& Im \left\langle V_Y V_Z^{*}\right\rangle h_{eff,X} \sin \alpha_X \tan \Omega_X \cos \Omega_X \nonumber
+\end{eqnarray}
+
+\begin{eqnarray}
+\tan \varphi &=& [Im \left\langle V_X V_Z^{*}\right\rangle h_{eff,Y} \sin \alpha_Y \tan \Omega_Y \cos \Omega_Y\\
+&-&Im \left\langle V_Y V_Z^{*}\right\rangle h_{eff,X} \sin \alpha_X \tan \Omega_X \cos \Omega_X]\nonumber \\
+&\times&[Im \left\langle V_X V_Z^{*}\right\rangle h_{eff,Y} \sin \alpha_Y \cos \Omega_Y \nonumber \\
+&-&  Im \left\langle V_Y V_Z^{*}\right\rangle h_{eff,X} \sin \alpha_X  \cos \Omega_X]^{-1}\nonumber
+\end{eqnarray}
+\paragraph*{}
+Die rechte Seite enthält nur bekannte Grössen, man kann also den Azimut der einfallenden Strahlung analytisch bestimmen. Da die Tangensfunktion nur über einen Winkel von $\pi$ eindeutig ist, muss man eine ungefähre Ahnung haben, woher die Strahlung kommt. Auch die Colattitude lässt sich analytisch bestimmen. Dazu benötigt man die Formeln für $\left\langle V_Z V_Z^{*} \right\rangle$, $Re \left\langle V_X V_Z^{*}\right\rangle$ und $Re \left\langle V_Y V_Z^{*}\right\rangle$. Zunächst muss man die beiden Realteile der Crosscorrelationsparameter mit entsprechenden Faktoren multiplizieren, damit sich bei dessen Subtraktion der letzte Term aufhebt.
+
+\begin{eqnarray}
+Re \left\langle V_X V_Z^{*}\right\rangle \sin \alpha_Y  \sin (\varphi - \Omega_Y)h_{eff,Y} &=& \hat{S}\eta_0  h_{eff,Z}[(\hat{Q}+1) h_{eff,X} h_{eff,Y} \\
+& &(\sin^2 \theta \cos \alpha_X  \sin \alpha_Y  \sin (\varphi - \Omega_Y) - \nonumber \\
+& & - \frac{1}{2}  \sin(2\theta) \sin \alpha_X  \sin \alpha_Y \cos(\varphi - \Omega_X)  \sin (\varphi - \Omega_Y) )  - \nonumber \\
+& & -\hat{U} \sin \theta \sin \alpha_X  \sin \alpha_Y \nonumber \\
+& &\sin (\varphi - \Omega_X)  \sin (\varphi - \Omega_Y) h_{eff,X} h_{eff,Y}  ]\nonumber \\
+Re \left\langle V_Y V_Z^{*}\right\rangle\sin \alpha_X  \sin (\varphi - \Omega_X) h_{eff,X}&=& \hat{S}\eta_0 h_{eff,Z}[(\hat{Q}+1)h_{eff,X} h_{eff,Y}\\
+& & (\sin^2 \theta \cos \alpha_Y \sin \alpha_X  \sin (\varphi - \Omega_X) -\nonumber \\
+& & - \frac{1}{2}  \sin(2\theta) \sin \alpha_X \sin \alpha_Y  \cos(\varphi - \Omega_Y)  \sin (\varphi - \Omega_X))  - \nonumber \\
+& & -\hat{U} \sin \theta \sin \alpha_X \sin \alpha_Y \nonumber \\
+& &\sin (\varphi - \Omega_X) \sin (\varphi - \Omega_Y) h_{eff,X} h_{eff,Y}    ]\nonumber
+\end{eqnarray}
+
+\paragraph*{}
+Jetzt werden die beiden Gleichungen subtrahiert.
+\begin{eqnarray}
+Re \left\langle V_X V_Z^{*}\right\rangle \sin \alpha_Y  \sin (\varphi - \Omega_Y) h_{eff,Y}&-&\\
+ Re \left\langle V_Y V_Z^{*}\right\rangle\sin \alpha_X  \sin (\varphi - \Omega_X) h_{eff,X}&=& \hat{S}\eta_0  h_{eff,Z}[(\hat{Q}+1) h_{eff,X} h_{eff,Y} \nonumber \\
+&\times & (  \sin^2 \theta ( \cos \alpha_X  \sin \alpha_Y  \sin (\varphi - \Omega_Y)\nonumber \\
+&-& \cos \alpha_Y \sin \alpha_X  \sin (\varphi - \Omega_X))\nonumber \\
+&+&  \sin \theta \cos \theta \sin \alpha_X  \sin \alpha_Y ( \cos (\varphi - \Omega_Y)  \sin (\varphi - \Omega_X)\nonumber \\
+&-& \cos (\varphi - \Omega_X)  \sin (\varphi - \Omega_Y)) ]\nonumber
+\end{eqnarray}
+\paragraph*{}
+Jetzt dividiert man die Gleichung durch $\left\langle V_Z V_Z^{*} \right\rangle$.
+
+\begin{eqnarray}
+[Re \left\langle V_X V_Z^{*}\right\rangle \sin \alpha_Y  \sin (\varphi - \Omega_Y) h_{eff,Y}&-&\\
+Re \left\langle V_Y V_Z^{*}\right\rangle\sin \alpha_X  \sin (\varphi - \Omega_X) h_{eff,X}]&\times& \nonumber\\
+\left[ \left\langle V_Z V_Z^{*} \right\rangle \right]^{-1}&=&[\hat{S}\eta_0  h_{eff,Z}[(\hat{Q}+1) h_{eff,X} h_{eff,Y}\nonumber \\
+&\times&(  \sin^2 \theta ( \cos \alpha_X  \sin \alpha_Y  \sin (\varphi - \Omega_Y)\nonumber \\
+&-& \cos \alpha_Y \sin \alpha_X  \sin (\varphi - \Omega_X))\nonumber \\
+&+& \sin \theta \cos \theta \sin \alpha_X  \sin \alpha_Y ( \cos (\varphi - \Omega_Y)  \sin (\varphi - \Omega_X)\nonumber \\
+&-& \cos (\varphi - \Omega_X)  \sin (\varphi - \Omega_Y)) ]]\nonumber \\
+&\times&[\hat{S}\eta_0 h_{eff,Z}^2[(\hat{Q}+1) \sin^2 \theta ]]^{-1} \nonumber
+\end{eqnarray}
+
+\begin{eqnarray}
+[Re \left\langle V_X V_Z^{*}\right\rangle \sin \alpha_Y  \sin (\varphi - \Omega_Y) h_{eff,Y}&-&\\
+ Re \left\langle V_Y V_Z^{*}\right\rangle\sin \alpha_X  \sin (\varphi - \Omega_X) h_{eff,X}]&\times& \nonumber \\
+\left[ \left\langle V_Z V_Z^{*} \right\rangle \right] ^{-1}&=& \frac{  h_{eff,X} h_{eff,Y}}{ h_{eff,Z}} \nonumber \\
+&\times& [\cos \alpha_X  \sin \alpha_Y  \sin (\varphi - \Omega_Y)\nonumber \\
+&-&  \cos \alpha_Y \sin \alpha_X  \sin (\varphi - \Omega_X) \nonumber \\
+&+&  \frac{\cos \theta}{\sin \theta\ } \sin \alpha_X  \sin \alpha_Y ( \cos (\varphi - \Omega_Y)  \sin (\varphi - \Omega_X)\nonumber \\
+&-& \cos (\varphi - \Omega_X)  \sin (\varphi - \Omega_Y)) ]\nonumber
+\end{eqnarray}
+
+\begin{eqnarray}
+Re \left\langle V_X V_Z^{*}\right\rangle \sin \alpha_Y  \sin (\varphi - \Omega_Y) h_{eff,Y}h_{eff,Z}&-&\\
+Re \left\langle V_Y V_Z^{*}\right\rangle\sin \alpha_X  \sin (\varphi - \Omega_X) h_{eff,X}h_{eff,Z}&=& \left\langle V_Z V_Z^{*} \right\rangle h_{eff,X} h_{eff,Y} \nonumber \\
+&\times& [\cos \alpha_X  \sin \alpha_Y  \sin (\varphi - \Omega_Y)\nonumber \\
+&-&  \cos \alpha_Y \sin \alpha_X  \sin (\varphi - \Omega_X) \nonumber \\
+&+&  \frac{1}{\tan \theta\ } \sin \alpha_X  \sin \alpha_Y ( \cos (\varphi - \Omega_Y)  \sin (\varphi - \Omega_X)\nonumber \\
+&-& \cos (\varphi - \Omega_X)  \sin (\varphi - \Omega_Y)) ]\nonumber
+\end{eqnarray}
+
+\paragraph*{}
+Jetzt ist die analytische Lösung für $\theta$, also die Colattitude der einfallenden Strahlung, in sichtbare Nähe gerückt.
+
+\begin{eqnarray}
+[Re \left\langle V_X V_Z^{*}\right\rangle \sin \alpha_Y  \sin (\varphi - \Omega_Y) h_{eff,Y}h_{eff,Z}&-&\\
+Re \left\langle V_Y V_Z^{*}\right\rangle\sin \alpha_X  \sin (\varphi - \Omega_X) h_{eff,X}h_{eff,Z}]&\times& \nonumber \\
+\left[ \left\langle V_Z V_Z^{*} \right\rangle h_{eff,X} h_{eff,Y} \right]^{-1} &=& \cos \alpha_X  \sin \alpha_Y  \sin (\varphi - \Omega_Y)\nonumber \\
+&-&  \cos \alpha_Y \sin \alpha_X  \sin (\varphi - \Omega_X) \nonumber \\
+&+&  \frac{1}{\tan \theta\ } \sin \alpha_X  \sin \alpha_Y ( \cos (\varphi - \Omega_Y)  \sin (\varphi - \Omega_X)\nonumber \\
+&-& \cos (\varphi - \Omega_X)  \sin (\varphi - \Omega_Y)) \nonumber
+\end{eqnarray}
+
+\begin{eqnarray}
+[Re \left\langle V_X V_Z^{*}\right\rangle \sin \alpha_Y  \sin (\varphi - \Omega_Y) h_{eff,Y}h_{eff,Z}&-&\\
+Re\left\langle V_Y V_Z^{*}\right\rangle\sin \alpha_X  \sin (\varphi - \Omega_X) h_{eff,X}h_{eff,Z}]&\times& \nonumber \\
+\left[ \left\langle V_Z V_Z^{*} \right\rangle h_{eff,X} h_{eff,Y}\right]^{-1}&+&\nonumber \\
+\cos \alpha_Y \sin \alpha_X  \sin (\varphi - \Omega_X)&-&\nonumber \\
+\cos \alpha_X  \sin \alpha_Y  \sin (\varphi - \Omega_Y)&=&  \frac{1}{\tan \theta\ } \sin \alpha_X  \sin \alpha_Y ( \cos (\varphi - \Omega_Y)  \sin (\varphi - \Omega_X)\nonumber \\
+&-& \cos (\varphi - \Omega_X)  \sin (\varphi - \Omega_Y)) \nonumber
+\end{eqnarray}
+
+\begin{eqnarray}
+\left[ \tan \theta \right]  \times [ \sin \alpha_X  \sin \alpha_Y ( \cos (\varphi - \Omega_Y)  \sin (\varphi - \Omega_X)&-& \\
+\cos (\varphi - \Omega_X)  \sin (\varphi - \Omega_Y))]^{-1} &=&
+[\left\langle V_Z V_Z^{*} \right\rangle h_{eff,X} h_{eff,Y}] \nonumber \\
+&\times& [Re \left\langle V_X V_Z^{*}\right\rangle \sin \alpha_Y  \sin (\varphi - \Omega_Y) h_{eff,Y}h_{eff,Z}\nonumber \\
+&-&Re\left\langle V_Y V_Z^{*}\right\rangle\sin \alpha_X  \sin (\varphi - \Omega_X) h_{eff,X}h_{eff,Z}\nonumber \\
+&+&\left\langle V_Z V_Z^{*} \right\rangle h_{eff,X} h_{eff,Y} \nonumber \\
+&\times&(\cos \alpha_Y \sin \alpha_X  \sin (\varphi - \Omega_X)\nonumber \\
+&-&\cos \alpha_X  \sin \alpha_Y  \sin (\varphi - \Omega_Y))]^{-1} \nonumber
+\end{eqnarray}
+
+\begin{eqnarray}
+\tan \theta\  &=&
+[\left\langle V_Z V_Z^{*} \right\rangle h_{eff,X} h_{eff,Y} \sin \alpha_X  \sin \alpha_Y \\
+&\times&( \cos (\varphi - \Omega_Y)  \sin (\varphi - \Omega_X) -\cos (\varphi - \Omega_X)  \sin (\varphi - \Omega_Y))]\nonumber \\
+&\times& [Re \left\langle V_X V_Z^{*}\right\rangle \sin \alpha_Y  \sin (\varphi - \Omega_Y) h_{eff,Y}h_{eff,Z} \nonumber \\
+&-&Re\left\langle V_Y V_Z^{*}\right\rangle\sin \alpha_X  \sin (\varphi - \Omega_X) h_{eff,X}h_{eff,Z}\nonumber \\
+&+&\left\langle V_Z V_Z^{*} \right\rangle h_{eff,X} h_{eff,Y} \nonumber \\
+&\times&(\cos \alpha_Y \sin \alpha_X  \sin (\varphi - \Omega_X)-\cos \alpha_X  \sin \alpha_Y  \sin (\varphi - \Omega_Y))]^{-1} \nonumber
+\end{eqnarray}
+
+
+\paragraph*{}
+Sowohl der Tangens, als auch die Colattitude sind über $\pi$ definiert. $\theta$ ist also eindeutig bestimmt.
+
+\subsection{Die Stokes Parameter}\label{sec_analytisch_stokes}
+
+\paragraph*{}
+Um die Stokes Parameter analytisch zu erhalten, kann man sich der Formeln (\ref{auto_corr_allgemein}) - (\ref{im_allgemein}) bedienen. Die Parameter A und B, die durch (5.9) und (5.10) beschrieben werden, sind jetzt bekannt, woduch (\ref{auto_corr_allgemein}) - (\ref{im_allgemein}) zu linearen Gleichungen werden. Man kann mit Hilfe von 2 Antennen eine Matrixgleichung aufstellen, die dann durch die Methoden der linearen Algebra gelöst werden kann. Diese Methode ist ähnlich der von Cecconi et al., wobei die Einschränkung, dass 2 Antennen symmetrisch zur x Achse angebracht sein müssen, nicht notwendig ist. Dieses Gleichungssystem lässt sich auf beliebig gerichtete Monopol Antennen anwenden. Zunächst braucht man die Gleichungen für 2 Antennen, z.B. X und Z.
+
+\begin{eqnarray}
+\left\langle V_X V_X^{*} \right\rangle &=& \hat{S}\eta_0 h_{eff,X}^2[(\hat{Q}+1) A^2_X + (1-\hat{Q}) B^2_X+ 2 \hat{U}A_X B_X]  \\
+\left\langle V_Z V_Z^{*} \right\rangle &=& \hat{S}\eta_0 h_{eff,Z}^2[(\hat{Q}+1) A^2_Z + (1-\hat{Q}) B^2_Z+ 2 \hat{U}A_Z B_Z]  \\
+Re \left\langle V_X V_Z^{*}\right\rangle &=& \hat{S}\eta_0 h_{eff,X} h_{eff,Z}[(\hat{Q}+1) A_X A_Z + (1-\hat{Q}) B_X B_Z +\\
+&+& \hat{U} (A_X B_Z + A_Z B_X)] \nonumber \\
+Im \left\langle V_X V_Z^{*}\right\rangle &=& -\hat{S}\eta_0 h_{eff,X} h_{eff,Z} \hat{V}[-A_X B_Z + A_Z B_X ]
+\end{eqnarray}
+
+\paragraph*{}
+Dieses System kann man jetzt schrittweise umwandeln
+\begin{eqnarray}
+\left\langle V_X V_X^{*} \right\rangle &=& \hat{S}\eta_0 h_{eff,X}^2[\hat{Q}A^2_X+A^2_X + B^2_X-\hat{Q} B^2_X+ 2 \hat{U}A_X B_X]  \\
+\left\langle V_Z V_Z^{*} \right\rangle &=& \hat{S}\eta_0 h_{eff,Z}^2[\hat{Q}A^2_Z+A^2_Z + B^2_Z-\hat{Q} B^2_Z+ 2 \hat{U}A_Z B_Z]  \\
+Re \left\langle V_X V_Z^{*}\right\rangle &=& \hat{S}\eta_0 h_{eff,X} h_{eff,Z}[\hat{Q}A_X A_Z+ A_X A_Z +  B_X B_Z-\hat{Q} B_X B_Z +\\
+&+&  \hat{U} (A_X B_Z + A_Z B_X)] \nonumber \\
+Im \left\langle V_X V_Z^{*}\right\rangle &=& -\hat{S}\eta_0 h_{eff,X} h_{eff,Z} \hat{V}[-A_X B_Z + A_Z B_X ]
+\end{eqnarray}
+
+\begin{eqnarray}
+\frac{\left\langle V_X V_X^{*} \right\rangle }{\eta_0 h_{eff,X}^2}&=& \hat{S}\hat{Q}A^2_X+\hat{S}A^2_X + \hat{S}B^2_X-\hat{S}\hat{Q} B^2_X+ 2 \hat{S}\hat{U}A_X B_X  \\
+\frac{\left\langle V_Z V_Z^{*} \right\rangle }{\eta_0 h_{eff,Z}^2}&=& \hat{S}\hat{Q}A^2_Z+\hat{S}A^2_Z + \hat{S}B^2_Z-\hat{S}\hat{Q} B^2_Z+ 2 \hat{S}\hat{U}A_Z B_Z  \\
+\frac{Re \left\langle V_X V_Z^{*}\right\rangle }{\eta_0 h_{eff,X} h_{eff,Z}}&=& \hat{S}\hat{Q}A_X A_Z+ \hat{S}A_X A_Z +  \hat{S}B_X B_Z\\
+&-&\hat{S}\hat{Q} B_X B_Z + \hat{S}\hat{U} (A_X B_Z + A_Z B_X)] \nonumber \\
+\frac{Im \left\langle V_X V_Z^{*}\right\rangle }{\eta_0 h_{eff,X} h_{eff,Z}}&=& -\hat{S} \hat{V}[-A_X B_Z + A_Z B_X ]
+\end{eqnarray}
+
+\begin{eqnarray}
+\frac{\left\langle V_X V_X^{*} \right\rangle }{\eta_0 h_{eff,X}^2}&=& \hat{S}(A^2_X+ B^2_X) +\hat{S}\hat{Q}(A^2_X- B^2_X)+ 2 \hat{S}\hat{U}A_X B_X  \\
+\frac{\left\langle V_Z V_Z^{*} \right\rangle }{\eta_0 h_{eff,Z}^2}&=& \hat{S}(A^2_Z + B^2_Z) +\hat{S}\hat{Q}(A^2_Z - B^2_Z)+ 2 \hat{S}\hat{U}A_Z B_Z  \\
+\frac{Re \left\langle V_X V_Z^{*}\right\rangle }{\eta_0 h_{eff,X} h_{eff,Z}}&=& \hat{S}(A_X A_Z +  B_X B_Z) + \hat{S}\hat{Q}(A_X A_Z -B_X B_Z)\\
+&+& \hat{S}\hat{U} (A_X B_Z + A_Z B_X)] \nonumber \\
+\frac{Im \left\langle V_X V_Z^{*}\right\rangle }{\eta_0 h_{eff,X} h_{eff,Z}}&=& - \hat{S} \hat{V}(-A_X B_Z + A_Z B_X )
+\end{eqnarray}
+
+\paragraph*{}
+In Matrix Schreibweise kann man also schreiben:\\
+\begin{equation}
+\textbf{M}\textbf{x}=\textbf{b}
+\end{equation}
+\paragraph*{}
+mit
+\begin{equation}
+\textbf{b}=\left[ \begin{array}{c}
+\frac{\left\langle V_X V_X^{*} \right\rangle }{\eta_0 h_{eff,X}^2} \\
+ \frac{\left\langle V_Z V_Z^{*} \right\rangle }{\eta_0 h_{eff,Z}^2}\\
+\frac{Re \left\langle V_X V_Z^{*}\right\rangle }{\eta_0 h_{eff,X} h_{eff,Z}} \\
+\frac{Im \left\langle V_X V_Z^{*}\right\rangle }{\eta_0 h_{eff,X} h_{eff,Z}}
+\end{array}  \right]
+\end{equation}
+
+\begin{equation}
+\textbf{x}=\left[ \begin{array}{c}
+\hat{S}\\
+\hat{S}\hat{Q}\\
+\hat{S}\hat{U}\\
+\hat{S}\hat{V}
+\end{array}  \right]
+\end{equation}
+
+\begin{equation}
+\textbf{M}= \left[
+\begin{array}{cccc}
+(A^2_X+ B^2_X) & (A^2_X- B^2_X) & 2 A_X B_X & 0 \\
+(A^2_Z+ B^2_Z) &(A^2_Z- B^2_Z)  & 2 A_Z B_Z & 0 \\
+ (A_X A_Z +  B_X B_Z)& (A_X A_Z - B_X B_Z) & (A_X B_Z + A_Z B_X) & 0 \\
+0 & 0 & 0 & -(-A_X B_Z + A_Z B_X )
+\end{array} \right]
+\end{equation}
+
+\paragraph*{}
+Diese Gleichung ist lösbar, solange \textbf{M} nicht singulär ist.
+
+
+
+
+\section{Numerische Lösung}
+\subsection{Definieren des Problems}
+\paragraph*{}
+Wie schon oben erwähnt, handelt es sich um ein nonlineares, überdeterminiertes System von Gleichungen. Wenn man die Gleichungen (\ref{auto_corr_allgemein})-(\ref{im_allgemein}) für Antennen X,Y und Z aufschreibt, erhält man 9 Gleichungen, nämlich die Gleichungen für $\left\langle V_X V_X^{*} \right\rangle$,  $\left\langle V_Y V_Y^{*} \right\rangle$,  $\left\langle V_Z V_Z^{*} \right\rangle$,  $Re\left\langle V_X V_Y^{*} \right\rangle$, $Re\left\langle V_X V_Z^{*} \right\rangle$, $Re\left\langle V_Y V_Z^{*} \right\rangle$, $Im\left\langle V_X V_Y^{*} \right\rangle$, $Im\left\langle V_X V_Z^{*} \right\rangle$ und schliesslich $Im\left\langle V_Y V_Z^{*} \right\rangle$. Zusätzlich hat man die entsprechenden 9 Messwerte. Ich bezeichne sie mit $\widehat{\left\langle V_X V_X^{*} \right\rangle}$,  $\widehat{\left\langle V_Y V_Y^{*} \right\rangle}$,  $\widehat{\left\langle V_Z V_Z^{*} \right\rangle}$,  $\widehat{Re\left\langle V_X V_Y^{*} \right\rangle}$, $\widehat{Re\left\langle V_X V_Z^{*} \right\rangle}$, $\widehat{Re\left\langle V_Y V_Z^{*} \right\rangle}$, $\widehat{Im\left\langle V_X V_Y^{*} \right\rangle}$, $\widehat{Im\left\langle V_X V_Z^{*} \right\rangle}$ und $\widehat{Im\left\langle V_Y V_Z^{*} \right\rangle}$.
+
+\paragraph*{}
+Man kann jetzt eine Funktion bilden, welche die Summe der Quadrate der Differenzen zwischen gemessenen und gerechneten Werten bildet.
+
+\begin{eqnarray}
+F(\theta , \phi, \hat{S},\hat{Q},\hat{U},\hat{V})&=&(\left\langle V_X V_X^{*} \right\rangle - \widehat{\left\langle V_X V_X^{*} \right\rangle})^2\\
+&+&(\left\langle V_Y V_Y^{*} \right\rangle - \widehat{\left\langle V_Y V_Y^{*} \right\rangle})^2 \nonumber \\
+&+&(\left\langle V_Z V_Z^{*} \right\rangle - \widehat{\left\langle V_Z V_Z^{*} \right\rangle})^2 \nonumber \\
+&+&(Re\left\langle V_X V_Y^{*} \right\rangle - \widehat{Re\left\langle V_X V_Y^{*} \right\rangle})^2 \nonumber \\
+&+&(Re\left\langle V_X V_Z^{*} \right\rangle - \widehat{Re\left\langle V_X V_Z^{*} \right\rangle})^2 \nonumber \\
+&+&(Re\left\langle V_Y V_Z^{*} \right\rangle - \widehat{Re\left\langle V_Y V_Z^{*} \right\rangle})^2 \nonumber \\
+&+&(Im\left\langle V_X V_Y^{*} \right\rangle - \widehat{Im\left\langle V_X V_Y^{*} \right\rangle})^2 \nonumber \\
+&+&(Im\left\langle V_X V_Z^{*} \right\rangle - \widehat{Im\left\langle V_X V_Z^{*} \right\rangle})^2 \nonumber\\
+&+&(Im\left\langle V_Y V_Z^{*} \right\rangle - \widehat{Im\left\langle V_Y V_Z^{*} \right\rangle})^2 \nonumber
+\end{eqnarray}
+
+Ausgeschrieben:
+
+\begin{eqnarray}
+F(\theta , \phi, \hat{S},\hat{Q},\hat{U},\hat{V})&=&(\hat{S}\eta_0 h_{eff,X}^2[(\hat{Q}+1) A^2_X + \\
+&+&(1-\hat{Q}) B^2_X+ 2 \hat{U}A_X B_X]  - \widehat{\left\langle V_X V_X^{*} \right\rangle})^2\nonumber \\
+&+&(\hat{S}\eta_0 h_{eff,Y}^2[(\hat{Q}+1) A^2_Y + \nonumber \\
+&+&(1-\hat{Q}) B^2_Y + 2 \hat{U}A_Y B_Y]  - \widehat{\left\langle V_Y V_Y^{*} \right\rangle})^2 \nonumber \\
+&+&(\hat{S}\eta_0 h_{eff,Z}^2[(\hat{Q}+1) A^2_Z \nonumber \\
+&+& (1-\hat{Q}) B^2_Z+ 2 \hat{U}A_Z B_Z]  - \widehat{\left\langle V_Z V_Z^{*} \right\rangle})^2 \nonumber \\
+&+&(\hat{S}\eta_0 h_{eff,X} h_{eff,Y}[(\hat{Q}+1) A_X A_Y + (1-\hat{Q}) B_X B_Y  \nonumber \\
+&+&  \hat{U} (A_X B_Y + A_Y B_X)] - \widehat{Re\left\langle V_X V_Y^{*} \right\rangle})^2 \nonumber \\
+&+&(\hat{S}\eta_0 h_{eff,X} h_{eff,Z}[(\hat{Q}+1) A_X A_Z + (1-\hat{Q}) B_X B_Z  \nonumber \\
+&+&  \hat{U} (A_X B_Z + A_Z B_X)] - \widehat{Re\left\langle V_X V_Z^{*} \right\rangle})^2 \nonumber \\
+&+&(\hat{S}\eta_0 h_{eff,X} h_{eff,Z}[(\hat{Q}+1) A_Y A_Z + (1-\hat{Q}) B_Y B_Z  \nonumber \\
+&+&  \hat{U} (A_Y B_Z + A_Z B_Y)] - \widehat{Re\left\langle V_Y V_Z^{*} \right\rangle})^2 \nonumber \\
+&+&(-\hat{S}\eta_0 h_{eff,X} h_{eff,Y} \hat{V}[-A_X B_Y + A_Y B_X ] - \widehat{Im\left\langle V_X V_Y^{*} \right\rangle})^2 \nonumber \\
+&+&(-\hat{S}\eta_0 h_{eff,X} h_{eff,Z} \hat{V}[-A_X B_Z + A_Z B_X ] - \widehat{Im\left\langle V_X V_Z^{*} \right\rangle})^2 \nonumber\\
+&+&(-\hat{S}\eta_0 h_{eff,Y} h_{eff,Z} \hat{V}[-A_Y B_Z + A_Z B_Y ] - \widehat{Im\left\langle V_X V_Z^{*} \right\rangle})^2 \nonumber
+\end{eqnarray}
+
+\paragraph*{}
+Diese Funktion kann natürlich nur positiv oder Null sein. Sie ist dann Null, wenn die Parameter jene Werte einnehmen, welche der Lösung des Problems entspricht. Wenn man also das Minimum dieser Funktion sucht, erhält man die Lösung. Geometrisch gesehen handelt es sich um eine 6-dimensionale Hyperfläche, deren Minimum zu suchen ist. Geometrischer Natur ist auch die numerische Lösungsmethode, die ich vorschlage.
+
+\subsection{Das Minimum einer mehrdimensionalen Funktion}
+\paragraph*{}
+Das Taylor Polynom, welches eine mehrdimensionale Funktion an der Stelle $\textbf{x}_0 $ zur 2. Ordnung approximiert hat die Form
+\begin{equation}
+F(\textbf{x} )\simeq F( \textbf{x}_0) + \delta \textbf{ x}^T \nabla F( \textbf{x}_0 )  + \frac{1}{2}  \delta \textbf{ x}^T \textbf{G}( \textbf{x}_0 ) \delta \textbf{x}
+\end{equation}
+
+\paragraph*{}
+$\textbf{G}( \textbf{x} )$ ist die Hess'sche Matrix, deren Komponenten folgende Form haben.
+
+\begin{equation}
+G_{ij}(\textbf{x} )=\frac{\partial^2 F}{\partial x_i \partial x_j}(\textbf{x})
+\end{equation}
+\paragraph*{}
+An einem Minimum \textbf{x} muss folgendes gegeben sein:\\
+\begin{itemize}
+\item  $\nabla F( \textbf{x} )=0$
+\item  $\textbf{G}( \textbf{x} )$ ist positiv definit, dass heisst, sie hat nur positive Eigenwerte.
+\end{itemize}
+\paragraph*{}
+Das erste Kriterium sichert, dass es sich um einen stationären Punkt handelt, das zweite, dass es ein Minimum ist. Die normale Methode das 2. Kiterium zu testen wäre, die Eigenwerte auszurechnen. Dies ist bei grösseren Matrizen nicht praktikabel. Zum Glück gibt es eine andere Methode, nämlich die Cholesky Methode.
+\paragraph*{}
+
+\shadowbox{\parbox{12cm}{Cholesky Theorem\\
+\\
+Eine symmetrische Matrix \textbf{A} ist positiv definit wenn, und nur wenn, sie eine Cholesky Dekomposition $\textbf{A}=\textbf{LL}^T$ hat, so dass \textbf{L} eine untere Dreiecksmatrix ist, alle Elemente von \textbf{L} real sind und die Elemente der Hauptdiagonalen ungleich Null sind.}}
+\paragraph*{}
+\textbf{L} ist die untere Dreiecksmatrix. Wie man in Texten der numerischen Analysis nachlesen kann, berechnen sich die Elemente mit folgenden Formeln.
+\begin{eqnarray}
+l_{ii}&=&\left( a_{ii}-\sum^{i-1}_{k=1} l^2_{ik} \right) ^\frac{1}{2}\bigskip (i=1,...,n)\\
+l_{ji}&=&\frac{1}{l_{ii}}\left( a_{ij}-\sum^{i-1}_{k=1} l_{ik} l_{jk}\right) \bigskip (i=1,...,n;j=i+1,...,n)
+\end{eqnarray}
+\paragraph*{}
+Es gilt die Konvention, dass die Summe über Terme, die nicht existieren, null ist. Man muss hier darauf achten, dass man die Elemente in der richtigen Reihenfolge berechnet. Ein weiterer Vorteil der Colesky Dekomposition ist, dass man mit ihr auch gleich die Gleichung der Form $\textbf{Ax}=\textbf{b}$ lösen kann. Die Methode ist stabil und schneller als die LU Dekomposition.
+
+\subsection{Die Newton-Raphson Methode}
+\paragraph*{}
+Als numerische Methode, das Minimum herauszufinden, scheint mir die Newton-Raphson Methode (NRM) besonders geeignet. Sie verwendet nicht nur die Information aus dem Gradienten sondern auch aus der Krümmung, das heisst, der Hess'schen Matrix, um das Minimum effizient zu suchen. Um die NRM anwenden zu können, muss die, zu minimierende, Funktion kontinuierlich sein und Ableitungen der ersten und zweiten Ordnung besitzen.
+
+\subsubsection{Der eindimensionale Fall}
+\paragraph*{}
+Zur Erinnerung: Das Berechnen des Minimums einer eindimensionalen Funktion geschieht durch das Berechnen der Stelle, wo $f'=0$ gilt. Die NRM basiert auf der Taylor Näherung erster Ordnung. Das Taylorpolynom an der Stelle $x_r$ der Funktion $h(x)= f'(x)$ lautet
+
+\begin{equation}
+h(x)\simeq h(x_r)+(x-x_r)h'(x_0)
+\end{equation}
+\paragraph*{}
+An der Nullstelle ist $h(x)=0$, also suchen wir $x_{r+1}$, so dass
+\begin{equation}
+0=h(x_r)+(x_{r+1}-x_r)h'(x_r)
+\end{equation}
+\paragraph*{}
+Das gibt
+\begin{equation}
+x_{r+1}=x_r-\frac{h(x_r)}{h'(x_r)}=x_r-\frac{f'(x_r)}{f''(x_r)}
+\end{equation}
+\paragraph*{}
+Dies ist die Newton Raphson Formel für die Berechnung von $f'(x)=0$.
+\subsubsection{Die multidimensionale NRM}
+\paragraph*{}
+Bei einem n-dimensionalen Problem kann man einen stationären Punkt bestimmen, indem man folgende Gleichung löst:
+\begin{equation}
+\nabla f(\textbf{x})=0
+\end{equation}
+\paragraph*{}
+Oder in Komponentenschreibweise:
+\begin{equation}
+\frac{\partial f}{\partial x_i}(\textbf{x})=0 \qquad(i=1,...,n)
+\end{equation}
+\paragraph*{}
+Es ist also ein System von n Gleichungen zu lösen. Die Newton-Raphson Formel um ein System $\textbf{h}(\textbf{x})=\textbf{0}$ zu lösen, lautet
+\begin{equation}
+\textbf{x}_{r+1}=\textbf{x}_r-\textbf{J}(\textbf{x}_r)^{-1}\textbf{h} (\textbf{x}_r)
+\end{equation}
+\paragraph*{}
+\textbf{J} ist die Jakobimatrix für \textbf{h}. Die Jacobimatrix für $\nabla f$ ist die Hess'sche matrix $G$. Daher wird aus der Gleichung (5.70)
+\begin{equation}
+\textbf{x}_{r+1}=\textbf{x}_r-\textbf{G}(\textbf{x}_r)^{-1}\nabla f(\textbf{x}_r)
+\end{equation}
+\paragraph*{}
+Die NRM bedient sich der Formel (5.71). Man kann sie wieder umformen:
+\begin{equation}
+\textbf{G}(\textbf{x}_r)\Delta_r=-\nabla f (\textbf{x}_r )
+\end{equation}
+\paragraph*{}
+Mit dieser Formel kann man den ''Displacement vector'' $\Delta_r $ finden, und mit
+\begin{equation}
+\textbf{x}_{r+1}=\textbf{x}_r + \Delta_r
+\end{equation}
+\paragraph*{}
+komplettiert sich das iterative System. Gleichung (5.72) löst man am besten mit der Cholesky Dekomposition. Man löst also
+\begin{equation}
+\textbf{Lc}=-\nabla f
+\end{equation}
+und anschliessend
+\begin{equation}
+\textbf{L}^T \textbf{x}=\textbf{c}
+\end{equation}
+Ein paar Nachteile hat die NRM allerdings:
+\begin{itemize}
+\item Die Methode konvergiert nicht immer, wenn der Ausgangspunkt nicht nahe genug der Lösung ist
+\item Man benötigt explizite Lösungen für $\nabla f$ und $\textbf{G}$
+\item Jede Iteration benötigt die Lösung des Gleichungssystems
+ \item Die Methode versagt, wenn \textbf{G} nicht positiv definit ist
+\end{itemize}
+\paragraph*{}
+Es gibt viele andere Methoden, die in einschlägigen Texten zu finden sind. Die NMR zeichnet sich durch eine gewisse Einfachheit und Stabilität aus. Aus diesem Grunde habe ich sie repräsentativ ausgewählt. Leider eignet sich die Methode nicht, globale Minima zu ermitteln. Abhängig von der Ausgangsposition marschiert der Algorithmus einfach immer abwärts, bis er an ein Minimum gekommen ist. Man muss den Ausgangspunkt also dermassen wählen, dass er sich in einem globalen Tal befindet. Die beste Möglichkeit, den Ausgangsort zu bestimmen, ist die Grid Methode. Man tastet rasterförmig die Funktion im relevanten Bereich ab und bestimmt so die Struktur der Hyperfläche. Dann kann man bestimmen, wo das globale Minimum liegen muss. Leider ist dieses Verfahren sehr zeitaufwändig und führt auch nicht immer zum Erfolg. Daher eignet es sich nur bedingt für eine Automatisierung.
+
+\chapter{Fehleranalyse}
+\section{Fehleranalyse der analytischen Lösung}
+\subsection{Die Herkunftsrichtung}
+\subsubsection{Fehlerfortpflanzung bei unabhängigen Observablen:}
+\paragraph*{}
+Um den Einfluss von Fehlern der Parameter auf die Lösung abzuschätzen, kann man das allgemeine Fehlerfortpflanzungsgesetz verwenden:
+
+\begin{equation}\label{error_prop}
+\sigma (F(x_1,...,x_N))= \sqrt{\sum_i (\frac{\partial F}{\partial x_i})^2 \sigma (x_i)^2} \qquad i=1...N
+\end{equation}
+\paragraph*{}
+Dieses Fehlerfortpflanzungsgesetz verwendet ausschliesslich Varianzen und ist daher nur gültig, solange die Messungen der verschiedenen Parameter als unabhängig zu sehen sind. Trotz dieser Einschränkung betrachte ich diesen Fall in dieser Sektion. F ist eine Funktion, die von den Parametern $x_1 - x_N$ abhängt und $\sigma(x_i)$ ist die Standardabweichung. Der Tangens von Phi ist in $(5.28)$ von den imaginaren Komponenten der Crosscorrelationsparameter zwischen X-Y, und X-Z, sowie von Länge und Ausrichtung der elektrischen Antennen abhhängig. Man braucht also folgende Standardabweichungen:
+
+\begin{itemize}
+\item $\sigma (Im \left\langle V_X V_Z^{*}\right\rangle)$
+\item $\sigma (Im \left\langle V_Y V_Z^{*}\right\rangle)$
+\item $\sigma (h_{eff,X})$
+\item $\sigma (h_{eff,Y})$
+\item $\sigma (\alpha_X)=2°$
+\item $\sigma (\alpha_Y)=2°$
+\item $\sigma (\Omega_X)=2°$
+\item $\sigma (\Omega_Y)=2°$
+\end{itemize}
+
+\paragraph*{}
+Es ist die allgemeine Meinung, dass DF einen Sinn macht, solange die Ausrichtung der effektiven Achsen auf 2° genau bekannt ist. Daher habe ich in der Liste das Sigma der Winkel schon mit 2° angegeben. Die übrigen Standardabweichungen sind entsprechend der Raumsonde zu ermitteln und zu verwenden. Ausserdem braucht man die entsprechenden Ableitungen der rechten Seite von $(5.28)$. Dies ist trivial, aber mühsam. Daher werde ich die Details hier nicht anführen. Hat man alle notwendigen Vorarbeiten geleistet, kann man die Standardabweichung der berechneten Azimutalrichtung wie folgt abschätzen:
+
+\begin{eqnarray}
+\sigma (\tan (\varphi)) &=&  [(\frac{\partial \tan (\varphi)}{\partial Im \left\langle V_X V_Z^{*}\right\rangle})^2 \sigma (Im \left\langle V_X V_Z^{*}\right\rangle)^2\\
+&+& (\frac{\partial \tan (\varphi)}{\partial Im \left\langle V_Y V_Z^{*}\right\rangle})^2 \sigma (Im \left\langle V_Y V_Z^{*}\right\rangle)^2 \nonumber \\
+&+& (\frac{\partial \tan (\varphi)}{\partial h_{eff,X}})^2 \sigma (h_{eff,X})^2 \nonumber \\
+&+& (\frac{\partial \tan (\varphi)}{\partial h_{eff,Y}})^2 \sigma (h_{eff,Y})^2 \nonumber \\
+&+& (\frac{\partial \tan (\varphi)}{\partial \alpha_X})^2 \sigma (\alpha_X)^2 \nonumber \\
+&+& (\frac{\partial \tan (\varphi)}{\partial \alpha_Y})^2 \sigma (\alpha_Y)^2 \nonumber \\
+&+& (\frac{\partial \tan (\varphi)}{\partial \Omega_X})^2 \sigma (\Omega_X)^2 \nonumber \\
+&+& (\frac{\partial \tan (\varphi)}{\partial \Omega_Y})^2 \sigma (\Omega_Y)^2]^\frac{1}{2} \nonumber
+\end{eqnarray}
+
+\paragraph*{}
+Unter der Annahme, dass die Standardabweichung von $\varphi$ sehr klein ist, kann man die Gleichung noch durch die \textit{small angle approximation} vereinfachen. Diese funktioniert natürlich nur, solange man in Radianten rechnet.
+
+\begin{eqnarray}
+\sigma (\varphi) &=&  [(\frac{\partial \varphi}{\partial Im \left\langle V_X V_Z^{*}\right\rangle})^2 \sigma (Im \left\langle V_X V_Z^{*}\right\rangle)^2\\
+&+& (\frac{\partial \varphi}{\partial Im \left\langle V_Y V_Z^{*}\right\rangle})^2 \sigma (Im \left\langle V_Y V_Z^{*}\right\rangle)^2 \nonumber \\
+&+& (\frac{\partial \varphi}{\partial h_{eff,X}})^2 \sigma (h_{eff,X})^2 \nonumber \\
+&+& (\frac{\partial \varphi}{\partial h_{eff,Y}})^2 \sigma (h_{eff,Y})^2 \nonumber \\
+&+& (\frac{\partial \varphi}{\partial \alpha_X})^2 \sigma (\alpha_X)^2 \nonumber \\
+&+& (\frac{\partial \varphi}{\partial \alpha_Y})^2 \sigma (\alpha_Y)^2 \nonumber \\
+&+& (\frac{\partial \varphi}{\partial \Omega_X})^2 \sigma (\Omega_X)^2 \nonumber \\
+&+& (\frac{\partial \varphi}{\partial \Omega_Y})^2 \sigma (\Omega_Y)^2]^\frac{1}{2} \nonumber
+\end{eqnarray}
+
+\paragraph*{}
+Das selbe Verfahren kann man auch anwenden, um die Standardabweichung des Tangens von $\theta$ zu erhalten. Wie an $(5.38)$ zu sehen ist, haben wir es mit folgenden Sigmas zu tun:
+
+\begin{itemize}
+\item $\sigma (\left\langle V_Z V_Z^{*}\right\rangle)$
+\item $\sigma (Re \left\langle V_X V_Z^{*}\right\rangle)$
+\item $\sigma (Re \left\langle V_Y V_Z^{*}\right\rangle)$
+\item $\sigma (h_{eff,X})$
+\item $\sigma (h_{eff,Y})$
+\item $\sigma (h_{eff,Z})$
+\item $\sigma (\alpha_X)=2°$
+\item $\sigma (\alpha_Y)=2°$
+\item $\sigma (\Omega_X)=2°$
+\item $\sigma (\Omega_Y)=2°$
+\item $\sigma (\varphi)$
+\end{itemize}
+
+\paragraph*{}
+Die Formel:
+
+\begin{eqnarray}
+\sigma (\tan (\theta)) &=&  [(\frac{\partial \tan (\theta)}{\partial \left\langle V_Z V_Z^{*}\right\rangle})^2 \sigma ( \left\langle V_Z V_Z^{*}\right\rangle)^2\\
+&+& (\frac{\partial \tan (\theta)}{\partial Re \left\langle V_X V_Z^{*}\right\rangle})^2 \sigma (Re \left\langle V_X V_Z^{*}\right\rangle)^2 \nonumber \\
+&+& (\frac{\partial \tan (\theta)}{\partial Re \left\langle V_Y V_Z^{*}\right\rangle})^2 \sigma (Re \left\langle V_Y V_Z^{*}\right\rangle)^2 \nonumber \\
+&+& (\frac{\partial \tan (\theta)}{\partial h_{eff,X}})^2 \sigma (h_{eff,X})^2 \nonumber \\
+&+& (\frac{\partial \tan (\theta)}{\partial h_{eff,Y}})^2 \sigma (h_{eff,Y})^2 \nonumber \\
+&+& (\frac{\partial \tan (\theta)}{\partial h_{eff,Z}})^2 \sigma (h_{eff,Z})^2 \nonumber \\
+&+& (\frac{\partial \tan (\theta)}{\partial \alpha_X})^2 \sigma (\alpha_X)^2 \nonumber \\
+&+& (\frac{\partial \tan (\theta)}{\partial \alpha_Y})^2 \sigma (\alpha_Y)^2 \nonumber \\
+&+& (\frac{\partial \tan (\theta)}{\partial \Omega_X})^2 \sigma (\Omega_X)^2 \nonumber \\
+&+& (\frac{\partial \tan (\theta)}{\partial \Omega_Y})^2 \sigma (\Omega_Y)^2 \nonumber \\
+&+& (\frac{\partial \tan (\theta)}{\partial \varphi})^2 \sigma (\varphi)^2 ]^\frac{1}{2}\nonumber
+\end{eqnarray}
+
+\paragraph*{}
+Oder
+
+\begin{eqnarray}
+\sigma (\theta) &=&  [(\frac{\partial \theta}{\partial \left\langle V_Z V_Z^{*}\right\rangle})^2 \sigma ( \left\langle V_Z V_Z^{*}\right\rangle)^2\\
+&+& (\frac{\partial \theta}{\partial Re \left\langle V_X V_Z^{*}\right\rangle})^2 \sigma (Re \left\langle V_X V_Z^{*}\right\rangle)^2 \nonumber \\
+&+& (\frac{\partial \theta}{\partial Re \left\langle V_Y V_Z^{*}\right\rangle})^2 \sigma (Re \left\langle V_Y V_Z^{*}\right\rangle)^2 \nonumber \\
+&+& (\frac{\partial \theta}{\partial h_{eff,X}})^2 \sigma (h_{eff,X})^2 \nonumber \\
+&+& (\frac{\partial \theta}{\partial h_{eff,Y}})^2 \sigma (h_{eff,Y})^2 \nonumber \\
+&+& (\frac{\partial \theta}{\partial h_{eff,Z}})^2 \sigma (h_{eff,Z})^2 \nonumber \\
+&+& (\frac{\partial \theta}{\partial \alpha_X})^2 \sigma (\alpha_X)^2 \nonumber \\
+&+& (\frac{\partial \theta}{\partial \alpha_Y})^2 \sigma (\alpha_Y)^2 \nonumber \\
+&+& (\frac{\partial \theta}{\partial \Omega_X})^2 \sigma (\Omega_X)^2 \nonumber \\
+&+& (\frac{\partial \theta}{\partial \Omega_Y})^2 \sigma (\Omega_Y)^2 \nonumber \\
+&+& (\frac{\partial \theta}{\partial \varphi})^2 \sigma (\varphi)^2 ]^\frac{1}{2}\nonumber
+\end{eqnarray}
+
+
+\paragraph*{}
+Wahrscheinlich ist es in der Praxis besser, die Differenziationen numerisch durchzuführen indem man die Lösungen um die einzelnen Sigmas perturbiert.
+
+\subsubsection{Multivariate Analyse}
+\paragraph*{}
+Wenn man keine Unabhängigkeit der Parameter annehmen kann, was auch im Falle unserer Fehleranalyse zutrifft, muss man auch die Kovarianzen berücksichtigen. Das Fehlerfortpflanzungsgesetz wird dann zu
+
+\begin{equation}\label{error_prop_multi_variant}
+\sigma (F(x_1,...,x_N))= \sqrt{\sum_{i=1}^N \sum_{j=1}^N \frac{\partial F}{\partial x_i} \frac{\partial F}{\partial x_j} \sigma_{ij} } \qquad i,j=1...N
+\end{equation}
+
+\paragraph*{}
+Die Schreibweise ist so zu verstehen, dass $\sigma_{ij}$ die Kovarianz zwischen den Parametern $x_i$ und $x_j$ ist. Ausserdem sind $\sigma_i^2$ und $\sigma_{ii}$ äquivalent. Die Formel kann man in Matrixschreibweise einfacher darstellen:
+
+\begin{equation}\label{error_prop_multi_variant_matrix}
+\sigma (F(x_1,...,x_N))^2= \nabla F^T \Sigma \nabla F
+\end{equation}
+
+\newpage
+\paragraph*{}
+$\Sigma$ ist die Varianz-Kovarianz Matrix. Die Kovarianzen der Korrelationsparameter muss man bei den Entwicklern der Empfänger erfragen. Die Kovarianzen der effektiven Höhen kann man bei der numerischen Antennenkalibration ermitteln (siehe \cite{antenna_report_1}). Zwischen den Messgrössen beider Gruppen ist wohl keine Kovarianz zu erwarten. Man kann die Matrix also etwas vereinfachend aus zwei Submatrizen aufbauen:
+
+\begin{equation}\label{var-covar-matr_measured}
+\Sigma_{\varphi,measured}=\left(%
+\begin{array}{cc}
+  \sigma_{Im \left\langle V_X V_Z^{*}\right \rangle}^2 & \sigma_{Im \left\langle V_X V_Z^{*}\right\rangle Im \left\langle V_Y V_Z^{*}\right\rangle} \\
+ \sigma_{Im \left\langle V_Y V_Z^{*}\right\rangle Im \left\langle V_X V_Z^{*}\right\rangle} & \sigma_{Im \left\langle V_Y V_Z^{*}\right\rangle}^2 \\
+\end{array}
+\right)
+\end{equation}
+
+\paragraph*{}
+und
+
+\begin{equation}\label{var-covar-matr_antennas}
+\Sigma_{\varphi,antenna}=\left(%
+\begin{array}{cccccc}
+\sigma_{h_{eff,X}}^2 & \sigma_{h_{eff,X} h_{eff,Y}} & \sigma_{h_{eff,X} \alpha_X} & \sigma_{h_{eff,X} \alpha_Y} & \sigma_{h_{eff,X} \Omega_X} & \sigma_{h_{eff,X} \Omega_Y} \\
+\sigma_{h_{eff,Y} h_{eff,X}} & \sigma_{h_{eff,Y}}^2 & \sigma_{h_{eff,Y} \alpha_X} & \sigma_{h_{eff,Y} \alpha_Y} & \sigma_{h_{eff,Y} \Omega_X} & \sigma_{h_{eff,Y} \Omega_Y} \\
+\sigma_{\alpha_X h_{eff,X}} & \sigma_{\alpha_X h_{eff,Y}} & \sigma_{\alpha_X}^2 & \sigma_{\alpha_X \alpha_Y} & \sigma_{\alpha_X \Omega_X} & \sigma_{\alpha_X \Omega_Y} \\
+\sigma_{\alpha_Y h_{eff,X}} & \sigma_{\alpha_Y h_{eff,Y}} & \sigma_{\alpha_Y \alpha_X} & \sigma_{\alpha_Y}^2 & \sigma_{\alpha_Y \Omega_X} & \sigma_{\alpha_Y \Omega_Y} \\
+\sigma_{\Omega_X h_{eff,X}} & \sigma_{\Omega_X h_{eff,Y}} & \sigma_{\Omega_X \alpha_X} & \sigma_{\Omega_X \alpha_Y} & \sigma_{\Omega_X}^2 & \sigma_{\Omega_X \Omega_Y} \\
+\sigma_{\Omega_Y h_{eff,X}} & \sigma_{\Omega_Y h_{eff,Y}} & \sigma_{\Omega_Y \alpha_X} & \sigma_{\Omega_Y \alpha_Y} & \sigma_{\Omega_Y \Omega_X} & \sigma_{ \Omega_Y}^2 \\
+\end{array}
+\right)
+\end{equation}
+
+\paragraph*{}
+Die gesamte Matrix ist dann
+
+\begin{equation}\label{var-covar-matr_phi_simpli2}
+\Sigma_\varphi=\left(%
+\begin{array}{cc}
+  \Sigma_{\phi,measured} & 0 \\
+0 & \Sigma_{\phi,antenna} \\\end{array}%
+\right)
+\end{equation}
+
+\paragraph*{}
+Die selben Argumente gelten für die Varianz von $\theta$. Allerdings führe ich in dieser Matrix die Varianz von $\phi$ als eigene Kategorie an und gehe davon aus, dass es keine Kovarianzen zwischen $\varphi$ und anderen Parametern gibt. Das ist zwar nicht ganz korrekt, vereinfacht aber die Sache erheblich.
+
+\begin{equation}\label{var-covar-matr_theta_simpli2}
+\Sigma_\theta=\left(%
+\begin{array}{ccc}
+  \Sigma_{\theta,measured} & 0 &0 \\
+0 & \Sigma_{theta,antenna} & 0\\
+0 & 0 & \Sigma_\varphi\\
+\end{array}%
+\right)
+\end{equation}
+
+\paragraph*{}
+Die Submatrizen haben folgendes Aussehen :
+
+\begin{equation}\label{var-covar-matr_measured_theta}
+\Sigma_{\theta,measured}=\left(
+\begin{array}{ccc}
+\sigma_{\left\langle V_Z V_Z^{*}\right\rangle}^2 & \sigma_{\left\langle V_Z V_Z^* \right\rangle} \sigma_{Re \left\langle V_X V_Z^* \right \rangle} & \sigma_{ \left\langle V_Z V_Z^{*}\right\rangle} \sigma_{Re \left\langle V_Y V_Z^* \right\rangle} \\
+\sigma_{Re \left\langle V_X V_Z^* \right \rangle} \sigma_{ \left\langle V_Z V_Z^* \right \rangle} & \sigma_{Re \left\langle V_X V_Z^* \right \rangle}^2 & \sigma_{Re \left\langle V_X V_Z^* \right\rangle Re \left \langle V_Y V_Z^* \right\rangle} \\
+ \sigma_{Re \left\langle V_Y V_Z^*\right\rangle} \sigma_{ \left\langle V_Z V_Z^*\right\rangle} & \sigma_{Re \left\langle V_Y V_Z^*\right\rangle} \sigma_{Re \left\langle V_X V_Z^*\right\rangle} & \sigma_{Re \left\langle V_Y V_Z^*\right\rangle}^2 \\
+\end{array}
+\right)
+\end{equation}
+
+\paragraph*{}
+und
+
+\begin{equation}\label{var-covar-matr_antennas_theta}
+\Sigma_{\theta,antenna}=\left(
+\begin{array}{ccccccc}
+\sigma_{h_{eff,X}}^2 & \sigma_{h_{eff,X} h_{eff,Y}} & \sigma_{h_{eff,X} h_{eff,Z}} & \sigma_{h_{eff,X} \alpha_X} & \sigma_{h_{eff,X} \alpha_Y} & \sigma_{h_{eff,X} \Omega_X} & \sigma_{h_{eff,X} \Omega_Y} \\
+\sigma_{h_{eff,Y} h_{eff,X}} & \sigma_{h_{eff,Y}}^2 & \sigma_{h_{eff,Y} h_{eff,Z}} & \sigma_{h_{eff,Y} \alpha_X} & \sigma_{h_{eff,Y} \alpha_Y} & \sigma_{h_{eff,Y} \Omega_X} & \sigma_{h_{eff,Y} \Omega_Y} \\
+\sigma_{h_{eff,Z} h_{eff,X}} & \sigma_{h_{eff,Z} h_{eff,Y}} & \sigma_{h_{eff,Z}}^2 & \sigma_{h_{eff,Z} \alpha_X} & \sigma_{h_{eff,Z} \alpha_Y} & \sigma_{h_{eff,Z} \Omega_X} & \sigma_{h_{eff,Z} \Omega_Y} \\
+\sigma_{\alpha_X h_{eff,X}} & \sigma_{\alpha_X h_{eff,Y}} & \sigma_{\alpha_X h_{eff,Z}} & \sigma_{\alpha_X}^2 & \sigma_{\alpha_X \alpha_Y} & \sigma_{\alpha_X \Omega_X} & \sigma_{\alpha_X \Omega_Y} \\
+\sigma_{\alpha_Y h_{eff,X}} & \sigma_{\alpha_Y h_{eff,Y}} & \sigma_{\alpha_Y h_{eff,Z}} & \sigma_{\alpha_Y \alpha_X} & \sigma_{\alpha_Y}^2 & \sigma_{\alpha_Y \Omega_X} & \sigma_{\alpha_Y \Omega_Y} \\
+\sigma_{\Omega_X h_{eff,X}} & \sigma_{\Omega_X h_{eff,Y}} & \sigma_{\Omega_X h_{eff,Z}} & \sigma_{\Omega_X \alpha_X} & \sigma_{\Omega_X \alpha_Y} & \sigma_{\Omega_X}^2 & \sigma_{\Omega_X \Omega_Y} \\
+\sigma_{\Omega_Y h_{eff,X}} & \sigma_{\Omega_Y h_{eff,Y}} & \sigma_{\Omega_Y h_{eff,Z}} & \sigma_{\Omega_Y \alpha_X} & \sigma_{\Omega_Y \alpha_Y} & \sigma_{\Omega_Y \Omega_X} & \sigma_{ \Omega_Y}^2 \\
+\end{array}
+\right)
+\end{equation}
+
+\subsection{Stoke's Parameter}
+\paragraph*{}
+Gemäss Gl. (5.55) können die Stoke's Parameter, welche die Polarisation der Welle beschreiben, durch die Lösung folgender linearen Gleichung gefunden werden:\\
+\begin{equation}
+\textbf{M}\textbf{x}=\textbf{b}
+\end{equation}
+\paragraph*{}
+\textbf{x} ist der Vector, deren Elemente die relativen Stoke's Parameter sind. Solange \textbf{M} und \textbf{b} exakt sind, ist eine exakte Lösung der linearen Gleichung möglich. Der einzige Fehler ist in diesem Fall der Rundungsfehler, der von der Darstellung der Zahlen, sowie von der Lösungsmethode abhängt. Bei der Wahl des Typs \textit{double} oder \textit{long double} sollte der Rundungsfehler in diesem Falle nicht relevant sein, weil er einige Grössenordnungen kleiner als die Ungenauigkeiten in \textbf{M} und \textbf{b} ist.
+\paragraph*{}
+Eben diese Fehler machen eine exakte Lösung unmöglich. Anstatt der oben genannten Gleichung, löst man in Wahrheit\\
+\begin{equation}
+(\textbf{M}+\delta \textbf{M})\textbf{x}=(\textbf{b}+\delta \textbf{b})
+\end{equation}
+\paragraph*{}
+$\delta \textbf{M}$ und $\delta \textbf{b}$ sind die Ungenauigkeiten in den entsprechenden Matrizen. Dies macht eine exakte Lösung unmöglich. Es müssen iterative Techniken verwendet werden, deren Ergebnisse sowohl von der Konditionierung der Matrix, als auch von der Methode abhängen. Die numerische Analysis hält eine Vielzahl von numerischen iterativen Methoden zur Lösung so eines Gleichungssystems bereit. Die Genauigkeit der Lösung lässt sich mit den Konditionszahlen $K_a$ und $K_r$ abschätzen, wobei a für absolut und r für relativ steht.\\
+
+\begin{eqnarray}
+K_a(M)&=&\Vert \textbf{M}^{-1} \Vert  \\
+K_r(M)&=&\Vert \textbf{M} \Vert \cdot \Vert \textbf{M}^{-1} \Vert
+\end{eqnarray}
+
+\paragraph*{}
+Wenn $\tilde{\textbf{x}}$ die, aufgrund der numerischen Methode, abgeschätzten Parameter sind, und $\textbf{r}=\textbf{b} - \textbf{M} \tilde{\textbf{x}}$, dann gilt für den absoluten und relativen Fehler:\\
+
+\begin{eqnarray}
+\Vert \textbf{x} - \tilde{\textbf{x}}\Vert &\leq& K_a(M) \frac{\Vert \textbf{r} \Vert}{\Vert \textbf{M} \Vert}\\
+\frac{\Vert \textbf{x} - \tilde{\textbf{x}}\Vert}{\Vert \textbf{x} \Vert} &\leq& K_r(M) \frac{\Vert \textbf{r} \Vert}{\Vert \textbf{b} \Vert}
+\end{eqnarray}
+
+\paragraph*{}
+Prinzipiell gilt diese Ungleichung für jede Norm. Das Ergebnis wird allerdings variieren. Man muss sich darüber im klaren sein, was diese Ungleichung, aufgrund der gewählten Norm, impliziert. Die Matrix \textbf{M} gilt als gut konditioniert, wenn K in der Grössenordnung von 1 liegt. Ist K wesentlich grösser als 1, ist das System schlecht konditioniert, das heisst $\Vert \textbf{x} - \tilde{\textbf{x}}\Vert$ kann gross sein, selbst wenn \textbf{r} klein ist. Rechnet man mit einer Genauigkeit von t Stellen, dann liegt die maximale Genauigkeit bei:\\
+\begin{equation}
+\Vert \textbf{r} \Vert \approx 10^{-t}
+\Vert \textbf{M} \Vert \Vert \tilde{\textbf{x}} \Vert
+\end{equation}
+
+\paragraph*{}
+Mit dieser Erkenntnis kann man die zu erreichende Genauigkeit abschätzen. Wenn $\Vert \delta \textbf{M} \Vert$ und $\Vert \delta \textbf{b} \Vert$ in der Grössenordnung von $10^{-t}$ liegen würden, könnte man sie ignorieren, da ihre Auswirkung auf $\tilde{\textbf{x}}$ vernachlässigbar klein wäre. Leider ist das bei der Anwendung auf direction finding bei weitem nicht der Fall. \\
+
+\paragraph*{}
+Vorausgesetzt
+
+\begin{equation}
+\Vert \delta \textbf{M} \Vert < \frac{1}{\Vert \textbf{M}^{-1} \Vert }
+\end{equation}
+
+\paragraph*{}
+und $\tilde{\textbf{x}}$ ist die numerische Lösung der Gleichung
+
+\begin{equation}
+(\textbf{M}+\delta \textbf{M})\tilde{\textbf{x}}=(\textbf{b}+\delta \textbf{b})
+\end{equation}
+\paragraph*{}
+dann gilt
+
+\begin{eqnarray}
+\Vert \textbf{x} - \tilde{\textbf{x}}\Vert  &\leq & K_a(M) (\Vert \delta \textbf{b} \Vert + \Vert \delta \textbf{M} \Vert \Vert \textbf{x} \Vert )  \\
+\frac{\Vert \textbf{x} - \tilde{\textbf{x}}\Vert}{\Vert \textbf{x} \Vert} &\leq & K_r(M) \left( \frac{\Vert \delta \textbf{b} \Vert}{\Vert \textbf{b} \Vert} + \frac{\Vert \delta \textbf{M} \Vert}{\Vert \textbf{M} \Vert} \right)
+\end{eqnarray}
+
+\paragraph*{}
+So kann man den maximalen absoluten und relativen Fehler abschätzen, sofern man den Fehler in den Matrizen \textbf{b} und \textbf{M} kennt. Natürlich ist diese Thematik wesentlich tiefgehender als ich sie hier darstellen konnte. Details, sowie die Ableitungen der Formel und weitere Informationen sind in \cite{burdenfaires} zu finden.
+\begin{thebibliography}{999}
+\bibitem{burdenfaires}Numerical Analysis\\
+Richard Burden; Douglas Faires\\
+Brooks/Cole Publishing Company
+
+\bibitem{hor91} Rucker et. al. 1991
+
+\bibitem{hesse} Flugzeugavionik\\
+Hesse Verlag
+
+\bibitem{recipes} Numerical Recipes\\
+Cambridge Press
+
+\bibitem{cecconi04} B.Cecconi, P. Zarka\\
+Direction Finding and antenna calibration through analytical inversion of radio measurements performed using a system of 2 or 3 electric dipole wire antennas on a 3 axis stabelized spacecraft\\
+March 2004
+
+\bibitem{antenna_report_1}
+Oswald Th., W. Macher, G.Fischer, H.O. Rucker\\
+First results of STEREO/WAVES Antenna calibration\\
+Technical Report of the Space Research Institute/Austrian Academy of Science, 2004
+
+\bibitem{ortega}
+Ortega-Molina, A., G. Daigne, Polarization response of two crossed monopoles on a spacecrasft, Astron. Astrophys. 130, 301-310, 1984.
+
+\bibitem{rheometry}
+Rucker, H.O., W. Macher, R. Manning, and H. P. Ladreiter, Cassini model rheometry, Radio Sci., 31, 1299-1311, 1996.
+
+
+\bibitem{toolbox}
+Fischer, G., W. Macher, and H.O. Rucker, A MATLAB toolbox for calculating ASAP-wire-grid-models of antennas, Austrian Academy of Sciences, IWF-121, September 2000.
+
+\bibitem{cassini}
+Fischer, G., W. Macher, H.O. Rucker, H.P. Ladreiter, D.F. Vogl and the Cassini/RPWS Team: Wire-grid modeling of Cassini spacecraft for the determination of effective antenna length vectors of the RPWS antennas. In: Planetary Radio Emissions V, H.O. Rucker, M.L. Kaiser, Y. Leblanc (Eds.), Austrian Academy of Sciences Press, Vienna, 347-356, 2001.
+
+\bibitem{cassini2}
+Fischer, G., W. Macher, H.O. Rucker and the Cassini/RPWS team: Reception properties of the Cassini/RPWS antennas from 1 to 16 MHz, EGS-AGU-EUG Joint Assembly, Nice, April 2003.
+
+\bibitem{ladreiter_03}
+Ladreiter, H.P., P. Zarka, A. Lecacheux, W. Macher, H.O. Rucker, R. Manning, D.A. Gurnett, W.S. Kurth: Analysis of electromagnetic wave direction finding performed by spaceborne antennas using singular value decomposition techniques, Radio Sci., 30, 1699-1712, 1995.
+
+\bibitem{toolbox2}
+Macher, W., and T. Vejda, Design of antenna grid structures. Manual to the MATLAB toolbox. Austrian Academy of Sciences, IWF-144, January 2003.
+
+\bibitem{marsis}
+Macher, W., B. Schraußer, G. Fischer, H.O. Rucker, H. Lammer, C. Kolb, G. Kargl, Analysis of sounding antennas of the Mars-Express MARSIS experiment, In: Proc. 2nd European Workshop on Exo/Astrobiology, Ed. H. Sawaya-Lacoste, ESA Publications Division, Noordwijk, ESA SP-518, 539-540, 2002.
+
+\bibitem{marsis2}
+Macher, W., H.O. Rucker, G. Fischer and the MARSIS Team, Analysis of the MARSIS antenna system onboard Mars Express, EGU 1st General Assembly, Nice, April 2004.
+
+\bibitem{cassini3}
+Rucker, H.O., W. Macher, and S. Albrecht, Experimental and  theoretical investigations on the Cassini RPWS antennas. In: Planetary Radio Emissions IV, H. O. Rucker, S. J. Bauer, and A. Lecacheux (Eds.), Austrian Academy of Sciences Press, Vienna, 327-337, 1997.
+
+\bibitem{vogl_01}
+Vogl, D. F., H. P. Ladreiter, P. Zarka, H. O. Rucker, W. Macher, W. S. Kurth, D. A. Gurnett, G. Fischer: First results on the calibration of the Cassini RPWS antenna system. In: Planetary Radio Emissions V, H. O. Rucker, M. L. Kaiser, Y. Leblanc (Eds.), Austrian Academy of Sciences Press, Vienna, 357-366, 2001.
+
+\bibitem{vogl_04}
+Vogl, D.F., B. Cecconi, W. Macher, P. Zarka, H.P. Ladreiter, P. Fedou, A. Lecacheux, T. Averkamp, G. Fischer, H.O. Rucker, D.A. Gurnett, W.S. Kurth, G.B. Hospodarsky, In-flight calibration of the Cassini-RPWS antenna system for direction finding and polarization measurements, J. Geophys. Res., in press 2004.
+
+\end{thebibliography}
+
+\listoffigures
+%\chapter{Appendix B: List of Tables}
+\listoftables
+
+\end{document}

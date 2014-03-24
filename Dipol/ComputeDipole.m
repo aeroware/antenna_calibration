@@ -1,0 +1,107 @@
+
+function tpr=ComputeDipole(f)
+
+%   ComputeAntennas(f) is a function that builds different models,
+%   computes their effective length vectors at frequency f, with a direction of
+%   incidence from the positive z-axis and prints the results. Only the
+%   real parts of the vectors are used.
+%
+%   Written by Thomas Oswald, July 2009
+
+% parameters 
+
+f=10e6;
+solver=2;
+ca=0;
+force=1;
+forcegain=0;
+forcegridcreate=1;
+
+f_pe=1e5;
+epsilonr=1;
+%epsilonr=1-(f_pe/f)^2;
+
+asapexe='asap2d.bin';
+nec2bin='nec2++';
+
+tic
+switch(solver)
+    case 1  % asap
+        CurrentFile='ASAPCurrents.mat';
+        GainFile='ASAPGain.mat';
+        titl='Test dipole/ASAP';
+    case 2  % concept  
+        CurrentFile='Currents.mat';
+        GainFile='Gain.mat';
+        titl='Test dipole/CONCEPT';
+    case 3  % NEC 2
+        CurrentFile='NEC2Currents.mat';
+        GainFile='NEC2Gain.mat';
+        titl='Test dipole/NEC 2';
+end % switch
+
+er=[0,0,01];
+
+% load model
+ 
+ant=CreateDipole(solver);
+
+        
+for(n=1:length(f))
+    
+    % versuche zu laden
+    
+    OP=VarLoad(CurrentFile,f/1e3,'OP');
+         
+    if(isempty(OP) | force==1)
+        OP=DipolCurrent(f,ant,solver,asapexe, titl,epsilonr,...
+            nec2bin);
+        VarSave(CurrentFile,OP,f/1e3,'OP');
+    end
+    
+    % ohne capacit?ten
+    
+    
+    if ca==0
+        TM=AntTransferx(ant,OP,er,solver,0,0);
+        titstr=strcat(titl,'...without capacitances\n\n');
+    else
+        caps=1/70e-12;
+        impedances=caps./(i*OP.Freq*2*pi);
+        switch solver
+            case 1
+                TM=AntTransferx(ant,OP,er,solver,5,15/1000,impedances); 
+            case 2
+                TM=AntTransferx(ant,OP,er,solver,0,25.4/1000,impedances);
+        end % switch
+        titstr=strcat(titl,'...with capacitances\n\n');
+    end
+    
+    
+    
+    TPR=ThetaPhiR(TM);
+
+    fprintf(titstr)
+    fprintf('A_1: Length = %d m  Theta = %d ?  Phi = %d ?\n',...
+        TPR(3), TPR(1),TPR(2));
+    
+
+    fprintf('Impedance: \n');
+    Imps=diag(AntImpedance(ant, OP,solver,0,25.4/1000))
+    
+    % dipol
+    
+%     TM2=zeros(3,3);
+%     TM2(1,:)=TM(1,:);
+%     TM2(2,:)=TM(3,:)-TM(2,:);
+%     
+%     TPR2=ThetaPhiRD2(TM2);
+%     
+%     fprintf('E_x-E_y: Length = %d m  Theta = %d ?  Phi = %d ?\n', TPR2(2,3), TPR2(2,1),TPR2(2,2));
+%     fprintf('E_z: Length = %d m  Theta = %d ?  Phi = %d ?\n\n\n', TPR2(1,3), TPR2(1,1),TPR2(1,2));   
+    
+    % mit
+    tpr(n,:,:)=TPR;
+end % for all fs
+%end % for all angs
+toc

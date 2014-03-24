@@ -1,0 +1,313 @@
+#topborder {
+	BORDER-TOP: #e56b1f 1px solid; FONT-SIZE: 1px
+}
+#leftborder {
+	FONT-SIZE: 1px; BORDER-LEFT: #e56b1f 1px solid
+}
+#rightborder {
+	BORDER-RIGHT: #e56b1f 1px solid; FONT-SIZE: 1px
+}
+#bottomborder {
+	FONT-SIZE: 1px; BORDER-BOTTOM: #e56b1f 1px solid
+}
+H1 {
+	FONT-WEIGHT: bold; MARGIN: 0px 0px 7px 10px; COLOR: #993333; FONT-FAMILY: Arial, Verdana, sans-serif
+}
+H2 {
+	FONT-WEIGHT: bold; MARGIN: 0px 0px 7px 10px; COLOR: #993333; FONT-FAMILY: Arial, Verdana, sans-serif
+}
+H3 {
+	FONT-WEIGHT: bold; MARGIN: 0px 0px 7px 10px; COLOR: #993333; FONT-FAMILY: Arial, Verdana, sans-serif
+}
+H4 {
+	FONT-WEIGHT: bold; MARGIN: 0px 0px 7px 10px; COLOR: #993333; FONT-FAMILY: Arial, Verdana, sans-serif
+}
+H5 {
+	FONT-WEIGHT: bold; MARGIN: 0px 0px 7px 10px; COLOR: #993333; FONT-FAMILY: Arial, Verdana, sans-serif
+}
+#heading {
+	FONT-WEIGHT: bold; MARGIN: 0px 0px 7px 10px; COLOR: #993333; FONT-FAMILY: Arial, Verdana, sans-serif
+}
+.h1 {
+	FONT-WEIGHT: bold; MARGIN-BOTTOM: 7px; COLOR: #993333; FONT-FAMILY: Arial, Verdana, sans-serif
+}
+.h2 {
+	FONT-WEIGHT: bold; MARGIN-BOTTOM: 7px; COLOR: #993333; FONT-FAMILY: Arial, Verdana, sans-serif
+}
+.h3 {
+	FONT-WEIGHT: bold; MARGIN-BOTTOM: 7px; COLOR: #993333; FONT-FAMILY: Arial, Verdana, sans-serif
+}
+.h4 {
+	FONT-WEIGHT: bold; MARGIN-BOTTOM: 7px; COLOR: #993333; FONT-FAMILY: Arial, Verdana, sans-serif
+}
+.h5 {
+	FONT-WEIGHT: bold; MARGIN-BOTTOM: 7px; COLOR: #993333; FONT-FAMILY: Arial, Verdana, sans-serif
+}
+.header {
+	FONT-WEIGHT: bold; MARGIN-BOTTOM: 7px; COLOR: #993333; FONT-FAMILY: Arial, Verdana, sans-serif
+}
+H1 {
+	FONT-SIZE: 14pt; FONT-STYLE: normal; LETTER-SPACING: 0.1em
+}
+.h1 {
+	FONT-SIZE: 14pt; FONT-STYLE: normal; LETTER-SPACING: 0.1em
+}
+H2 {
+	FONT-SIZE: 12pt; FONT-STYLE: italic; LETTER-SPACING: 0.05em; FONT-VARIANT: small-caps
+}
+.h2 {
+	FONT-SIZE: 12pt; FONT-STYLE: italic; LETTER-SPACING: 0.05em; FONT-VARIANT: small-caps
+}
+H3 {
+	FONT-SIZE: 10pt; FONT-STYLE: normal
+}
+.h3 {
+	FONT-SIZE: 10pt; FONT-STYLE: normal
+}
+H4 {
+	FONT-SIZE: 9pt; MARGIN-LEFT: 15px; COLOR: #e57135; FONT-STYLE: italic
+}
+.h4 {
+	FONT-SIZE: 9pt; MARGIN-LEFT: 15px; COLOR: #e57135; FONT-STYLE: italic
+}
+.header {
+	FONT-SIZE: 9pt; MARGIN-LEFT: 15px; COLOR: #e57135; FONT-STYLE: italic
+}
+H5 {
+	FONT-SIZE: 9pt; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 25px
+}
+.h5 {
+	FONT-SIZE: 9pt; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 25px
+}
+H6 {
+	FONT-WEIGHT: normal; FONT-SIZE: 9pt; MARGIN: 5px 0px 10px 25px; COLOR: #993333; FONT-STYLE: italic
+}
+.h6 {
+	FONT-WEIGHT: normal; FONT-SIZE: 9pt; MARGIN: 5px 0px 10px 25px; COLOR: #993333; FONT-STYLE: italic
+}
+#dates {
+	MARGIN: 0px; FONT-STYLE: normal; LETTER-SPACING: 0em; FONT-VARIANT: normal
+}
+#new {
+	WIDTH: 28px; BORDER-BOTTOM: #993333 1px solid
+}
+.dateloc {
+	MARGIN: -7px 0px 0px 25px; FONT: 8pt Verdaan, Arial, sans-serif; COLOR: #000000
+}
+P {
+	MARGIN: 10px 20px 10px 25px; FONT: 10pt Arial, Verdana, sans-serif; LETTER-SPACING: 0.01em
+}
+DT {
+	MARGIN: 5px 0px 0px 25px; FONT: bold 8pt Verdana, Arial, sans-serif
+}
+.pcmember {
+	TEXT-DECORATION: underline
+}
+.pcmail {
+	COLOR: #000099; TEXT-DECORATION: none
+}
+A.pcmail:hover {
+	COLOR: #0000ff; TEXT-DECORATION: underline
+}
+TD {
+	FONT: 10pt Arial, Verdana, sans-serif
+}
+UL {
+	FONT: 10pt Arial, Verdana, sans-serif
+}
+OL {
+	FONT: 10pt Arial, Verdana, sans-serif
+}
+LI {
+	FONT: 10pt Arial, Verdana, sans-serif
+}
+DD {
+	FONT: 10pt Arial, Verdana, sans-serif
+}
+BLOCKQUOTE {
+	FONT: 10pt Arial, Verdana, sans-serif
+}
+OL {
+	MARGIN: 10px 20px 10px 25px
+}
+UL {
+	MARGIN: 10px 20px 10px 25px
+}
+FORM {
+	MARGIN: 0px
+}
+SUB {
+	FONT-SIZE: 8pt
+}
+SUP {
+	FONT-SIZE: 8pt
+}
+.navFallBrownMajor {
+	FONT: bold 8pt Arial, Verdana, sans-serif; TEXT-TRANSFORM: uppercase; COLOR: #993333; LETTER-SPACING: 0.04em; TEXT-DECORATION: none
+}
+.navFallBrownMinor {
+	FONT: 8pt Arial, Verdana, sans-serif; COLOR: #993333; TEXT-DECORATION: none
+}
+.navFallTanMajor {
+	FONT: bold 8pt Arial, Verdana, sans-serif; TEXT-TRANSFORM: uppercase; COLOR: #e57135; LETTER-SPACING: 0.04em; TEXT-DECORATION: none
+}
+.navFallTanMinor {
+	FONT: 8pt Arial, Verdana, sans-serif; COLOR: #e57135; TEXT-DECORATION: none
+}
+.navGreyMajor {
+	FONT: bold 8pt Arial, Verdana, sans-serif; COLOR: #cccccc; LETTER-SPACING: 0.04em; TEXT-DECORATION: none
+}
+A.navFallBrownMajor {
+	FONT: bold 8pt Arial, Verdana, sans-serif; TEXT-TRANSFORM: uppercase; COLOR: #993333; LETTER-SPACING: 0.04em; TEXT-DECORATION: none
+}
+A.navFallBrownMinor {
+	FONT: 8pt Arial, Verdana, sans-serif; COLOR: #993333; TEXT-DECORATION: none
+}
+A.navFallTanMajor {
+	FONT: bold 8pt Arial, Verdana, sans-serif; TEXT-TRANSFORM: uppercase; COLOR: #e57135; LETTER-SPACING: 0.04em; TEXT-DECORATION: none
+}
+A.navFallTanMinor {
+	FONT: 8pt Arial, Verdana, sans-serif; COLOR: #e57135; TEXT-DECORATION: none
+}
+A.navFallBrownMajor:hover {
+	COLOR: #e57135; TEXT-DECORATION: underline
+}
+A.navFallBrownMinor:hover {
+	COLOR: #e57135; TEXT-DECORATION: underline
+}
+A.navFallTanMajor:hover {
+	TEXT-DECORATION: underline
+}
+A.navFallTanMinor:hover {
+	TEXT-DECORATION: underline
+}
+A.notu:hover {
+	TEXT-DECORATION: underline
+}
+.normal {
+	FONT: 10pt Arial, Verdana, sans-serif
+}
+.address {
+	MARGIN: 0px 0px 15px 50px
+}
+.bold {
+	FONT-WEIGHT: bold
+}
+.ital {
+	FONT-STYLE: italic
+}
+.under {
+	TEXT-DECORATION: underline
+}
+.notu {
+	TEXT-DECORATION: none
+}
+.over {
+	TEXT-DECORATION: overline
+}
+.strike {
+	TEXT-DECORATION: line-through
+}
+.b {
+	FONT-WEIGHT: bold
+}
+.i {
+	FONT-STYLE: italic
+}
+.u {
+	TEXT-DECORATION: underline
+}
+.o {
+	TEXT-DECORATION: overline
+}
+.s {
+	TEXT-DECORATION: line-through
+}
+.sans {
+	FONT-FAMILY: Arial, Verdana, sans-serif
+}
+.serif {
+	FONT-FAMILY: Times, Times New Roman, serif
+}
+.nomargin {
+	MARGIN: 0px
+}
+.margin {
+	MARGIN: 10px
+}
+.rlmargin {
+	MARGIN: 0px 10px
+}
+.indent {
+	MARGIN-LEFT: 20px
+}
+.indentMore {
+	MARGIN-LEFT: 40px
+}
+.right {
+	TEXT-ALIGN: right
+}
+.center {
+	TEXT-ALIGN: center
+}
+.left {
+	TEXT-ALIGN: left
+}
+.xsm {
+	FONT-SIZE: 6pt
+}
+.sm {
+	FONT-SIZE: 8pt
+}
+.rg {
+	FONT-SIZE: 10pt
+}
+.med {
+	FONT-SIZE: 11pt
+}
+.lg {
+	FONT-SIZE: 14pt
+}
+.xlg {
+	FONT-SIZE: 16pt
+}
+.uc {
+	FONT-SIZE: 10pt; TEXT-TRANSFORM: uppercase
+}
+.lc {
+	TEXT-TRANSFORM: lowercase
+}
+.cap {
+	TEXT-TRANSFORM: capitalize
+}
+.smcap {
+	FONT-VARIANT: small-caps
+}
+.red {
+	COLOR: red
+}
+.white {
+	COLOR: white
+}
+.grey {
+	COLOR: #cccccc
+}
+.fallBrown {
+	COLOR: #993333
+}
+.fallTan {
+	COLOR: #e57135
+}
+.p1 {
+	FONT-SIZE: 1px; LINE-HEIGHT: 1px; LETTER-SPACING: 0px
+}
+.p2 {
+	FONT-SIZE: 2px; LINE-HEIGHT: 2px; LETTER-SPACING: 0px
+}
+
+.p1o {
+	FONT-SIZE: 1px; BACKGROUND-IMAGE: url(orange_px.png); LINE-HEIGHT: 1px; LETTER-SPACING: 0px
+}
+.p2o {
+	FONT-SIZE: 2px; BACKGROUND-IMAGE: url(orange_px.png); LINE-HEIGHT: 2px; LETTER-SPACING: 0px
+}

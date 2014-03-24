@@ -1,0 +1,111 @@
+\documentclass[a4paper,10pt]{report}
+
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fancybox}
+
+% Title Page
+\title{Concept Integral}
+\author{Thomas Oswald}
+
+
+\begin{document}
+
+%\maketitle
+%\tableofcontents
+
+%\begin{abstract}
+
+
+
+%\end{abstract}
+The surface integral for the vector potential:
+\begin{equation}
+    \mathbf{A}(\mathbf{r)}=\frac{\mu_0}{4 \pi} \int_{S'} \mathbf{I}(\mathbf{r'}) e^{\imath k \mathbf{e}_r(r) \cdot \mathbf{r}'} dS'
+\end{equation}
+Using the sum over all i wires
+
+\begin{equation}
+    \mathbf{A}(\mathbf{r})=\sum_i \mathbf{A}_i(\mathbf{r})
+\end{equation}
+where
+\begin{equation}
+    \mathbf{A}_i(\mathbf{r})=\frac{\mu_0}{4 \pi} \int_{r'} \mathbf{I}_i (\mathbf{r'}) e^{\imath k \mathbf{e}_r(\mathbf{r}) \cdot \mathbf{r}'} dr'
+\end{equation}
+
+On each wire we know the current at 5 points, which divides the line integral into four parts.
+
+\begin{equation}
+    \mathbf{A}(\mathbf{r})=\sum_i \sum_j \mathbf{A}_{ij}(\mathbf{r})
+\end{equation}
+
+where $j=1...4$. So
+
+\begin{eqnarray}
+    \mathbf{A}(\mathbf{r})&=&\frac{\mu_0 }{4 \pi} \sum_i \sum_j L_{ij}\int_{\rho=0}^{\rho=1} \mathbf{I}_{ij}(\rho) e^{\imath k \mathbf{e}_r(\mathbf{r}) \cdot \mathbf{r}(\rho)} d\rho\\
+&=&  \frac{\mu_0 }{4 \pi} \sum_i \mathbf{e}_{L,i} \sum_j L_{ij} \int_{\rho=0}^{\rho=1} I_{ij}(\rho) e^{\imath k \mathbf{e}_r(\mathbf{r}) \cdot \mathbf{r}(\rho)} d\rho \nonumber
+\end{eqnarray}
+
+So the integral to be solved is
+
+\begin{equation}\label{integral}
+    INT= \int_{\rho=0}^{\rho=1} I_{ij}(\rho) e^{\imath k \mathbf{e}_r(\mathbf{r}) \cdot \mathbf{r}(\rho)} d\rho
+\end{equation}
+
+Also
+
+\begin{equation}\label{current_ij}
+    I_{ij}(\rho)=I_{ij}+(I_{ij+1}-I_{ij})\rho
+\end{equation}
+
+
+
+\begin{equation}\label{position}
+    \mathbf{r}(\rho)=\mathbf{r}_{ij}+\mathbf{e}_{L,i}L_{ij}\rho
+\end{equation}
+
+Substituting (\ref{current_ij}) and (\ref{position}) into (\ref{integral}) we get
+
+\begin{eqnarray}
+    INT&=& \int_{\rho=0}^{\rho=1} \left(I_{ij}+(I_{ij+1}-I_{ij})\rho\right) e^{\imath k \mathbf{e}_r(\mathbf{r}) \cdot (\mathbf{r}_{ij}+\mathbf{e}_{L,i}L_{ij}\rho)} d\rho \\
+&=&\int_{\rho=0}^{\rho=1} \left(I_{ij}+(I_{ij+1}-I_{ij})\rho\right) e^{\imath k \mathbf{e}_r(\mathbf{r}) \cdot \mathbf{r}_{ij}}e^{\imath k \mathbf{e}_r(\mathbf{r}) \cdot\mathbf{e}_{L,i}L_{ij}\rho} d\rho \nonumber \\
+&=&e^{\imath k \mathbf{e}_r(\mathbf{r}) \cdot \mathbf{r}_{ij}}\int_{\rho=0}^{\rho=1} \left(I_{ij}+(I_{ij+1}-I_{ij})\rho\right) e^{\imath k \mathbf{e}_r(\mathbf{r}) \cdot\mathbf{e}_{L,i}L_{ij}\rho} d\rho \nonumber
+\end{eqnarray}
+
+Hence there are two integrals to be solved:
+
+\begin{equation}\label{I1}
+    I1=\int_{\rho=0}^{\rho=1}I_{ij} e^{\imath k \mathbf{e}_r(\mathbf{r}) \cdot\mathbf{e}_{L,i}L_{ij}\rho} d\rho
+\end{equation}
+and
+\begin{equation}\label{I2}
+    I2=\int_{\rho=0}^{\rho=1}\left(I_{ij+1}-I_{ij}\right)\rho e^{\imath k \mathbf{e}_r(\mathbf{r}) \cdot\mathbf{e}_{L,i}L_{ij}\rho} d\rho
+\end{equation}
+
+Both are standard integrals. The solution:
+
+\begin{eqnarray}\label{I1_solution}
+    I1_{ij}&=&I_{ij}\int_{\rho=0}^{\rho=1}e^{\imath k \mathbf{e}_r(\mathbf{r}) \cdot\mathbf{e}_{L,i}L_{ij}\rho} d\rho \\
+&=&\frac{I_{ij}}{\imath k \mathbf{e}_r(\mathbf{r}) \cdot\mathbf{e}_{L,i}L_{ij}} \left[ e^{\imath k \mathbf{e}_r(\mathbf{r}) \cdot \mathbf{e}_{L,i}L_{ij}\rho} \right]_0^1 \nonumber \\
+&=&-\frac{\imath I_{ij}}{ k \mathbf{e}_r(\mathbf{r}) \cdot\mathbf{e}_{L,i}L_{ij}}  \left( e^{\imath k \mathbf{e}_r(\mathbf{r}) \cdot \mathbf{e}_{L,i}L_{ij}}-1 \right)  \nonumber
+\end{eqnarray}
+
+\begin{eqnarray}\label{I2_solution}
+    I2_{ij}&=&\left(I_{ij+1}-I_{ij}\right)\int_{\rho=0}^{\rho=1} \rho e^{\imath k \mathbf{e}_r(\mathbf{r}) \cdot\mathbf{e}_{L,i}L_{ij}\rho} d\rho \\
+&=&\frac{\left(I_{ij+1}-I_{ij}\right)}{\left( \imath k \mathbf{e}_r(\mathbf{r}) \cdot\mathbf{e}_{L,i}L_{ij}\right)^2 } \left[ e^{\imath k \mathbf{e}_r(\mathbf{r}) \cdot\mathbf{e}_{L,i}L_{ij}\rho} \left(\imath k \mathbf{e}_r(\mathbf{r}) \cdot\mathbf{e}_{L,i}L_{ij}\rho -1 \right)\right]_0^1 \nonumber \\
+&=&-\frac{\left(I_{ij+1}-I_{ij}\right)}{\left( k \mathbf{e}_r(\mathbf{r}) \cdot\mathbf{e}_{L,i}L_{ij}\right)^2 } \left( e^{\imath k \mathbf{e}_r(\mathbf{r}) \cdot\mathbf{e}_{L,i}L_{ij}} \left( \imath k \mathbf{e}_r(\mathbf{r}) \cdot\mathbf{e}_{L,i}L_{ij} -1 \right) +1 \right) \nonumber \\
+\end{eqnarray}
+
+As a summary
+
+\begin{equation}
+     \mathbf{A}(\mathbf{r})=\frac{\mu_0 }{4 \pi} \sum_i \mathbf{e}_{L,i} \sum_j L_{ij}e^{\imath k \mathbf{e}_r(\mathbf{r}) \cdot \mathbf{r}_{ij}}(I1_{ij}+I2_{ij})
+\end{equation}
+
+\begin{eqnarray}\label{I1_solution}
+    I1_{ij}&=&-\frac{\imath I_{ij}}{ k \mathbf{e}_r(\mathbf{r}) \cdot\mathbf{e}_{L,i}L_{ij}}  \left( e^{\imath k \mathbf{e}_r(\mathbf{r}) \cdot \mathbf{e}_{L,i}L_{ij}}-1 \right)  \nonumber
+\end{eqnarray}
+\end{document}

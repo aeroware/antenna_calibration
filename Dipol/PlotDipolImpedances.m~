@@ -1,0 +1,205 @@
+%   PlotDipolImpedances
+%
+%   This script makes a plot of the Impedances of the test dipole for the
+%   antennas-in-plasma investigation. It plots the real part, the 
+%   imaginary part and the real vs. imaginary part
+%
+%   Written 2010 by Thomas Oswald
+%   Revision:
+%
+
+clear;
+
+% parameters 
+
+
+solver=2;
+ca=0;
+force=1;
+forcegain=0;
+forcegridcreate=1;
+
+f_pe=10e6;
+epsilonr=0.5;
+epsilonr=1-(f_pe/f)^2;
+
+asapexe='asap2d.bin';
+nec2bin='nec2++';
+
+
+
+switch(solver)
+    case 1  % asap
+        CurrentFile='ASAPCurrents.mat';
+        GainFile='ASAPGain.mat';
+        titl='Test dipole/ASAP';
+    case 2  % concept  
+        CurrentFile='Currents.mat';
+        GainFile='Gain.mat';
+        titl='Test dipole/CONCEPT';
+    case 3  % NEC 2
+        CurrentFile='NEC2Currents.mat';
+        GainFile='NEC2Gain.mat';
+        titl='Test dipole/NEC 2';
+end % switch
+
+er=[0,0,01];
+
+% load model
+
+ant=CreateDipole(solver);
+
+
+f=10.1e6;
+
+n=1;
+while(f<=100e6)
+    fprintf('f= %6d\n',f)
+    
+    OP=VarLoad(CurrentFile,f/1e3,'OP');
+         
+    if(isempty(OP) | force==1)
+        OP=DipolCurrent(f,ant,solver,asapexe, titl,epsilonr,nec2bin);
+        VarSave(CurrentFile,OP,f/1e3,'OP');
+    end
+    
+    
+   
+
+    if(ca==1)
+        caps_b=eye(3)./70e-12;
+        %caps_p=eye(3)./40e-12;  % due to plasma...bale
+        %caps_p=eye(3)./87e-12;  % due to plasma...ich
+        impedances_b=1./((1/5e6)+  (1./(caps_b./(i*OP.Freq*2*pi))));
+        %impedances_p=1./((1/0.2e6)+(1./(caps_p./(i*OP.Freq*2*pi))));
+    end
+        
+        
+    Imps(n)=AntImpedance(ant, OP,solver,0,25.4/1000);   
+    
+    % radienkorrekturen funzen nur im quasistatischen grenzfall !!!
+      
+    
+    
+   %Imps(n)=AntImpedance(ant, OP,solver,6,25.4/1000); % dipole
+        
+    if(ca==1)
+       %Imps(n,:,:)=reshape(reshape(Imps(n,:,:),3,3)+impedances_p,[1,3,3]);
+       Imps(n)=1/Imps(n)+1/impedances_b;
+       
+    end
+        
+    freq(n)=f;
+    f=f+2e5;
+    n=n+1;
+end %while
+
+    Z=Imps;
+   
+    
+    
+    freq=freq./1e6;
+ 
+    
+% ------------------------------------------------------------------------
+%   plotting
+% ------------------------------------------------------------------------
+  
+lab=cellstr(['Frequency/MHz                                    '
+                 'Impedance-Real Part/Ohm                          '
+                 'Impedance-Imaginary Part/Ohm                     '
+                 '                                                 '
+                 'Impedances: Real and Imaginary Part vs. Frequency']);
+  
+    figure
+     [h1,h2]=PlotComplex(freq,Z,1,'',1); 
+      
+    
+    h=findobj('Type','line');
+    set(h(1),'color','b')
+    set(h(2),'color','b')
+    
+
+    
+%
+    title(strcat('Impedances: Real and Imaginary Part vs. Frequency',strcat('/',titl)));
+
+
+    lab=cellstr(['                                        '
+                 'Impedance-Real Part/Ohm                 '
+                 'Impedance-Imaginary Part/Ohm            '
+                 '                                        '
+                 'Impedances: Real Part vs. Imaginary Part']);
+
+    figure
+     PlotComplex(freq,Z,3,'',1)
+    
+
+    h=findobj('Type','line')
+    set(h(1),'color','b')
+    
+    legend('A_1','A_2','A_3')
+    
+    title(strcat('Impedances: Real Part vs. Imaginary Part',strcat('/',titl)));
+
+% daten umformatieren, für punkte
+
+   
+    for(i=1:10)
+        R1(i)=real(Z1(i*10));
+        R2(i)=real(Z2(i*10));
+        R3(i)=real(Z3(i*10));
+    
+        I1(i)=imag(Z1(i*10));
+        I2(i)=imag(Z2(i*10));
+        I3(i)=imag(Z3(i*10));
+    end
+
+    hold on    
+    plot(R1,I1,'k+'); 
+    plot(R2,I2,'k+'); 
+    plot(R3,I3,'k+'); 
+
+    
+    for(i=1:10)
+        text(R1(i),I1(i),sprintf(' %d MHz',freq(i*10)));
+        text(R2(i),I2(i),sprintf(' %d MHz',freq(i*10)));
+        text(R3(i),I3(i),sprintf(' %d MHz',freq(i*10)));
+    end
+    hold off
+    % extra plot
+    
+%     freq2=freq(20:160);
+%   %  figure(3)
+%     figure
+%     semilogy(freq2,real(Z1(20:160))./freq2')
+%     title(strcat('Self Impedance E_z',titl));
+%     xlabel('Frequency/Hz');
+%     ylabel('Impedance pF/Hz');
+
+    %hold off
+
+    
+    % compute ex -ey=Z3-Z2
+    
+%     for n=1:160
+%        % Imps2(n,1,:)=Imps(n,1,:);
+%        % Imps2(n,2,:)=Imps(n,3,:)-Imps(n,2,:);
+%         
+%        % Imps3(n,:,1)=Imps2(n,:,1);
+%        % Imps3(n,:,2)=Imps2(n,:,3)-Imps2(n,:,2);
+%        
+%        Imps2(n,:,1)=Imps(n,:,1);
+%        Imps2(n,:,2)=Imps(n,:,3)-Imps(n,:,2);
+%        
+%        Imps3(n,1,:)=Imps2(n,1,:);
+%        Imps3(n,2,:)=Imps2(n,3,:)-Imps2(n,2,:);
+%     end
+
+%     figure
+%     semilogy(freq2,real(Imps3(20:160,2,2))./freq2')
+%     title(strcat('Self Impedance E_x-E_y',titl));
+%     xlabel('Frequency/Hz');
+%     ylabel('Impedance pF/Hz');
+
+

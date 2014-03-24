@@ -1,0 +1,37 @@
+    
+                            R A D I A T E . O U T
+                            ---------------------
+    
+    
+  CONCEPT DATA: Test dipole/CONCEPT                                                  
+    
+    
+  FREQUENCY: .3000       MHz
+  
+ ======================================================================
+ 
+  PHI interval (in degrees)  :    0.000     360.000
+  THETA interval (in degrees):    0.000     180.000
+
+
+The power radiated in the selected Phi-Theta sector is:               
+ 0.27808E-11 Watt
+  
+The total radiated power is:                                          
+ 0.27808E-11 Watt
+  
+  
+The multiplier for the determination of the total radiated power is:  
+   1.000
+  
+  
+  
+The directivity is:                                                   
+   1.493
+  
+Specification in dB:                                                  
+   1.740
+  
+The max. E field amplitude in the sector is:                          
+ 0.15783E-07 V/m
+ ======================================================================

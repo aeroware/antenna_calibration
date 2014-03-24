@@ -1,0 +1,14 @@
+function Z=Impedances(ant, f_low, f_high, n)
+
+%   function Z=Impedances(ant,f_low, f_high, n)
+%   computes the impedances of n frequencies between f_low and f_high
+
+Z=zeros(n,1);
+f=linspace(f_low,f_high,n);
+
+for i=1:n;
+    fprintf('Computing current %i of %i',i,n)
+    [I,Z(i)]=GetCurrent(ant, f(i),1,1,200);
+end %for i
+
+

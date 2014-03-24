@@ -1,0 +1,165 @@
+This is e-TeX, Version 3.141592-2.1 (MiKTeX 2.4) (preloaded format=latex 2004.11.15)  9 MAR 2007 16:14
+entering extended mode
+**SolarOrbiterMeeting06_Oswald.tex
+(SolarOrbiterMeeting06_Oswald.tex
+LaTeX2e <2001/06/01>
+Babel <v3.7m> and hyphenation patterns for english, french, german, ngerman, ru
+ssian, dumylang, nohyphenation, loaded.
+File: esapub.tex 2001/04/25 1.1 (PWD)
+(esapub2005.cls
+
+LaTeX Warning: You have requested document class `esapub2005',
+               but the document class provides `esapub'.
+
+Document Class: esapub 2001/04/25 1.1 (PWD)
+(C:\Programme\texmf\tex\latex\base\article.cls
+Document Class: article 2001/04/21 v1.4e Standard LaTeX document class
+(C:\Programme\texmf\tex\latex\base\size10.clo
+File: size10.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+\affilsep=\skip43
+\@affilsep=\skip44
+\c@Maxaffil=\count87
+\c@authors=\count88
+\c@affil=\count89
+)
+(C:\Programme\texmf\tex\latex\psnfss\times.sty
+Package: times 2003/03/02 PSNFSS-v9.0c (SPQR) 
+)
+(C:\Programme\texmf\tex\latex\natbib\natbib.sty
+Package: natbib 2003/06/06 7.1 (PWD)
+\bibhang=\skip45
+\bibsep=\skip46
+LaTeX Info: Redefining \cite on input line 518.
+\c@NAT@ctr=\count90
+)
+(C:\Programme\texmf\tex\latex\graphics\graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:\Programme\texmf\tex\latex\graphics\keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(C:\Programme\texmf\tex\latex\graphics\graphics.sty
+Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
+
+(C:\Programme\texmf\tex\latex\graphics\trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(C:\Programme\texmf\tex\latex\00miktex\graphics.cfg
+File: graphics.cfg 2003/03/12 v1.1 MiKTeX 'graphics' configuration
+)
+Package graphics Info: Driver file: dvips.def on input line 80.
+
+(C:\Programme\texmf\tex\latex\graphics\dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(SolarOrbiterMeeting06_Oswald.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 42.
+
+(C:\Programme\texmf\tex\latex\psnfss\ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 46.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 46.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 46.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 46.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 46.
+
+Underfull \vbox (badness 1354) has occurred while \output is active []
+
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 66.
+
+(C:\Programme\texmf\tex\latex\psnfss\omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 66.
+
+Underfull \hbox (badness 1348) in paragraph at lines 67--68
+[][]\OT1/ptm/m/n/10 Investigate the links be-tween the so-lar sur-face,
+ []
+
+
+Underfull \hbox (badness 1057) in paragraph at lines 68--69
+[][]\OT1/ptm/m/n/10 Explore the en-er-get-ics, dy-nam-ics and fine-scale
+ []
+
+File: paperpics/antennas1.eps Graphic file (type eps)
+<paperpics/antennas1.eps>
+File: paperpics/antennas2.eps Graphic file (type eps)
+ <paperpics/antennas2.eps>
+File: paperpics/stero_wiregrid.eps Graphic file (type eps)
+
+<paperpics/stero_wiregrid.eps>
+File: paperpics/resonance.eps Graphic file (type eps)
+ <paperpics/resonance.eps>
+Underfull \hbox (badness 2856) in paragraph at lines 101--101
+[]\OT1/ptm/b/n/10 CALIBRATION OF SPACE-CRAFT AN-TEN-
+ []
+
+[1
+
+
+] [2]
+Underfull \hbox (badness 10000) in paragraph at lines 119--119
+[]\OT1/ptm/b/n/10 THE CON-CEPT OF THE EF-FEC-TIVE
+ []
+
+File: paperpics/fig(2).eps Graphic file (type eps)
+<paperpics/fig(2).eps> [3]
+File: paperpics/qtn.eps Graphic file (type eps)
+ <paperpics/qtn.eps>
+Underfull \hbox (badness 1005) in paragraph at lines 155--155
+[][]\OT1/ptm/m/it/10 Figure 6. Ex-am-ple of quasi-thermal noise adapted
+ []
+
+File: paperpics/debye.eps Graphic file (type eps)
+<paperpics/debye.eps>
+File: paperpics/imps.eps Graphic file (type eps)
+ <paperpics/imps.eps> (SolarOrbiterMeeting06_Oswald.bbl
+[4]) [5
+
+] (SolarOrbiterMeeting06_Oswald.aux) ) 
+Here is how much of TeX's memory you used:
+ 1020 strings out of 95716
+ 11247 string characters out of 1193224
+ 63193 words of memory out of 1058530
+ 3981 multiletter control sequences out of 35000
+ 8741 words of font info for 25 fonts, out of 500000 for 1000
+ 198 hyphenation exceptions out of 607
+ 29i,5n,24p,886b,287s stack positions out of 1500i,500n,5000p,200000b,32768s
+
+Output written on SolarOrbiterMeeting06_Oswald.dvi (5 pages, 22632 bytes).

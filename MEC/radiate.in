@@ -1,0 +1,8 @@
+*** 3D radiation diagram->1, polardiagrams->2, oblique diagram->3
+2
+*** Polar angle THETA, azimuth angle PHI, no. of points
+0.0 0.0 40
+*** elec. far field->1, elec. near field->2 
+1
+*** Maximum magnitude, THETA component, PHI component
+1

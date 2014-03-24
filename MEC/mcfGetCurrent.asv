@@ -1,0 +1,125 @@
+function [CS,Z_a]=mcfGetCurrent(ant, f,freqrelsqu,ioneffect,volt,integral,inte)
+
+%   function [CS,Z_a]=mcGetCurrent(ant,
+%   f,freqrelsqu,ioneffect,volt,integral,inte)
+%
+%   This function computes the currents of the wiregrid structure stored in
+%   ant and saves it in the current structure CS together with the 
+%   frequency and the feed position used for the calculation. It uses the 
+%   method of moments. The antennaimpedance is also calculated and stored 
+%   in Z_a
+%
+%   ant...antenna structure
+%   f...frequency
+%   frequrelsequ...omega_pe^2/omega^2#
+%   ioneffect...consider the effect of ions ?   0...no
+%                                               1...jep
+%   volt...excitation voltage on feeds
+%   integral...method of integral evaluation
+%   inte...number of integration steps
+
+% constants
+
+% parameter
+
+if(nargin<3)
+    freqrelsqu=0;
+end
+
+if(nargin<4)
+    ioneffect=0;
+end
+
+if(nargin<5)
+    volt=1;
+end
+
+if(nargin<6)
+    integral=1;
+end
+
+if(nargin<7)
+    inte=50;
+end
+
+ionrelsequ=ioneffect*freqrelsqu/2000; % omega_pe/omega_pi = 1/sqrt(2000)
+epsilon=epsilon0*(1-freqrelsqu-ionrelsequ);  % epsilon=epsilon0*(1-omega_pe^2/omega^2-omega_pi^2/omega^2)
+
+Z0=sqrt(mu/epsilon);  % ohm...impedance of free space
+
+CS=struct(...
+    'I',[],...
+    'feeds',[],...
+    'f',0, ...
+    'epsilon',0);
+
+CS.feeds=ant.feeds;
+CS.f=f;
+CS.epsilon=epsilon;
+
+%   setup matrices
+
+N=ant.nSegs;
+M=ant.nNodes;
+
+I=zeros(N,1);   % Current vector
+R=zeros(N,1);   % Realteil
+X=zeros(N,1);     % Imaginärteil
+l=zeros(N,1);
+
+wavelength=3e8/f;
+k=2*pi/wavelength;
+omega=2*pi*f;
+a=ant.radius;  % wire radius
+a_rel=a/wavelength; 
+
+% create indirection file
+  
+  fd=fopen('input.dat','w+');
+  fprintf(fd,'%e\n1\n%d\n',f,inte);
+  fclose(fd);
+
+  % aufrufen
+  
+  [Status,Result]=dos('fmcGetCurrent.exe < input.dat');
+  if Status ~=0
+      fprintf('failed\n');
+  else
+      fprintf('done\n');
+  end
+  
+  % auslesen
+  
+  fd=fopen('mec.out','r');
+  if fd==-1
+      error('Unable to open output file')
+  end %if
+  
+  temp=fscanf(fd,'%d',1);
+  temp=fscanf(fd,'%d',1);
+  temp=fscanf(fd,'%f',1);
+  
+  for n=1:N
+      R(n)=fscanf(fd,'%f',1);
+      X(n)=fscanf(fd,'%f',1);
+  end % for
+  fclose(fd)
+  
+  I=R+i*X
+  CS.I=I;
+% Antenna Impedance
+
+Z_a=volt./I(ant.feeds)
+
+
+figure
+plot(abs(I));
+title('Current Distribution/ Absolute value');
+
+figure
+plot(real(I));
+title('Current Distribution/ Real part');
+
+figure
+plot(imag(I));
+title('Current Distribution/ Imaginary part');

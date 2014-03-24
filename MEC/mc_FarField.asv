@@ -1,0 +1,114 @@
+function [E,B]=mc_FarField(ant,CS, NN)
+
+%   function [E B]=mc_FarField(ant,CS, NN)
+%
+%   This function computes the electric and magnetic field  as function of theta and phi. Since E has only a
+%   component in theta direction, and B only in phi direction, only a
+%   scalar is required for each direction. So E and B are a 2
+%   dimensional matrices. Since the field depends on the distance from the
+%   antenna, the output is normalized to one antenna length. To get the
+%   actual field strengths, one has to multiply the result by exp(ikr)/r
+%
+%   ant...antenna structure
+%   CS...current structure
+%   I...a vector where the entries are the magnitude of the current in this
+%       segment
+%   NN...number of points in theta and phi direction
+
+
+% constants
+
+mu=4*pi*1e-7;    % henry/meter...free space
+epsilon=8.8542e-12;   % parad/meter...free space
+Z0=376.7;  % ohm...impedance of free space
+
+% parameter
+
+if(nargin<4)
+    fprintf('Not enough parameters');
+    return
+end
+
+N=ant.nSegs;
+
+wavelength=3e8/f;
+k=2*pi/wavelength;
+omega=2*pi*CS.f;
+
+E=zeros(NN,NN);
+B=zeros(NN,NN);
+
+
+fprintf('Working on segment 000');
+theta=linspace(0,pi,NN);
+phi=linspace(0,2*pi,NN);
+
+
+%   compute lengths and midpoints of segments
+
+for(n=1:N)
+    l(n)=norm((ant.nodes(ant.segs(n,2),:)-ant.nodes(ant.segs(n,1),:)),'fro');
+     mid(n,:)=(ant.nodes(ant.segs(n,1),:)+ant.nodes(ant.segs(n,2),:))./2;
+end
+
+%   compute fields
+
+for(n=1:N)
+    fprintf('\b\b\b\b%4i',n);
+    for(t=1:NN)
+        for(p=1:NN)
+            % compute distance s
+            
+            point = [0,0,ant.length/2]+2*ant.length*[sin(phi(p))*sin(theta(t)),cos(phi(p))*sin(theta(t)),cos(theta(t))]; 
+            s=norm(point-mid(n,:),'fro');
+            
+            % compute fields
+            
+            E(t,p)=E(t,p)+((Z0*k*I(n)*l(n)*i)/(4*pi))*sin(theta(t))*exp(-i*k*s);
+            B(t,p)=B(t,p)+((mu*k*I(n)*l(n)*i)/(4*pi))*sin(theta(t))*exp(-i*k*s);
+        end
+    end
+end % for all segments
+
+
+% plot graph
+
+polar(theta(1,:),abs(real(E(:,1))'));
+hold on
+polar(-theta(1,:),abs(real(E(:,1+floor(NN/2)))'));
+hold off
+
+title('Electric field as function of colatitude');
+
+figure
+for t=1:NN
+    for p=1:NN
+        x(t,p)=abs(real(E(t,p)))*cos(phi(p))*sin(theta(t));
+        y(t,p)=abs(real(E(t,p)))*sin(phi(p))*sin(theta(t));
+        z(t,p)=abs(real(E(t,p)))*cos(theta(t));
+    end
+end
+
+surf(x,y,z,real(E))
+colorbar
+title('Electric field, color coded');
+
+figure
+polar(theta(1,:),abs(real(B(:,1))'));
+hold on
+polar(-theta(1,:),abs(real(B(:,1+floor(NN/2)))'));
+hold off
+
+title('Magnetic induction field as function of colatitude');
+
+figure
+for t=1:NN
+    for p=1:NN
+        x(t,p)=abs(real(B(t,p)))*cos(phi(p))*sin(theta(t));
+        y(t,p)=abs(real(B(t,p)))*sin(phi(p))*sin(theta(t));
+        z(t,p)=abs(real(B(t,p)))*cos(theta(t));
+    end
+end
+surf(x,y,z,real(B))
+colorbar
+title('Magnetic induction field as function of colatitude');

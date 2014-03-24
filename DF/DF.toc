@@ -1,0 +1,26 @@
+\contentsline {chapter}{\numberline {1}2D Direction Finding}{1}
+\contentsline {chapter}{\numberline {2}Indirekte Methoden}{3}
+\contentsline {section}{\numberline {2.1}Bestimmung des Radio Horizonts}{3}
+\contentsline {section}{\numberline {2.2}Ray Tracing}{3}
+\contentsline {chapter}{\numberline {3}Direction Finding mit 2 orthogonalen Antennen}{4}
+\contentsline {section}{\numberline {3.1}Die Gleichungen}{4}
+\contentsline {section}{\numberline {3.2}Reduktion der Variablen}{8}
+\contentsline {section}{\numberline {3.3}Direction Finding mit 2 Messungen}{11}
+\contentsline {section}{\numberline {3.4}Rotierende Raumsonden}{12}
+\contentsline {chapter}{\numberline {4}Direction Finding mit 3 orthogonalen Antennen}{17}
+\contentsline {chapter}{\numberline {5}Der allgemeine Fall: Schiefe Antennen}{19}
+\contentsline {section}{\numberline {5.1}Analytische L\"osung}{21}
+\contentsline {subsection}{\numberline {5.1.1}Die Herkunftsrichtung der Welle}{21}
+\contentsline {subsection}{\numberline {5.1.2}Die Stokes Parameter}{25}
+\contentsline {section}{\numberline {5.2}Numerische L\"osung}{27}
+\contentsline {subsection}{\numberline {5.2.1}Definieren des Problems}{27}
+\contentsline {subsection}{\numberline {5.2.2}Das Minimum einer mehrdimensionalen Funktion}{28}
+\contentsline {subsection}{\numberline {5.2.3}Die Newton-Raphson Methode}{29}
+\contentsline {subsubsection}{Der eindimensionale Fall}{29}
+\contentsline {subsubsection}{Die multidimensionale NRM}{30}
+\contentsline {chapter}{\numberline {6}Fehleranalyse}{32}
+\contentsline {section}{\numberline {6.1}Fehleranalyse der analytischen L\"osung}{32}
+\contentsline {subsection}{\numberline {6.1.1}Die Herkunftsrichtung}{32}
+\contentsline {subsubsection}{Fehlerfortpflanzung bei unabh\"angigen Observablen:}{32}
+\contentsline {subsubsection}{Multivariate Analyse}{35}
+\contentsline {subsection}{\numberline {6.1.2}Stoke's Parameter}{37}

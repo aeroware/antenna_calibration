@@ -1,0 +1,74 @@
+% mcPermittDep is a routine which plots the relative variation of the 
+% effective length vector as function of the permittivity
+
+clear
+
+% input parameters
+
+nSegs=801;
+antLength=6;
+antRadius=5e-3;
+feed=401;
+
+f1=3e5;
+f2=1e6;
+f3=10e6;
+
+eps=0.1:0.1:1;
+%f_pe=10e6;
+ioneffect=0;
+integral=1;
+inte=50;
+
+% create grid
+
+ant=mcCreateDipole(nSegs,antLength,antRadius);
+
+% compute impedance
+
+Heff1=zeros(length(eps),1);
+Heff2=zeros(length(eps),1);
+Heff3=zeros(length(eps),1);
+
+
+for n=1:length(eps)
+    fprintf('\nepsilon_r= %6d\n',eps(n))
+    freqrelsqu=1-eps(n);
+    
+    [cs1,imp]=mcGetSinCurrent(ant,f1,freqrelsqu,ioneffect,1);
+    [cs2,imp]=mcGetSinCurrent(ant,f2,freqrelsqu,ioneffect,1);
+    [cs3,imp]=mcGetSinCurrent(ant,f3,freqrelsqu,ioneffect,1);
+    
+    Heff1(n)=mcGetHeff(ant,cs1,[1,0,0],freqrelsqu);
+    Heff2(n)=mcGetHeff(ant,cs2,[1,0,0],freqrelsqu);
+    Heff3(n)=mcGetHeff(ant,cs3,[1,0,0],freqrelsqu);
+end
+
+figure
+plot(eps,real(Heff1),'b');
+line(eps,real(Heff2),'color','r');
+line(eps,real(Heff3),'color''g');
+title('Real part of the length of the effective length vector');
+xlabel('Equivalent permittivity');
+ylabel('Heff');
+legend('300kHz','1MHz','10MHz');
+
+relHeff1=Heff1/Heff1(end)*100;
+relHeff2=Heff2/Heff2(end)*100;
+relHeff3=Heff3/Heff3(end)*100;
+
+
+figure
+plot(eps,real(relHeff1),'b');
+line(eps,real(relHeff2),'r');
+line(eps,real(relHeff3),'g');
+title('Equivalent Real part of the length of the effective length vector');
+xlabel('Equivalent permittivity');
+ylabel('Heff/Heff in Vacuum [%]');
+
+legend('300kHz','1MHz','10MHz');
+
+
+
+
+

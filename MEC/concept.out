@@ -1,0 +1,203 @@
+ * This is CONCEPT 9.3 BE
+ * Fortran Version for UNIX, May 2004
+ * Scalar Version
+  
+  
+   The current data file  
+   =====================
+  
+1.1  characterization of the structure                                          
+ Dipole                                                                         
+2.1   symmetry with respect to the xz plane, yz plane or both                   
+     0                                                                          
+2.2   number of wires, id. ground, segments per wavelength, coating             
+     5     0     8     0                                                        
+2.30  wire 1   : coordinates                                                    
+    0.0000     0.0000    -3.0000     0.0000     0.0000    -2.0000               
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY                     
+    2.0000    3                                                                 
+2.30  wire 2   : coordinates                                                    
+    0.0000     0.0000    -2.0000     0.0000     0.0000    -1.0000               
+2.31  wire 2   : radius, no. of basis functions, RB, EP, MY                     
+    2.0000    3                                                                 
+2.30  wire 3   : coordinates                                                    
+    0.0000     0.0000    -1.0000     0.0000     0.0000     1.0000               
+2.31  wire 3   : radius, no. of basis functions, RB, EP, MY                     
+    2.0000    3                                                                 
+2.30  wire 4   : coordinates                                                    
+    0.0000     0.0000     1.0000     0.0000     0.0000     2.0000               
+2.31  wire 4   : radius, no. of basis functions, RB, EP, MY                     
+    2.0000    3                                                                 
+2.30  wire 5   : coordinates                                                    
+    0.0000     0.0000     2.0000     0.0000     0.0000     3.0000               
+2.31  wire 5   : radius, no. of basis functions, RB, EP, MY                     
+    2.0000    3                                                                 
+3.1  print of currents                                                          
+     1                                                                          
+3.2  excitation                                                                 
+     1                                                                          
+3.3  generator position, internal resistance (excitation=1)                     
+m3      0.0000                                                                  
+4.1  representation of frequency(ies) (1-6)                                     
+     1                                                                          
+4.2  basic frequency                                                            
+ 90.000000                                                                      
+5.1  skin effect (1/0)                                                          
+     1                                                                          
+5.2  number: conductivity value(s), observation point(s) E tang                 
+     1     0                                                                    
+5.3  conductivity value(s) in S/m (max. 3 per line)                             
+ 0.3540E+08                                                                     
+5.4  conductivity domain(s)                                                     
+        5                                                                       
+6.1  number of load impedances                                                  
+     0                                                                          
+7.1  current distribution on wires                                              
+     0                                                                          
+7.3  number of currents at discrete points                                      
+     0                                                                          
+9.0  rcs (0/1)                                                                  
+     0                                                                          
+9.1  number of field points                                                     
+     0                                                                          
+10.3  total number of "cable wires"                                             
+     0                                                                          
+11.1  surface currents (0/1/2)                                                  
+     0                                                                          
+12.1  direct: 11,12,13, special direct solv. 21,22, iter. solver: 31,32,33      
+    12                                                                          
+  
+  
+  
+  Wire types computed by the program: 
+  ===========================================
+  
+  wire number:    1 ,  identification:   -5
+  wire number:    2 ,  identification:    6
+  wire number:    3 ,  identification:    6
+  wire number:    4 ,  identification:    6
+  wire number:    5 ,  identification:    5
+  
+  
+  
+ Wire data
+ =========
+  
+ Connections at the bottom with other and image wires
+ -> 0 will be printed.
+ Pos. direction of current flow away from node point (kinks).
+ -> neg. wire number
+ Pos. direction of current flow towards the node point 
+ -> pos. wire number
+ Connection with surface patch
+ -> 55000+number of surface patch is printed
+ Wire number:   1
+ 
+ ---------------------------------------------------------------------
+      Xa          Ya           Za         Xe          Ye           Ze
+    0.0000      0.0000      -3.000      0.0000      0.0000      -2.000    
+ Radius (mm):  2.000       ; no. of basisf. :   3   ; length (m):   1.000    
+ No connection at the beginning
+ Wire number(s) of the connection(s) at the end:  -2
+  
+ Wire number:   2
+ 
+ ---------------------------------------------------------------------
+      Xa          Ya           Za         Xe          Ye           Ze
+    0.0000      0.0000      -2.000      0.0000      0.0000      -1.000    
+ Radius (mm):  2.000       ; no. of basisf. :   3   ; length (m):   1.000    
+ Wire number(s) of the connection(s) at the beginning :   1
+ Wire number(s) of the connection(s) at the end:  -3
+  
+ Wire number:   3
+ 
+ ---------------------------------------------------------------------
+      Xa          Ya           Za         Xe          Ye           Ze
+    0.0000      0.0000      -1.000      0.0000      0.0000       1.000    
+ Radius (mm):  2.000       ; no. of basisf. :   5   ; length (m):   2.000    
+ Wire number(s) of the connection(s) at the beginning :   2
+ Wire number(s) of the connection(s) at the end:  -4
+  
+ Wire number:   4
+ 
+ ---------------------------------------------------------------------
+      Xa          Ya           Za         Xe          Ye           Ze
+    0.0000      0.0000       1.000      0.0000      0.0000       2.000    
+ Radius (mm):  2.000       ; no. of basisf. :   3   ; length (m):   1.000    
+ Wire number(s) of the connection(s) at the beginning :   3
+ Wire number(s) of the connection(s) at the end:  -5
+  
+ Wire number:   5
+ 
+ ---------------------------------------------------------------------
+      Xa          Ya           Za         Xe          Ye           Ze
+    0.0000      0.0000       2.000      0.0000      0.0000       3.000    
+ Radius (mm):  2.000       ; no. of basisf. :   3   ; length (m):   1.000    
+ Wire number(s) of the connection(s) at the beginning :   4
+ No connection at the end
+  
+ 
+
+  Frequency of step:     1           0.90000E+02 MHz; 
+  Total number of wire current amplitudes:   17
+  Total number of patch current amplitudes:   0
+  Total number of unknowns:   17
+  
+  Generator at the middle of wire   3
+  ------------------------------------
+  
+                          Real part    imag. part      magnitude     phase (degrees)
+  Input impedance (Ohm): 0.10207E+04  0.75292E+03  0.12683E+04  0.36414E+02
+
+  Internal resist.:   0.000000  +j   0.000000  Ohm
+  
+  Amplit. of the exciting voltage: ( 0.10000E+01, 0.00000E+00 ) V
+
+  Input power:   3.172413E-04  Watt
+  
+ 
+  Current distribution on   1. wire in A (  3 current functions)
+  ------------------------------------------------------------
+    Real part       imag. part      magnitude     phase (degees)  wire coord. (m)   
+ -0.14613E-03     0.90112E-03     0.91289E-03     0.99211E+02   0.28571E+00
+ -0.28168E-03     0.14509E-02     0.14780E-02     0.10099E+03   0.57143E+00
+ -0.37191E-03     0.15582E-02     0.16020E-02     0.10342E+03   0.85714E+00
+ 
+  Current distribution on   2. wire in A (  3 current functions)
+  ------------------------------------------------------------
+    Real part       imag. part      magnitude     phase (degees)  wire coord. (m)   
+ -0.38554E-03     0.11748E-02     0.12365E-02     0.10817E+03   0.16667E+00
+ -0.27363E-03     0.29110E-03     0.39952E-03     0.13323E+03   0.50000E+00
+ -0.53135E-04    -0.71449E-03     0.71646E-03    -0.94253E+02   0.83333E+00
+ 
+  Current distribution on   3. wire in A (  5 current functions)
+  ------------------------------------------------------------
+    Real part       imag. part      magnitude     phase (degees)  wire coord. (m)   
+  0.24526E-03    -0.15124E-02     0.15322E-02    -0.80789E+02   0.20000E+00
+  0.52520E-03    -0.15182E-02     0.16065E-02    -0.70918E+02   0.60000E+00
+  0.63448E-03    -0.46803E-03     0.78843E-03    -0.36414E+02   0.10000E+01
+  0.52520E-03    -0.15182E-02     0.16065E-02    -0.70918E+02   0.14000E+01
+  0.24526E-03    -0.15124E-02     0.15322E-02    -0.80789E+02   0.18000E+01
+ 
+  Current distribution on   4. wire in A (  3 current functions)
+  ------------------------------------------------------------
+    Real part       imag. part      magnitude     phase (degees)  wire coord. (m)   
+ -0.53135E-04    -0.71449E-03     0.71646E-03    -0.94253E+02   0.16667E+00
+ -0.27363E-03     0.29110E-03     0.39952E-03     0.13323E+03   0.50000E+00
+ -0.38554E-03     0.11748E-02     0.12365E-02     0.10817E+03   0.83333E+00
+ 
+  Current distribution on   5. wire in A (  3 current functions)
+  ------------------------------------------------------------
+    Real part       imag. part      magnitude     phase (degees)  wire coord. (m)   
+ -0.37191E-03     0.15582E-02     0.16020E-02     0.10342E+03   0.14286E+00
+ -0.28168E-03     0.14509E-02     0.14780E-02     0.10099E+03   0.42857E+00
+ -0.14613E-03     0.90112E-03     0.91289E-03     0.99211E+02   0.71429E+00
+ 
+ CONCEPT Timings:
+
+ Setup equation system (s)...................            0
+ Solve equation system (s)...................            0
+ Cleanup (s).................................            0
+ 
+ CONCEPT terminated normally.
+

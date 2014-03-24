@@ -1,0 +1,85 @@
+This is makeindex, portable version 2.12 [26-May-1993] (MiKTeX 2.4).
+Scanning input file ConceptReport...
+!! Input index error (file = ConceptReport, line = 1):
+   -- Unknown index keyword \documentclass[a4paper,10pt].
+!! Input index error (file = ConceptReport, line = 3):
+   -- Unknown index keyword %\usepackage[T1].
+!! Input index error (file = ConceptReport, line = 4):
+   -- Unknown index keyword %\usepackage[latin1].
+!! Input index error (file = ConceptReport, line = 5):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = ConceptReport, line = 6):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = ConceptReport, line = 7):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = ConceptReport, line = 8):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = ConceptReport, line = 9):
+   -- Unknown index keyword \usepackage.
+!! Input index error (file = ConceptReport, line = 11):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = ConceptReport, line = 12):
+   -- Unknown index keyword \title.
+!! Input index error (file = ConceptReport, line = 13):
+   -- Unknown index keyword \author.
+!! Input index error (file = ConceptReport, line = 15):
+   -- Unknown index keyword \begin.
+!! Input index error (file = ConceptReport, line = 17):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = ConceptReport, line = 18):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = ConceptReport, line = 20):
+   -- Unknown index keyword \begin.
+!! Input index error (file = ConceptReport, line = 22):
+   -- Unknown index keyword \end.
+!! Input index error (file = ConceptReport, line = 24):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = ConceptReport, line = 25):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = ConceptReport, line = 26):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = ConceptReport, line = 29):
+   -- Unknown index keyword \section.
+!! Input index error (file = ConceptReport, line = 31):
+   -- Unknown index keyword \begin.
+!! Input index error (file = ConceptReport, line = 32):
+   -- Unknown index keyword \bibitem.
+!! Input index error (file = ConceptReport, line = 33):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = ConceptReport, line = 34):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = ConceptReport, line = 35):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = ConceptReport, line = 37):
+   -- Unknown index keyword \bibitem.
+!! Input index error (file = ConceptReport, line = 38):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = ConceptReport, line = 39):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = ConceptReport, line = 40):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = ConceptReport, line = 42):
+   -- Unknown index keyword \bibitem.
+!! Input index error (file = ConceptReport, line = 43):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = ConceptReport, line = 44):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = ConceptReport, line = 46):
+   -- Unknown index keyword \bibitem.
+!! Input index error (file = ConceptReport, line = 47):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = ConceptReport, line = 48):
+   -- Unknown index keyword \end.
+!! Input index error (file = ConceptReport, line = 50):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = ConceptReport, line = 51):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = ConceptReport, line = 52):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = ConceptReport, line = 53):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = ConceptReport, line = 54):
+   -- Unknown index keyword \end.
+done (0 entries accepted, 40 rejected).
+Nothing written in ConceptReport.ind.
+Transcript written in ConceptReport.ilg.
