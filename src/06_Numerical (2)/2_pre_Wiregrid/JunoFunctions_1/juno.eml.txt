@@ -1,0 +1,235 @@
+
+
+-------- Original-Nachricht --------
+From: - Wed Mar 21 18:07:28 2007
+X-Mozilla-Status: 0001
+X-Mozilla-Status2: 00000000
+Received: from elsa.arz.oeaw.ac.at (elsa.arz.oeaw.ac.at [193.170.80.10])    by nova.fzg.oeaw.ac.at (09/16) with ESMTP id l2LH1Zdb011638    (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO)    for <hrucker@nova.fzg.oeaw.ac.at>; Wed, 21 Mar 2007 18:01:37 +0100
+Received: from saturn.physics.uiowa.edu (saturn.physics.uiowa.edu [128.255.33.74])    by elsa.arz.oeaw.ac.at (08/15) with ESMTP id l2LH1FZD014568    (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO)    for <helmut.rucker@oeaw.ac.at>; Wed, 21 Mar 2007 18:01:18 +0100
+Received: from [137.78.236.245] (dhcp-78-236-245.jpl.nasa.gov [137.78.236.245])    (authenticated bits=0)    by saturn.physics.uiowa.edu (8.13.8/8.13.8) with ESMTP id l2LH1DIR011661    (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);    Wed, 21 Mar 2007 12:01:14 -0500
+Message-ID: <460164DD.3080000@uiowa.edu>
+Date: Wed, 21 Mar 2007 12:01:17 -0500
+From: Bill Kurth <william-kurth@uiowa.edu>
+Reply-To: william-kurth@uiowa.edu
+User-Agent: Thunderbird 1.5.0.10 (Windows/20070221)
+MIME-Version: 1.0
+To: Helmut O. Rucker <helmut.rucker@oeaw.ac.at>,        Don Kirchner <donald-kirchner@uiowa.edu>,        Bill Kurth <william-kurth@uiowa.edu>
+Subject: Re: Hypothetical spacecraft/antenna pattern
+References: <45FFFE03.2040506@uiowa.edu> <45FFFFB5.4040104@uiowa.edu> <46015E2E.8040707@oeaw.ac.at>
+In-Reply-To: <46015E2E.8040707@oeaw.ac.at>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-2.0.2 (nova.fzg.oeaw.ac.at [193.170.92.10]); Wed, 21 Mar 2007 18:01:37 +0100 (CET)
+X-Greylist: IP, sender and recipient auto-whitelisted, not delayed by milter-greylist-2.0.2 (elsa.arz.oeaw.ac.at [193.170.80.10]); Wed, 21 Mar 2007 17:01:19 +0000 (UTC)
+X-Virus-Scanned: ClamAV 0.88.7/2892/Wed Mar 21 11:40:09 2007 on smtp.oeaw.ac.at
+X-Virus-Scanned: ClamAV 0.90.1/2892/Wed Mar 21 10:40:09 2007 on elsa2
+X-Virus-Status: Clean
+X-Spam-Status: No, score=0.0 required=8.0 tests=DK_POLICY_SIGNSOME autolearn=disabled version=3.1.7
+X-Spam-Checker-Version: SpamAssassin 3.1.7 (2006-10-05) on elsa2
+
+See answers (or lack thereof) embedded below:
+
+Maybe 5 degree resolution would be sufficient at this time.
+
+Bill
+
+Helmut O. Rucker wrote:
+
+> Hi Bill,
+>
+> given the configuration you have described, some questions need to be answered:
+>
+> Where is the exact location the strut being fixed at the panels ?   Don't know  (I'd assume a 45 degree angle of the strut wrt to the face and panel
+> What is the thickness of the strut ? Don't know.  Assume 2 cm???
+> What is the thickness of the antenna elements ? Don't know, assume 0.5 cm, but I think there is a chance they will be tapered in the final design.
+>
+> A first estimate comes to the following conclusion:
+>
+> 1)Given the vertex of the antenna system located at the bottom of a face without solar panels, the spacecraft configuration is completely symmetrical wrt the antenna system. Both effective antenna heights of both antenna rods will be pressed "inwards", i.e. towards the symmetry line of both rods, and will be pressed downwards, i.e. towards the aft.
+>
+> 2)Given the vertex of the antenna system located at the bottom of a face under a solar panel, the spacecraft configuration is again completely symmetrical wrt the antenna system. Both effective antenna heights of both antenna rods will be pressed "outward" due to the strut, but also "inward" due to the more distant other solar panels. Which effect is dominating needs to be determined. Further, the h-effs will be pressed "downwards" (towards the aft) due to the above solar panel and the asymmetric location of the s/c hull, probably stronger than in case 1).
+>
+> The exact determination of h_effs:
+>
+> We have started working on the grid, the locations of the struts and the thicknesses (see questions above) need to be incorporated. 
+We propose to generate a table for case 1) and another for case 2), each table comprising "subtended angle" in delta-steps between 90 and 120 deg, 
+versus "rotated angle" in delta-steps between 30 and 45 deg. We understand that the optimum configuration could be read out of both tables 
+when the h_effs are orthogonal to each other.
+>
+> The tables should be finalized early next week (delta of 2 deg, e.g., for both angles and both cases are approx. 250 calculations, each ca. 10 min CPU time).
+>
+> I hope this meets your requests. Please respond to your earliest convenience.
+>
+> Cheers,
+> Helmut.
+>
+> P.S.: Many thanks for the SKR paper corrections. I'll forward to you the next (updated) version and distribute it also to the other co-authors.
+>
+>
+>
+> Bill Kurth schrieb:
+>
+>> Unfortunately, we have little time to consider this problem.
+>>
+>> Bill
+>>
+>> Bill Kurth wrote:
+>>
+>>> Helmut:
+>>>
+>>> Please consider a hypothetical spacecraft in determining the optimum location for a short 2-element antenna system for use from very low frequencies up to 40 MHz.
+>>>
+>>> Assume the s/c is hexagonal with each side 2m X 2m.  Assume the top of every other face (three total) have solar panels extended perpendicular to the face with dimensions of 2m X 8m, but with a strut extending from the bottom middle of the face to the solar panel.  Assume each element of the antenna system is 2 m.
+>>>
+>>> We envision the two antenna elements to have  subtended angle of between 90 and 120 degrees with the plane of the antenna rotated 30 to 45 degrees aft, with respect to the plane of the solar panels.
+>>>
+>>> Would it be best to have the vertex of the antenna system located on the bottom edge of a face under a solar panel, or at the bottom of a face without a solar panel?
+>>>
+>>> What would the ideal subtended angle between the antenna elements be?
+>>>
+>>> What would be the ideal angle between the antenna plane and the plane of the solar panels?
+>>>
+>>> Bill
+>>
+>
+>
+
+
+-- 
+Univ.-Prof. Mag.Dr. Helmut O. Rucker
+Research Director, Department Head
+Space Research Institute
+Austrian Academy of Sciences
+Schmiedlstrasse 6
+A - 8042 Graz
+
+Voice: +43-316-4120-601
+Fax:   +43-316-4120-690
+Email: rucker@oeaw.ac.at
+-- 
+
+
+Subject:
+[Fwd: Re: Hypothetical spacecraft/antenna pattern]
+From:
+"Helmut O. Rucker" <helmut.rucker@oeaw.ac.at>
+Date:
+Wed, 21 Mar 2007 18:23:07 +0100
+To:
+tho <Thomas.Oswald@oeaw.ac.at>
+
+
+
+-------- Original-Nachricht --------
+From: - Wed Mar 21 18:07:28 2007
+X-Mozilla-Status: 0001
+X-Mozilla-Status2: 00000000
+Received: from elsa.arz.oeaw.ac.at (elsa.arz.oeaw.ac.at [193.170.80.10])    by nova.fzg.oeaw.ac.at (09/16) with ESMTP id l2LH1Zdb011638    (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO)    for <hrucker@nova.fzg.oeaw.ac.at>; Wed, 21 Mar 2007 18:01:37 +0100
+Received: from saturn.physics.uiowa.edu (saturn.physics.uiowa.edu [128.255.33.74])    by elsa.arz.oeaw.ac.at (08/15) with ESMTP id l2LH1FZD014568    (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO)    for <helmut.rucker@oeaw.ac.at>; Wed, 21 Mar 2007 18:01:18 +0100
+Received: from [137.78.236.245] (dhcp-78-236-245.jpl.nasa.gov [137.78.236.245])    (authenticated bits=0)    by saturn.physics.uiowa.edu (8.13.8/8.13.8) with ESMTP id l2LH1DIR011661    (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);    Wed, 21 Mar 2007 12:01:14 -0500
+Message-ID: <460164DD.3080000@uiowa.edu>
+Date: Wed, 21 Mar 2007 12:01:17 -0500
+From: Bill Kurth <william-kurth@uiowa.edu>
+Reply-To: william-kurth@uiowa.edu
+User-Agent: Thunderbird 1.5.0.10 (Windows/20070221)
+MIME-Version: 1.0
+To: Helmut O. Rucker <helmut.rucker@oeaw.ac.at>,        Don Kirchner <donald-kirchner@uiowa.edu>,        Bill Kurth <william-kurth@uiowa.edu>
+Subject: Re: Hypothetical spacecraft/antenna pattern
+References: <45FFFE03.2040506@uiowa.edu> <45FFFFB5.4040104@uiowa.edu> <46015E2E.8040707@oeaw.ac.at>
+In-Reply-To: <46015E2E.8040707@oeaw.ac.at>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-2.0.2 (nova.fzg.oeaw.ac.at [193.170.92.10]); Wed, 21 Mar 2007 18:01:37 +0100 (CET)
+X-Greylist: IP, sender and recipient auto-whitelisted, not delayed by milter-greylist-2.0.2 (elsa.arz.oeaw.ac.at [193.170.80.10]); Wed, 21 Mar 2007 17:01:19 +0000 (UTC)
+X-Virus-Scanned: ClamAV 0.88.7/2892/Wed Mar 21 11:40:09 2007 on smtp.oeaw.ac.at
+X-Virus-Scanned: ClamAV 0.90.1/2892/Wed Mar 21 10:40:09 2007 on elsa2
+X-Virus-Status: Clean
+X-Spam-Status: No, score=0.0 required=8.0 tests=DK_POLICY_SIGNSOME autolearn=disabled version=3.1.7
+X-Spam-Checker-Version: SpamAssassin 3.1.7 (2006-10-05) on elsa2
+
+See answers (or lack thereof) embedded below:
+
+Maybe 5 degree resolution would be sufficient at this time.
+
+Bill
+
+Helmut O. Rucker wrote:
+> Hi Bill,
+>
+> given the configuration you have described, some questions need to be answered:
+>
+> Where is the exact location the strut being fixed at the panels ?   Don't know  (I'd assume a 45 degree angle of the strut wrt to the face and panel
+> What is the thickness of the strut ? Don't know.  Assume 2 cm???
+> What is the thickness of the antenna elements ? Don't know, assume 0.5 cm, but I think there is a chance they will be tapered in the final design.
+>
+> A first estimate comes to the following conclusion:
+>
+> 1)Given the vertex of the antenna system located at the bottom of a face without solar panels, the spacecraft configuration is completely 
+symmetrical wrt the antenna system. Both effective antenna heights of both antenna rods will be pressed "inwards", i.e. towards the symmetry 
+line of both rods, and will be pressed downwards, i.e. towards the aft.
+>
+> 2)Given the vertex of the antenna system located at the bottom of a face under a solar panel, the spacecraft configuration is again completely 
+symmetrical wrt the antenna system. Both effective antenna heights of both antenna rods will be pressed "outward" due to the strut, but also 
+"inward" due to the more distant other solar panels. Which effect is dominating needs to be determined. Further, the h-effs will be pressed 
+"downwards" (towards the aft) due to the above solar panel and the asymmetric location of the s/c hull, probably stronger than in case 1).
+>
+> The exact determination of h_effs:
+>
+> We have started working on the grid, the locations of the struts and the thicknesses (see questions above) need to be incorporated. We propose to generate a table for case 1) and another for case 2), each table comprising "subtended angle" in delta-steps between 90 and 120 deg, versus "rotated angle" in delta-steps between 30 and 45 deg. We understand that the optimum configuration could be read out of both tables when the h_effs are orthogonal to each other.
+>
+> The tables should be finalized early next week (delta of 2 deg, e.g., for both angles and both cases are approx. 250 calculations, each ca. 10 min CPU time).
+>
+> I hope this meets your requests. Please respond to your earliest convenience.
+>
+> Cheers,
+> Helmut.
+>
+> P.S.: Many thanks for the SKR paper corrections. I'll forward to you the next (updated) version and distribute it also to the other co-authors.
+>
+>
+>
+> Bill Kurth schrieb:
+>
+>> Unfortunately, we have little time to consider this problem.
+>>
+>> Bill
+>>
+>> Bill Kurth wrote:
+>>
+>>> Helmut:
+>>>
+>>> Please consider a hypothetical spacecraft in determining the optimum location for a short 2-element antenna system for use from very low 
+frequencies up to 40 MHz.
+>>>
+>>> Assume the s/c is hexagonal with each side 2m X 2m.  Assume the top of every other face (three total) have solar panels extended perpendicular 
+to the face with dimensions of 2m X 8m, but with a strut extending from the bottom middle of the face to the solar panel.  Assume each element of the 
+antenna system is 2 m.
+>>>
+>>> We envision the two antenna elements to have  subtended angle of between 90 and 120 degrees with the plane of the antenna rotated 30 to 45 degrees 
+aft, with respect to the plane of the solar panels.
+>>>
+>>> Would it be best to have the vertex of the antenna system located on the bottom edge of a face under a solar panel, or at the bottom of a face 
+without a solar panel?
+>>>
+>>> What would the ideal subtended angle between the antenna elements be?
+>>>
+>>> What would be the ideal angle between the antenna plane and the plane of the solar panels?
+>>>
+>>> Bill
+>
+>
+
+
+-- 
+Univ.-Prof. Mag.Dr. Helmut O. Rucker
+Research Director, Department Head
+Space Research Institute
+Austrian Academy of Sciences
+Schmiedlstrasse 6
+A - 8042 Graz
+
+Voice: +43-316-4120-601
+Fax:   +43-316-4120-690
+Email: rucker@oeaw.ac.at
+-- 
+

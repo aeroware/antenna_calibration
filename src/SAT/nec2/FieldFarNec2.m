@@ -1,0 +1,149 @@
+
+function [AA,EE,HH,SS]=FieldFarNec2(Ant,Op,er,feednr,Opt,CountSegs)
+
+% [AA,EE,HH,SS]=FieldFar(Ant,Op,er) calculates far field generated 
+% by the currents Op.Curr(feednr,:,:) excited on the given antenna system.
+% The returned field vectors AA, EE and HH do not take into account
+% the spherical wave factor exp(-j*k*r)/r, which is a function of 
+% the distance r from the origin. So the following vectors are
+% actually returned:
+%   
+%   AA = mu/(4*pi) Int I(r') exp(j*k*er.r') ds'
+%          
+%   EE = - k/(w*eps) * er x HH
+%
+%   HH = - j*k/mu * er x AA
+%
+%   SS = 1/2 EE x HH* = k/(2*w*eps) * |HH|^2 * er
+%
+% The quantities are calculated for the radiation directions
+% defined in er by rows. er is m x 3, where m is the number
+% of directions requested. AA, EE and HH are arrays the same size 
+% as er, containing the vectors as defined above in the corresponding 
+% rows. SS actually not returns vectors but amplitudes, i.e. the 
+% components er.SS=k/(2*w*eps)*|HH|^2 for each given direction,
+% so SS is m x 1.
+% 
+% For reasons mentioned above the proper complex field vectors can
+% be determined from the corresponding returned quantities by:
+%
+%   A = exp(-j*k*r)/r * AA
+%   E = exp(-j*k*r)/r * EE
+%   H = exp(-j*k*r)/r * HH
+%   S = exp(2*Im(k)*r)/r^2 * SS  
+%
+% The time-average power flow P through the unit solid angle is then 
+% easily calculated by (Im(k)<0 represents attenuation):
+%  
+%   P = real(r^2 * S) = real(exp(2*Im(k)*r) * SS)
+%
+% SS=FieldFar(Ant,Op,er,feed,'SS') returns only SS.
+
+w=2*pi*Op.Freq;
+
+[k,eps,mu]=Kepsmu(Op);
+
+er=er./repmat(Mag(er,2),[1,3]);  % ensure unit vectors
+
+nr=size(er,1);
+AA=zeros(nr,3);
+
+ns=size(Ant.Desc,1);
+
+if (nargin<6)|isempty(CountSegs),
+  if nr>ns/2,
+    CountSegs=1;
+  else
+    CountSegs=0;
+  end
+end
+
+if CountSegs,
+    for s=1:ns,
+  
+        r1=Ant.Geom(Ant.Desc(s,1),:);
+        r2=Ant.Geom(Ant.Desc(s,2),:);
+        L=Mag(r2-r1,2);           % Length of segment.
+        ez=(r2-r1)./L;            % Unit vector in segment direction.
+        x=er*ez.';
+        y=Mag(cross(er,repmat(ez,[nr,1]),2),2);
+        theta=atan2(y,x);         % angle between segment and er
+        kL=k*L;
+        x=kL.*sin(theta/2).^2;
+        y=kL.*cos(theta/2).^2;
+  
+        I1=Op.Curr(feednr,s,1).';   % I(z1)
+        I2=Op.Curr(feednr,s,2).';   % I(z2)
+  
+        n=find(x.*y);
+        theta=zeros(size(x));
+        theta(n)=(sin(x(n)).*y(n)-sin(y(n)).*x(n))./x(n)./y(n);
+        n=find(x.*y==0);
+        theta(n)=sinq(x(n))-sinq(y(n));  
+  
+        theta=((I2+I1).*sin(kL/2).*(sinq(x)+sinq(y))+...
+            j*(I2-I1).*cos(kL/2).*theta).*...
+            L./sin(kL).*exp(er*(r1+r2).'*(k/2*j));
+
+        AA=AA+theta*ez;   
+    end % for
+else
+    for d=1:nr,  
+  
+        r1=Ant.Geom(Ant.Desc(:,1),:);
+        r2=Ant.Geom(Ant.Desc(:,2),:);
+        L=Mag(r2-r1,2);                 % Length of segment.
+        ez=(r2-r1)./repmat(L,1,3);      % Unit vector in segment direction.
+        x=ez*er(d,:).';
+        y=Mag(cross(repmat(er(d,:),[ns,1]),ez,2),2);
+        theta=atan2(y,x);               % angle between segment and er
+        kL=k*L;
+        x=kL.*sin(theta/2).^2;
+        y=kL.*cos(theta/2).^2;
+  
+        I1=Op.NecCurr(feednr,:,1).';   % I(z1)
+        I2=Op.Curr(feednr,:,2).';   % I(z2)
+  
+        n=find(x.*y);
+        theta=zeros(size(x));
+        theta(n)=(sin(x(n)).*y(n)-sin(y(n)).*x(n))./x(n)./y(n);
+        n=find(x.*y==0);
+        theta(n)=Sinq(x(n))-Sinq(y(n));  
+  
+        theta=((I2+I1).*sin(kL/2).*(Sinq(x)+Sinq(y))+...
+            j*(I2-I1).*cos(kL/2).*theta).*...
+            L./sin(kL).*exp((r1+r2)*er(d,:).'*(k/2*j));
+
+        AA(d,:)=theta.'*ez;    
+    end % for
+end  % else
+
+AA=AA*(mu/8/pi);
+
+if 0==1,   % check different ways of calculating SS:
+  HH=(-j*k/mu).*cross(er,AA,2);
+  EE=(-k/w/eps).*cross(er,HH,2);
+  SS=(k/2/w/eps)*Mag(HH,2).^2;
+  SS2=(k/2/w/mu)*Mag(EE,2).^2;
+  SS3=(w*conj(k)/2/mu)*Mag(cross(er,AA,2),2).^2; 
+  max(abs(1-SS(:)./SS2(:)))
+  max(abs(1-SS(:)./SS3(:)))
+end
+
+if nargout>1,
+  
+  HH=(-j*k/mu).*cross(er,AA,2);
+  EE=(-k/w/eps).*cross(er,HH,2);
+  
+  if nargout>3,
+    SS=(k/2/w/eps)*Mag(HH,2).^2;
+  end % if
+
+elseif nargin>4,
+  
+  if ischar(Opt),
+    AA=(w*conj(k)/2/mu)*Mag(cross(er,AA,2),2).^2;  % return SS in AA
+  end
+  
+end % else if
+

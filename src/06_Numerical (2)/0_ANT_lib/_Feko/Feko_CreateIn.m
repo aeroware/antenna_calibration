@@ -1,0 +1,165 @@
+
+function Feko_CreateIn(PhysGrid,Freq,FeedNum,Titel,WorkingDir, er)
+
+% Feko_CreateIn(PhysGrid,Freq,Titel,FeedNum,WorkingDir)
+% creates Feko input file in directory WorkingDir
+% (default is the current working directory) 
+% by translating given data into Feko input format.
+% Freq defines the operation frequency. Titel is an optional title 
+% which is written as first item to the file.
+% PhysGrid defines the antenna system, the following fields of which are used:
+%
+%   Geom_.Feeds, Desc_.Feeds .. loads at nodes and segments, respectively
+%     Feeds.Elem element numbers, 
+%     Feeds.Posi position specification 
+%      
+%   Geom_.Loads, Desc_.Loads .. loads at nodes and segments, respectively
+%     Loads.Elem and Loads.Posi the same as for Feeds
+%     Loads.Z    Impedances
+%   Desc_.Wire.Diam, Desc_.Wire.Cond, segment diameters and conductivities
+%   Exterior.epsr  .. dielectric constant of exterior medium
+%
+% All physical quantities are supposed to be in SI-units!
+%
+% The wire conductivities may be inf indicating perfectly conducting wires.
+%
+% FeedNum='all' signifies that all feeds PhysGrid.Desc_.Feeds.Elem are
+% driven, namely by the respective voltages PhysGrid.Desc_.Feeds.V.
+% In case FeedNum is numeric, only the feed with the number FeedNum
+% is driven by 1 Volt, the others are short-circuited.
+%
+% Important: In the current state, it is assumed that the model is meshed
+% by using CADFeko. Therefore it is assumed that the model file exists in
+% the directory and is named in accordance the following statement:
+%
+% the model file of feed n has the filename 'ant.cfm'
+                                  
+
+
+global Atta_Feko_Pre 
+
+if ~exist('WorkingDir','var')||isempty(WorkingDir),
+  WorkingDir='';
+end
+
+deg=pi/180;
+
+cL=2.99792458e8;
+eps0=1/(4e-7*pi*cL^2);
+
+% The following value is substituted for ideal conductivity 
+% when also non-ideal conductors are present:
+InfiniteCond=1e10; 
+
+Co=PhysGrid.Desc_.Cond;
+Co(isinf(Co))=InfiniteCond;
+
+% write Feko main input file
+% =============================
+
+epsr=EvaluateFun(PhysGrid.Exterior.epsr,Freq);
+epsr(epsr==0)=1;
+
+if length(unique(epsr))>1,
+  warning(['Different relative dielectric constants cannot be handled',...
+    'in multi-frequency call; epr of the first frequency is used for all.']);
+end
+
+% open file
+% ---------
+
+CIF=fullfile(WorkingDir,Atta_Feko_Pre);
+
+fid=fopen(CIF,'wt');
+if fid<0,
+  error(['Could not open/create file ',CIF]);
+end
+
+% model file
+
+modf=fullfile(WorkingDir,'ant.cfm');
+copyfile('ant.cfm',modf); % the model file of feed n 
+                                              % the filename 'ant_n.cfm'
+                                              % has
+
+% Title
+% -----
+
+if ~exist('Titel','var')||isempty(Titel),
+  Titel='';
+end
+if ~ischar(Titel),
+  Titel=char(Titel);
+end
+if size(Titel,1)~=0,
+  Titel=Titel.';
+  Titel=Titel(:).';
+end
+
+% Titel=Titel(1:min(69,length(Titel)));  % max 69 characters are allowed
+% test auskommentiert ...
+
+fprintf(fid,'** %s\n\n',Titel);
+fprintf(fid,'** NOTES\n');
+fprintf(fid,'** END OF NOTES\n\n');
+
+% import geometry file
+
+fprintf(fid,'IN   8  31  "ant.cfm"\n');
+
+
+% End of geometry
+fprintf(fid,'EG   0    0    0                        1                   50000                                   0\n');
+%,...
+ %   Co(1));
+  
+% Set medium properties, coatings and skin effects
+fprintf(fid,'DI   0    0    -1             %d                                      %d\n',...
+    real(epsr),imag(epsr)/real(epsr));
+
+% Set frequency (currently only for a single frequency
+fprintf(fid,'FR:  :  :  :  :  : %e\n',Freq);
+
+% Sources
+% A1 == feed at segment
+
+[V,Feeds0,Feeds1,Pos]=GetFeedVolt(PhysGrid,FeedNum);
+
+% set the driven source to 1V, all other to 0
+
+for nF=1:length(V)
+    fprintf(fid,'A1: %d : Union.Feed%d.Port%d :  :  :  : %d : %d\n',...
+        nF-1,nF, nF, V(nF),0); % VoltageSource nF
+end 
+
+% Total source power
+% use defaults
+
+% Requested output...all in .out file
+% Far fields: FarField1
+
+
+fprintf(fid,'DA   0    0    0    0    0    0         0         0         0         0\n');
+fprintf(fid,'FF: 1 : 19 : 37 : 1 :  : 0 : 0 : 1000 : 10\n');
+
+% Near fields: magnetic vector potential...
+
+
+fprintf(fid,'FE   10              %d    6\n',size(er,1));
+for n=1:size(er,1)
+    fprintf(fid,'                              %4.f       %4.f       %4.f\n',...
+        er(n,1),er(n,2),er(n,3));
+end
+
+
+
+% End of file
+fprintf(fid,'EN');
+% close FEKO input file
+% ------------------------
+  
+if fclose(fid)<0,
+  error(['Could not close file ',CIF]);
+end
+
+

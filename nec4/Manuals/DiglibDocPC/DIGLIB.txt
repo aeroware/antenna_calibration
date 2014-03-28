@@ -1,0 +1,6417 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                  D I G L I B
+
+
+
+                      Device Independant Graphics Library
+
+
+
+                                  Hal R. Brand
+
+
+
+                               February 14, 1985
+
+
+
+CHAPTER 1       DIG-US
+
+
+CHAPTER 2       THE COMMERCIAL
+
+
+CHAPTER 3       INTRODUCTION
+
+
+CHAPTER 4       INSTALLATION GUIDES
+
+        4.1     VAX/VMS  . . . . . . . . . . . . . . . . . . . . . . 5
+        4.2     RSX-11M (HOPEFULLY M+ AND IAS) . . . . . . . . . . . 6
+        4.3     RT-11 AND TSX  . . . . . . . . . . . . . . . . . . . 7
+        4.4     DEVICE NUMBERS . . . . . . . . . . . . . . . . . . . 9
+        4.5     EDITING GSDRVR . . . . . . . . . . . . . . . . . .  10
+
+
+CHAPTER 5       DIGLIB DIVISION
+
+
+CHAPTER 6       DIGLIB COORDINATES
+
+
+CHAPTER 7       CHARACTER PLOTTING
+
+
+CHAPTER 8       HANDLING DEVICES OF DIFFERENT SIZES
+
+
+CHAPTER 9       INTERACTIVE USE
+
+
+CHAPTER 10      PLTLIB COMPATIBILITY
+
+
+CHAPTER 11      DIGLIB COMMON BLOCKS
+
+        11.1    GCDCHR.PRM . . . . . . . . . . . . . . . . . . . .  24
+        11.2    GCVPOS.PRM . . . . . . . . . . . . . . . . . . . .  25
+        11.3    PLTCLP.PRM . . . . . . . . . . . . . . . . . . . .  26
+
+
+CHAPTER 12      DIGLIB STANDARD DEVICE DRIVER NOTES
+
+        12.1    TEK. 4025 AND 4027 DRIVERS . . . . . . . . . . . .  27
+        12.2    TEK. 4010, 4012, AND 4014 DRIVERS  . . . . . . . .  27
+        12.3    TEK. 4105 DRIVER . . . . . . . . . . . . . . . . .  28
+        12.4    VT100/RETRO-GRAPHICS DRIVER  . . . . . . . . . . .  28
+        12.5    GIGI DRIVER  . . . . . . . . . . . . . . . . . . .  28
+        12.6    DATA MEDIA/RETRO-GRAPHICS TERMINAL . . . . . . . .  29
+        12.7    VAX/VMS VECTRIX DRIVER . . . . . . . . . . . . . .  29
+        12.8    VAX/VMS QMS LASERGRAFIX DRIVER . . . . . . . . . .  29
+        12.9    VAX/VMS VERSATEC DRIVER  . . . . . . . . . . . . .  30
+
+
+
+CHAPTER 13      PROGRAMMING EXAMPLE
+
+
+CHAPTER 14      SUBROUTINE DESCRIPTIONS
+
+        14.1    STRINGS  . . . . . . . . . . . . . . . . . . . . .  33
+        14.2    FUNCTION LISTING . . . . . . . . . . . . . . . . .  34
+        14.3    ALPHABETICAL LISTING . . . . . . . . . . . . . . .  37
+
+
+CHAPTER 15      OPTIONAL ROUTINES
+
+        15.1    PURJOY (SURFACE PLOTTER) . . . . . . . . . . . . .  97
+        15.2    CONTOR (CONTOUR PLOTTER) . . . . . . . . . . . . . 100
+        15.3    BARGRA (BAR GRAPH) . . . . . . . . . . . . . . . . 102
+        15.4    SELDEV (PROMPTED DEVICE SELECTION) . . . . . . . . 104
+
+
+
+
+
+
+
+
+
+
+
+
+                                   CHAPTER 1
+
+                                     DIG-US
+
+
+
+                              DIGlib User Society
+
+     The DIGLIB Users Society (DIGUS) is now basically defunct  largely  due  to
+lack  of  interest  on  both  sides.   However,  I,  Hal Brand, will continue to
+maintain DIGLIB to the best of my ability in my available spare time.  Thus,  do
+not  expect immediate response.  I will try make fix all bugs in a timely manner
+(about 1 week), but make no guarantees of any sort.  In addition, I will try  to
+add  new  drivers  to  DIGLIB as needed, mostly by obtaining the work of others.
+People  writing/enhancing  DIGLIB  drivers  (or  generally  useful   subroutines
+pertaining  to  DIGLIB  of any sort) are strongly encouraged to send them to Hal
+Brand (L-308) so that I can add them to DIGLIB.  Please specify if you  want  to
+have  your  name  removed  or  left  on the software so that you do or don't get
+bugged.
+
+                                NOTICE
+        This computer code material was prepared as an account of work
+        sponsored by the United States Government. Neither the United
+        States nor the United States Department of Energy, nor any of their
+        employees, nor any of their contractors, subcontractors, or their
+        employees, makes any warranty, express or implied, or assumes any
+        legal liability or responsibility for the accuracy, completeness,
+        or usefulness of any information, apparatus, product or process
+        disclosed, or represents that its use would not infringe
+        privately-owned rights.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 1 -
+
+
+
+
+
+
+
+
+
+
+
+
+                                   CHAPTER 2
+
+                                 THE COMMERCIAL
+
+
+
+     DIGLIB is a free product brought to you by Hal R Brand courtesy of  Jack  W
+Frazer and Ted Michels.  Since DIGLIB was provided to you free, it is my sincere
+hope that DIGLIB will be freely circulated, and enhancements will be  also.   To
+aid  in  this  effort of mutual exchange, please send me any DIGLIB software you
+believe would be of general use to the DIGLIB user community.  I  will  evaluate
+it  (and  possibly  modify  it)  and  will  distribute and maintain it if I also
+believe it is worth distributing with DIGLIB.
+                               END OF COMMERCIAL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 2 -
+
+
+
+
+
+
+
+
+
+
+
+
+                                   CHAPTER 3
+
+                                  INTRODUCTION
+
+
+
+     DIGLIB (Device Independent Graphics LIBrary) is  a  collection  of  FORTRAN
+callable subroutines designed with the following goals:
+
+     1.  Easily usable by the casual graphics programmer for 2D plotting.
+
+     2.  Device independent (as much as possible).
+
+     3.  Small and reasonably fast.
+
+     4.  Device drivers are as simple as possible, and therefore easy to  write,
+         and device drivers may be written in FORTRAN when desired.
+
+     5.  Compatible (as much as possible) with PLTLIB.   This  is  a  historical
+         artifact that no one now needs be concerned with.
+
+     6.  Maintainable.
+
+     7.  Compatible with RT-11, TSX, RSX-11M, IAS, and VMS.
+
+     8.  Compatible with MACRO, FORTRAN/RT, F4P, FORTRAN-77, and OMSI PASCAL.
+
+
+     DIGLIB comes very close to meeting all of the above design  goals.   DIGLIB
+is  now  maintained  on a VAX under VMS.  This has greatly helped in maintaining
+and enhancing DIGLIB at the expense of allowing a  few  more  bugs  specific  to
+RT-11 and/or RSX to sneak out.
+
+     DIGLIB is now being coerced to have  another  feature:   Machine/OS/FORTRAN
+compiler  independence.   This  is  hard,  especially in light of the well known
+problem with FORTRAN and strings.  However, with some work and duplication (with
+minor variation) of sources, DIGLIB now runs on:
+
+     1.  RT-11 on PDP-11s and LSI-11s
+
+     2.  TSX on PDP-11s and LSI-11s
+
+     3.  RSX on PDP-11s and LSI-11s
+
+
+
+
+                                     - 3 -
+DIGLIB DOCUMENTATION                                                    Page 3-2
+INTRODUCTION                                                           14 Feb 85
+
+
+     4.  Some IAS systems on PDP-11s
+
+     5.  VMS on VAXes
+
+     6.  UNIX 4.2BSD on the SUN workstation
+
+     7.  UNIX 4.2BSD (and probably 4.1BSD) on VAXes
+
+     8.  TOPS-10 on the DEC-10.
+
+
+     Since DIGLIB drivers are nearly always OS dependant, the available  devices
+under  DIGLIB  varies  considerable  among  the different mixes of CPU and OSes.
+Since DIGLIB started on RSX and RT-11, there are many device drivers  available.
+Now  that  DIGLIB  maintenance  has  moved  to  VAX/VMS,  there are many drivers
+available there also.  Drivers are very limited for UNIX and TOPS-10.   However,
+drivers  are being added to DIGLIB as the need arises.  Before you reject DIGLIB
+because of the lack of a graphics device driver, or  you  embark  on  writing  a
+graphics  device  driver for DIGLIB, please check the DIGLIB distribution kit as
+there may be a driver there that has not yet been included into the installation
+procedures  and documentation.  Drivers all start with the letters "GD" and then
+generally have the product number, i.e.  GD4105 is the Tektronix  4105  graphics
+terminal  driver,  GD550  is  the  Visual 550 driver, etc.  If you spot a likely
+candidate, just list the file and the documentation at the top will  confirm  or
+deny your suspicion.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 4 -
+
+
+
+
+
+
+
+
+
+
+
+
+                                   CHAPTER 4
+
+                              INSTALLATION GUIDES
+
+
+
+                         INSTALLATION GUIDE FOR VAX/VMS
+
+
+
+4.1  VAX/VMS
+
+
+     1.  Copy all the files from all floppies to an empty  (sub)directory.   The
+         distribution  volume names are DIGLIBVAX, DIGLIBDOC and DIGLIBFNT.  The
+         directory is [DIGLIB] on all floppies.
+
+     2.  Print the documentation files:  DIGLIB.DOC and RELEAS.DOC.
+
+     3.  READ the sections of DIGLIB.DOC entitled "Editing  GSDRVR"  and  "Notes
+         Concerning the Standard DIGLIB Device Drivers" carefully.
+
+     4.  READ all of RELEAS.DOC, especially if you have already used DIGLIB.
+
+     5.  Edit GSDRVR.FOR to match the devices on your system.  Remember to  also
+         edit  the  subroutine  GSDNAM  to return the proper device names.  (See
+         Editing GSDRVR and DIGLIB DEVICE NUMBERS.)
+
+     6.  Execute the command procedure INSTALL.COM
+
+     7.  Run the command file DEMO.COM to verify proper functioning of DIGLIB.
+
+
+
+                                      NOTE
+
+               INSTALL.COM does not do anything with the versatec
+               driver.   To  make  use of the VAX/VMS driver, you
+               must compile GDVERS.FOR, add it to DIGLIB.OLB  and
+               then  remember  to link with the VERSAPLOT library
+               (typically in SYS$LIBRARY:PHASE1.OLB).
+
+
+
+
+
+
+                                     - 5 -
+INSTALLATION GUIDES                                                     Page 4-2
+INSTALLATION GUIDE FOR RSX                                             14 Feb 85
+
+
+                           INSTALLATION GUIDE FOR RSX
+
+
+
+4.2  RSX-11M (HOPEFULLY M+ AND IAS)
+
+
+     1.  Obtain an empty directory and transfer  all  the  files  from  the  two
+         distribution  floppies  into  this  directory.  The distribution volume
+         names are DIGLIBRSX and DIGLIBDOC.  The directory is [1,37].
+
+     2.  Print the documentation files:  DIGLIB.DOC and RELEAS.DOC.
+
+     3.  READ the sections of DIGLIB.DOC entitled "Editing  GSDRVR"  and  "Notes
+         Concerning the Standard DIGLIB Device Drivers" carefully.
+
+     4.  READ all of RELEAS.DOC, especially if you have already used DIGLIB.
+
+     5.  Edit GSDRVR.FTN to match the devices on your system.  Note that  GSDRVR
+         should not do anything with the passed arguments except pass them on to
+         the proper driver.  Remember to also  edit  the  subroutine  GSDNAM  to
+         return  the proper device names.  (See Editing GSDRVR and DIGLIB DEVICE
+         NUMBERS.)
+
+     6.  Execute the command file INSTALL.CMD to build DIGLIB  and  the  desired
+         drivers.
+
+     7.  Assemble/Compile any drivers not done by INSTALL.CMD and  add  them  to
+         DIGLIB using LBR.
+
+     8.  Edit (or create) DIGLIB.NAM to  match  your  graphic  device  numbering
+         system and then copy DIGLIB.NAM to LB:[1,1]DIGLIB.NAM.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 6 -
+INSTALLATION GUIDES                                                     Page 4-3
+INSTALLATION GUIDE FOR RT11 AND TSX                                    14 Feb 85
+
+
+                      INSTALLATION GUIDE FOR RT11 AND TSX
+
+
+
+4.3  RT-11 AND TSX
+
+
+     1.  Copy the distribution floppies to  a  disk  with  at  least  1200  free
+         blocks.   (It  is  possible  to  directly  use  the source distribution
+         floppy, if it's double density, but this practice is frowned upon.)  In
+         cases  of little disk space, I suggest that you print the documentation
+         directly from the distribution floppy, then set it aside!
+
+     2.  Print the documentation files:  DIGLIB.DOC and RELEAS.DOC.
+
+     3.  READ the sections of DIGLIB.DOC entitled "Editing  GSDRVR"  and  "Notes
+         Concerning the Standard DIGLIB Device Drivers" carefully.
+
+     4.  READ all of RELEAS.DOC, especially if you have already used DIGLIB.
+
+     5.  Edit GSDRVR.FOR to match the devices on your system.  Note that  GSDRVR
+         should not do anything with the passed arguments except pass them on to
+         the proper driver.  Remember to also  edit  the  subroutine  GSDNAM  to
+         return  the proper device names.  (See Editing GSDRVR and DIGLIB DEVICE
+         NUMBERS.)
+
+     6.  Execute the command files ASSEM.COM and COMPIL.COM.
+
+     7.  Squeeze DK:  if you have a  small  device  (DY:   or  the  like),  then
+         execute the command file MAKLIB.COM.
+
+     8.  Execute the necessary driver assembly command files from the  following
+         list:
+
+                Device          RT-11           TSX
+                --------        ------          ------
+                Tek 4010        RT4010          TS4010
+                Tek 4012        RT4012          TS4012
+                Tek 4014        RT4014          TS4014
+                Tek 4025        RT4025          TS4025
+                Tek 4027        RT4027          TS4027
+                Tek 4105        RT4105          TS4105
+                HP 2648/2647    RT2648          TS2648
+                GIGI            RTGIGI          TSGIGI
+                VT100/Retro     RTRTRO          TSRTRO
+                Data Media      RTDMED          TSDMED
+
+
+     9.  Assemble/Compile any other graphic drivers.
+
+
+
+
+
+
+                                     - 7 -
+INSTALLATION GUIDES                                                     Page 4-4
+RT-11 AND TSX                                                          14 Feb 85
+
+
+                                          NOTE
+
+
+                  You must edit the IBM XY750 driver (GDI750.MAC) to set the
+             serial line CSR address for the XY750.
+
+                  You must edit the GPIB HP 7225  (GD7225.MAC)  and  the  HP
+             9872 (GD9872.MAC) drivers to set the "IBUP" slot number.
+
+                  You must edit the RS-232 HP 7220,  7225,  7470,  and  9872
+             plotter  driver  (GDHPPL.MAC)  to  set  the CSR address for the
+             RS-232 line.
+
+                  You must edit the GPIB HP plotter driver to set  the  IBUP
+             slot number.
+
+
+
+    10.  Use the LIBRarian to add the device drivers  you  need  to  the  DIGLIB
+         library (DIGLIB.OBJ).  The file names are:
+
+                Device          Driver Name
+                -----------     -----------
+                Tek 4014        GD4010
+                Tek 4012        GD4012
+                Tek 4014        GD4014
+                Tek 4025        GD4025
+                Tek 4027        GD4027
+                Tek 4105        GD4105
+                HP 2648/2647    GD2648
+                GIGI            GDGIGI
+                VT100/Retro     GDRTRO
+                Data Media      GDDMED
+                HP 7220         GD7220
+                HP 7225         GD7225
+                HP 7470         GD7470
+                HP 9872         GD9872
+                IBM XY 750      GDI750
+
+         The usual command line is:  LIBR DIGLIB/INSERT GD????,GD????,...
+
+    11.  You may wish to delete the unneeded .OBJ files:
+
+         1.  Rename DIGLIB.OBJ DIGLIB.OLB
+
+         2.  Delete/Noquery *.OBJ
+
+         3.  Rename DIGLIB.OLB DIGLIB.OBJ
+
+
+
+
+
+
+
+                                     - 8 -
+INSTALLATION GUIDES                                                     Page 4-5
+DIGLIB DEVICE NUMBERS                                                  14 Feb 85
+
+
+                             DIGLIB DEVICE NUMBERS
+
+
+
+4.4  DEVICE NUMBERS
+
+     DIGLIB  uses  device  numbers  to   refer   to   graphics   devices.    The
+correspondence  between  device number and physical graphic device is determined
+by the subroutine GSDRVR.  Basically, GSDRVR is a  multiplexer  (or  dispatcher)
+that directs the graphic commands to the currently selected device driver.  Each
+installation will have its own correspondence between device numbers and graphic
+devices.   It  is  very  very  strongly  recommended  that the device numbers be
+assigned starting with 1 and continuing through the integers to the  Nth  device
+numbered N.  This is most straight forward numbering scheme, and the best scheme
+for making use of GSDNAM.  Also, any other scheme will break SELDEV.
+
+     Each installation may have its own correspondence  between  device  numbers
+and  graphic  devices.   DIGLIB provides on-line access to the device names that
+correspond to the device numbers through the GSDNAM subroutine.  The most common
+use  of GSDNAM is to construct menus at execution time of the devices available.
+Thus, any program that makes proper use of GSDNAM can be linked  with  a  DIGLIB
+with  any  array  of  devices  and  still  present  the  proper  menu of devices
+available.
+
+     It is also important to note that it is often  advantageous  to  have  more
+than one version of GSDRVR available when more than one graphic device exists on
+your system and you are working on a limited address space  machine  such  as  a
+LSI-11  or  PDP-11.   I recommend that the version of GSDRVR placed in DIGLIB be
+capable of calling all the available graphics drivers  in  your  system.   Then,
+there  exist  versions of GSDRVR each capable of calling only one of the graphic
+device drivers.  These OBJ files should be placed with DIGLIB.  The  reason  for
+these "extra" GSDRVR's is that they allow the user who only
+wants to deal with one device the capability of excluding all the other  graphic
+device drivers.  This can be useful for two reasons:
+
+     1.  Space savings.
+
+     2.  Special characteristics of the target device.
+
+
+     The person who installs DIGLIB should edit GSDRVR to properly  reflect  the
+target  system  configuration.  This means editing both subroutines contained in
+the file GSDRVR.FOR (VMS and RT/TSX) or GSDRVR.FTN (RSX/IAS) or GSDRVR.F (UNIX).
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 9 -
+INSTALLATION GUIDES                                                     Page 4-6
+EDITING GSDRVR                                                         14 Feb 85
+
+
+                                 EDITING GSDRVR
+
+
+
+4.5  EDITING GSDRVR
+
+     The file GSDRVR.FOR (VMS and RT/TSX) or GSDRVR.FTN  (RSX/IAS)  or  GSDRVR.F
+(UNIX) must be edited to correct the subroutines GSDRVR and GSDNAM to match your
+installation of DIGLIB.  The subroutine GSDRVR makes the  procedural  connection
+from  device  numbers to graphics device drivers and the subroutine GSDNAM makes
+the procedural connection from device numbers to graphics device names.
+
+     GSDRVR has two main functions:  1) make sure the selected  graphics  device
+driver  exists,  and  2)  call  the  selected graphics device driver.  As stated
+before, the correspondence between device numbers and physical graphics  devices
+is entirely up to you!!!  You can choose to use any number you wish to represent
+a particular physical graphics device.  However, I very  strongly  suggest  that
+you  arbitrarily assign your most used graphics device the number 1, then assign
+then next most often used device the number  2,  etc.   for  all  your  graphics
+devices.   This makes writing GSDRVR easier (you can use a COMPUTED GOTO instead
+of a bunch of IFs).  It is also consistent with the scheme that nearly everybody
+uses.  Also, it is the only way to make any real use of the GSDNAM subroutine.
+
+     The entry-point name(s) of DIGLIB device drivers are:
+
+        Hardware                Entry point(s)
+        -------------           -------------------------------------
+        Tek. 4025               GD4025
+        Tek. 4027               GD4027
+        Tek. 4006               GD4006
+        Tek. 4010               GD4010
+        Tek. 4012               GD4012
+        Tek. 4014               GD4014
+        Tek. 4105               GD4105
+        Tek. 4107               GD4107
+        Data Media              GDDMED
+        HP 2623                 GD2623
+        HP 2647 and 2648        GD2648
+        HP 7220 plotter         GD220L - normal orientation (Long plots)
+                                GD220T - rotated 90 degrees (Tall plots)
+        HP 7225 plotter         GD225L - normal orientation (Long plots)
+                                GD225T - rotated 90 degrees (Tall plots)
+        HP 7470 plotter         GD470L - normal orientation (Long plots)
+                                GD470T - rotated 90 degrees (Tall plots)
+        HP 9872 plotter         GD872L - normal orientation (Long plots)
+                                GD872T - rotated 90 degrees (Tall plots)
+
+        VT100/Retro-Graphics    GDRTRO
+        GIGI                    GDGIGI
+        IBM XY750               GD750L - normal orientation (Long plots)
+                                GD750T - rotated 90 degrees (Tall plots)
+        Lexidata                GDLEX
+
+        CalComp 1012            GDPLNG - normal orientation (Long plots)
+
+                                     - 10 -
+INSTALLATION GUIDES                                                     Page 4-7
+EDITING GSDRVR                                                         14 Feb 85
+
+
+                                GDPTAL - rotated 90 degrees (Tall plots
+        Ramtek 9400             GD9400 (no LUT)
+                                GD9400LUT (type 7A LUT)
+        Vectrix VX128           GDVECTRIX128
+
+        Vectrix VX384           GDVECTRIX384
+        Versatec                GDVERSWIDE - (Long plots)
+                                GDVERSTALL - (Tall plots)
+
+When in doubt about the entry point(s) of a driver, look for the  driver  source
+code  doing  a  directory on all files beginning with the two letters GD (ie DIR
+GD*.FOR).  The drivers usually are named for the number or name  of  the  device
+(ie  GD4027  for Tek.  4027, GDRTRO for Retro-Graphics).  If all else fails, you
+can just type the first few lines of all the GD* source files.   This  procedure
+can  and should also be used to find any device drivers that may have been added
+to  DIGLIB  but  either  are  not  yet  documented  as  existing,  or  are   not
+supported/tested.
+
+     The function that subroutine GSDRVR is must perform is:
+
+   * If "IDEV" is not a valid graphics device number, then
+        * if "IFXN" is 7 (Get Device Characteristics), then
+                set second argument (X) equal to zero,
+        * return
+
+   * Pass control to the graphics device driver you want selected by
+        the number found in "IDEV". (This is usually done by a
+
+        computed GOTO.)
+
+
+     The subroutine GSDNAM  is  actually  optional,  but  strongly  recommended.
+GSDNAM only function is:
+
+   * If "IDEV" is a valid graphics device number, then
+        * return the device name as a DIGLIB string of 39 characters or less
+      Else
+        * return a "null" (zero length) string as the device name.
+
+
+
+     A sample  version  of  GSDRVR  and  GSDNAM  is  provided  as  part  of  the
+distribution  kit.  It is suggested that the sample file GSDRVR be edited rather
+than starting anew.
+
+
+
+
+
+
+
+
+
+
+
+                                     - 11 -
+
+
+
+
+
+
+
+
+
+
+
+
+                                   CHAPTER 5
+
+                                DIGLIB DIVISION
+
+
+
+                               DIVISION OF DIGLIB
+
+     DIGLIB has been divided into two main parts:  the low  level  package,  and
+the  high  level  package.   The  low level package is concerned with simple but
+general graphics functions, i.e.  drawing lines and characters.  The high  level
+package   is  concerned  with  producing  two  dimensional  plots  suitable  for
+scientific data presentation.  The high level package  is  built  upon  the  low
+level package and is a good example of the use of the low level DIGLIB routines.
+
+     The low level package routines are:  DEVSEL, BGNPLT,  ENDPLT,  RLSDEV,  and
+all  routines that start with the letter "G".  In fact, routines that start with
+the letters "GD" are drivers, "GC" are common block definitions,  and  "GS"  are
+general  graphics  routines.  The four previously enumerated routines that don't
+begin with the letter "G" are basically device control.
+
+     The high level package routines are named according to  the  function  they
+preform,  and  so  follow no convention.  Care should be taken to avoid possible
+routine name conflicts with these routines.  The most like candidates  for  name
+conflicts are:  SCALE, SYMBOL, TRACE, and CURVE.
+
+     In addition to the standard high level package  routines  documented  here,
+DIGLIB  is  distributed  with some extra high level graphics routines.  The most
+notable are PURJOY and CONTOR.  These routines provide for  3D  surface  display
+and  contour  plots,  respectively.  They are documented in the code file.  They
+are not officially supported as part of DIGLIB, but I have  much  confidence  in
+them, and I will try to correct any bugs reported.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 12 -
+
+
+
+
+
+
+
+
+
+
+
+
+                                   CHAPTER 6
+
+                               DIGLIB COORDINATES
+
+
+
+     DIGLIB basically follows the PLTLIB documentation.  If you do not have  the
+PLTLIB manual, you should immediately obtain one.  However, there are some major
+differences that are noted below.  In addition, there are many new subroutines.
+
+     The major difference between DIGLIB and PLTLIB is the introduction  of  two
+intermediate coordinate systems.  The coordinate systems are:
+
+     1.  World coordinates,
+
+     2.  Virtual coordinates,
+
+     3.  Absolute coordinates (expressed in centimeters),
+
+     4.  Device coordinates.
+
+World Coordinates.
+     World  coordinates  are  provided  through  the   "high   level"   graphics
+     subroutines.  World coordinates may have any units the user chooses.  World
+     coordinates are converted  to  virtual  coordinates  using  the  subroutine
+     SCALE.   In  most  instances,  user written plotting subroutines need never
+     call SCALE.
+Virtual Coordinates.
+     Virtual coordinates is the basic coordinate system of DIGLIB.  All the  low
+     level  graphics  subroutines  work  in  virtual coordinates.  All character
+     generation  is  done  in  virtual  coordinates.   Virtual  coordinates  are
+     converted to absolute coordinates before being sent to the graphics device.
+     The virtual coordinates are first rotated.  These rotated
+     values are then scaled  independently.   Finally,  independent  translation
+     factors are added.
+        Xabs = Xscale * ( COS(angle) * Xvirt + SIN(angle) * Yvirt )) + Xtran
+        Yabs = Yscale * ( COS(angle) * Yvirt - SIN(angle) * Xvirt )) + Ytran
+
+          By default, the rotation is zero degrees, the X and  Y  scale  factors
+     are set to
+
+          1.0, and the X and Y axis translations are  set  to  zero.   Thus,  by
+     default,  absolute  and  virtual coordinates are identical.  By providing a
+     built-in mechanism for rotating, scaling, and/or translating coordinates, a
+     plot generated for a particular device can easily be redisplayed on another
+     device regardless of the size of the plotting areas of the graphic devices.
+
+                                     - 13 -
+DIGLIB COORDINATES                                                      Page 6-2
+DIGLIB Coordinate Systems                                              14 Feb 85
+
+
+     In addition, it becomes trivial to rotate the entire plot by some arbitrary
+     angle, or even to produce a mirror reflection of the plot.  It is also very
+     simple  to  "pan"  and "zoom" over a large plot or collection of plots (see
+     GSETDP and GSWNDO).  Since "pan" and "zoom" are implemented by DIGLIB,  the
+     zooming is done to the precision of real numbers, and so detail is retained
+     during the zooming process.
+
+          Virtual coordinates can also be used  for  window/viewporting.   Thus,
+     you  can use any portion of the screen and have the virtual coordinates run
+     between any values you choose.  (See GSWNDO for more information).
+Absolute coordinates.
+     Absolute coordinates are the only coordinates passed to the graphics device
+     drivers.  During the GIN operation, the device driver is expected to return
+     absolute device coordinates.  Absolute coordinates are chosen so  that  the
+     point  (0.0,0.0)  is  at  the lower left corner of the graphic device.  The
+     upper right corner is the point (XLENCM,YLENCM) where XLENCM and YLENCM are
+     the X axis (width) length in centimeters, and the Y axis (height) length in
+     centimeters, respectively.  (To find the value of XLENCM  and  YLENCM,  use
+     the  DIGLIB  functions GSXLCM() and GSYLCM(), respectively).  Thus absolute
+     coordinates are interchangeable with centimeter coordinates on the  device.
+     Line  style  generation is done by DIGLIB software in absolute coordinates.
+     It should be noted that DIGLIB filters the absolute coordinates before they
+     are  sent  to  the  graphic  device  drivers so that only those coordinates
+     representable on the graphics device are ever transmitted to  the  graphics
+     device  driver.   DIGLIB  also filters out unnecessary "moves" so that only
+     those moves necessary are sent to the device driver.  This improves  device
+     performance,  but  means that "moves" are buffered by DIGLIB, and so GSMOVE
+     (with or without ENDPLT) can NOT be used to position the "beam" on  graphic
+     terminals.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 14 -
+
+
+
+
+
+
+
+
+
+
+
+
+                                   CHAPTER 7
+
+                               CHARACTER PLOTTING
+
+
+
+     DIGLIB provides a number  of  subroutines  and  functions  to  aid  you  in
+plotting  characters  and  character  strings.  DIGLIB supports character string
+plotting through the GSPSTR subroutine.  GSPSTR plots the character string using
+characters  of  the current size (height) and orientation.  These parameters are
+set via the GSSETC subroutine.  Sometimes, it is nice to know what the width  of
+the characters is for centering purposes and the like.  DIGLIB provides a single
+function, GSLENS, which returns the length of the string argument it was given.
+
+     DIGLIB uses a simple algorithm for plotting strings.  The  first  character
+of  the  string  is  plotted in the current size and orientation with the bottom
+left of its character cell being the last specified coordinate.  Thus, to plot a
+string  whose  first  character's  character  cell  is  at  position (A,B), call
+GSMOVE(A,B) then  GSPSTR(string).   This  gives  left  justified  strings  (when
+plotted  horizontally  -  rotation of zero degrees).  The function GSLENS can be
+used for plotting centered and right justified strings.
+
+     Remember that DIGLIB supports descenders.  Thus,  a  lower  case  character
+that is a descender (g,j,p,q,y) will dip below the character cell.  Thus, a good
+spacing for lines of graphics text is twice (2X) the character height.   Tightly
+spaced lines can be placed at 1.5X the character height.
+
+     Finally, the DIGLIB stick font is mechanically spaced,  that  is,  all  the
+characters  have  the  same width.  However, the alternate fonts available under
+VMS (and some UNIXes) are proportionally spaced.  Thus, religious use of  GSLENS
+is  required,  and many simple character placement calculations that worked well
+with the DIGLIB stick font  will  have  to  be  upgraded  to  properly  use  the
+alternate fonts.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 15 -
+
+
+
+
+
+
+
+
+
+
+
+
+                                   CHAPTER 8
+
+                      HANDLING DEVICES OF DIFFERENT SIZES
+
+
+
+     DIGLIB uses virtual coordinates as  the  base  level  interface  coordinate
+system.  Absolute coordinates are never used by the user and should generally be
+forgotten.  This is especially true when  the  transformation  from  Virtual  to
+Absolute coordinates is the default transformation because in this case, Virtual
+coordinates are identical to Absolute coordinates.  Since most users operate  in
+this mode, they can think of virtual coordinates as being screen coordinates and
+need never worry about Absolute coordinates.
+
+     DIGLIB's use of Virtual coordinates (corresponding  usually  to  centimeter
+screen coordinates) has advantages and disadvantages.  By acknowledging the true
+device size, users can draw circle that truly  appear  to  be  circles  and  not
+ellipses.   (Note:   this requires a properly adjusted graphics device.) It also
+has the advantage of allowing drawings that must be "to scale" to  be  drawn  as
+such without any trickery.
+
+     The  disadvantage  of  using  virtual  coordinates  is   lack   of   device
+independence  in  codes that use absolute numbers for coordinates.  For example,
+if a user does a GSMOVE(25.0,25.0) followed by a  GSDRAW(30.0,30.0),  then  this
+line  will appear only only those graphics devices that are larger that 25.0 cm.
+square.  Most likely, what the user wanted was to draw a line in the upper right
+hand  corner  of  the device regardless of its size.  For this type of approach,
+the "normalized" coordinate system used by SIGGRAPH-CORE is best suited.  DIGLIB
+allows you to work in a normalize coordinate system if you wish by providing two
+functions, GSXLCM and GSYLCM, that return the currently selected device's X axis
+length   and  Y  axis  length  in  centimeters  respectively.   Because  virtual
+coordinates usually are screen centimeters, these functional values can be  used
+to  scale  the  "normalized" coordinates to virtual coordinates.  For example, a
+program section to draw a box enclosing the lower left 25 percent of the  screen
+could be written as:
+
+        X50 = 0.5*GSXLCM()
+        Y50 = 0.5*GSYLCM()
+        CALL GSMOVE(0.0,0.0)
+        CALL GSDRAW(X50,0.0)
+        CALL GSDRAW(X50,Y50)
+        CALL GSDRAW(0.0,Y50)
+        CALL GSDRAW(0.0,0.0)
+
+Note that the upper right corner of a box that encloses 25 percent of the screen
+is  at the middle of the screen, thus the factor 0.5!  If one wanted the largest
+
+                                     - 16 -
+HANDLING DEVICES OF DIFFERENT SIZES                                     Page 8-2
+HANDLING DEVICES OF DIFFERENT SIZES                                    14 Feb 85
+
+
+square that could fit on the screen:
+
+        SQ = AMIN1(GSXLCM(),GSYLCM())
+        CALL GSMOVE(0.0,0.0)
+        CALL GSDRAW(SQ,0.0)
+        CALL GSDRAW(SQ,SQ)
+        CALL GSDRAW(0.0,SQ)
+        CALL GSDRAW(0.0,0.0)
+
+
+Thus, DIGLIB can easily handle devices in  a  device  size  independent  manner,
+while  at  the same time allowing the user to make allowance for the device size
+and aspect ratio.
+
+     DIGLIB's high level package (MAPSIZ, MAPIT, CURVE,  etc.)  make  allowances
+for  device size even easier.  Here, MAPSIZ and MAPSZ2 allow the user to specify
+screen locations as a percentage of full  screen  size  in  both  the  X  and  Y
+directions.
+
+     A final problem incurred with DIGLIB and varying device sizes is  the  axes
+produced  by  MAPIT will vary in length depending on the device size.  Normally,
+this is not a problem, however, in some cases, it is necessary or  desirable  to
+have  the  X  axis  produced by MAPIT be the same on-screen length as the Y axis
+produced by MAPIT.  This can easily be done by making the difference between the
+X length of the plotting box and the Y length of the plotting box equal a "magic
+number".  This magic number comes from the way DIGLIB allows space for the  axis
+frame title, tick marks and labels, axis labels, etc.  Thus, this "magic number"
+is not a constant, but must be computed given the character size and tick length
+that  will  be  used  by MAPIT.  The following code computes this "magic number"
+into the variable YGRTR and then allocates as much of the  screen  as  possible,
+while requiring the X axis length from MAPIT to equal the Y axis length.
+
+        CSIZE = GOODCS(0.3)
+        TICKLN = 0.9*CSIZE
+        WIDTH = GSLENS('0')
+        YGRTR = 4.25*CSIZE+AMAX1(CSIZE/2.0,TICKLN) -
+
+        1   (1.5*(ILABSZ()+0.25)*WIDTH+AMAX1(0.0,TICKLN))
+        SIZE = AMIN1(GSXLCM(),GSYLCM()-YGRTR)
+        CALL MAPPRM(0.0,SIZE,0.0,SIZE+YGRTR,CSIZE,TICKLN,.FALSE.)
+        CALL MAPIT(XMIN,XMAX,YMIN,YMAX,'X AXIS','Y AXIS','TITLE',16+32+256)
+
+
+Note that ILABSZ is an undocumented function known only to the internals of  the
+DIGLIB  high  level  package.   Note  also,  that MAPIT has been called with the
+ragged axis flags set so that the axes will end where  desired  in  most  cases.
+However,  since  MAPIT  sometimes likes to extend ragged axis when they end very
+near tick marks, it is necessary to override this feature,  which  is  what  the
+additional  value  of  256  does.   Remember, all this is only useful if you are
+careful to choose (XMAX-XMIN)  =  (YMAX-YMIN)!!!!!   Also,  you  will  get  more
+pleasing axes frames if you choose XMIN, XMAX, YMIN,
+
+
+
+
+                                     - 17 -
+HANDLING DEVICES OF DIFFERENT SIZES                                     Page 8-3
+HANDLING DEVICES OF DIFFERENT SIZES                                    14 Feb 85
+
+
+     and YMAX so that they are nice round numbers.
+
+     Finally, note that YGRTR is the magic number for the case where there is to
+be  no  second  Y axis.  When there is to be a second Y axis, then use YGRTR2 as
+given below:
+
+        WIDTH = GSLENS('0')
+        YGRTR2 = 4.25*CSIZE + AMAX1(CSIZE/2.0,TICKLN) -
+        1 (2.5*(ILABSZ()+0.25)*WIDTH+2.0*AMAX1(0.0,TICKLN)+2.0*CSIZE)
+
+
+     Obviously, in the computation of YGRTR and YGRTR2, the AMAX1  operation  is
+not  necessary  as  the previous code has chosen TICKLN to be greater than zero.
+However, the AMAX1 is needed for generality  since  negative  tick  lengths  are
+permitted by MAPPRM and MAPIT - they yield plots where the tick mark sticks into
+the plotting area.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 18 -
+
+
+
+
+
+
+
+
+
+
+
+
+                                   CHAPTER 9
+
+                                INTERACTIVE USE
+
+
+
+     DIGLIB is was designed to make interactive graphics very easy.  The drivers
+were designed to make sure that graphics terminals behave well in an interactive
+environment,  and  DIGLIB  itself  has  a  number  of  routines  for  supporting
+interactive  graphics.   The  most  commonly  used  subroutine  with interactive
+graphics is ENDPLT.  This subroutine should be called when ever it is  necessary
+for  the user to observe the entire plot.  Remember that DIGLIB buffers graphics
+commands to  provide  increased  performance  (also  necessary  for  interactive
+graphics),  and  ENDPLT  forces  any  buffered graphics commands to the graphics
+device.  Thus, before a program asks the user questions that require him to make
+decision  from the graphics, the program must call ENDPLT to ensure that all the
+graphics have been displayed.
+
+     The most commonly used interaction, however, is not questions, but graphics
+input.   Not  all  devices support graphics input, but most do.  DIGLIB provides
+two methods of graphical interaction.   The  first  follows  the  old  4010  GIN
+protocol  where  a  cursor  is displayed whenever graphics input is desired, the
+cursor is flown around by the user, and the GIN operation is terminated  by  the
+user  pressing  a  terminal  key.   In this mode, DIGLIB returns the virtual (or
+world) coordinates of the digitized point  selected,  and  the  ASCII  character
+struck  that  terminated  the  GIN  sequence.   This  mode  of graphics input is
+accessed through the GSGIN subroutine.
+
+     The second form to graphics input makes use of the "buttons" or  "switches"
+common  found  on  the  pointing  devices  of  many new graphics systems such as
+joysticks, mice, track-balls, digitizing pads, etc.  In this interaction mode, a
+cursor  is  displayed  and is flown around by user interaction with the pointing
+device.  However, unlike the 4010 GIN, the operation is terminated by  the  user
+"pressing  a  button"  (more  generally,  changing  the  state of the buttons or
+switches) on the pointing device.  The new state of the buttons or  switches  is
+returned  to  the  caller.   This mode of graphics input is accessed through the
+GSCRSR subroutine.
+
+     It should be noted that not all devices are capable of supporting either or
+both  of  these  graphics  input  operations.   Thus, they are not required of a
+DIGLIB device driver.  However, the utility of graphics input is such that it is
+implemented whenever the graphics device supports it.  The main problem is which
+form of graphics input is implemented.  DIGLIB takes some of this worry off  the
+programmer  by supplying a subroutine, GSINPT, that uses GSCRSR if available, of
+if not, uses GSGIN if available.  The only limitation of GSINPT is that only the
+X,Y coordinates selected and a binary "selection flag" are returned to the user.
+
+                                     - 19 -
+INTERACTIVE USE                                                         Page 9-2
+USING DIGLIB INTERACTIVELY                                             14 Feb 85
+
+
+     Finally, DIGLIB supports graphics input from world coordinates through  the
+subroutines  CURSOR  and  GRAFIN.   CURSOR uses GSGIN and GRAFIN uses GSINPT and
+only differs from them  in  returning  world  coordinates  instead  for  virtual
+coordinates.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 20 -
+
+
+
+
+
+
+
+
+
+
+
+
+                                   CHAPTER 10
+
+                              PLTLIB COMPATIBILITY
+
+
+
+     PLTLIB was an early graphics package that Hal Brand distributed.  It worked
+only on the Tektronix 4025 and 4027 graphic terminals.  This section is included
+only for those PLTLIB users that wish to convert to DIGLIB.  Readers  who  never
+used PLTLIB are strongly advised to ignore this section.
+
+     As was mentioned before, DIGLIB is largely based upon PLTLIB.  Most of  the
+high level subroutines (those that work in world coordinates) are unchanged from
+the point of view of the caller.  The low level graphics (those that  work  with
+virtual  coordinates)  are  similar  to PLTLIB, but codes that made heavy use of
+PLTLIB low level subroutines will definitely need modification.
+
+     The following correspondence exists between PLTLIB and DIGLIB:
+
+        PLTLIB          DIGLIB equivalent
+        --------        -----------------
+
+        ALLOCG          MAPPRM, MAPSET, MAPSIZ, PLTBOX, FULMAP
+        ALLOCW          none
+        CCOLOR          GSCOLR
+        CLLINE          CLLINE
+        COMMNT          none
+        CURSOR          CURSOR
+        DFNCOL          none
+
+        DRAW            GSDRAW
+        ERASEG          BGNPLT
+        ERASEW          none
+        GIN             GSGIN
+        LABLE           GSPSTR
+        MAPIT           MAPIT
+        MINMAX          MINMAX
+        MIXCOL          GSDRGB
+        PLTMTY          ENDPLT
+        POINTC          POINTC
+        POINTS          POINTS
+
+        POSNB           GSMOVE
+        RPOSNB          none (GSMOVE)
+        SCALE           SCALE
+        SETLIN          GSLTYP
+
+                                     - 21 -
+PLTLIB COMPATIBILITY                                                   Page 10-2
+COMPATIBILITY WITH PLTLIB                                              14 Feb 85
+
+
+        TRACCY          TRACCY
+
+        TRACE           TRACE
+        TRACEC          TRACEC
+        TRACEY          TRACEY
+        TXTCOL          GSCOLR
+        VECTOR          none (GSDRAW)
+
+     Those users who liked the ability of PLTLIB to fully  manipulate  the  4025
+will  probably  be disappointed with DIGLIB.  In the name of device independence
+the total control over the 4025  afforded  by  PLTLIB  was  dropped  by  DIGLIB.
+DIGLIB  always  (and uncontrollably) allocates 30 lines of workspace window, and
+uses lines 1 thru 30, columns 1 thru 80 for the  graphic  region.   DIGLIB  then
+places  multiple  plots  within the graphic region by using translation factors.
+DIGLIB's strong point over PLTLIB is the device independence.  If you only  have
+4025s  and  expect that 4025s will be your only graphics device, then PLTLIB may
+be a better choice than DIGLIB.
+
+
+                                      NOTE
+
+               You can modify the placement of the graphics  area
+               in  the  workspace, but it must remain 30 lines by
+               80 columns.  Thus, after calling "DEVSEL" you  may
+               send the 4025 a command to erase the workspace and
+               redefine the graphics area  somewhere  else.   For
+               those  wishing  to modify the size of the graphics
+               area, I suggest you contact Hal R.  Brand.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 22 -
+
+
+
+
+
+
+
+
+
+
+
+
+                                   CHAPTER 11
+
+                              DIGLIB COMMON BLOCKS
+
+
+
+     DIGLIB comes with a number of files with the extension "PRM".  These  files
+are  common  block  descriptors  used  as INCLUDE files by DIGLIB.  In the RT-11
+version, the INCLUDE statements have been removed by pre-processing the sources.
+These files are necessary to compile DIGLIB under RSX and VMS.  Some of them are
+useful to application programmers.  The PRM files that may be of use are:
+
+     1.  GCDCHR.PRM     - Current device parameters
+
+     2.  GCVPOS.PRM     - Current position in virtual coordinates
+
+     3.  PLTCLP.PRM     - Limits chosen by MAPIT
+
+
+     RSX and VMS users should use the INCLUDE statement to define  these  common
+blocks.   RT-11  users would be best off to use the editor to insert these files
+into their sources.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 23 -
+DIGLIB COMMON BLOCKS                                                   Page 11-2
+GCDCHR.PRM                                                             14 Feb 85
+
+
+11.1  GCDCHR.PRM
+
+
+        Variable        Description
+        --------        -----------------------------------------------
+        DEVID           * type: real
+                        * Device ID.   Unique to each graphic device.
+                                Only current use is that zero indicates no
+                                such device.
+        
+        XLENCM          * type: real
+                        * The graphic device's X-axis length in cm.
+
+        YLENCM          * type: real
+                        * The graphic device's Y-axis length in cm.
+
+        XRES            * type: real
+                        * The graphic device's X-axis resolution in
+                                graphic units per cm.
+
+        YRES            * type: real
+                        * The graphic device's Y-axis resolution in
+                                graphic units per cm.
+
+        NDCLRS          * type: integer
+                        * The number of foreground colors available on this
+                                device. (Always >= 1)
+
+        IDVBTS          * type: integer
+                        * The device characteristics bits. (See DRIVRS.DOC)
+
+        NFLINE          * type: integer
+                        * The number of lines to skip plus 1 while performing
+                                a software fill.   Basically an indication
+                                of the (virtual) pen width.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 24 -
+DIGLIB COMMON BLOCKS                                                   Page 11-3
+GCVPOS.PRM                                                             14 Feb 85
+
+
+11.2  GCVPOS.PRM
+
+
+        XVPOS           * type: real
+                        * The current virtual X position.
+
+        YVPOS           * type: real
+                        * The current virtual Y position.
+
+        LMOVED          * type: LOGICAL*1
+                        * TRUE if GSMOVE called since last GSDRAW.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 25 -
+DIGLIB COMMON BLOCKS                                                   Page 11-4
+PLTCLP.PRM                                                             14 Feb 85
+
+
+11.3  PLTCLP.PRM
+
+
+        XMIN            * type: real
+                        * The value chosen by MAPIT at the left of the X-axis.
+
+        XMAX            * type: real
+                        * The value chosen by MAPIT at the right of the X-axis.
+
+        YMIN            * type: real
+                        * The value chosen by MAPIT at the bottom of the Y-axis.
+
+        YMAX            * type: real
+                        * The value chosen by MAPIT at the top of the Y-axis.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 26 -
+
+
+
+
+
+
+
+
+
+
+
+
+                                   CHAPTER 12
+
+                      DIGLIB STANDARD DEVICE DRIVER NOTES
+
+
+
+     The following list is not necessarily a complete list of all the  available
+device drivers.  As with most software projects, DIGLIB suffers from the problem
+that the software advances faster  than  the  documentation.   Thus,  users  are
+strongly  encouraged  to look at all source files beginning with the two letters
+GD as these source files will contain the device drivers before concluding  that
+DIGLIB has come to you without a particular driver.
+
+
+
+
+     12.1  TEK.  4025 AND 4027 DRIVERS
+
+          The 4025 driver is conditionally assembled (RT-11, TSX, and RSX  only)
+     for  the  4025/4027  command  character.  The files RT4025.MAC, RT4027.MAC,
+     RSX4025.MAC, and RSX4027.MAC set the command character to  the  exclamation
+     point.   If you wish to change the command character, you will have to edit
+     the appropriate file(s).  I suggest that the command character not  be  set
+     to ASCII codes 176 or 177 octal.
+
+          The VMS 4025 and 4027 driver has "!" as the default command character.
+     However, defining the logical name TEK4025CC as a one character string that
+     is the command character, i.e.  $  DEFINE  TEK4025CC  "".   Also,  the  VMS                                                           _
+     driver will allow you to return your 402X to ANSI mode (or execute any 402X
+     native mode command) on RLSDEV.  Just define the logical TEK4025COM  to  be
+     the  command string (without the leading command character), i.e.  $ DEFINE
+     TEK4025COM "ANSI".
+
+
+
+
+
+     12.2  TEK.  4010, 4012, AND 4014 DRIVERS
+
+          I have tested the 4010 and 4014 driver, but have not tested  the  4012
+     driver.   However, I suspect that they will work just fine as more than 95%
+     of the code in the 401x drivers is common.  The  driver  expects  that  the
+     terminal  has  been  set  (strapped)  for just "carriage return" as the GIN
+     terminator.
+
+
+
+                                     - 27 -
+DIGLIB STANDARD DEVICE DRIVER NOTES                                    Page 12-2
+TEK. 4105 DRIVER                                                       14 Feb 85
+
+
+     12.3  TEK.  4105 DRIVER
+
+          The colors on the 4105  are  selectable  by  the  operator,  or  under
+     program   control.   However,  since  there  are  so  few  possible  colors
+     selectable from so few, the 4105 driver treats the 4105 as  if  the  colors
+     were fixed.  Thus, the operator is free to set the colors on the 4105 as he
+     chooses  and  not  worry  about  DIGLIB  changing  them.   However,  to  be
+     consistant  with  DIGLIB,  the  colors  should  be set to 0=black, 1=white,
+     2=red, 3=green, 4=blue, 5=yellow,  6=magenta,  and  7=cyan.   These  colors
+     deviate  from  the  default 4105 colors only at color 5 (defaulted to cyan)
+     and color 7 (defaulted to yellow).
+
+          The 4105 has 3 modes (codes).  These are:  Tek (4010) mode, ANSI mode,
+     ane  EDIT  mode.   The  4105 driver on DEVSEL sets the 4105 to code=Tek for
+     4010 emulation.  Upon RLSDEV, the terminal is switched back  to  code=ANSI.
+     If  you  forget  the  RLSDEV,  of  if your program crashes before RLSDEV is
+     executed, the terminal will be left in code=Tek, and you must  remember  to
+     manually set it back to code=ANSI.
+
+
+
+
+
+     12.4  VT100/RETRO-GRAPHICS DRIVER
+
+          The RETRO-GRAPHICS  options  should  be  set  as  follows  (those  not
+     mentioned may be set as you please):
+
+     1.  Entry = 1
+
+     2.  XON/XOFF = 1
+
+     3.  ESC SUB = 1 !unless you have and want to use the lightpen
+
+     4.  Local echo = 0
+
+     5.  Trailer = 0D,FF
+
+     6.  Tmode = 18
+
+
+
+
+
+
+     12.5  GIGI DRIVER
+
+          The GIGI suffers from a number of undesirable characteristics.  I have
+     tried to hide as many as possible from the user, but a number still remain:
+
+     1.  The GIGI scrolls the graphics off the screen unless  it  is  placed  in
+         no-scroll  mode.   In  this  mode, all interactive text is place in one
+         line at the bottom of the GIGI screen.  The GIGI  does  not  erase  the
+         previous  line  displayed  before  printing  the next, thus a long line
+
+                                     - 28 -
+DIGLIB STANDARD DEVICE DRIVER NOTES                                    Page 12-3
+GIGI DRIVER                                                            14 Feb 85
+
+
+         followed by a short line leaves part of the long  line  trailing  after
+         the  short  line.   Also, multiple lines are not visible, just the last
+         line of multiple lines is visible.
+
+     2.  The GIGI sets colors in 12 by 6 real pixel pre-defined  regions.   This
+         means  that  one  color  written  close to another color may change the
+         color of the first written color to that of the last written color.
+
+     3.  Unless the GIGI is  properly  released  (by  DEVSEL  selecting  another
+         graphics  device,  or by RLSDEV) the GIGI will be left in the no-scroll
+         mode.
+
+
+
+
+
+
+     12.6  DATA MEDIA/RETRO-GRAPHICS TERMINAL
+
+          The Retro-Graphics GEN II 4027 emulation mode  is  used.   The  driver
+     assumes  the  terminal is in VT100 mode, and upon DEVSEL, places it in 4027
+     emulation.  Upon RLSDEV, the terminal is switched back to VT100  mode.   If
+     you  forget  the  RLSDEV,  of  if  your  program  crashes  before RLSDEV is
+     executed, the terminal will be left in 4027 mode, and you must remember  to
+     manually set it back to VT100 mode.
+
+          Since 4027 emulation mode is used, there is a command character to get
+     straight.   I  assume  you are using the default command character "!".  If
+     not, you will have to edit GDDM800.MAC (RT, TSX, and  RSX)  or  GDDM800.FOR
+     (VMS) to change the command character.
+
+
+
+
+
+     12.7  VAX/VMS VECTRIX DRIVER
+
+          The VECTRIX can be interfaced either RS-232 or 8-bit parallel.  I have
+     provided  a  driver  for  the simple (but slow) method - RS-232.  The VX384
+     driver has not been tested as I haven't seen a VX384, but I suspect that it
+     will  work  well,  with  the  bugs (if any) being in the "Q" (Lookup table)
+     command.
+
+
+
+
+
+     12.8  VAX/VMS QMS LASERGRAFIX DRIVER
+
+          This driver operates by writing an ASCII text file that  contains  the
+     proper  command  sequences  to  make  a  plot.   The  file  is  written  to
+     SYS$SCRATCH:LASER.DIG, and when RLSDEV is called, the file is  closed,  and
+     then    LIB$SPAWN    is    called    with    the    command    "DIGLASEROUT
+     SYS$SCRATCH:LASER.DIG".  Thus, by defining the command DIGLASEROUT, you can
+
+                                     - 29 -
+DIGLIB STANDARD DEVICE DRIVER NOTES                                    Page 12-4
+VAX/VMS QMS LASERGRAFIX DRIVER                                         14 Feb 85
+
+
+     cause the file to be plotted as you like.  The normal definition is:
+
+        DIGLASEROUT == "PRINT/QUE=LCA0:/DEL"
+
+     One final note:  When printed singly, all works fine.  However, if  two  or
+     more  LASER.DIG  files  are  concatenated  and  then  printed, they will be
+     printed all on one page.  To overcome this  problem,  I  suggest  that  you
+     prepare  a  file  with only a form-feed (CTRL/L) in it, and concatenate the
+     LASER.DIG files together by intervening the form-feed file.
+
+
+
+
+
+     12.9  VAX/VMS VERSATEC DRIVER
+
+          The versatec  driver  is  unsupported.   Different  installations  all
+     handle  VERSAPLOT  differently so there is no way I can support this driver
+     fully.
+
+          The following know hacks exist for the VAX/VMS versatec driver:
+
+     1.  The versatec driver uses VERSAPLOT, so if you don't have VERSAPLOT, you
+         can't use this driver!
+
+     2.  The versatec driver must get a "RLSDEV".  (Note:  DEVSEL  automatically
+         does  a  RLSDEV  when you select a new device so you don't have to do a
+         RLSDEV before doing a DEVSEL, but then again, it won't  hurt.)  If  you
+         have been sloppy and not used a RLSDEV when you are done, the VERSAPLOT
+         files will not be closed properly and you won't get your plot(s)!
+
+     3.  Depending on your VERSAPLOT software (and the way  it  was  installed),
+         you  may have to run RASM or its clone to get your plots to come out on
+         the versatec after your DIGLIB program has finished!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 30 -
+
+
+
+
+
+
+
+
+
+
+
+
+                                   CHAPTER 13
+
+                              PROGRAMMING EXAMPLE
+
+
+
+     The following FORTRAN program is a general shell into  which  all  graphics
+programs should fit.
+        .
+        .
+        .
+C
+C       START OF GRAPHICS
+C
+        CALL SELDEV(ILUN)
+C
+C       ERASE THE SCREEN OR GET A NEW PIECE OF PAPER
+C
+        CALL BGNPLT
+C
+C       DIGLIB APPLICATION SPECIFIC GRAPHICS HERE
+C
+        .
+        .
+        .
+C
+C       MAKE SURE ALL GRAPHICS HAVE BEEN OUTPUT TO THE DEVICE SINCE WE
+C       ARE ALL DONE GRAPHING BY THIS POINT.
+C
+        CALL ENDPLT
+        .
+        .
+        .
+C
+C       PROGRAM EXIT
+C
+        CALL RLSDEV
+        STOP
+        END
+
+     High level graphics programming example:
+
+
+        PROGRAM DEMO
+        DIMENSION T(101), Y(101)
+        DATA NPTS /101/
+
+                                     - 31 -
+PROGRAMMING EXAMPLE                                                    Page 13-2
+DIGLIB PROGRAMMING EXAMPLE                                             14 Feb 85
+
+
+C
+C       GENERATE AN EXPONENTIAL DECAY CURVE
+C
+        TMIN = 0.0
+        TMAX = 20.0
+        DT = (TMAX-TMIN)/(NPTS-1)
+        DO 100 I=1,NPTS
+        T(I) = TMIN + DT*(I-1)
+100     Y(I) = 100.0*EXP(-T(I)/5.0)
+C
+C       SELECT THE GRAPHICS DEVICE
+C
+        CALL SELDEV(4)
+        CALL BGNPLT
+C
+
+C       USE WHOLE SCREEN FOR PLOT AND LET DIGLIB PICK CHARACTER SIZE
+C
+        CALL MAPSIZ(0.0,100.0,0.0,100.0,0.0)
+C
+C       FIND Y LIMITS
+C
+        CALL MINMAX(Y,NPTS,YMIN,YMAX)
+C
+C       GENERATE THE AXES WITH LABLES
+C
+        CALL MAPIT(TMIN,TMAX,YMIN,YMAX,'TIME IN SEC.','100*EXP(-T/5)',
+        1   'EXPONENTIAL DECAY CURVE',0)
+C
+C       PLOT THE CURVE
+C
+        CALL TRACE(T,Y,NPTS)
+C
+
+C       END OF PLOTTING FOR NOW
+C
+        CALL ENDPLT
+        CALL RLSDEV
+        STOP
+        END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 32 -
+
+
+
+
+
+
+
+
+
+
+
+
+                                   CHAPTER 14
+
+                            SUBROUTINE DESCRIPTIONS
+
+
+
+14.1  STRINGS
+
+     This section describes the DIGLIB subroutines.  The subroutines are  listed
+in alphabetical order.
+
+
+
+     ALL REFERENCES TO "STRING"  VARIABLES  OR  CONSTANTS  REFER  TO  ZERO  BYTE
+TERMINATED  STRINGS  AND  NOT TO "CHARACTER*" STRINGS AS SUPPORTED BY F77 OR VAX
+FORTRAN!!!
+
+     On the LSI/PDP-11s and VAX/VMS, strings are  implemented  as  BYTE  arrays.
+Thus, for a variable length string of up to 80 characters called MYSTR use:
+
+     BYTE MYSTR(82) The reason for a dimension of 82 is that  1  extra  byte  is
+needed  for  the  zero  byte  terminator,  thus  81  bytes  are  required.   For
+performance (and other reasons) it is best to always force BYTE arrays  to  have
+an even number of elements, thus 81 is "rounded up" to 82.  For more information
+on this subject, see the file STRINGLIB.DOC.  RT  and  TSX  users  need  not  be
+concerned  with  this as DIGLIB strings are those supported by the RT/TSX system
+library SYSLIB.OBJ!
+
+     On the SUN (and other  UNIX  systems),  strings  are  implemented  as  null
+character terminated CHARACTER*1 arrays.  The null character is '0'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 33 -
+SUBROUTINE DESCRIPTIONS                                                Page 14-2
+FUNCTION LISTING                                                       14 Feb 85
+
+
+14.2  FUNCTION LISTING
+
+Complete Graphs
+---------------
+
+BarGra  -- Bar graph plot
+ConTor  -- Contour plotter
+PurJoy  -- Plot a three-dimensional view of F(x,y)
+
+
+Graph Initialization
+--------------------
+
+SelDev  -- Menued selection of Graphics device
+DevSel  -- Select a specific Graphics device
+BgnPlt  -- Create a fresh plotting surface
+
+
+Graph Termination
+-----------------
+
+EndPlt  -- Empty the plotting buffer so the plot can be seen
+RlsDev  -- Release a graphics device
+
+
+Drawing Primitives
+------------------
+
+GsDraw  -- Draw a line from the current point to the given point (virtual)
+GsMove  -- Move to point (virtual)
+
+
+Line Primitives
+---------------
+
+ClLine  -- Draw line (world; clipped)
+
+
+Polygon Primitives
+------------------
+
+GsFill  -- Draw a filled polygon
+GsPoly  -- Draw hollow polygon
+Hatch   -- Fill a polygon with lines at an angle
+
+
+Character Drawing
+-----------------
+
+GsPstr  -- Print a string
+
+GsLens  -- Length of string (virtual)
+CszMap  -- Character sized picked by MapIt
+GoodCs  -- Get the nicest character size close a desired one
+
+                                     - 34 -
+SUBROUTINE DESCRIPTIONS                                                Page 14-3
+FUNCTION LISTING                                                       14 Feb 85
+
+
+GsSetc  -- Select character size and rotation
+GsFont  -- Select the character font (VMS only)
+
+
+Graphics Input
+--------------
+
+Cursor  -- Cursor position (world) and selected character
+GrafIn  -- Cursor position (world) and selection flag
+GsCrsr  -- Cursor position (virtual) and button state
+GsGin   -- Cursor position (virtual) and pick character
+GsInpt  -- Generic cursor positon (uses GsGin or GsCrsr)
+
+
+Axes
+----
+
+MapIt   -- Draw axes and label them
+MapSml  -- Less capable version of MapIt
+SyAxis  -- Draw a second Y axis
+MinMax  -- Find the minimum and maximum of an array
+
+GsXlcm  -- Length of the X axis (absolute)
+GsYlcm  -- Length of the Y axis (absolute)
+
+
+
+Transformations
+---------------
+
+GSetdp  -- Set virtual to absolute transformation
+GsWndo  -- Set virtual to absolute transformation
+RstMap  -- Restore saved world to virtual coordinate transformation
+SavMap  -- Save world to virtual coordinate transformation
+
+
+Curve Drawing
+-------------
+
+Curve   -- Connect world points in X,Y arrays with lines & symbols (clipping)
+CurveY  -- Connect world points in Y array with lines & symbols (clipping)
+TracCY  -- Connect world points in Y array with lines (clipping)
+Trace   -- Connect world points in X,Y arrays with lines (no clipping)
+TraceC  -- Connect world points in X,Y arrays with lines (clipping)
+TraceY  -- Connect world points in Y array with lines (no clipping)
+
+
+Device Selection
+----------------
+
+DevSel  -- Select the display device for plotting
+GsDnam  -- Get the device name from a device number
+SelDev  -- Interactively select a graphics device from a list
+
+
+                                     - 35 -
+SUBROUTINE DESCRIPTIONS                                                Page 14-4
+FUNCTION LISTING                                                       14 Feb 85
+
+
+Screen Allocation
+-----------------
+
+FulMap  -- Allocate the entire plotting surface for graphics
+MapPrm  -- Set virtual screen size for MapIt
+MapSet  -- Set percent screen size for MapIt 
+MapSiz  -- Set percent axes graphics area for MapIt 
+MapSz2  -- Set percent axes graphics area for MapIt with space for 2nd Y axis
+PltBox  -- Set virtual graphics area for MapiIt 
+PltBx2  -- Set virtual graphics area for mapit with space for 2nd Y axis
+
+
+Line Characteristics
+--------------------
+
+GsColr  -- Select a plotting color
+GsDlns  -- Create broken line style
+GsLtyp  -- Select line type
+
+
+Color Settings
+--------------
+
+GsDrgb  -- Define mapping for converting a color number to a color 
+
+
+Point Plotting
+--------------
+
+PointC  -- Plot X,Y coordinates as triangles (clipping)
+Points  -- Plot X,Y coordinates as triangles (no clipping)
+Symbol  -- Draw a centered symbol
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 36 -
+SUBROUTINE DESCRIPTIONS                                                Page 14-5
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+14.3  ALPHABETICAL LISTING
+
+                                     BGNPLT
+
+Usage:  CALL BGNPLT
+
+Purpose:   This subroutine creates a fresh plotting surface.   For CRT devices
+        it erases the entire screen.   For pen plotters, the paper is advanced
+        to the next plotting page.   It also resets the color mapping of colors
+        zero through seven to their default values and resets the current
+        drawing color to one.
+
+Arguments: none.
+
+Programming notes:
+
+        * Colors 0 thru 7 are set to background, foreground, red, green, blue,
+           yellow, magenta, cyan respectively.   This only applies to that can
+           set their colors, i.e. color raster devices with lookup tables.
+
+        * The current drawing color is set to foreground (color 1).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 37 -
+SUBROUTINE DESCRIPTIONS                                                Page 14-6
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     CLLINE
+
+Usage:  CALL CLLINE(WORLDX1,WORLDY1,WORLDX2,WORLDY2)
+
+
+Purpose:   This subroutine draws a line between two points given in world
+        coordinates.   Any portion of the line that lies out side the
+        current axis frame plotted by MAPIT is not displayed.
+
+Arguments:
+
+  Input
+
+        WORLDX1         * type: real constant or variable.
+                        * The x position in world coordinates of the first
+                                endpoint of the line.
+
+        WORLDY1         * type: real constant or variable.
+                        * The y position in world coordinates of the first
+                                endpoint of the line.
+
+        WORLDX2         * type: real constant or variable.
+                        * The x position in world coordinates of the second
+                                endpoint of the line.
+
+        WORLDY2         * type: real constant or variable.
+                        * The x position in world coordinates of the second
+                                endpoint of the line.
+
+  Output
+
+    None.
+
+
+Programming notes:
+
+        * MAPIT must be called prior to using CLLINE.
+
+        * The axis frame defined by MAPIT is described by the COMMON block
+           named PLTCLP.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 38 -
+SUBROUTINE DESCRIPTIONS                                                Page 14-7
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     CSZMAP
+
+Usage:  CSIZE = CSZMAP()
+
+Purpose:   This real function returns the character size to be used
+        by MAPIT.   This character size can be specified by the following
+        routines: FULMAP, MAPPRM, MAPSET, MAPSIZ, MAPSZ2, PLTBOX, and PLTBX2.
+
+Arguments:
+
+    None.
+
+
+Programming notes:
+
+        * CSZMAP is useful when two plots are to have the same character
+           sizes, and MAPSIZ, MAPSZ2, PLTBOX, or PLTBX2 has chosen the
+           character size.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 39 -
+SUBROUTINE DESCRIPTIONS                                                Page 14-8
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     CURSOR
+
+Usage:  CALL CURSOR(WORLDX,WORLDY,CHAR)
+
+Purpose:   This subroutine reads the position of the cursor using GSGIN and
+        returns the cursor position in world coordinates.   The character value
+        of the pick character is also returned.
+
+Arguments:
+
+  Input
+
+    None.
+
+  Output
+
+        WORLDX          * type: real variable.
+                        * The variable to receive the X world coordinate
+                                of the cursor.
+
+        WORLDY          * type: real variable.
+                        * The variable to receive the Y world coordinate
+                                of the cursor.
+
+        CHAR            * type: byte variable.
+                        * The variable to receive the ASCII value of the
+                                pick character.
+
+
+Programming notes:
+
+        * This subroutines uses GSGIN to actually read the cursor position.
+
+        * VAX/VMS users can use a CHARACTER*1 variable passed by reference
+           (using %ref()) instead of a BYTE.   This will allow more flexible
+           testing of the value.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 40 -
+SUBROUTINE DESCRIPTIONS                                                Page 14-9
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     CURVE
+
+Usage:  CALL CURVE(X,Y,NPTS,ISYMNO,SYMSIZ,NPBSYM)
+
+Purpose:   This subroutine is very similar in function to TRACEC.   It
+        connects the points (X(i),Y(i)) with a line of the current line type,
+        and then places the selected symbol on the curve at the desired
+        interval.
+
+Arguments:
+
+  Input
+
+        X               * type: real array.
+                        * The ordered X values to connect.
+
+        Y               * type: real array.
+                        * The ordered Y values to connect.
+
+        NPTS            * type: integer constant or variable.
+                        * The number of (X,Y) points to connect.
+
+        ISYMNO          * type: integer constant or variable.
+                        * The number of the centered symbol to place on the
+                                curve:
+                                 0 ==> no symbol,
+                                 1 ==> triangle,
+                                 2 ==> box,
+                                 3 ==> diamond,
+                                 4 ==> hour glass.
+
+        SYMSIZ          * type: real constant or variable.
+                        * The symbol height in virtual coordinates.
+
+        NPBSYM          * type: integer constant or variable.
+                        * The spacing of the symbols.   The symbols are placed
+                                at every NPBSYM points along the curve.
+
+  Output
+
+    none.
+
+
+Programming notes:
+
+        * Like TRACEC, CURVE does not plot any points that lie outside the
+           the world coordinates established by MAPIT.
+
+
+
+
+
+
+
+
+                                     - 41 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-10
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     CURVEY
+
+Usage:  CALL CURVEY(XMIN,XMAX,Y,NPTS,ISYMNO,SYMSIZ,NPBSYM)
+
+Purpose:   This subroutine is very similar in function to TRACCY.   It
+        connects the points (X(i),Y(i)) with a line of the current line type,
+        and then places the selected symbol on the curve at the desired
+        interval.   The values of X(i) are calculated as:
+                X(i) = XMIN + (i-1)*(XMAX-XMIN)/(NPTS-1)
+
+
+Arguments:
+
+  Input
+
+        XMIN            * type: real constant or variable.
+                        * The value of X corresponding to Y(1).
+
+        XMAX            * type: real constant or variable.
+                        * The value of X corresponding to Y(NPTS).
+
+        Y               * type: real array.
+                        * The ordered Y values to connect.
+
+        NPTS            * type: integer constant or variable.
+                        * The number of (X,Y) points to connect.
+
+        ISYMNO          * type: integer constant or variable.
+                        * The number of the centered symbol to place on the
+                                curve:
+                                 0 ==> no symbol,
+                                 1 ==> triangle,
+                                 2 ==> square,
+                                 3 ==> diamond,
+                                 4 ==> hour glass.
+
+        SYMSIZ          * type: real constant or variable.
+                        * The symbol height in virtual coordinates.
+
+        NPBSYM          * type: integer constant or variable.
+                        * The spacing of the symbols.   The symbols are placed
+                                at every NPBSYM points along the curve.
+
+  Output
+
+    none.
+
+
+Programming notes:
+
+        * Like TRACEC, CURVE does not plot any points that lie outside the
+           the world coordinates established by MAPIT.
+
+
+
+                                     - 42 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-11
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     DEVSEL
+
+Usage:  CALL DEVSEL(IDEVICE,LUN,IERR)
+
+Purpose:   This subroutine selects the current display device.   The device
+        selected when DEVSEL is called is released.   All low level display
+        parameters are reset by DEVSEL.   This includes the current line type,
+        any user defined line styles, the current color for drawing, the
+        transformation from virtual to absolute coordinates (thus any
+        window/viewports), the character size and orientation, and the color
+        map for colors 0 to 7.
+
+Arguments:
+
+  Input
+
+        IDEVICE         * type: integer constant of variable.
+                        * The device number of the device to select.
+
+        LUN             * type: integer constant or variable.
+                        * RSX: The logical unit number on which I/O is to take
+                                place to the graphics device.
+                        * RT: The channel number on which I/O is to take place
+                                to the graphics device.   Only used if the
+                                graphics device selected requires a RT11
+                                device handler (i.e. xx.SYS).
+
+  Output
+
+        IERR            * type: integer variable.
+                        * An error flag:
+                                   0 ==> device selected
+                                  -1 ==> no such device on this system.
+                                   1 ==> Assign to graphics device failed.
+                                          If device is sharable, this usually
+                                          indicates another users is using
+                                          the device.
+                                   2 ==> Assign to user's terminal failed.
+                                   3 ==> Unable to open a scratch or temporary
+                                         file.
+                                 4-9 ==> reserved.
+                                  >9 ==> IERR is DIGLIB device driver specific.
+
+Programming notes:
+
+        * NOTE:   All terminal type graphics devices ignore the "LUN"
+           parameter!!!   Under RSX, they do I/O to LUN 5 (TI:).
+           Under RT11, they use the terminal I/O system calls.
+           Under VMS, they use system calls and a channal number returned
+           from an assignment to "TT"
+
+        * DEVSEL has the effect of calling:
+                CALL GSETDP(0.0,1.0,1.0,0.0,0.0)
+                CALL GSSETC(GOODCS(0.3),0.0)
+
+                                     - 43 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-12
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                CALL GSLTYP(1)
+                CALL GSCOLR(1,IERR)
+           and of setting colors 0 thru 7 to background, foreground, red,
+           green, blue, yellow, magenta, cyan, respectively.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 44 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-13
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     ENDPLT
+
+Usage:  CALL ENDPLT
+
+Purpose:   This subroutine causes the buffer of graphics commands to be
+        emptied.   It is generally called at the end of all plotting.
+        However, in interactive applications, it is nearly always necessary
+        to use ENDPLT previous to any operator interaction with the graphics
+        to make sure the entire picture is displayed.
+
+Arguments:
+
+    None.
+
+
+Programming notes:
+
+        * Although some graphic device drivers do not buffer the graphic
+           commands, it is good programming practice to include the proper
+           ENDPLT calls.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 45 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-14
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     FULMAP
+
+
+Usage:  CALL FULMAP
+
+Purpose:   This subroutine allocates the entire plotting surface (screen)
+        for use by MAPIT.   A small border is provided.   FULMAP provides
+        a device independent method of using the entire plotting surface.
+
+Arguments:
+
+    None.
+
+
+
+Programming notes:
+
+        * FULMAP is equivalent to PLTLIB's ALLOCG(1,30,1,80).
+
+        * FULMAP does not allow room for the right-hand side Y axis.
+
+        * The character size of the plot is the same as would be chosen
+           by MAPSIZ(0.0,100.0,0.0,100.0,0.0).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 46 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-15
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     GOODCS
+
+Usage:  CSIZE = GOODCS(APPROXSIZE)
+
+Purpose:    This real function returns the "good" character size for the
+        currently selected device that is close to the size APPROXSIZE.
+        Because of device resolution, characters drawn certain sizes will
+        not appear nearly as nice as characters drawn slightly smaller or
+        larger.   GOODCS gives the user a way to select a good character
+        size when appearance of the characters is critical.
+
+Arguments:
+
+  Input
+
+        APPROXSIZE      * type: real constant or variable.
+                        * The approximate character height in virtual
+                           virtual coordinates.
+
+  Output
+
+        GOODCS          * Type: real variable.
+                        * The "good" character size for the currently selected
+                                device in virtual coordinates.
+
+
+Programming notes:
+
+        * Character size in DIGLIB is the height of capital letters.
+
+        * GOODCS will not function properly when:
+           1) Used with devices whose X resolution is not equal to
+                it's Y resolution.
+           2) Used with the X scale factor not equal to the Y scale
+                factor in the virtual to absolute coordinate transformation.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 47 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-16
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     GRAFIN
+
+Usage:  CALL GRAFIN(WORLDX,WORLDY,LFLAG)
+
+Purpose:   This subroutine reads the position of the cursor using GSINPT and
+        returns the cursor position in world coordinates.   The selection
+        flag is also returned from GSINPT.
+
+Arguments:
+
+  Input
+
+    None.
+
+  Output
+
+        WORLDX          * type: real variable.
+                        * The variable to receive the X world coordinate
+                                of the cursor.
+
+        WORLDY          * type: real variable.
+                        * The variable to receive the Y world coordinate
+                                of the cursor.
+
+        LFLAG           * type: logical variable.
+                        * The selection flag.   See GSINPT for the definition
+                                of this flag.
+
+
+Programming notes:
+
+        * This subroutines uses GSINPT to actually read the cursor position.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 48 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-17
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     GSCOLR
+
+Usage:  CALL GSCOLR(ICOLOR,IERR)
+
+Purpose:   This subroutine sets the current plotting color on devices that
+        support multiple colors, or drawing in the background color.
+
+Arguments:
+
+  Input
+
+        ICOLOR          * type: integer constant or variable.
+                        * The number of the color to select.
+
+  Output
+
+        IERR            * type: integer variable.
+                        * An error flag:
+                                  0 ==> color set
+                                 -1 ==> unable to set given color.
+
+
+Programming notes:
+
+        * The background color is color 0.
+
+        * The foreground color is color 1.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 49 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-18
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     GSCRSR
+
+Usage:  CALL GSCRSR(X,Y,IBUTTN,IERR)
+
+Purpose:  This subroutine causes a graphics input operation to take place.
+        A cursor that the user can fly around until he has selected the proper
+        location.   When the proper location has been designated, the user
+        "presses a button" (more generally, changes the state of the buttons
+        or switches) on the pointing device.   This terminates the graphics
+        input operation, and the cursor is removed if possible.
+
+Arguments:
+
+  Input
+
+    None
+
+  Output
+
+        X               * Type: real variable.
+                        * The X position selected in virtual coordinates.
+
+        Y               * Type: real variable.
+                        * The Y position selected in virtual coordinates.
+
+        IBUTTN          * Type: integer variable.
+                        * The new button state.
+
+        IERR            * Type: integer variable.
+                        * An error flag:
+                                  0 ==> graphics input operation sucessful.
+                                 -1 ==> device does not support graphis input.
+
+
+Programming Notes:
+
+        * The buttons are numbered from 1 to N.   (See the individual device
+           driver documentation for the number scheme.)   The state of the
+           buttons is returned as an integer with the N least significant
+           bits encoding the button state.   The correspondance between
+           bit and button is:
+                Bit = 2**(button-1)
+           A bit value of one means the button/switch is pressed/set.   A value
+           of zero means the button/switch is not-pressed/clear.
+
+
+
+
+
+
+
+
+
+
+
+                                     - 50 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-19
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     GSDLNS
+
+Usage:  CALL GSDLNS(ILTYPE,ON1,OFF1,ON2,OFF2)
+
+Purpose:  This subroutine permits the broken line styles to be defined by
+        the user.   Note, user defined line styles are restored to the
+        default values by DEVSEL.
+
+Arguments:
+
+  Input
+
+        ILTYPE          * Type: integer constant or variable.
+                        * The broken line type number to define.
+                                2<= ILTYPE <=4.
+
+        ON1             * Type: real constant or variable.
+                        * The length in absolute coordinates of the first
+                           segment of the line style; drawn "with the pen
+                           down".
+
+        OFF1            * Type: real constant or variable.
+                        * The length in absolute coordinates of the second
+                           segment of the line style; drawn "with the pen up".
+
+        ON2             * Type: real constant or variable.
+                        * The length in absolute coordinates of the third
+                           segment of the line style; drawn "with the pen
+                           down".
+
+        OFF2            * Type: real constant or variable.
+                        * The length in absolute coordinates of the fourth
+                           segment of the line style; drawn "with the pen up".
+
+  Output
+
+    None
+
+
+Programming Notes:
+
+        * Line styles defined using GSDLNS are reset to the default line
+           styles by DEVSEL.
+
+        * Specifing ILTYPE outside the range [2..4] will do nothing.
+
+        * The default values are:
+                ILTYPE  ON1     OFF1    ON2     OFF2
+                   2    0.5     0.5     0.5     0.5
+                   3    0.25    0.25    0.25    0.25
+                   4    0.5     0.25    0.25    0.25
+           Since these are absolute coordinates, they are in centimeters.
+
+
+
+                                     - 51 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-20
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     GSDNAM
+
+Usage:  CALL GSDNAM(IDEV,DNAME)
+
+Purpose:   This subroutine returns the device name that corresponds to the
+        given device number.   The name is returned as a standard DIGLIB
+        string.
+
+Arguments:
+
+  Input
+
+        IDEV            * type: integer constant or variable.
+                        * The device number for which the device name is
+                                desired.
+
+  Output
+
+        DNAME           * type: string variable.
+                        * The device name expressed as 39 characters or less.
+                                If there is no such device, a null string is
+                                returned.
+
+
+Programming notes:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 52 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-21
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     GSDRAW
+
+Usage:  CALL GSDRAW(X,Y)
+
+Purpose:   This subroutine draws a line from the current point to the
+        point (X,Y) in virtual coordinates.
+
+Arguments:
+
+  Input
+
+        X               * type: real constant or variable.
+                        * The x virtual coordinate.
+
+        Y               * type: real constant or variable.
+                        * The y virtual coordinate.
+
+  Output
+
+    None.
+
+
+Programming notes:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 53 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-22
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     GSDRGB
+
+Usage:  CALL GSDRGB(ICOLOR,RED,GREEN,BLUE,IERR)
+
+Purpose:    This subroutine allows the user to define the displayed
+        color corresponding to a color number.   Colors 0 through 7 are
+        reset to background, foreground, red, green, blue, yellow, magenta,
+        and cyan respectively by DEVSEL.
+
+Arguments:
+
+  Input
+
+        ICOLOR          * type: integer constant or variable.
+                        * The color number of the displayed color.
+
+        RED             * type: real constant or variable.
+                        * The red component in the display color in percent
+                                of full intensity.
+
+        GREEN           * type: real constant or variable.
+                        * The green component in the display color in percent
+                                of full intensity.
+
+        BLUE            * type: real constant or variable.
+                        * The blue component in the display color in percent
+                                of full intensity.
+
+  Output
+
+        IERR            * type: integer variable.
+                        * An integer error flag:
+                                  0 ==> color defined
+                                 -1 ==> unable to define color.
+
+
+Programming notes:
+
+        * Only a few devices allow the display color to be selected.
+
+        * Colors 0 through 7 are reset to background, foreground, red, green,
+           blue, yellow, magenta, and cyan respectively by DEVSEL.
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 54 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-23
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     GSETDP
+
+
+Usage:  CALL GSETDP(ANGLE,XSCALE,YSCALE,XTRAN,YTRAN)
+
+Purpose:   This subroutine sets the transformation parameters for converting
+        virtual coordinates to absolute coordinates.   Virtual coordinates
+        are transformed to absolute coordinates in three ordered steps:
+        rotation, scaling, then translation.
+
+Arguments:
+
+  Input
+
+        ANGLE           * type: real constant or variable.
+                        * The rotation angle of the virtual to absolute
+                                transformation.
+
+        XSCALE          * type: real constant or variable.
+                        * The absolute x direction scale factor.
+
+        YSCALE          * type: real constant or variable.
+                        * The absolute y direction scale factor.
+
+        XTRAN           * type: real constant or variable.
+                        * The absolute x direction translation in cm.
+
+        YTRAN           * type: real constant or variable.
+                        * The absolute y direction translation in cm.
+
+  Output
+
+    None.
+
+
+Programming notes:
+
+        * The transformation is calculated as follows:
+                xtemp = Xvirtual*COS(angle) + Yvirtual*SIN(angle)
+                ytemp = Yvirtual*COS(angle) - Xvirtual*SIN(angle)
+                Xabsolute = xscale*xtemp + xtran
+                Yabsolute = yscale*ytemp + ytran
+
+        * Notice that PAN and ZOOM are easily accomplished by proper
+           manipulation of the scale factors (zoom) and the translation
+           factors (pan).
+
+
+
+
+
+
+
+
+
+                                     - 55 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-24
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     GSFILL
+
+Usage:  CALL GSFILL(XVERTS,YVERTS,NUMPTS,TX,TY)
+
+Purpose:   This subroutine draws a solid filled polygon.   The vertices may
+        be given in either clockwise or counter-clockwise order.   The polygon
+        need not be convex.
+
+Arguments:
+
+  Input
+
+        XVERTS          * type: real array.
+                        * The X vertices of the polygon in virtual coordinates.
+
+        YVERTS          * type: real array.
+                        * The Y vertices of the polygon in virtual coordinates.
+
+        NUMPTS          * type: integer constant or variable.
+                        * The number of vertices in the polygon.
+
+  Output
+
+        TX              * type: real array.
+                        * Working array of NUMPTS elements.   (The absolute
+                           X coordinates of the vertices are stored here.)
+
+        TY              * type: real array.
+                        * Working array of NUMPTS elements.   (The absolute
+                           Y coordinates of the vertices are stored here.)
+
+
+
+Programming notes:
+
+        * Hardware fill is used if possible, otherwise a software algorithm
+           is used.
+
+        * Convex polygons are better than concave ones because some hardware
+           will only handle convex polygons.
+
+        * Self-intersecting polygons are of dubious value.   It is not
+           guarenteed that the software algorithm used by DIGLIB will match
+           the hardware algorithm of all DIGLIB devices.   Thus, two devices
+           may produce differently filled self-intersecting polygons.
+
+
+
+
+
+
+
+
+
+
+                                     - 56 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-25
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     GSFONT
+
+Usage:  CALL GSFONT(IFONT,IERR)
+
+Purpose:   This subroutine selects a new font to be used by GSPSTR.
+        Due to the address space limitations imposed by the PDP-11
+        architecture, only one font is available under RT-11, TSX, and
+        RSX (all PDP-11s).
+
+Arguments:
+
+  Input
+
+        IFONT           * Type: integer constant or variable.
+                        * The number of the new font.   The fonts are:
+                                1 - Standard DIGLIB stick font.
+                                n - Loaded from file DIG$FONTn where
+                                        2 <= n <= 99.   Currently, there
+                                        are only 9 alternate fonts distributed
+                                        with DIGLIB/VMS, giving fonts 1 to 10.
+
+  Output
+
+        IERR            * type: integer variable.
+                        * An error flag:
+                                 0 ==> font available
+                                -1 ==> font unavailable (no room in tables).
+                                -2 ==> font unavailable (no such file).
+
+
+Programming Notes:
+
+        * Fonts are only available under VMS (and large address space UNIX
+           machines).
+
+        * The logical names DIG$FONTn must be defined, preferable in the
+           SYSTEM logical name table.
+
+        * The current table sizes defined in GCFONT.CMN will only accomodate
+           9 alternate loaded fonts.   A font is loaded the first time it
+           is selected and then forever remains in memory.   Thus, it makes
+           sense to have more that 9 alternate font files, but unless the
+           table sizes are changed, a program can only use 9 during any one
+           invocation.   To find all the files affected type GCFONT.CMN, I
+           suggest using a text string finder utility and siccing it on
+           all the source files.
+
+
+
+
+
+
+
+
+
+                                     - 57 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-26
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     GSGIN
+
+Usage:  CALL GSGIN(XPOSN,YPOSN,BCHAR,IERR)
+
+Purpose:   This subroutine performs a Graphics INput (GIN) operation from the
+        currently selected device.
+
+Arguments:
+
+  Input
+
+    None.
+
+  Output
+
+        XPOSN           * type: real variable.
+                        * The x position of the cursor selected by the user
+                                in virtual coordinates.
+
+        YPOSN           * type: real variable.
+                        * The y position of the cursor selected by the user
+                                in virtual coordinates.
+
+        BCHAR           * type: byte variable.
+                        * The "pick" character entered by the user to denote
+                                the proper placement of the cursor.
+
+        IERR            * type: integer variable.
+                        * An error flag:
+                                  0 ==> GIN operation sucessful.
+                                 -1 ==> device does not support GIN.
+
+
+
+Programming notes:
+
+        * A GIN operation consists of the following steps:
+          1) The cursor is made to appear on the graphics device (if possible).
+          2) The user positions the cursor to the desired location.
+          3) The user strikes a key at the terminal keyboard or at the
+                graphic device keyboard if one exists.
+          4) The cursor position is read along with the key the user struck.
+          5) The cursor is removed from the graphic device (if possible).
+          6) The absolute cursor coordinates are converted to virtual
+                coordinates.
+          7) The virtual coordinate location of the cursor, and the ASCII
+                character struck by the user are returned to the caller.
+
+
+
+
+
+
+
+
+                                     - 58 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-27
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     GSINPT
+
+Usage:  CALL GSINPT(X,Y,LFLAG,IERR)
+
+Purpose:   This subroutine performs a "generic" graphics input using either
+        GSCRSR or GSGIN, whichever is available.   When both are available,
+        then GSCRSR is used.
+
+Arguments:
+
+  Input
+
+    None.
+
+  Output
+
+        X               * type: real variable.
+                        * The X coordinate selected in virtual coordinates.
+
+        Y               * type: real variable.
+                        * The Y coordinate selected in virtual coordinates.
+
+        LFLAG           * type: logical variable.
+                        * A flag that some users may find useful.
+                           LFLAG = .TRUE. when:
+                                GSCRSR used and button 1 state is pressed.
+                                GSGIN used and space bar pressed.
+                           LFLAG = .FALSE. otherwise.
+
+        IERR            * type: integer variable.
+                        * An error flag:
+                                  0 ==> graphics input operation sucessful.
+                                 -1 ==> device does not support graphis input.
+
+
+Programming notes:
+
+        None.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 59 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-28
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     GSLENS
+
+Usage:  VLEN = GSLENS(BSTRNG)
+
+Purpose:   This function calculates the length of the input string in
+        virtual coordinates assuming the current character size.
+
+Arguments:
+
+  Input
+
+        BSTRNG          * type: string.
+
+  Output
+
+        GSLENS          * type: real variable.
+                        * The length of the string in virtual coordinates
+                                when plotted in the current character size.
+
+
+Programming notes:
+
+        None.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 60 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-29
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     GSLTYP
+
+Usage:  CALL GSLTYP(LINTYP)
+
+Purpose:   This subroutine selects the current line type.   Four line types
+        are available:
+          1) solid
+          2) long dash - user definable
+          3) short dash - user definable
+          4) dot dash - user definable
+        The line type is reset to 1 by DEVSEL.
+
+Arguments:
+
+  Input
+
+        LINTYP          * Type: integer constant or variable.
+                        * The line type number:
+                            1 ==> solid
+                            2 ==> long dash
+                            3 ==> short dash
+                            4 ==> dot dash
+
+  Output
+
+    none.
+
+
+Programming notes:
+
+        * Calls to GSMOVE will restart the current line style to the beginning,
+           but calls to GSDRAW do not.   Thus, a curve will appear to be
+           composed of a continuous line in the current line style if and only
+           if no GSMOVEs intervene the GSDRAWs used to trace the curve.
+
+        * The line type is reset to 1 by DEVSEL.
+
+        * Line styles are generated in absolute coordinates, and so are not
+           effected by windowing/viewporting.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 61 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-30
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     GSMOVE
+
+Usage:  CALL GSMOVE(X,Y)
+
+Purpose:   This subroutine moves the graphic position from its current location
+        to the the new location (X,Y).   The new location is expressed in
+        virtual coordinates.
+
+Arguments:
+
+  Input
+
+        X               * type: real constant or variable.
+                        * The virtual x coordinate to move to.
+
+        Y               * type: real constant or variable.
+                        * The virtual y coordinate to move to.
+
+  Output
+
+    None.
+
+
+Programming notes:
+
+        * GSMOVE replaces PLTLIB's POSNB and RPOSNB.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 62 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-31
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     GSPOLY
+
+Usage:  CALL GSPOLY(XVERTS,YVERTS,NUMPTS)
+
+Purpose:   This subroutine draws a polygon boundary.   The vertices may
+        be given in either clockwise or counter-clockwise order.   The polygon
+        need not be convex.
+
+Arguments:
+
+  Input
+
+        XVERTS          * type: real array.
+                        * The X vertices of the polygon in virtual coordinates.
+
+        YVERTS          * type: real array.
+                        * The Y vertices of the polygon in virtual coordinates.
+
+        NUMPTS          * type: integer constant or variable.
+                        * The number of vertices in the polygon.
+
+  Output
+
+    None.
+
+
+Programming notes:
+
+        none.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 63 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-32
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     GSPSTR
+
+Usage:  CALL GSPSTR(LABEL)
+
+Purpose:   This subroutine plots a string of characters starting at the
+        current (X,Y) location.   The lower left corner of the first
+        character cell is located at (X,Y).   The string is plotted in
+        the current character size and at the current character rotation
+        as specified by the last call to GSSETC.
+
+Arguments:
+
+  Input
+
+        LABEL           * String constant or variable.
+                        * The string to plot.
+
+  Output
+
+    none.
+
+
+Programming notes:
+
+        * The default character size is 0.3 centimeters.
+
+        * The default character orientation is 0 degrees, i.e. characters
+                left-to-right horizontally.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 64 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-33
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     GSSETC
+
+Usage:  CALL GSSETC(CSIZE,CANGLE)
+
+Purpose:   This subroutine sets the character size and rotation parameters
+        to be used in subsequent character generation.
+
+Arguments:
+
+  Input
+
+        CSIZE           * type: real constant or variable.
+                        * The height of capital letters in virtual coordinates.
+
+        CANGLE          * type: real constant or variable.
+                        * The angle in degrees at which the characters are
+                                to be rotated.   The angle is measured from
+                                the positive x axis in virtual coordinates.
+
+  Output
+
+    None.
+
+
+Programming notes:
+
+        * Note that characters are drawn in virtual coordinates, and so are
+           subject to the virtual to absolute coordinate transformation.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 65 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-34
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     GSWNDO
+
+Usage:  CALL GSWNDO(UXL,UXH,UYL,UYH,XAOFF,YAOFF,XAWDTH,YAHIGH)
+
+Purpose:  This subroutine is an alternate method of selecting the virtual to
+        absolute coordinate transformation.   It also provides for clipping
+        of all graphics to be within the absolute area on the screen specified.
+        The first four parameters establish the range of virtual coordinates
+        the user wishes to use.   The remaining four parameters establish the
+        rectangular region on the screen into which the virtual coordinates
+        are to be mapped.   For example:
+          CALL GSWNDO(-1.0,1.0,-1.0,1.0,0.5,0.5,10.0,10.0)
+        will map the rectangular region of the screen bounded by (0.5,0.5) and
+        (10.5,10.5) to correspond to the virtual coordinate area bounded by
+        (-1.0,-1.0) and (1.0,1.0).   All graphics outside the 10 cm. square
+        area bounded to (0.5,0.5) and (10.5,10.5) will be clipped.
+
+Arguments:
+
+  Input
+
+        UXL             * Type: real constant or variable.
+                        * The X lower bound for virtual coordinates.
+
+        UXH             * Type: real constant or variable.
+                        * The X upper bound for virtual coordinates.
+
+        UYL             * Type: real constant or variable.
+                        * The Y lower bound for virtual coordinates.
+
+        UYH             * Type: real constant or variable.
+                        * The Y upper bound for virtual coordinates.
+
+        XAOFF           * Type: real constant or variable.
+                        * The X offset of the absolute rectangular area on
+                           the screen into which to map the virtual
+                           coordinates.
+        YAOFF           * Type: real constant or variable.
+                        * The Y offset of the absolute rectangular area on
+                           the screen into which to map the virtual
+                           coordinates.
+
+        XAWDTH          * Type: real constant or variable.
+                        * The width in absolute coordinates of the rectangular
+                           region into which to map the virtual coordinates.
+
+        YAHIGH          * Type: real constant or variable.
+                        * The height in absolute coordinates of the rectangular
+                           region into which to map the virtual coordinates.
+
+  Output
+
+    None.
+
+
+                                     - 66 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-35
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+Programming Notes:
+
+        * If (UXH-UXL)/XAWDTH is not equal to (UYH-UYL)/YAHIGH then you can
+           expect some distortion in shapes.   This will be especially
+           noticable in graphics characters, square, and circles.
+
+        * DEVSEL resets the window/viewport to:
+           CALL GSWNDO(0.0,GSXLCM(),0.0,GSYLCM(),0.0,0.0,GSXLCM(),GSYLCM())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 67 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-36
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     GSXLCM
+
+Usage:  XLENGTH = GSXLCM()
+
+Purpose:   This real valued function returns the length of the currently
+        selected device's X axis in centimeters.
+
+
+Arguments:
+
+  Input
+
+    None.
+
+  Output
+
+    None.
+
+  Functional Result
+
+        GSXLCM          * type: real variable.
+                        * The length of the currently selected device's
+                                X axis in centimeters.
+
+
+Programming notes:
+
+  None.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 68 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-37
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     GSYLCM
+
+Usage:  YLENGTH = GSYLCM()
+
+Purpose:   This real valued function returns the length of the currently
+        selected device's Y axis in centimeters.
+
+
+Arguments:
+
+  Input
+
+    None.
+
+  Output
+
+    None.
+
+  Functional Result
+
+        GSYLCM          * type: real variable.
+                        * The length of the currently selected devices Y axis
+                                in centimeters.
+
+
+Programming notes:
+
+  None.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 69 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-38
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     HATCH
+
+Usage:  CALL HATCH(XVERT,YVERT,NUMPTS,ANGLE,SPACNG,IFLAGS,TEMP1,TEMP2)
+
+Purpose:   This subroutine fills a polygon or set of polygons and optionally
+        draws their boundary.   The polygon(s) can be filled with any density
+        of fill lines running at any angle.   Note that calling this routine
+        twice with different ANGLE parameters will give cross hatching.
+
+Arguments:
+
+  Input
+
+        XVERT           * type: real array.
+                        * Array of X vertices of the polygon.   If greater than
+                           or equal to 1.0E38, then not a vertex, but rather a
+                           flag to signal the end of a polygon.   The next
+                           polygon starts at the next array element.
+
+        YVERT           * type: real array.
+                        * Array of Y vertices of the polygon.
+
+        NUMPTS          * type: integer constant or variable.
+                        * The maximum subscript of the XVERT and YVERT arrays
+                           defining the polygons.   Note that when only one
+                           polygon is described, NUMPTS is the number of
+                           vertices in the polygon.   When "N" polygons are
+                           described by XVERT and YVERT, the NUMPTS is the
+                           sum of the total number of vertices and "N-1",
+                           since "N-1" polygon seperators are needed.
+
+        ANGLE           * type: real constant or variable.
+                        * The angle of the fill lines measured
+                           counter-clockwise from the positive x axis.
+
+        SPACNG          * type: real constant or variable.
+                        * The spacing between the fill lines in virtual
+                           coordinates (usually centimeters).
+
+        IFLAGS          * type: integer constant or variable.
+                        * An operation control flag that controls whether
+                           the polygonial boundary(s) are drawn, and whether
+                           XVERT and YVERT are interpreted as virtual
+                           or world coordinated:
+                                0 ==> Boundary not drawn, virtual coord.
+                                1 ==> Boundary drawn, virtual coord.
+                                2 ==> Boundary not drawn, world coord.
+                                3 ==> Boundary drawn, world coord.
+
+        TEMP1           * type: real array.
+                        * Work array for HATCH.   Up to NUMPTS elements will
+                           be overwritten.
+
+        TEMP2           * type: real array.
+
+                                     - 70 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-39
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                        * Second work array for HATCH.   Up to NUMPTS elements
+                           will be overwritten.
+
+  Output
+
+    none.
+
+
+Programming notes:
+
+        * The value in the YVERT(I) that corresponds to XVERT(I)=1.0E38
+           is ignored.
+
+        * GSFILL may be more appropiate in many cases.
+
+        * The multiple polygon fill capability can be used to fill an area
+           and still leave some part (typically a box) within the area
+           unfilled.   To do this, simply specify the polygon you want filled
+           followed by XVERT(I)=1.0E38, then specify the box (polygon) in
+           the interior that is to remain unfilled.
+
+        * A good value for the SPACNG parameter to obtain a solid fill
+           can be computed using the values found in the common block
+           GCDCHR as follows:
+                SPACNG = FLOAT(NFLINE)/YRES
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 71 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-40
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     MAPIT
+
+Usage:  CALL MAPIT(XMIN,XMAX,YMIN,YMAX,XLABEL,YLABEL,TITLE,IOPTNS)
+
+Purpose:   This subroutine draws the X and Y axes with labeled tick marks.
+        It also labels the axes and places a title string above the top
+        of the Y axis, centered over the X axis.   Optionally, the axes
+        can be linear or logarithmic.   Grid lines at the tick marks can
+        also be optionally produced.   For those who like to enclose the
+        plotting area, the X axis with tick labels can be duplicated at the
+        top of the plot, and similarly, the Y axis can be duplicated at
+        the right of the plot.
+
+Arguments:
+
+  Input
+
+        XMIN            * type: real constant or variable.
+                        * Minimum limit for the X axis in world coordinates.
+
+        XMAX            * type: real constant or variable.
+                        * Maximum limit for the X axis in world coordinates.
+
+        YMIN            * type: real constant or variable.
+                        * Minimum limit for the Y axis in world coordinates.
+
+        YMAX            * type: real constant or variable.
+                        * Maximum limit for the Y axis in world coordinates.
+
+        XLABEL          * type: string literal or string variable.
+                        * The X axis label.   This string is centered below
+                                the X axis.
+
+        YLABEL          * type: string literal or string variable.
+                        * The Y axis label.   This string is centered to
+                                the left of the Y axis and is written at
+                                90 degrees.
+
+        TITLE           * type: string literal or string variable.
+                        * The plot title.   This string is centered over the
+                                X axis above the top of the Y axis.
+
+        IOPTNS          * type: integer constant or variable.
+                        * The axes options.   This value is computed by
+                                summing the values of the individual option
+                                values:
+                                   1 ==> Log X axis, not linear X axis.
+                                   2 ==> Log Y axis, not linear Y axis.
+                                   4 ==> Include X axis grid lines.
+                                   8 ==> Include Y axis grid lines.
+                                  16 ==> Allow X axis not to end on tick marks.
+                                         Only applies to linear X axis.
+                                  32 ==> Allow Y axis not to end on tick marks.
+                                         Only applies to linear Y axis.
+
+                                     - 72 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-41
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                  64 ==> Place unlabeled X axis at top of
+                                         plotting area.
+                                 128 ==> Place unlabeled Y axis at right of
+                                         plotting area.
+                                 256 ==> Override MAPITs extension of axes that
+                                         end close to tick marks.   Only valid
+                                         with 16, 32, or both.   This option
+                                         can lead to "poor" looking axes frames
+                                         so it's use is not recommended.
+                                 512 ==> Don't plot X axis tick labels.
+                                1024 ==> Don't plot Y axis tick labels.
+
+  Output
+
+    none.
+
+
+Programming notes:
+
+        * The default (IOPTNS=0) axes are linear X, linear Y, no X or Y
+           grid lines, axes that end on tick marks, and no duplicated
+           axes.
+
+        * If you are planning to add a second Y axis with SYAXIS, then
+           you must call MAPSZ2 or PLTSZ2 instead of FULMAP, MAPSIZ, or
+           PLTSIZ.   In addition, it is suggested that the Y axis not be
+           duplicated at the right of the plotting area.
+
+        * A negative value for the tick length (as specified to MAPPRM or
+           MAPSET) will yield ticks that stick into the plotting area, not
+           out of the plotting area.
+
+        * If you desire the on-screen axis length of the X and Y axes
+           be equal, see the section titled "HANDLING DEVICES OF DIFFERENT
+           SIZES".
+
+        * The algorithm that allows linear axes to end on non-tickmarks
+           only does so when the axis would end less than 80% from the
+           next tick mark, i.e. if the tick interval chosen was 10 and
+           the axis was to end on x1, x2, ..., x7 (where x is any digit),
+           then the axis would not be extended, but if the axis ended on
+           x8, or x9, then it would be extended to (x+1)0.   You can override
+           this automatic extension by adding 256 to IOPTNS.
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 73 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-42
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     MAPPRM
+
+Usage:  CALL MAPPRM(XLEFT,XRIGHT,YBOTOM,YTOP,CSIZE,TICKLN,LRAXIS)
+
+Purpose:   This subroutine sets parameters used by MAPIT in drawing the
+        world coordinate axes.   Identical to MAPSET except that the
+        plotting area is specified in virtual coordinates not in
+        percentage of the full screen.
+
+Arguments:
+
+  Input
+
+        XLEFT           * type: real constant or variable.
+                        * The left limit of the box which bounds the plotting
+                                area in virtual coordinates.
+
+        XRIGHT          * type: real constant or variable.
+                        * The right limit of the box which bounds the plotting
+                                area in virtual coordinates.
+
+        YBOTOM          * type: real constant or variable.
+                        * The lower limit of the box which bounds the plotting
+                                area in virtual coordinates.
+
+        YTOP            * type: real constant or variable.
+                        * The upper limit of the box which bounds the plotting
+                                area in virtual coordinates.
+
+        CSIZE           * type: real constant or variable.
+                        * The character size to use for tick labels, axes
+                                labels, and the title.
+
+        TICKLN          * type: real constant or variable.
+                        * The length of the ticks:
+                                A positive value yields ticks outside the
+                                        plotting area.
+                                A negative value yields ticks inside the
+                                        plotting area.
+
+        LRAXIS          * type: logical*2 constant or variable.
+                        * A flag indicating whether room should be provided
+                                for a second Y axis to be placed at the
+                                right edge of the plot.
+                                  .TRUE. ==> provide room for second Y axis.
+                                  .FALSE.==> do not provide room.
+
+  Output
+
+    None.
+
+
+Programming notes:
+
+
+                                     - 74 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-43
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+        * All values are in virtual coordinates.
+
+        * A negative value for the tick length TICKLN will yield ticks
+           that stick into the plotting area, not out of the plotting area.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 75 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-44
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     MAPSET
+
+Usage:  CALL MAPSET(XLEFT,XRIGHT,YBOTOM,YTOP,CSIZE,TICKLN,LRAXIS)
+
+Purpose:   This subroutine sets parameters used by MAPIT in drawing the
+        world coordinate axes.   Identical to MAPPRM except plotting area
+        limits are in percentage of full screen, not in virtual coordinates.
+
+Arguments:
+
+  Input
+
+        XLEFT           * type: real constant or variable.
+                        * The left limit of the box which bounds the plotting
+                                area in percentage of full screen.
+
+        XRIGHT          * type: real constant or variable.
+                        * The right limit of the box which bounds the plotting
+                                area in percentage of full screen.
+
+        YBOTOM          * type: real constant or variable.
+                        * The lower limit of the box which bounds the plotting
+                                area in percentage of full screen.
+
+        YTOP            * type: real constant or variable.
+                        * The upper limit of the box which bounds the plotting
+                                area in percentage of full screen.
+
+        CSIZE           * type: real constant or variable.
+                        * The character size to use for tick labels, axes
+                                labels, and the title.
+
+        TICKLN          * type: real constant or variable.
+                        * The length of the ticks:
+                                A positive value yields ticks outside the
+                                        plotting area.
+                                A negative value yields ticks inside the
+                                        plotting area.
+
+        LRAXIS          * type: logical*2 constant or variable.
+                        * A flag indicating whether room should be provided
+                                for a second Y axis to be placed at the
+                                right edge of the plot.
+                                  .TRUE. ==> provide room for second Y axis.
+                                  .FALSE.==> do not provide room.
+
+  Output
+
+    None.
+
+
+Programming notes:
+
+        * A negative value for the tick length TICKLN
+
+                                     - 76 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-45
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+           will yield ticks that stick into the plotting area, not out
+           of the plotting area.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 77 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-46
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     MAPSIZ
+
+Usage:  CALL MAPSIZ(XLEFT,XRIGHT,YBOTOM,YTOP,CHRSIZ)
+
+Purpose:   This subroutine specifies the region of the graphics area
+        where MAPIT is to place the 2D axes.   This subroutine allows the
+        user to define the region of the graphic area in a device independent
+        manner.
+
+Arguments:
+
+  Input
+
+        XLEFT           * type: real constant or variable.
+                        * The left boundary of the region expressed as a
+                                percent of the current device's x axis length.
+
+        XRIGHT          * type: real constant or variable.
+                        * The right boundary of the region expressed as a
+                                percent of the current device's x axis length.
+
+        YBOTOM          * type: real constant or variable.
+                        * The bottom boundary of the region expressed as a
+                                percent of the current device's y axis length.
+
+        YTOP            * type: real constant or variable.
+                        * The top boundary of the region expressed as a
+                                percent of the current device's y axis length.
+
+        CHRSIZ          * type: real constant or variable.
+                        * The character size for the labeling.   If zero,
+                                then the character size will be chosen
+                                for the caller.
+
+  Output
+
+    none.
+
+
+Programming notes:
+
+        * This subroutine converts percentages of the device axes lengths
+           into virtual coordinates.   The user should keep this in mind
+           when defining any virtual to absolute coordinate transformations.
+
+        * When MAPSIZ chooses the labeling character size using the following
+           algorithm:
+                CSIZE = GOODCS(AMIN1(XMAX-XMIN,YMAX-YMIN)/80.0)
+
+        * The tick length selected is 90% of the character size.
+
+
+
+
+
+                                     - 78 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-47
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     MAPSML
+
+Usage:  CALL MAPSML(XMIN,XMAX,YMIN,YMAX,XLABEL,YLABEL,TITLE,IOPTNS)
+
+Purpose:   This subroutine draws the X and Y axes with labeled tick marks.
+        It also labels the axes and places a title string above the top
+        of the Y axis, centered over the X axis.   MAPSML is a subset of
+        MAPIT with limited capabilities.   However, it occupies only 60%
+        as much space (not including the fact that it does not need LOGLAB
+        and LAXIS) as MAPIT.   It is designed for users who have space
+        problems and can afford to give up:
+                1) Log axes option,
+                2) Grid lines option,
+                3) Duplicated axes at the top and right of the plot.
+                        (Note: MAPSML is still compatible with SYAXIS.)
+        Note:  MAPSML is only a commented out version of MAPIT.   Thus you
+                can edit it (by removing certain comment lines) to re-enstate
+                any of the above "lost" options and still get a net savings.
+                Comments in MAPSML tell how to re-enstate the options.
+
+Arguments:
+
+  Input
+
+        XMIN            * type: real constant or variable.
+                        * Minimum limit for the X axis in world coordinates.
+
+        XMAX            * type: real constant or variable.
+                        * Maximum limit for the X axis in world coordinates.
+
+        YMIN            * type: real constant or variable.
+                        * Minimum limit for the Y axis in world coordinates.
+
+        YMAX            * type: real constant or variable.
+                        * Maximum limit for the Y axis in world coordinates.
+
+        XLABEL          * type: string literal or string variable.
+                        * The X axis label.   This string is centered below
+                                the X axis.
+
+        YLABEL          * type: string literal or string variable.
+                        * The Y axis label.   This string is centered to
+                                the left of the Y axis and is written at
+                                90 degrees.
+
+        TITLE           * type: string literal or string variable.
+                        * The plot title.   This string is centered over the
+                                X axis above the top of the Y axis.
+
+        IOPTNS          * type: integer constant or variable.
+                        * The axes options.   This value is computed by
+                                summing the values of the individual option
+                                values:
+                                 16 ==> Allow X axis not to end on tick marks
+
+                                     - 79 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-48
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                 32 ==> Allow Y axis not to end on tick marks
+
+  Output
+
+    none.
+
+
+Programming notes:
+
+        * None.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 80 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-49
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     MAPSZ2
+
+Usage:  CALL MAPSZ2(XLEFT,XRIGHT,YBOTOM,YTOP,CHRSIZ)
+
+Purpose:   This subroutine specifies the region of the graphics area
+        where MAPIT is to place the 2D axes.   Not all of the available area
+        in the region is used.   Some room is reserved so that a second Y axis
+        can be placed at the right of the plot within the prescribed region.
+        This subroutine allows the user to define the region of the graphic
+        area in a device independent manner.
+
+Arguments:
+
+  Input
+
+        XLEFT           * type: real constant or variable.
+                        * The left boundary of the region expressed as a
+                                percent of the current device's x axis length.
+
+        XRIGHT          * type: real constant or variable.
+                        * The right boundary of the region expressed as a
+                                percent of the current device's x axis length.
+
+        YBOTOM          * type: real constant or variable.
+                        * The bottom boundary of the region expressed as a
+                                percent of the current device's y axis length.
+
+        YTOP            * type: real constant or variable.
+                        * The top boundary of the region expressed as a
+                                percent of the current device's y axis length.
+
+        CHRSIZ          * type: real constant or variable.
+                        * The character size for the labeling.   If zero,
+                                then the character size will be chosen
+                                for the caller.
+
+  Output
+
+    none.
+
+
+Programming notes:
+
+        * This subroutine converts percentages of the device axes lengths
+           into virtual coordinates.   The user should keep this in mind
+           when defining any virtual to absolute coordinate transformations.
+
+        * When MAPSZ2 chooses the labeling character size using the following
+           algorithm:
+                CSIZE = GOODCS(AMIN1(XMAX-XMIN,YMAX-YMIN)/80.0)
+
+        * The tick length selected is 90% of the character size.
+
+
+
+                                     - 81 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-50
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     MINMAX
+
+Usage:  CALL MINMAX(ARRAY,NUMPTS,VALMIN,VALMAX)
+
+Purpose:   This subroutine returns the minimum and maximum value found
+        in an array of real numbers.
+
+Arguments:
+
+  Input
+
+        ARRAY           * type: real array.
+                        * The array to search for the minimum and maximum
+                                value.
+
+        NUMPTS          * type: integer constant or variable.
+                        * The number of elements in the array.
+
+  Output
+
+        VALMIN          * type: real variable.
+                        * The minimum value found in the array.
+
+        VALMAX          * type: real variable.
+                        * The maximum value found in the array.
+
+
+Programming notes:
+
+        * This subroutine is not a graphics subroutine.   However, it
+           is very often useful to know the minimum and maximum value
+           found in a array of X or Y coordinates, and this subroutine
+           provides a simple and clear method for doing just that.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 82 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-51
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     PLTBOX
+
+Usage:  CALL PLTBOX(XLEFT,XRIGHT,YBOTOM,YTOP)
+
+Purpose:   This subroutine specifies the region of the graphics area
+        where MAPIT is to place the 2D axes.   This subroutine allows the
+        user to specify the region in virtual coordinates.
+
+Arguments:
+
+  Input
+
+        XLEFT           * type: real constant or variable.
+                        * The left limit of the box which bounds the plotting
+                                region.
+
+        XRIGHT          * type: real constant or variable.
+                        * The right limit of the box which bounds the plotting
+                                region.
+
+        YBOTOM          * type: real constant or variable.
+                        * The lower limit of the box which bounds the plotting
+                                region.
+
+        YTOP            * type: real constant or variable.
+                        * The upper limit of the box which bounds the plotting
+                                region.
+
+  Output
+
+    None.
+
+
+Programming notes:
+
+        * PLTBOX selects the labeling character size as follows:
+                CSIZE = GOODCS(AMIN1(XRIGHT-XLEFT,YTOP-YBOTOM)/80.0)
+
+        * The tick length selected is 90% of the character size.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 83 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-52
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     PLTBX2
+
+Usage:  CALL PLTBX2(XLEFT,XRIGHT,YBOTOM,YTOP)
+
+Purpose:   This subroutine specifies the region of the graphics area
+        where MAPIT is to place the 2D axes.   Not all of the specified region
+        is used.   Space is provided for a second Y axis to be drawn at the
+        edge of the X axis by SYAXIS.   This subroutine allows the
+        user to specify the region in virtual coordinates.
+
+Arguments:
+
+  Input
+
+        XLEFT           * type: real constant or variable.
+                        * The left limit of the box which bounds the plotting
+                                region.
+
+        XRIGHT          * type: real constant or variable.
+                        * The right limit of the box which bounds the plotting
+                                region.
+
+        YBOTOM          * type: real constant or variable.
+                        * The lower limit of the box which bounds the plotting
+                                region.
+
+        YTOP            * type: real constant or variable.
+                        * The upper limit of the box which bounds the plotting
+                                region.
+
+  Output
+
+    None.
+
+
+Programming notes:
+
+        * PLTBX2 selects the labeling character size as follows:
+                CSIZE = GOODCS(AMIN1(XRIGHT-XLEFT,YTOP-YBOTOM)/80.0)
+
+        * The tick length selected is 90% of the character size.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 84 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-53
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     POINTC
+
+Usage:  CALL POINTC(XARRAY,YARRAY,NUMPTS)
+
+Purpose:   This subroutine displays the points contained in the input
+        arrays as discrete points represented by centered diamond figures.
+        Any points outside the axis frame are not plotted.
+
+Arguments:
+
+  Input
+
+        XARRAY          * type: real array.
+                        * The array of X world coordinates of the points.
+
+        YARRAY          * type: real array.
+                        * The array of corresponding Y world coordinates.
+
+        NUMPTS          * type: integer constant or variable.
+                        * The number of points to display.
+
+  Output
+
+    None.
+
+
+Programming notes:
+
+        * MAPIT must be called before using POINTC.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 85 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-54
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     POINTS
+
+Usage:  CALL POINTS(XARRAY,YARRAY,NUMPTS)
+
+Purpose:   This subroutines displays the points contained in the input
+        arrays as discrete points represented by centered diamond figures.
+
+Arguments:
+
+  Input
+
+        XARRAY          * type: real array.
+                        * The array of X world coordinates of the points.
+
+        YARRAY          * type: real array.
+                        * The array of corresponding Y world coordinates.
+
+        NUMPTS          * type: integer constant or variable.
+                        * The number of points to display.
+
+  Output
+
+    None.
+
+
+Programming notes:
+
+        * MAPIT must be called before using POINTS.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 86 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-55
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     RLSDEV
+
+Usage:  CALL RLSDEV
+
+Purpose:   This subroutine releases the current device.   After this subroutine
+        is called, you must call DEVSEL before calling any other DIGLIB
+        subroutine.   The purpose of "RLSDEV" is to make sure your graphics
+        device is restored to a proper working state.   This subroutine should
+        be called before exiting by any program that uses DIGLIB.
+
+Arguments:
+
+    none.
+
+
+Programming notes:
+
+        * It is highly recommended that you use RLSDEV.   The GIGI presents
+           a problem.   RLSDEV will remove the GIGI from no-scroll mode,
+           probably resulting in part of the graphics scrolling off the top.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 87 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-56
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     RSTMAP
+
+Usage:  CALL RSTMAP(AREA)
+
+Purpose:   This subroutine restores a world to virtual coordinate
+        transformation that was previously saved using SAVMAP.
+
+Arguments:
+
+  Input
+
+    none.
+
+  Output
+
+        AREA            * type: real array of 15 elements.
+                        * The array of world to virtual coordinates transf.
+                                values previously saved by SAVMAP.
+
+
+Programming notes:
+
+        * Very unpredictable things will happen if RSTMAP is fed anything
+           but the same values output by SAVMAP.
+
+        * RSTMAP can be used to restore the mapping context for a plot with
+           two Y axes (see SYAXIS) or to restore the mapping context to a
+           entirely different plot.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 88 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-57
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     SAVMAP
+
+Usage:  CALL SAVMAP(AREA)
+
+Purpose:   This subroutine allows the caller to save the current world to
+        virtual coordinate transformation and clipping information.   This
+        subroutine is generally only useful when the caller wishes to maintain
+        more than one world coordinate system.
+
+Arguments:
+
+  Input
+
+    none.
+
+  Output
+
+        AREA            * type: real array of at least 15 elements.
+                        * The area in which to store the current world to
+                                virtual coordinate transformation.
+
+
+Programming notes:
+
+        * This subroutine is very useful when the user has two Y axes
+           on a single plot and is using SYAXIS.
+
+        * This subroutine is very useful when the user desires to display
+           two separate plots on the same device, or on different devices,
+           and wishes to move back and forth between the plots.
+
+        * The subroutine RSTMAP restores the world to virtual transformation
+           saved by SAVMAP.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 89 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-58
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     SCALE
+
+Usage   CALL SCALE(WORLDX,WORLDY,VIRTX,VIRTY)
+
+Purpose:   This subroutine converts world coordinates to virtual coordinates.
+
+Arguments:
+
+  Input
+
+        WORLDX          * type: real constant or variable.
+                        * The x value in world coordinates to convert.
+
+        WORLDY          * type: real constant or variable.
+                        * The y value in world coordinates to convert.
+
+  Output
+
+        VIRTX           * type: real variable.
+                        * The corresponding x value in virtual coordinates.
+
+        VIRTY           * type: real variable.
+                        * The corresponding y value in virtual coordinates.
+
+
+
+Programming notes:
+
+        * This subroutine is equivalent to PLTLIB's SCALE.   The only
+           difference is that real values (the virtual coordinates) are
+           returned instead of integer values (4025 device coordinates).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 90 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-59
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     SYAXIS
+
+Usage:  CALL SYAXIS(YLOW,YHIGH,YLAB,IAXES)
+
+Purpose:   This subroutine places a second Y axis on the current plot.
+        The current world to virtual coordinate transformation is overwritten
+        with the new Y axis values.
+
+Arguments:
+
+  Input
+
+        YLOW            * type: real constant or variable.
+                        * Minimum limit for the second Y-axis in world
+                                coordinates.
+
+        YHIGH           * type: real constant or variable.
+                        * Maximum limit for the second Y-axis in world
+                                coordinates.
+
+        YLAB            * type: string constant or variable.
+                        * Second Y-axis label.
+
+        IAXES           * type: integer constant or variable.
+                        * Axes type as per MAPIT, but X-axis information
+                                is ignored.
+
+  Output
+
+    none.
+
+
+Programming notes:
+
+        * The second Y axis will not be contained in the specified plotting
+           region if the region was defined by MAPSIZ, FULMAP, PLTBOX,
+           MAPPRM(,,,,,,.FALSE.), or MAPSET(,,,,,,.FALSE.).
+
+        * The second Y axis will be contained in the specified plotting
+           region if the region was defined by MAPSZ2, PLTBX2,
+           MAPPRM(,,,,,,,.TRUE.), or MAPSET(,,,,,,.TRUE.).
+
+        * SYAXIS overwrites the Y axis portion of the current world to virtual
+           coordinate transformation.   If the users desires to retain the
+           old transformation, he should save it with SAVMAP.
+
+
+
+
+
+
+
+
+
+
+                                     - 91 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-60
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     SYMBOL
+
+Usage:  CALL SYMBOL(ISYMNO,SYMSIZ)
+
+Purpose:   This subroutine places a centered symbol at the current location
+        in the desired size.   There are currently 4 symbols defined.   You
+        are welcome to edit the file and create more.
+
+Arguments:
+
+  Input
+
+        ISYMNO          * type: integer constant or variable.
+                        * The number of the symbol to draw:
+                                 1 ==> triangle,
+                                 2 ==> square,
+                                 3 ==> diamond,
+                                 4 ==> hour glass.
+
+        SYMSIZ          * type: real constant or variable.
+                        * The height (size) of the symbol in virtual
+                                coordinates.
+
+  Output
+
+    None.
+
+
+Programming Notes:
+
+        * To place symbol number 2 at (X,Y) in world coordinates:
+                CALL SCALE(X,Y,VX,VY)   !CONVERT WORLD TO VIRTUAL COORD.
+                CALL GSMOVE(VX,VY)
+                CALL SYMBOL(2,0.4)      !SYMBOL 2, SIZE IS 0.4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 92 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-61
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     TRACCY
+
+Usage:  CALL TRACCY(XMIN,XMAX,YARRAY,NUMPTS)
+
+Purpose:   This subroutine connects the world coordinate points
+        with straight lines.   The X values of the points are assumed
+        to be equally spaced between XMIN and XMAX.   Any lines that lie
+        outside the axes frame are not displayed.
+
+Arguments:
+
+  Input
+
+        XMIN            * type: real constant or variable.
+                        * The world X coordinate of the first point.
+
+        XMAX            * type: real constant or variable.
+                        * The world X coordinate of the last point.
+
+        YARRAY          * type: real array.
+                        * The array of corresponding Y world coordinates.
+
+        NUMPTS          * type: integer constant or variable.
+                        * The number of points to connect.
+
+  Output
+
+    None.
+
+
+Programming notes:
+
+        * MAPIT must be called before using TRACCY.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 93 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-62
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     TRACE
+
+Usage:  CALL TRACE(XARRAY,YARRAY,NUMPTS)
+
+Purpose:   This subroutine connects the world coordinate points given with
+        straight lines.   If enough points are given, the curve formed
+        will appear nearly smooth.
+
+Arguments:
+
+  Input
+
+        XARRAY          * type: real array.
+                        * The array of X world coordinates of the points.
+
+        YARRAY          * type: real array.
+                        * The array of corresponding Y world coordinates.
+
+        NUMPTS          * type: integer constant or variable.
+                        * The number of points to connect.
+
+  Output
+
+    None.
+
+
+Programming notes:
+
+        * MAPIT must be called before using TRACE.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 94 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-63
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     TRACEC
+
+Usage:  CALL TRACEC(XARRAY,YARRAY,NUMPTS)
+
+Purpose:   This subroutine connects the world coordinate points given with
+        straight lines.   If enough points are given, the resultant
+        curve will appear smooth.   Any lines that lie outside the
+        axes frame are not displayed.
+
+Arguments:
+
+  Input
+
+        XARRAY          * type: real array.
+                        * The array of X world coordinates of the points.
+
+        YARRAY          * type: real array.
+                        * The array of corresponding Y world coordinates.
+
+        NUMPTS          * type: integer constant or variable.
+                        * The number of points to connect.
+
+  Output
+
+    None.
+
+
+Programming notes:
+
+        * MAPIT must be called before using TRACEC.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 95 -
+SUBROUTINE DESCRIPTIONS                                               Page 14-64
+ALPHABETICAL LISTING                                                   14 Feb 85
+
+
+                                     TRACEY
+
+Usage:  CALL TRACEY(XMIN,XMAX,YARRAY,NUMPTS)
+
+Purpose:   This subroutine connects the world coordinate points
+        with straight lines.   The X values of the points are assumed
+        to be equally spaced between XMIN and XMAX.
+
+Arguments:
+
+  Input
+
+        XMIN            * type: real constant or variable.
+                        * The world X coordinate of the first point.
+
+        XMAX            * type: real constant or variable.
+                        * The world X coordinate of the last point.
+
+        YARRAY          * type: real array.
+                        * The array of corresponding Y world coordinates.
+
+        NUMPTS          * type: integer constant or variable.
+                        * The number of points to connect.
+
+  Output
+
+    None.
+
+
+Programming notes:
+
+        * MAPIT must be called before using TRACEY.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 96 -
+
+
+
+
+
+
+
+
+
+
+
+
+                                   CHAPTER 15
+
+                               OPTIONAL ROUTINES
+
+
+
+15.1  PURJOY (SURFACE PLOTTER)
+
+
+        SUBROUTINE PURJOY(Z,IZDIM1,IZ,KX,KY,CAMLOC,XYLIM,
+        1   XLAB,YLAB,ZLAB,CSIZE,MARPLT) 
+
+Purpose:   This subroutine will plot a function Z=F(X,Y) as a lined surface.
+        The function must be defined on a regular grid.   This routine will
+        optionally remove hidden lines.
+
+Arguments:
+
+  Input
+
+        Z               * Type: real array.
+                        * The function values: Z(I,J)=F(Xi,Yj), where
+                                Xi = XMIN + (i-1)*(XMAX-XMIN)/(KX-1)
+                                Yj = YMIN + (j-1)*(YMAX-YMIN)/(KY-1)
+
+        IZDIM1          * Type: integer constant or variable.
+                        * The first dimension of the Z array - not
+                                necessarily the number of X values.
+
+        IZ              * Type: byte array.
+                        * A working array of bytes dimensioned atleast
+                                KX*KY long.
+
+        KX              * Type: integer constant or variable.
+                        * The number of X values in the Z array.
+                                KX <= IZDIM1 ofcourse.
+
+        KY              * Type: integer constant or variable.
+                        * The number of Y values in the Z array.
+
+        CAMLOC          * Type: real array.
+                        * The relative location of the viewer in space.
+                                The viewer always faces toward the center
+                                of the surface. 
+                                CAMLOC(1) = distance from surface in units
+                                 the same as those of Z.
+
+                                     - 97 -
+OPTIONAL ROUTINES                                                      Page 15-2
+PURJOY (SURFACE PLOTTER)                                               14 Feb 85
+
+
+                                CAMLOC(2) = angle between the viewer and the
+                                 X axis in degrees.   Usually, multiples of
+                                 30 or 45 degrees are best.
+                                CAMLOC(3) = angle between the viewer and the
+                                 XY plane located at Z=(ZMIN+ZMAX)/2 in
+                                 degrees.   Thus 90 degrees is directly above
+                                 the surface - an unexciting picture!   Usually
+                                 the angle is selected near 45 degrees.
+
+        XYLIM           * Type: real two dimensional array dimensioned (2,6).
+                        * General parameters:
+                                XYLIM(1,1) = XMIN ==> the minimum value of X.
+                                XYLIM(2,1) = XMAX ==> the maximum value of X.
+                                XYLIM(1,2) = YMIN ==> the minimum value of Y.
+                                XYLIM(2,2) = YMAX ==> the maximum value of Y.
+                                 Note: Z(I,J) = F(Xi,Yj) where:
+                                   Xi = XMIN + (i-1)*(XMAX-XMIN)/(KX-1)
+                                   Yj = YMIN + (j-1)*(YMAX-YMIN)/(KY-1)
+                                XYLIM(1,3) = ZMIN ==> the minimum value of Z.
+                                XYLIM(2,3) = ZMAX ==> the maximum value of Z.
+                                 These Z values define the range of Z values
+                                 to fit on the screen.   It is strongly
+                                 advised that ZMIN and ZMAX bound Z(I,J).
+                                XYLIM(1,4) = X/Z axis length ratio.   If this
+                                 parameter is 0, then X and Z are assumed to
+                                 have the same units, so their relative
+                                 lengths will be in proportion to their
+                                 ranges.   If this parameter is nonzero, then
+                                 the X axis will be XYLIM(1,4) times as long
+                                 as the Z axis.
+                                XYLIM(2,4) = Y/Z axis length ratio.   Same as
+                                 XYLIM(1,4), but for Y axis.
+                                XYLIM(1,5) = plot width in virtual coordinates
+                                XYLIM(2,5) = plot height in virtual coord.
+                                 Note: The plot is expanded/contracted until
+                                 it all fits within the box defined by
+                                 XYLIM(1,5) and XYLIM(2,5).
+                                XYLIM(1,6) = virtual X coord. of the lower
+                                 left corner of the plot box.
+                                XYLIM(2,6) = virtual Y coord. of the lower
+                                 left corner of the box.
+
+        XLAB            * Type: string constant or variable.
+                        * The X axis lable.
+
+        YLAB            * Type: string constant or variable.
+                        * The Y axis lable.
+
+        ZLAB            * Type: string constant or variable.
+                        * The Z axis lable.
+
+        CSIZE           * Type: real constant or variable.
+                        * The character size in virtual coord. for the tick
+                                mark lables and the axis lables.
+
+                                     - 98 -
+OPTIONAL ROUTINES                                                      Page 15-3
+PURJOY (SURFACE PLOTTER)                                               14 Feb 85
+
+
+        MARPLT          * Type: integer constant or variable.
+                        * Hidden line flag:
+                          0 ==> draw all lines, hidden or not.
+                          1 ==> suppress all lines hidden by the surface, but
+                                display both the top and bottom of the surface
+                          3 ==> suppress all lines hidden by the surface, and
+                                all lines showing the bottom of the surface.
+                          Add 4 to MARPLT if you do not want the axes nor the
+                           ticks labled.   This is useful on small plots.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     - 99 -
+OPTIONAL ROUTINES                                                      Page 15-4
+CONTOR (CONTOUR PLOTTER)                                               14 Feb 85
+
+
+15.2  CONTOR (CONTOUR PLOTTER)
+
+
+
+        SUBROUTINE CONTOR(Z,NZ,IZ,MX,MY,X1,XMX,Y1,YMY,NL,CL)
+
+        THIS SUBROUTINE WILL PRODUCE A CONTOUR PLOT OF THE FUNCTION
+        DEFINED BY Z(I,J) = F(X(I),Y(J)).   IT IS ASSUMED THAT
+        A CALL TO "MAPIT" HAS ALREADY BEEN MADE TO ESTABLISH THE
+        COORDINATE AXIS (X,Y), WITH X LIMITS COVERING THE RANGE
+        X1 TO XMX, AND Y LIMITS COVERING THE RANGE Y1 TO YMY.
+
+Arguments:
+
+  Input
+
+        Z               * Type: real array.
+                        * The values of the function to contour:
+                           Z(I,J) = F(Xi,Yj) where:
+                             Xi = X1 + (i-1)*(XMX-X1)/(MX-1)
+                             Yj = Y1 + (j-1)*(YMX-Y1)/(MY-1)
+
+        MX              * Type: integer constant or variable.
+                        * The number of X grid points.
+
+        X1              * Type: real constant or variable.
+                        * The minimum X value.
+
+        XMX             * Type: real constant or variable.
+                        * The maximum X value.
+
+        MY              * Type: integer constant or variable.
+                        * The number of Y grid points.
+
+        Y1              * Type: real constant or variable.
+                        * The minimum Y value.
+
+        YMY             * Type: real constant or variable.
+                        * The maximum Y value.
+
+        NL              * Type: integer constant or variable.
+                        * The number of contour levels.
+
+        CL              * Type: real array.
+                        * The coutour levels to draw.   (Same units as
+                                F() or Z().)
+
+        IZ              * Type: byte array.
+                        * Used internally for working storage.
+
+        NZ              * Type: integer constant or variable.
+                        * The first dimension of the array Z - not necessarily
+                                equal to MX, but MX <= NZ.
+
+
+                                    - 100 -
+OPTIONAL ROUTINES                                                      Page 15-5
+CONTOR (CONTOUR PLOTTER)                                               14 Feb 85
+
+
+  Output
+
+    None.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    - 101 -
+OPTIONAL ROUTINES                                                      Page 15-6
+BARGRA (BAR GRAPH)                                                     14 Feb 85
+
+
+15.3  BARGRA (BAR GRAPH)
+
+
+        SUBROUTINE BARGRA(XLOW,XHIGH,NOBARS,IMXPTS,X,
+        1                 SXLAB,SYLAB,STITLE,TYPE)
+
+        SUMMARY:
+
+                This routine makes a bar graph (frequency graph)
+                from an array of real data.
+
+        INPUT VARIABLES:
+
+                XLOW  : REAL*4 CONSTANT OR VARIABLE.
+                        THE LOW LIMIT FOR THE X-AXIS.
+                        MUST HAVE XLOW <= X(I) FOR ALL I.
+                XHIGH : REAL*4 CONSTANT OR VARIABLE.
+                        THE HIGH LIMIT FOR THE X-AXIS.
+                        MUST HAVE X(I) <= XHIGH FOR ALL I.
+                NOBARS: INTEGER CONSTANT OR VARIABLE.
+                        THE NUMBER OF BARS TO DRAW.
+                        1 <= *NOBARS* <= 200
+                        SEE LOCAL VARIABLE *IMXC*.
+                IMXPTS: INTEGER CONSTANT OR VARIABLE.
+                        THE DIMESION OF ARRAY *X*.
+                X     : REAL*4 VARIABLE.
+                        THE ARRAY OF REAL DATA TO GRAPH.
+                SXLAB : LOGICAL*1 CONSTANT OR VARIABLE.
+                        THE X-AXIS LABLE.
+                SYLAB : LOGICAL*1 CONSTANT OR VARIABLE.
+                        THE Y-AXIS LABLE.
+                STITLE: LOGICAL*1 CONSTANT OR VARIABLE.
+                        THE TITLE.
+                TYPE  : INTEGER CONSTANT OR VARIABLE.
+                        THE AXIS FLAG.  SEE *DIGLIB* DOCUMENTATION.
+
+        OUTPUT VARIABLES: NONE
+
+        INOUT VARIABLES: NONE
+
+        COMMON VARIABLES: NONE
+
+        LOCAL VARIABLES: SEE CODE.
+
+        EXCEPTION HANDLING: NONE
+
+        SIDE EFFECTS: NONE
+
+        PROGRAMMING NOTES:
+
+                This routine does all the calls to DIGLIB necessary
+                to do the plot EXCEPT for a call to DEVSEL.  This
+                way the calling program can choose the device.
+
+
+                                    - 102 -
+OPTIONAL ROUTINES                                                      Page 15-7
+BARGRA (BAR GRAPH)                                                     14 Feb 85
+
+
+                DIGLIB's MAPIT routine uses its own rules for the
+                actual lowest and highest values on the axes.  They
+                always include the users values.  If you wish to move
+                the bar graph away from the left and/or (imaginary) right
+                y axis do the following:
+
+                Let S = (XH - XL) / NOBARS where XH = max X(i)
+                and XL = min X(i).  Now set XLOW = XL - N * S
+                XHIGH = XH + M * S where N,M are chosen at your discretion.
+
+                MAKE SURE THAT XLOW <= X(I) <= XHIGH FOR ALL I.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    - 103 -
+OPTIONAL ROUTINES                                                      Page 15-8
+SELDEV (PROMPTED DEVICE SELECTION)                                     14 Feb 85
+
+
+15.4  SELDEV (PROMPTED DEVICE SELECTION)
+
+
+        Subroutine SelDev( Lun )
+
+        Summary:
+
+                SelDev displays the names of the devices available on
+                the computer along with the associated device number.
+                It then asks for the number of the device you wish to
+                use. If that device is not available, it tells you so
+                and asks for another device to use.
+
+
+        Input Argument:
+
+                Lun   : integer constant or variable.
+                        It is the logical unit number to be used by 
+                        the graphics device.
+
+        Programming Notes:
+
+                SelDev uses GsDname to obtain the name of a device from
+                its device number. It uses DevSel to set the output 
+                device once a device number has been entered from the
+                keyboard. If no devices are available, you are stuck!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                               - 104 -
+                                INDEX
+
+
+
+Bgnplt, 37                         Pltbox, 83
+                                   Pltbx2, 84
+Character plotting, 15             Pointc, 85
+Clline, 38                         Points, 86
+Coordinate systems, 13                 
+Cszmap, 39                         Rlsdev, 87
+Cursor, 40                         Rstmap, 88
+Curve, 41                              
+Curvey, 42                         Savmap, 89
+                                   Scale, 90
+Devsel, 43                         Strings, 33
+                                   Subroutines by function, 34
+Endplt, 45                         Syaxis, 91
+Example, 31                        Symbol, 92
+                                       
+Fulmap, 46                         Traccy, 93
+                                   Trace, 94
+Goodcs, 47                         Tracec, 95
+Grafin, 48                         Tracey, 96
+Gscolr, 49                             
+Gscrsr, 50                         Virtual coordinates, 16
+Gsdlns, 51                             
+Gsdnam, 52                         
+Gsdraw, 53                         
+Gsdrgb, 54                         
+Gsetdp, 55                         
+Gsfill, 56                         
+Gsfont, 57                         
+Gsgin, 58                          
+Gsinpt, 59                         
+Gslens, 60                         
+Gsltyp, 61                         
+Gsmove, 62                         
+Gspoly, 63                         
+Gspstr, 64                         
+Gssetc, 65                         
+Gswndo, 66                         
+Gsxlcm, 68                         
+Gsylcm, 69                         
+                                   
+Hatch, 70                          
+                                   
+Interactive use, 19                
+                                   
+Mapit, 72                          
+Mapprm, 74                         
+Mapset, 76                         
+Mapsiz, 78                         
+Mapsml, 79                         
+Mapsz2, 81                         
+Minmax, 82                         
+
+
+
+
+                               - 105 -

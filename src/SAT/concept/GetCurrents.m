@@ -1,0 +1,182 @@
+function OP=GetCurrents(f, ant, solver,asapexe,titl,calc,OP)
+
+% Calculation of antenna currents for 
+% the wiregrid model stored in ant.
+%
+% ant     ... wiregrid structure
+% f       ... frequency
+% solver  ... solver to be used for the current calculation (ASAP or
+%             CONCEPT)
+% asapexe ... executable of the asal program to be used
+% titl    ... title of the project
+% Calc    ... controls how and which currents are calculated:
+%
+%             Calc=0 .. Op1.Curr is calculated from Op.CurrSys and Op.Feed
+%             Calc=1 .. Op1.Curr is calculated by one ASAP/CONCEPT call
+%             Calc=2 .. Op1.CurrSys is calculated by calling ASAP/CONCEPT 
+%                       several times, and Op1.Curr from Op1.CurrSys 
+% =========================================
+
+ 
+%-------------------------------------------------------------------------
+
+if nargin<5 
+    error('Too few input parameters !')
+end
+%-------------------------------------------------------------------------
+
+
+if solver==1 % asap
+
+    %---------------------------------------------------------------------
+    if calc==0  %Calculate Curr from Op.CurrSys:
+
+        if (nargin<6) | (isempty(Op.CurrSys))
+            error('No CurrSys field in antenna Op(eration) structure.');
+        end
+
+        Op1.Curr=zeros(size(Op.CurrSys,2),2);
+        for k=1:size(Op.CurrSys,1),
+            Op1.Curr=Op1.Curr+shiftdim(Op.CurrSys(k,:,:),1)*Op.Feed(k,2);
+        end
+
+        Op=Op1;
+        return
+
+    end % if calc is 0
+    %---------------------------------------------------------------------
+    
+    % ---------------------
+    % prepare calculations:
+    % ---------------------
+
+    Op.Feed=ant.Feed(:);
+    Op.Feed(:,2)=1;
+
+    Op.Exte=[0,1];               % conductivity, rel. dielectric constant
+
+    Op.Inte=50;                   % integration steps
+    Op1=Op;
+
+    AIF='MyAsapIn.dat';     % ASAP input files
+    AIFdefault=AIF;
+
+    AOF='MyAsapOut.dat';     % ASAP output files
+    AOFdefault=AOF;
+
+    AIFC={'************************************************',...
+        'ASAP current calculations for',...
+        ['''', titl,''''],...
+        '************************************************'};
+
+    
+    % ----------------------------------------
+    % calculate currents and save Op to file:
+    % ----------------------------------------
+
+    for n=1:length(f)
+
+        Op1.Freq=f(n);
+
+        fprintf(1,'\nFrequency: %4.f kHz\n',Op1.Freq/1e3);
+
+       % OpOut(n)=StereoCurrent(AntGrid,Op,2,AIF,AOF,AIFC,solver,asapexe);
+
+    % Calculate CurrSys and/or Curr with the help of ASAP:
+
+        if calc==2, % calculate CurrSys and Curr
+            n=size(Op.Feed,1);
+            s=size(ant.Desc,1);
+            Op1.Curr=zeros(s,2);
+            Op1.CurrSys=zeros(n,s,2);
+            C={'Current system calculation requested by function AntCurrent,',
+                'this file for current excited by 1 Volt voltage source at'};
+        
+            if ~iscell(AIF),
+                AIF=cellstr(AIF);
+            end % if
+    
+            for k=1:length(AIF(:)),
+                if isempty(AIF{k}),
+                    AIF{k}=AIFdefault;
+                end
+            end
+            AIF{end+1}=AIFdefault;
+
+    
+            if ~iscell(AOF),
+                AOF=cellstr(AOF);
+            end
+            for k=1:length(AOF(:)),
+                if isempty(AOF{k}),
+                    AOF{k}=AOFdefault;
+                end
+            end
+            AOF{end+1}=AOFdefault;
+            
+            AIFC=cellstr(AIFC);
+            AIFC{end+1}='';
+
+            for k=1:n,
+                C{3}=['Feed number ',num2str(k),'. '];
+                fprintf(C{3});
+                ki=min(k,length(AIF(:)));
+                ko=min(k,length(AOF(:)));
+                Op1.Feed=[Op.Feed(k,1),1];
+                
+                AsapWrite(AIF{ki},[AIFC(:);C(:)],ant,Op1);
+                AsapCall(AIF{ki},AOF{ko},asapexe);
+                Op1.CurrSys(k,:,:)=AsapRead([],AOF{ko});
+            
+                Op1.Curr=Op1.Curr+shiftdim(Op1.CurrSys(k,:,:))*Op.Feed(k,2);
+                
+                delete(AIF{ki});
+                delete(AOF{ko});
+            end %if Calc == 2
+            Op1.Feed=Op.Feed;
+
+        else % Calc==1: calculate Curr with one ASAP call
+            C={'Current calculation requested by function AntCurrent'};
+            AsapWrite(AIF{1},[AIFC(:);C(:)],Ant,Op,'OUTPUT(CURRENT)');
+            AsapCall(AIF{1},AOF{1},asapexe);
+            Op1.Curr=AsapRead([],AOF{1});
+        end % if
+
+    % delete eventual dummy files:
+    
+        
+    end     % for all frequencies
+%-------------------------------------------------------------------------
+
+else % concept
+    Op.Feed=AntGrid.Feed(:);
+    Op.Feed(:,2)=1;
+
+    Op.SegFeeds=AntGrid.SegFeeds(:);
+    Op.SegFeeds(:,2)=1;
+    
+    Op.Exte=[0,1];               % conductivity, rel. dielectric constant
+
+    Op.Inte=50;                   % integration steps
+
+   
+
+    % ----------------------------------------
+    % calculate currents and save Op to file:
+    % ----------------------------------------
+
+    for n=1:length(f)
+
+        Op.Freq=f(n);
+
+        fprintf(1,'\nFrequency: %4.f kHz\n',Op.Freq/1e3);
+
+        OpOut(n)=StereoCurrent(AntGrid,Op,2,'','','',solver,asapexe,titl);
+
+
+       
+    end     % for all frequencies
+
+end %concept
+
+OP=Op1;

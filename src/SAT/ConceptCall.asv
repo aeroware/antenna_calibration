@@ -1,0 +1,14 @@
+
+function AsapCall()
+
+
+  copyfile(AIF{k},'asapin.dat');
+  if ~exist(AsapExe,'file'),
+    error(['Could not find ASAP executable ''',AsapExe,'''']);
+  end
+  fprintf('ASAP calculations running ... ');
+  [Status,Result]=dos();
+  fprintf('finished.\n');
+ 
+  
+

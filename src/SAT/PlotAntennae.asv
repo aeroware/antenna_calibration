@@ -1,0 +1,32 @@
+function []=PlotAntennae(Ant,Op,er)
+
+%   PlotAntennae plots the antennas of the mosel Ant and the effective
+%   length vectors in the same figure. It uses AntTransfer for calculation
+%   of heff. er is a row-vector, the direction of the incident wave.
+
+if(nargin<3)
+    fprintf('Error-not enough parameters');
+    return
+end % check input
+
+torad=pi/180;
+
+heff=AntTransfer(Ant,Op,er);
+
+
+
+a1x=[0,Ant.Antennae(1).Length*sin(Ant.Antennae(1).Alpha*torad)*cos(Ant.Antennae(1).Omega*torad)]
+a1y=[0,Ant.Antennae(1).Length*sin(Ant.Antennae(1).Alpha*torad)*sin(Ant.Antennae(1).Omega*torad)]
+a1z=[0,Ant.Antennae(1).Length*cos(Ant.Antennae(1).Alpha*torad)]
+
+a2x=[0,Ant.Antennae(2).Length*sin(Ant.Antennae(2).Alpha*torad)*cos(Ant.Antennae(2).Omega*torad)]
+a2y=[0,Ant.Antennae(2).Length*sin(Ant.Antennae(2).Alpha*torad)*sin(Ant.Antennae(2).Omega*torad)]
+a2z=[0,Ant.Antennae(2).Length*cos(Ant.Antennae(2).Alpha*torad)]
+
+a1x=[0,Ant.Antennae(3).Length*sin(Ant.Antennae(3).Alpha*torad)*cos(Ant.Antennae(3).Omega*torad)]
+a1y=[0,Ant.Antennae(3).Length*sin(Ant.Antennae(3).Alpha*torad)*sin(Ant.Antennae(3).Omega*torad)]
+a1z=[0,Ant.Antennae(3).Length*cos(Ant.Antennae(3).Alpha*torad)]
+
+
+figure
+line(a1x,a1y,a1z);

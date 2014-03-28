@@ -1,0 +1,38 @@
+
+function Ant=AddSeg(Ant0,n1,n2,n);
+
+% Ant=GridCircle(n1,n2,n) inserts a new segment, that connects nodes n1 and
+% n2, consisting of n segments. If n1, n2 are integers, they are
+% interpreted as indices to the respecting nodes. If they are vectors in
+% V3, they are the endpoints of the new vector.
+ 
+
+Ant=GridInit;
+
+if (nargin<4)  
+  n=1;  %default
+end
+
+% get indices
+
+if length(n1) ==1
+    i1=n1;
+else
+    Ant0.Geom(length(Ant0.Geom)+1)=n1;
+    i1=length(Ant0.Geom);
+end
+
+if length(n2) ==1
+    i2=n2;
+else
+    Ant0.Geom(length(Ant0.Geom)+1)=n2;
+    i2=length(Ant0.Geom);
+end
+
+Ant0.Desc(length(Ant0.Desc)+1,1)=i1;
+Ant0.Desc(length(Ant0.Desc),2)=i2;
+
+% splitting
+
+while
+Ant=Ant0;

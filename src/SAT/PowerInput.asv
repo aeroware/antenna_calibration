@@ -1,0 +1,43 @@
+
+function [P,V,I]=PowerInput(Ant,Op,feed)
+
+% P=PowerInput(Ant,Op) calculates the complex power 
+% input to the antenna at the given Feed(s). 
+%
+%   P = 1/2 sum V  I*
+%            t   t  t
+%
+% where the sum runs over all antenna terminals t=1..size(Feed,1).
+% The fields Ant.Desc, Op.Feed and Op.Curr are needed to
+% determine P. The real part of P is the active (effective)
+% mean power input to the antenna system, the imaginary part 
+% of P is the reactive power and the magnitude |P| is the 
+% apparent power.
+%
+% [P,V,I]=PowerInput(Ant,Op) also returns the voltages at and
+% and currents into the feeds in the vectors V and I, respectively.
+
+% Determine feed segments and at which end they are driven:
+
+TC=CheckTerminal(Ant.Desc,Op.Feed(:,1));
+
+if any(TC==0),
+  error('Invalid Op.Feed passed.');
+end
+
+SegNum=abs(imag(TC));
+SegEnd=1+(imag(TC)<0);
+
+% Feed voltages:
+
+V=Op.Excit(:,2);
+
+% Feed currents:
+
+I=Op.Curr(sub2ind(size(Op.Curr),SegNum,SegEnd));
+I=I(:);
+
+% Power input:
+
+P=I'*V/2;
+

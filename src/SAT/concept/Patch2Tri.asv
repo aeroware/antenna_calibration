@@ -1,0 +1,25 @@
+function ant=Patch2Tri(ant)
+
+%   function ant=Patch2Tri(ant) transforms all quadrangular patches of the 
+%   antenna structure ant into triangles.
+%
+%   Input parameters :
+%
+%       ant...  antenna structure before conversion
+%
+%   Output parameters:
+%
+%       ant...  antenna structure after the conversion
+
+nPats=length(ant.Desc2d);
+n=1;
+
+while n<=nPats
+    if length(ant.Desc2d{n})==4
+        ant.Desc2d{nPats+1}=[ant.Desc2d{n}(3) ant.Desc2d{n}(4) ant.Desc2d{n}(1)];
+        ant.Desc2d{n}=ant.Desc2d{n}(1:3);
+        nPats=nPats+1;
+    end % if viereck
+    n=n+1;
+end % while 
+   

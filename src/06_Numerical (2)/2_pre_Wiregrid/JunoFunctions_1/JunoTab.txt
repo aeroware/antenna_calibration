@@ -1,0 +1,20 @@
+Tabulated values of the length of the effective length
+vectors and the angle between the two effective length
+vectors as a function of the configuration, the angle between
+the physical antennas and the angle between the z-axis and
+the plane of the antennas.
+
+Configuration 1 means that the antennas are located below a
+solar panel, while at configuration 2 the antennas are located
+between two solar panels.
+
+I want to emphasize that the angle between the antennas is not
+the azimutal abgle, but the real subtended angle between the
+antennas or effective length vectors.
+
+
+Configuration 1
+
+Angle-->        90              95              100             105             110             115             120
+
+Theta: 120	

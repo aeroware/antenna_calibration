@@ -1,0 +1,220 @@
+
+
+
+     DIGLIB version 3.1 should be the final release of DIGLIB.  The only changes
+that forseen will be the addition of new device drivers and bug fixes.  The bug
+fixes will be denoted with a letter following the version number and starting
+with the letter A.
+
+
+
+                            CHANGES FROM V1.x TO V2
+
+     1.  DIGLIB will no longer die when MAPIT is fed negative numbers or zero as
+         the limits of a log axis.  However, the results may not be satisfying
+         but "garbage in yields garbage out".
+
+     2.  DIGLIB will no longer die when SCALE is fed negative or zero world
+         coordinates for log axes.  Again "garbage in yields garbage out".
+
+     3.  MAPIT has been highly modified internally.  It still provides the same
+         user interface as before, but now draws things in a different order.
+
+     4.  MAPIT will now allow for linear axes to end on non-tickmark boundaries.
+         This is independently controllable for each axis.
+
+     5.  MAPIT will optionally reproduce the Y axis at the right of the plotting
+         area complete with tick marks, but without tick labels.
+
+     6.  MAPIT will optionally reproduce the X axis at the top of the plotting
+         area complete with tick marks, but without tick labels.
+
+     7.  A new subroutine has been added called MAPSML.  MAPSML is MAPIT with
+         most of the versatility of MAPIT commented out.  The new enhancements
+         to MAPIT have probably caused it to grow.  MAPSML is offered to users
+         who don't need the full MAPIT and who need space badly.  (Any VAX user
+         using MAPSML doesn't know what a VAX is.)
+
+     8.  A new subroutine called MAPSET has been added to DIGLIB.  MAPSET is
+         quite similar to MAPPRM.
+
+     9.  MAPSIZ, MAPSZ2, PLTBOX, and PLTBX2 now assume 80 lines to the screen
+         instead of 40 lines.  The net effect is that the characters don't get
+         big until the physical size of the graphics device is quite large!
+
+    10.  A new function called GSLENS has been added to DIGLIB.  GSLENS will
+         return the length of its argument (of string type) in virtual
+         coordinates based upon the current character size.  This is handy for
+         centering strings and the like.
+
+    11.  To promote the use of RLSDEV, the 4025 and 4027 drivers no longer
+         delete the workspace and graphics area on RLSDEV.  It is now the users
+         responsibility to do this.
+
+    12.  The file LINLAB.ENG contains an alternate linear tick labeling package
+         for DIGLIB.  Since LINLAB.ENG uses FORTRAN ENCODE statements, the
+         package can't be used with OMSI PASCAL programs.  Personally, I
+         wouldn't use it, but if your users want tick labels in "scientific
+         notation" and no remote exponent, then LINLAB.ENG is for you.
+DIGLIB V3.1 RELEASE NOTES                                                 Page 2
+
+
+    13.  DIGLIB/RSX and DIGLIB/VAX are now distributed with STRINGLIB.OLB!  This
+         library contains subroutine/functions for zero byte terminated variable
+         length strings!  They behave exactly(?) like their RT-11 SYSLIB
+         counterparts.  Hopefully, any code that uses the RT SYSLIB string
+         subroutines/functions should also work under RSX and VMS!  The
+         supported subroutines/functions are:  CONCAT, GETSTR, INDEX, INSERT,
+         ISCOMP, IVERIF, LEN, PUTSTR, REPEAT, SCOMP, SCOPY, STRPAD, SUBSTR,
+         TRANSL, TRIM, and VERIFY.  In addition, Hal has included two extra
+         string subroutines that have proven very useful.  They are:  SGLUE and
+         STRPBL.  See STRINGLIB.DOC for more information on STRINGLIB.
+
+    14.  DIGLIB is now distributed with PURJOY and CONTOR.  These subroutines
+         are not documented in DIGLIB.DOC, but have pretty good documentation in
+         the code files.  PURJOY is a 3D surface drawing subroutine (with hidden
+         line elimination).  CONTOR is a contour surface drawing subroutine that
+         has a very similar calling sequence to PURJOY.  The test programs
+         TEST3D and TESTCN have also been included in the distribution to
+         provide a test and demonstration of PURJOY and CONTOR respectively.
+         Please note that neither PURJOY nor CONTOR is compiled or inserted into
+         DIGLIB by the installation procedure.  If you want this done, you must
+         do it manually after the installation procedure is complete.  Also,
+         CONTOR will produce warning errors under RT-11 (TSX).  These can be
+         ignored!
+
+    15.  DIGLIB now has easy bar graph capability with the addition of BARGRA.
+         This subroutine written and donated by Joe Garbarini is well documented
+         in the comments at the beginning of the file.  Please note that BARGRA
+         is neither compiled nor inserted into DIGLIB by the installation
+         procedure.  If you want this done, you must do it manually after the
+         installation procedure is complete.  Also, note that Hal Brand is
+         supporting BARGRA, so do not bug Joe Garbarini about bugs!
+
+
+
+                            Changes from V2 to V2.1
+
+     1.  The high level clipping mechanism was removed.  The low level clipping
+         mechanism was modified to be more general, and so now it handles all
+         clipping.  This was simplier and more efficient that fixing the bug in
+         the high level clipper.  My thanks to Joe Garbarini to bringing this
+         bug (which has existed since V1) to my attention.
+
+     2.  DIGLIB is now distributed from a VAX without going through a PDP-11
+         intermediate for the RSX and RT/TSX versions.  This should allow me to
+         make updates faster!
+
+
+
+                            Changes from V2.1 to V3
+
+     1.  MAPIT now allows the caller to suppress the tick mark labels.  This can
+         be useful when many plots need to be stacked on top of each other and
+         the X axis tick labels are unnecessary and only clutter the plot.
+
+     2.  The values stored in the common block PLTCLP are slightly different,
+         and are no longer used at all by DIGLIB, but are still set by MAPIT,
+         MAPSML, and SYAXIS
+DIGLIB V3.1 RELEASE NOTES                                                 Page 3
+
+
+     3.  The subroutine CURSOR now returns the GIN character as type BYTE
+         instead of type INTEGER to be consistant with GSGIN.
+
+     4.  Polygon fill has been added to DIGLIB.  This is supported at the lower
+         levels via GSFILL and GSPOLY which work in virtual coordinates and
+         provide only solid fill.  DIGLIB V3 provides for hardware fill of
+         polygons when available.  The GSFILL will use hardware fill when
+         available, and software fill when necessary.  A higher level routine,
+         HATCH, does software fills for the more general case of multiple
+         polygons, filled with lines running at any angle with any spacing.
+         HATCH can use world coordinates or virtual coordinates, and can be
+         called multiple times to provide "cross-hatching".
+
+     5.  Several functions were added to DIGLIB to make often used/needed
+         constants and parameters easier to access, and to make character
+         plotting sequences much easier.  These routine are:  GSWDTH, GSHGHT,
+         GSLENS, GSSLEN, GSXLCM, and GSYLCM.  Note:  GSWDTH and GSSLEN have been
+         removed in V3.1!
+
+     6.  Device drivers written for DIGLIB V3 are not compatable with previous
+         versions of DIGLIB and vise-versa.  Sorry about that.  However, the
+         changes to make a DIGLIB V2.1 device driver compatable with DIGLIB V3
+         are very simple.  First, the device driver must return a error status
+         on IFXN=1 (Initialize the Device) in YA(1).  The defined error codes
+         are given in DRIVRS.DOC.  This allows programs to gracefully handle
+         shared devices - and not crash on account of the the graphics device
+         driver.  The second difference is that DIGLIB V3 drivers return 8
+         device characteristics words instead for 7.  The 8th word is described
+         in DRIVRS.DOC.  Making this change is optional because the 8th word is
+         defaulted by DIGLIB V3.  The third difference has to do with improved
+         handling of clipping by DIGLIB.  Now, the second and third device
+         characteristics words are directly back-calculated from the device
+         resolution and maximum addressable points without the need for the
+         fudge factor of 0.5 that was added to the maximum addressable point
+         values.
+
+     7.  The VAX/VMS graphics terminal device drivers no longer use "pass-all"
+         mode.  Thus, hopefully you can always use CRTL/Y to kill your image.
+         (SLIDE/VAX requires DIGLIB V3.)
+
+     8.  The DIGLIB documentation was improved and re-organized.
+
+     9.  DIGLIB grew to requiring two floppys for distribution.
+
+    10.  DIGLIB was modified to be easier to transport to non-DEC systems.  The
+         major transportability issues remaining are device drivers and the use
+         of "strings".
+
+    11.  Elementary windowing/viewporting was added to DIGLIB.  The capability
+         was always there, but it was not easy to use, nor was it documented
+         well.  Windowing/viewporting can aid users migrating graphics routines
+         from other graphics packages.  See the subroutine description of GSWNDO
+         for more information.
+
+    12.  User selectable line styles were added to DIGLIB.  Now the user can
+         override any or all of the 3 broken line styles supplied by DIGLIB.  In
+         addition, the construction of line styles is now done in absolute
+DIGLIB V3.1 RELEASE NOTES                                                 Page 4
+
+
+         coordinates instead of virtual coordinates.
+
+    13.  The DIGLIB.NAM file has been dropped.  You can still create and use it
+         if you liked it, however, DIGLIB now defines a subroutine GSDNAM that
+         returns the device name as a string given the DIGLIB device number.
+         GSDNAM is bundled with GSDRVR, and thus provides a more flexable
+         environment, especially for those with multiple DIGLIBs or multiple
+         GSDRVRs.
+
+    14.  A subroutine called SELDEV is distributed with DIGLIB V3 that gives an
+         example of how to use GSDNAM.  SELDEV presents the user with a crude
+         menu of the device drivers, gets the user's choice, and verifies that
+         the device is available and will properly initialize.  This is more
+         important to RSX and VMS people, as shared devices, or off-line devices
+         can be unavailable.
+
+    15.  A new graphics input mode was added to provide more reasonable support
+         for graphics devices that have pointing devices with buttons.  The new
+         routines are GSCRSR, GSINPT, and GRAFIN.
+
+
+
+                            Changes from V3 to V3.1
+
+     1.  The functions GSWDTH and GSSLEN have been removed.  Use only GSLENS.
+
+     2.  Alternate (high quality Hershey) fonts have been added to DIGLIB/VAX.
+         The GSFONT subroutine is used to select the current font.  (GSFONT is
+         included in the RT/TSX/RSX versions of DIGLIB, but does nothing, it is
+         only there for compatibility.) The alternate fonts are loadable, and
+         are loaded the first time they are selected.  GSFONT is capable of
+         loading up to 98 fonts (2 thru 99), but the currently allocated table
+         space is only adequate for the 9 fonts provided with DIGLIB/VAX.  To
+         make the tables larger, just change the parameters in GCFONT.CMN.
+
+     3.  MAPIT, MAPPRM, and SYAXIS have all been modified to allow use of the
+         alternate fonts.  However, unless the target graphics device has around
+         1000x1000 resolution, use of the alternate fonts is not recommended.
+

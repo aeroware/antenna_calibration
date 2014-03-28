@@ -1,0 +1,99 @@
+
+function Ant=GridCone(t,r1,r2,nr,p,np,npmin)
+
+% Ant=GridCone(t,r1,r2,nr,p,np,npmin) draws a 
+% section of a cone with tip (0,0,0) and half-opening 
+% angle t. The section extends from azimuth 0 and 
+% distance r=r1 from the axis to azimuth p and r=r2. 
+% t must be in the interval 0<t<=pi/2. Pass negative 
+% r-values to draw in the lower hemisphere. The whole 
+% surface grid is composed of nr horizontal polygons 
+% (representing circular arcs) around the z-axis and 
+% segments connecting the corners of successive polygons.
+% np defines the number of segments to be used to represent 
+% the horizontal polygons. A negative np sets the number 
+% of segments of the first(!) polygon (at radius r1), a 
+% positive np only estimates by its magnitude the number 
+% of segments to be used for the widest horizontal polygon. 
+% The actual number of segments is suitably adjusted so 
+% that segment lengths do not vary too much. By npmin the 
+% minimum number of segments to be used for horizontal 
+% polygons can be defined. If the number of segments
+% shall not be automatically adjusted, pass npmin=0.
+% Optional parameters are nr,p,np,npmin with the following
+% default values: p=2*pi; if one of the parameters np or 
+% nr is not given, it is adjusted in such a way that 
+% horizontal and meridian segments have similar length. 
+% If both are omitted (or empty), np is calculated to
+% yield segments which extend about 18 degrees in azimuth
+% and nr is adapted accordingly.
+
+% Revision June 2007:
+% - Adaptation for change of meaning of sign(np) in GridRevol;
+% - Subdivision of patches according to the global variable 
+%   GlobalMaxPatchCorners (which is set to its default in GridInit)
+
+
+if (nargin<3)|isempty(t)|isempty(r1)|isempty(r2)|(r1==r2),
+  error('Invalid input arguments.');
+end
+
+t=Bound(t,0,pi/2);
+
+if (nargin<5)|isempty(p),
+  p=2*pi;
+else
+  p=p/2/pi;
+  p=p-floor(p);
+  if abs((p-1)*p)<1e-10,
+    p=1;
+  end
+  p=p*2*pi;
+end
+
+if abs(p*t)<1e-10, 
+  error('Requested angular section too small to generate grid cone.');
+end
+
+if (nargin<7)|isempty(npmin)|(npmin==1)|(npmin<0),
+  npmin=2;
+end
+
+% analyse and adapt nr and np:
+
+Lr=abs(r2-r1)/sin(t);
+if (nargin<4)|isempty(nr),
+  if (nargin<6)|isempty(np),
+    np=10/pi*p;
+  end
+  np=max(npmin,abs(round(np)))*sign(np);
+  if np>0, 
+    Lp=max(abs([r1,r2]*p));
+  elseif r1==0,
+    Lp=abs(r2*p);
+  else
+    Lp=abs(r1*p);
+  end
+  nr=max(1,ceil(abs(Lr*np/Lp)));
+else
+  nr=max(1,abs(nr));
+  if (nargin<6)|isempty(np),
+    Lp=max(abs([r1,r2]*p));
+    np=max(npmin,round(Lp*nr/Lr));    
+  end
+end
+
+if (np<0)&(npmin==0),
+  np=repmat(np,nr+1,1);
+end
+
+% calculate z- and r-vector of first meridian:
+
+r=r1+(r2-r1)/nr*(0:nr)';
+z=r*cot(t);
+r=abs(r);
+
+% generate grid:
+
+Ant=GridRevol(z,r,np,p,0,npmin);
+

@@ -1,0 +1,46 @@
+AttaInit
+SO_june_RED_P;
+
+rad=pi/180;
+
+theta=linspace(1,180,40)*rad;
+phi=linspace(1,360,40)*rad;
+
+er(40,40,3)=0;
+er2(1600,3)=0;
+
+er(:,:,1)=cos(phi)'*sin(theta);
+er(:,:,2)=sin(phi)'*sin(theta);
+er(:,:,3)=diag(eye(40))*cos(theta);
+
+n=1;
+for t=1:40
+    for p=1:40
+        er2(n,1)=er(t,p,1);
+        er2(n,2)=er(t,p,2);
+        er2(n,3)=er(t,p,3);
+        n=n+1;
+    end
+end
+
+wd=strcat(pwd,'\Concept\kHz_000400\Feed_2');
+
+op=Concept_ReadAll(wd);
+
+Op.Freq=[400]*1e3;
+
+ant.Solver='Concept';
+
+ff=FarField('E',ant,Op,er2,wd,'Solver');
+field = dot(real(ff),real(ff),2);
+
+n=1;
+for t=1:40
+    for p=1:40
+        er(t,p,:)=er(t,p,:)*field(n);
+        n=n+1;
+    end
+end
+
+surf(er(:,:,1),er(:,:,2),er(:,:,3));
+axis equal

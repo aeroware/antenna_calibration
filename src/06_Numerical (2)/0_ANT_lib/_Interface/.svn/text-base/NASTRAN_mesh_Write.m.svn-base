@@ -1,0 +1,90 @@
+function NASTRAN_mesh_Write(ant,filename)
+% [fem,mesh]=NASTRAN_mesh_Write(ant,varargin)
+% takes the 3D mesh from the antenna ant structure and converts it into a
+% NASTRAN mesh strutur, and maybe writes it to a file
+%
+%   
+% *************************************************************************
+%  fem  : contains the complete structure
+%  mesh : only the mesh
+%
+% ant                  : antenna grid structure which may only contain
+% triangles !!!
+%
+% WorkingDir           : ....
+% Atta_COMSOL_mesh_OUT : filename
+%
+% *************************************************************************
+% 0.50 - 13.04.2011: initial release (altered from NASTRAN_mesh_ReadIn.m
+% 0.00 - 00.00.0000:  
+% 0.00 - 00.00.0000:  
+% *************************************************************************
+
+if ~exist('ant','var')||isempty(ant),
+    error('   no structure provided');
+end
+
+if exist('fem','var')
+    clear fem;
+end
+
+if exist('mesh','var')
+    clear mesh;
+end
+
+[ant.Desc2d,newpats,sd]=GridSubPatches(ant.Geom,ant.Desc2d,3);
+
+
+fid=fopen(filename,'wt');
+if fid<0
+  error(['Could not open file ',filename]);
+end
+
+nNodes=length(ant.Geom);
+nSegs=length(ant.Desc);
+nPats=length(ant.Desc2d);
+
+% MAIN LOOP:
+% ----------
+
+% header
+
+fprintf(fid,'$ NASTRAN file exported by Matlab Toolbox\n$\n');
+fprintf(fid,'$ Filename: %s\n',filename);
+fprintf(fid,'$ Date:     %s\n',date);
+fprintf(fid,'$\n');
+fprintf(fid,'$ Number of segments:         %5i\n',nSegs);
+fprintf(fid,'$           triangles:        %i\n',nPats);
+fprintf(fid,'$           cuboids:              0\n');
+fprintf(fid,'$           tetrahedra:           0\n');
+
+% write nodes
+for n=1:nNodes
+    fprintf(fid,'GRID*       %12i%32d%16d%8i\n',n,ant.Geom(n,1),ant.Geom(n,2),n);
+    fprintf(fid,'*%7i%16d\n',n,ant.Geom(n,3));
+end
+
+% write pats
+for n=1:nPats
+    fprintf(fid,'CTRIA3  %8i%8i%8i%8i%8i\n',n,647,ant.Desc2d{n}(1)...
+        ,ant.Desc2d{n}(2),ant.Desc2d{n}(3));
+end
+
+% write segments
+
+% write pats
+for n=1:nSegs
+    fprintf(fid,'CBAR    %8i%8i%8i%8i\n',n,654,...
+        ant.Desc(n,1),ant.Desc(n,2));
+end
+
+% end card
+
+fprintf(fid,'ENDDATA');
+
+fclose(fid);
+
+
+
+
+

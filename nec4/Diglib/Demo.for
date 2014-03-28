@@ -1,0 +1,63 @@
+      PROGRAM DEMO
+      INTEGER*1 BNAME(40)
+      DIMENSION Y1(101), Y2(101)
+C
+      EXTERNAL LENB
+C
+      DO 100 I=1,101
+      X = 9.0*(I-1)/10.0 + 1.0
+      Y1(I) = X**2
+      Y2(I) = X**3
+100   CONTINUE
+      XMIN = 1.0
+      XMAX = X
+      CALL MINMAX(Y1,101,YMIN,YMAX1)
+      CALL MINMAX(Y2,101,YMIN,YMAX2)
+C
+      IDEV = 1
+110         CALL GSDNAM(IDEV,BNAME)
+            L = LENB(BNAME)
+            IF (L .EQ. 0) GO TO 120
+            WRITE(*,111) IDEV, (BNAME(I), I=1,L)
+111         FORMAT(' Device ',I1,' is ',40A1)
+            IDEV = IDEV + 1
+            GO TO 110
+120   CONTINUE
+5     WRITE(*,121)
+121   FORMAT(/,' Number of the graphics device to use? ',$)
+      READ(*,122) IDEV
+122   FORMAT(I5)
+      CALL DEVSEL(IDEV,4,IERR)
+      IF (IERR .EQ. 0) GO TO 10
+      WRITE(*,*)'THAT DEVICE DOES NOT EXIST'
+      GO TO 5
+10    CALL BGNPLT
+C
+      CALL MAPSIZ(0.0,48.5,52.5,100.0,0.0)
+      CALL MAPIT(XMIN,XMAX,YMIN,YMAX1,'X AXIS'//CHAR(0),
+     &'Y AXIS'//CHAR(0),'PLOT 1'//CHAR(0),0)
+      CALL GSCOLR(2,IERR)
+      CALL CURVEY(XMIN,XMAX,Y1,101,1,0.3,10)
+C
+      CALL GSCOLR(1,IERR)
+      CALL MAPSIZ(51.5,100.0,52.5,100.0,0.0)
+      CALL MAPIT(XMIN,XMAX,YMIN,YMAX2,'X AXIS'//CHAR(0),
+     &'Y AXIS'//CHAR(0),'PLOT 2'//CHAR(0),0)
+      CALL GSCOLR(3,IERR)
+      CALL CURVEY(XMIN,XMAX,Y2,101,2,0.3,5)
+      CALL GSCOLR(1,IERR)
+      CALL MAPSIZ(0.0,100.0,0.0,47.5,0.0)
+      CALL MAPIT(XMIN,XMAX,YMIN,YMAX2,'X AXIS'//CHAR(0),
+     &'Y AXIS'//CHAR(0),'PLOT 3'//CHAR(0),2)
+      CALL GSCOLR(2,IERR)
+      CALL CURVEY(XMIN,XMAX,Y1,101,1,0.3,10)
+      CALL GSCOLR(3,IERR)
+      CALL CURVEY(XMIN,XMAX,Y2,101,2,0.3,5)
+      CALL ENDPLT
+      WRITE(*,999)
+999   FORMAT(' TEST OUTPUT, LINE 1',/,' TEST OUTPUT, LINE 2')
+      CALL RLSDEV
+      CALL POSTDMP
+      PAUSE
+      STOP
+      END

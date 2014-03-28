@@ -1,0 +1,102 @@
+
+function [IA,Feeds0,Feeds1,Pos]=GetFeedCurr(PhysGrid,Op,feedDir)
+
+% IA=GetFeedCurr(PhysGrid,Op) determines the currents at the antenna feeds.
+% Op must be a struct of size 1x1.
+%
+% [IA,Feeds0,Feeds1,Pos]=GetFeedCurr(...) returns also the feed nodes
+% Feeds0 and the feed segments Feeds1, with their positions Pos.
+%
+% 05.2011...feedDir implemented for getting the feco feed current
+%
+% determine feeds:
+
+try
+  Feeds0=PhysGrid.Geom_.Feeds.Elem;
+catch
+  Feeds0=[];
+end
+
+try
+  Feeds1=PhysGrid.Desc_.Feeds.Elem;
+catch
+  Feeds1=[];
+end
+
+if isempty(Feeds1)&&isempty(Feeds0),
+  error('No feeds defined.');
+end
+
+
+IA=zeros(length(Feeds0)+length(Feeds1),1);
+
+
+if isequal(CheckSolver(PhysGrid.Solver),CheckSolver('ASAP')),
+  
+  if length(Feeds0)>0,
+    [Segs,NoS]=FindSegs(PhysGrid.Desc,Feeds0,2);
+    if any(NoS~=2)||any(Segs(:,1).*Segs(:,2)>=0),
+      error('Incorrect feed node definition encountered.');
+    end
+    Segs=max(Segs,[],2);
+  else
+    Segs=[];
+  end
+  
+  if length(Feeds1)>0,
+    Segs=[Segs;Feeds1(:)];  
+  end
+  
+  IA=Op.Curr1(Segs,1);
+  
+  if nargout>3,
+    Pos=repmat('n',1,length(IA));
+  end
+  
+elseif isequal(CheckSolver(PhysGrid.Solver),CheckSolver('CONCEPT')),
+  
+  if length(Feeds0)>0,
+    error('Feed nodes encountered, not possible for CONCEPT.');
+  end
+  
+  try
+    Pos=PhysGrid.Desc_.Feeds.Posi;
+  catch
+    Pos=[];
+  end
+  
+  if ~ischar(Pos)||(length(Pos)~=length(Feeds1))||...
+      any(~ismember(Pos(:),{'a','e','m'})),
+    error('Error in position definitions of feeds.');
+  end
+  
+  for n=1:length(Feeds1),
+    
+    c=Op.Curr1{Feeds1(n)};
+    
+    switch Pos(n),
+      case 'a',
+        m=1;
+      case 'e',
+        m=length(c);
+      otherwise
+        m=(length(c)+1)/2;
+    end
+    
+    IA(n)=c(m);
+    
+  end
+  
+elseif isequal(CheckSolver(PhysGrid.Solver),CheckSolver('FEKO'))
+    
+    if length(Feeds0)>0,
+        error('Feed nodes encountered, not implemented for feko.');
+    end
+    IA=getFekoFeedCurrent(feedDir); 
+elseif isequal(CheckSolver(PhysGrid.Solver),CheckSolver('NEC'))
+    IA=getNecFeedCurrent(feedDir,feedNum); 
+else % wrong Solver-id
+  error('Unknown Solver defined in grid.')
+end
+
+

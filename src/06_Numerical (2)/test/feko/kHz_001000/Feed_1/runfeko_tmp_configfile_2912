@@ -1,0 +1,1 @@
+-localonly 2 -envall "C:\Program Files\FEKO\6.0\bin\feko.csv.impi.exe" "antfile"

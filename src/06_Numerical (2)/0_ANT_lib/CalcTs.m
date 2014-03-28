@@ -1,0 +1,124 @@
+
+function [Ts,Y]=CalcTs(er,PhysGrid,Op,DataRootDir,Method)
+
+% Ts=CalcTs(er,PhysGrid,Op,DataRootDir)
+% calculates the short-circuit transfer matrix Ts of the 
+% antenna system PhysGrid for all frequencies for which
+% currents are stored in the operation struct Op and for all directions
+% given in er (where each row is a unit vector in the respective direction). 
+% The results are returned in Ts and stored in the frequency-specific 
+% directories inside the data root directory DataRootDir.
+% Ts has size NFeeds x 3 x Ndirs x NFreqs, with NFeeds=number of
+% frequencies (=size(Op,2)), Ndirs=number of directions (=size(er,1)),
+% NFeeds=number of feeds (=size(Op,1)).
+%
+% Ts=CalcTs(er,Solver,Freq,DataRootDir)
+% does the same but reads PhysGrid and Op from the subdirectories
+% of DataRootDir determined by Solver and Freq. Freq may be a vector
+% of frequencies.
+%
+% [Ts,Y]=CalcTs(...) also returns the antenna admittance matrix Y.
+%
+% [Ts,Y]=CalcTs(er,PhysGrid,Op,DataRootDir,Method,TFileName)
+% gives a calculation Method to be used, either Method='Matlab' 
+% or Method='Solver', which means that Matlab routines of the toolbox or 
+% the programs provided by the respective solver are to be used.
+
+
+global Atta_PhysGridFile Atta_PhysGridName Atta_TsFileName 
+
+Atta_Feko_out='antfile.out';
+
+if ~exist('DataRootDir','var')||isempty(DataRootDir),
+  DataRootDir='';
+end
+
+if ~exist('Method','var')||isempty(Method),
+  Method='Matlab';
+end
+
+
+if ~isstruct(PhysGrid),
+  
+  Solver=PhysGrid;
+  Freq=Op;
+  
+  SolverDir=GetDataSubdirs(DataRootDir,Solver);
+  
+  PhysGrid=VarLoad(fullfile(SolverDir,Atta_PhysGridFile),[],Atta_PhysGridName);
+  
+  Op=LoadCurr(DataRootDir,PhysGrid,Freq,'sys');
+  
+end
+
+Ndirs=size(er,1);
+NFeeds=size(Op,1);
+NFreqs=numel(Op)/NFeeds;
+
+Ts=zeros([NFeeds,3,Ndirs,NFreqs]);
+
+if (nargout>1)||~isempty(Atta_TsFileName),
+  Y=CalcY(Op,'sys');
+end
+
+fprintf('\n')
+
+for n=1:NFreqs,
+  
+  Message=sprintf('Transfer matrix for %d. of %d frequencies (%fkHz).  ',...
+    n,NFreqs,Op(1,n).Freq/1e3);
+  fprintf(Message);
+  
+  for m=1:NFeeds, 
+    
+    [SolverDir,FreqDir,FeedDir]=...
+      GetDataSubdirs(DataRootDir,PhysGrid.Solver,Op(m,n).Freq,m);
+      
+    r=FieldZones(Op(m,n).Freq, PhysGrid)*2;
+    [k,epsi,mu]=Kepsmu(Op(m,n).Freq,PhysGrid) ;
+    
+    if strcmpi(PhysGrid.Solver,'feko')
+
+        [AA,f]=FEKO_get_A(Atta_Feko_out,FeedDir, 0, r,k);
+       % Ts=zeros([NFeeds,3,size(AA,1),NFreqs]); % eigenes süppchen...
+                                                % sollte man bei 
+                                                % gelegenheit ändern
+    else
+        AA=FarField('A',PhysGrid,Op(m,n),er,FeedDir,Method);
+    end
+
+    
+
+    Ts(m,:,:,n)=permute(AA,[3,2,1])*(4*pi)/mu/Op(m,n).Vfeed(m);
+  
+  end
+
+  if ~isempty(Atta_TsFileName),
+    VarSave(fullfile(FreqDir,Atta_TsFileName),Ts(:,:,:,n),[],'Ts');
+    VarSave(fullfile(FreqDir,Atta_TsFileName),er,[],'er');
+    VarSave(fullfile(FreqDir,Atta_TsFileName),Y(:,:,n),[],'Y');
+  end
+  
+  fprintf(repmat('\b',1,length(Message)))
+  
+end
+
+
+if numel(Ts(1,1,:))==1,
+  m='matrix';
+else
+  m='matrices';
+end
+fprintf('%d-port transfer %s successfully calculated; frequ [kHz]: ',NFeeds,m);
+f=unique([Op.Freq]/1e3);
+if length(f)==1,
+  fprintf('%7g\n',f);
+else
+  fprintf('\n');
+  fprintf('%7g %7g %7g %7g %7g %7g %7g %7g %7g %7g\n',f);
+  if mod(length(f),10)~=0,
+    fprintf('\n')
+  end
+end
+fprintf('\n')
+

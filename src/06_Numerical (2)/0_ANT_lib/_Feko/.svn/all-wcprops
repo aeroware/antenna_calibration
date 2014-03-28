@@ -1,0 +1,51 @@
+K 26
+svn:wc:ra_dav:activity-url
+V 21
+/repos/juno/!svn/act/
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/repos/juno/!svn/ver/255/06_Numerical/0_ANT_lib/_Feko
+END
+Feko_ReadAll.m
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/juno/!svn/ver/144/06_Numerical/0_ANT_lib/_Feko/Feko_ReadAll.m
+END
+getFekoFeedCurrent.m
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/juno/!svn/ver/199/06_Numerical/0_ANT_lib/_Feko/getFekoFeedCurrent.m
+END
+fekoGetHeff.m
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repos/juno/!svn/ver/199/06_Numerical/0_ANT_lib/_Feko/fekoGetHeff.m
+END
+Feko_CreateIn.m
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/juno/!svn/ver/208/06_Numerical/0_ANT_lib/_Feko/Feko_CreateIn.m
+END
+Feko_Curr.m
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/repos/juno/!svn/ver/255/06_Numerical/0_ANT_lib/_Feko/Feko_Curr.m
+END
+Feko_Call.m
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/repos/juno/!svn/ver/195/06_Numerical/0_ANT_lib/_Feko/Feko_Call.m
+END
+FEKO_get_A.m
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/juno/!svn/ver/206/06_Numerical/0_ANT_lib/_Feko/FEKO_get_A.m
+END

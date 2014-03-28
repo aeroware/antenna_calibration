@@ -1,0 +1,429 @@
+============================================================
+
+% Calculate charge distribution system and grand capacitance 
+% matrix for Cassini wiregrid model.
+% -----------------------------------------------------------
+
+deg=pi/180;
+
+load Cas1a_Grid;
+
+Grid.Desc2d_.Body=[];
+
+% remove CDA:
+
+if 1==0,
+  Grid=GridRemove(Grid,[],[],1045:1095);
+end
+
+% search for monopole elements:
+
+FeedNodes=[162,165,159];  % u-, v- and w-antenna
+
+ConSegs=[301,302, 306,309,303];
+
+[Mnodes,Msegs,Mlen]=FindMonopoles(Grid.Desc,FeedNodes);
+
+FeedSegs=zeros(1,3);
+for  m=1:3,
+  Msegs{m}=abs(Msegs{m}{1}(:)).';
+  FeedSegs(m)=Msegs{m}(1);
+end
+
+% set wire radii:
+
+Nsegs=size(Grid.Desc,1);
+
+Grid.Desc_.Diam=ones(Nsegs,1)*4e-2;         % wire diameters for surface mesh
+Grid.Desc_.Diam([Msegs{:},ConSegs])=0.0286;  % wire diameters of antennas and connections
+Grid.Desc_.Diam([Msegs{:}])=0.0286;
+
+% define bodies:
+
+Grid.Desc_.Body=ones(Nsegs,1)*4;
+for m=1:3,
+  Grid.Desc_.Body(Msegs{m})=m;
+end
+
+Grid.Static.GroundBody=4;
+
+Grid.Exterior.epsr=3;
+
+% solve for charges and capacitances:
+
+Grid=StaticSolve(Grid);
+
+% print results:
+
+fprintf('Grand capacitance matrix [pF]:\n');
+fprintf('%8.3f  %8.3f  %8.3f  %8.3f\n', Grid.Static.Ct.'*1e12);
+fprintf('\n');
+
+fprintf('Antenna capacitance matrix [pF], taking s/c body as ground:\n');
+fprintf('%8.3f  %8.3f  %8.3f\n', Grid.Static.CA.'*1e12);
+fprintf('\n');
+
+fprintf('Open port Transfer matrix [pF], taking s/c body as ground:\n');
+fprintf('%8.3f  %8.3f  %8.3f\n', Grid.Static.To.');
+To_sph=car2sph(Grid.Static.To,2);
+To_sph(:,2:3)=To_sph(:,2:3)/deg;
+fprintf('In spherical coordinates:\n');
+fprintf('%8.3f  %8.3f  %8.3f\n', To_sph.');
+fprintf('\n');
+
+% diameters: antennas&connection=0.0286, body=2e-12, K(n,n)=0 for body
+%
+% Grand capacitance matrix [pF]:
+%  106.262    -3.908    -5.763   -61.640
+%   -4.822   106.987    -3.971   -44.386
+%   -3.965    -4.193   106.521   -57.290
+%  -73.415   -50.525   -50.016   452.099
+%
+% Antenna capacitance matrix [pF], taking s/c body as ground:
+%  104.201    -8.051    -9.770
+%   -7.995   100.609   -10.140
+%   -6.387    -9.062   101.813
+%
+%------
+% diameters: antennas&connection=0.0286, body=2e-2, K(n,n)=0 for body
+%
+% Grand capacitance matrix [pF]:
+%  106.262    -3.908    -5.763   -61.640
+%   -4.822   106.987    -3.971   -44.386
+%   -3.965    -4.193   106.521   -57.290
+%  -73.415   -50.525   -50.016   452.099
+% 
+% Antenna capacitance matrix [pF], taking s/c body as ground:
+%  104.201    -8.051    -9.770
+%   -7.995   100.609   -10.140
+%   -6.387    -9.062   101.813
+% 
+%------
+% diameters: antennas&connection=0.0286, body=2e-12, K(n,n) correct
+%
+% Grand capacitance matrix [pF]:
+%   97.285    -4.452    -6.528   -33.792
+%   -4.435    99.172    -6.184   -36.373
+%   -6.533    -6.213    99.110   -36.061
+%  -33.833   -36.339   -36.138   259.471
+% 
+% Antenna capacitance matrix [pF], taking s/c body as ground:
+%   88.341   -13.342   -15.093
+%  -13.322    90.339   -14.694
+%  -15.100   -14.729    90.906
+% 
+%------
+% diameters: antennas&connection=0.0286, body=2e-2, K(n,n) correct
+%
+% Grand capacitance matrix [pF]:
+%  100.893    -2.310    -4.434   -51.435
+%   -2.267   109.178    -3.866   -60.543
+%   -4.444    -3.957   104.048   -54.465
+%  -51.482   -60.396   -54.615   410.826
+% 
+% Antenna capacitance matrix [pF], taking s/c body as ground:
+%   95.973    -7.209    -9.173
+%   -7.162   104.303    -8.582
+%   -9.187    -8.679    99.479
+% 
+%------
+% diameters: antennas&connection=0.0286, body=4e-2, K(n,n) correct
+%
+% Grand capacitance matrix [pF]:
+%  101.191    -2.189    -4.293   -52.646
+%   -2.138   111.419    -3.718   -63.690
+%   -4.303    -3.824   104.526   -55.808
+%  -52.699   -63.515   -55.976   423.071
+% 
+% Antenna capacitance matrix [pF], taking s/c body as ground:
+%   96.479    -6.883    -8.835
+%   -6.829   106.747    -8.240
+%   -8.850    -8.353   100.142
+% 
+%------
+% diameters: antennas&connection=0.0286, body=2e-2, K(n,n) correct
+% without CDA (segments 1045:1095 removed)
+%
+% Grand capacitance matrix [pF]:
+%  100.884    -2.442    -4.470   -51.240
+%   -2.442   100.653    -4.461   -50.892
+%   -4.480    -4.470   103.885   -53.674
+%  -51.243   -50.896   -53.742   399.710
+% 
+% Antenna capacitance matrix [pF], taking s/c body as ground:
+%   95.959    -7.381    -9.221
+%   -7.382    95.699    -9.226
+%   -9.235    -9.239    99.298
+% 
+%------
+% diameters: antennas&connection=0.0286, body=4e-2, K(n,n) correct
+% without CDA (segments 1045:1095 removed)
+%
+% Grand capacitance matrix [pF]:
+%  101.184    -2.310    -4.327   -52.468
+%   -2.310   100.952    -4.316   -52.114
+%   -4.337    -4.326   104.363   -55.036
+%  -52.470   -52.118   -55.107   410.102
+% 
+% Antenna capacitance matrix [pF], taking s/c body as ground:
+%   96.469    -7.041    -8.880
+%   -7.041    96.206    -8.883
+%   -8.894    -8.897    99.964
+
+============================================================
+
+function K=StaticKernel(PhysGrid)
+
+% K=StaticKernel(PhysGrid) calculates kernel K for equation
+%   psi=K*Q,
+% psi being the vector of electrostatic potentials on the elements,
+% and Q the vector of charges uniformly distributed over the
+% respective elements.
+%
+% Actually K is calculated in such a way that it gives the potentials
+% in the middle of the elements (a slight potential variation over the 
+% elements occurs due to dicretization).
+
+Nseg=size(PhysGrid.Desc,1);
+Npat=numel(PhysGrid.Desc2d);
+
+Nelem=Nseg+Npat;
+
+K=zeros(Nelem,Nelem);
+
+% calculate interaction terms with radiating segments:
+% ----------------------------------------------------
+
+r1=PhysGrid.Geom(PhysGrid.Desc(:,1),:);
+r2=PhysGrid.Geom(PhysGrid.Desc(:,2),:); 
+L=Mag(r2-r1,2);
+er=(r2-r1)./repmat(L,1,3);
+
+% center of segments and patches:
+
+rm=zeros(Nelem,3);
+rm(1:Nseg,:)=(r1+r2)/2;
+for p=1:Npat,
+  rm(Nseg+p,:)=mean(PhysGrid.Geom(PhysGrid.Desc2d{p},:),1);
+end
+
+for n=1:Nseg,
+  
+ r=rm-repmat(r1(n,:),Nelem,1);
+ z=r*er(n,:).';
+ rho=Mag(cross(r,repmat(er(n,:),Nseg,1),2),2); 
+ %rho=sqrt(sum(r.^2,2)-z.^2);
+ 
+ K(:,n)=StaticPot1(L(n),rho,z);   
+ 
+ % overwrite self-interaction term:
+ K(n,n)=StaticPot1(L(n),PhysGrid.Desc_.Diam(n)/2,L(n)/2);
+ 
+end
+
+% calculate interaction terms with radiating patches:
+% ---------------------------------------------------
+
+for p=1:Npat,
+  
+  d=PhysGrid.Desc2d{p};
+  g=PhysGrid.Geom(d(:),:);
+  if (numel(d)>4)||(numel(d)<3),
+    error('Can only handle pathes with 3 or 4 corners.');
+  end
+  
+  if numel(d)==3,
+    for m=1:Nelem,
+      K(m,Nseg+p)=StaticPot3(g(1,:),g(2,:),g(3,:),rm(m,:));
+    end
+  else
+    for m=1:Nelem,
+      K(m,Nseg+p)=StaticPot3(g(1,:),g(2,:),g(3,:),rm(m,:))+...
+                  StaticPot3(g(3,:),g(4,:),g(1,:),rm(m,:));
+    end
+  end
+  
+end
+
+============================================================
+
+function psi=StaticPot1(L,rho,z)
+
+% psi=StaticPot1(L,rho,z) calculates electrostatic potential psi of a
+% constant line charge density on a wire segment in free space (vacuum), 
+% with unit total charge on the segment. 
+% L is the segment length, rho and z are the cylindrical coordinates of the 
+% observation point. It is assumed that the segment extends from 
+% the origin to the point z=L along the z-axis.
+
+rho=max(rho,1e-30);
+
+c=2.99792458e8;
+eps0=1/(4e-7*pi*c^2);
+
+% extend L, rho and z to maximum size:
+L=L+(rho+z)*0; 
+rho=rho+L*0;
+z=z+L*0;
+
+psi=zeros(size(L));
+
+n=(L>0);
+psi(n)=1./(4*pi*eps0*L(n)).*...
+  (asinh(z(n)./rho(n))-asinh((z(n)-L(n))./rho(n)));
+  
+% alternative arrangements:
+% (asinh(z./rho)-asinh((z-L)./rho)) =
+% log((z+sqrt(rho.^2+(L-z).^2))./(z-L+sqrt(rho.^2+z.^2))) =
+% log((L-z-sqrt(rho.^2+(L-z).^2))./(z-sqrt(rho.^2+z.^2)))
+
+n=~n;
+psi(n)=1./(4*pi*eps0*sqrt(rho(n).^2+z(n).^2));
+
+============================================================
+
+function psi=StaticPot3(r1,r2,r3,rObs)
+
+RelAcc=1e-8;  % relative accuracy
+
+global IntPara_r31 IntPara_r21 IntPara_r01 IntPara_mr31 IntPara_n
+
+IntPara_r31=reshape(r3(:)-r1(:),1,3);
+IntPara_r21=reshape(r2(:)-r1(:),1,3);
+IntPara_r01=reshape(rObs(:)-r1(:),1,3);
+IntPara_mr31=Mag(IntPara_r31);
+
+% normalization parameter roughly estimating result,
+% used for proper tolerance handling:
+c=2.99792458e8;
+eps0=1/(4e-7*pi*c^2);
+IntPara_n=1/(4*pi*eps0*Mag((r1+r2+r3)/3-rObs));
+%IntPara_n=IntegrandStaticPot3(0)*IntPara_n;
+
+psi=quadl(@IntegrandStaticPot3,0,1,RelAcc)*IntPara_n;
+
+
+function x=IntegrandStaticPot3(t)
+
+global IntPara_r31 IntPara_r21 IntPara_r01 IntPara_mr31 IntPara_n
+
+s=size(t);
+t=t(:);
+
+L=IntPara_mr31*(1-t);
+
+r0r=repmat(IntPara_r01,length(t),1)-t*IntPara_r21;
+
+z=r0r*(IntPara_r31/IntPara_mr31).';
+
+rho=sqrt(sum(r0r.^2,2)-z.^2);
+
+x=reshape((2./IntPara_n).*(1-t).*StaticPot1(L,rho,z),s);
+
+============================================================
+
+function PhysGrid=StaticSolve(PhysGrid)
+
+% PhysGrid=StaticSolve(PhysGrid) solves for the capacitance matrix
+% of a many body problem. The parameters PhysGrid.Desc_.Body and 
+% PhysGrid.Desc2d_.Body define to which Body the respective 
+% segments and patches belong.
+% Returned parameters are:
+%   PhysGrid.Static.Ct:
+%       grand capacitance matrix for the total system
+%   PhysGrid.Static.Qt:
+%       charge system: Qt(n,m)=charge on element m when the n-th body is
+%       set to unit voltage and the others are short-circuited
+%   PhysGrid.Static.CA:
+%       antenna capacitance matrix for the case that the body 
+%       PhysGrid.Static.GroundBody serves as ground
+%   PhysGrid.Static.To:
+%       open ports antenna transfer matrix for the antenna system
+%       obtained when each body (except ground) is regarded as antenna 
+%       element driven versus the ground body PhysGrid.Static.GroundBody.
+%
+% If PhysGrid.Static.GroundBody is not defined, the last body is used as ground.
+% It is assumed that all physical elements (segments and patches)
+% belong to a body. Elements are segments and patches, where the segments
+% are counted first, e.g. Qt(n,m) refers to the charge on the m-th element
+% which is a segment if m is less than the number of elements but a patch
+% otherwise. Accordingly Qt has size NBodies x (Nsegs+Npats), where NBodies,
+% Nsegs and Npats are the number of bodies, segments and patches, 
+% respectively.  
+
+Nsegs=size(PhysGrid.Desc,1);
+Npats=numel(PhysGrid.Desc2d);
+BodyNumbers=union(PhysGrid.Desc_.Body,PhysGrid.Desc2d_.Body);
+NBodies=max(BodyNumbers);
+if ~isequal(1:NBodies,BodyNumbers(:).'),
+  error('Bodies do not have correct consecutive numbers');
+end
+
+K=StaticKernel(PhysGrid);
+
+Nelems=size(K,1);
+
+PhysGrid.Static.Qt=zeros(NBodies,Nelems);
+PhysGrid.Static.Ct=zeros(NBodies,NBodies);
+
+V=zeros(Nelems,1);
+
+BodyElems=cell(NBodies,1);
+
+for n=1:NBodies,
+  BodyElems{n}=union(find(PhysGrid.Desc_.Body==n),...
+    Nsegs+find(PhysGrid.Desc2d_.Body==n));
+  V(:)=0;
+  V(BodyElems{n})=1;
+  PhysGrid.Static.Qt(n,:)=PhysGrid.Exterior.epsr*(K\V).';
+end
+
+for n=1:NBodies,
+  for m=1:NBodies,
+    PhysGrid.Static.Ct(m,n)=sum(PhysGrid.Static.Qt(n,BodyElems{m}));
+  end
+end
+
+%--------------------------------------------------------------
+% calculate antenna capacitance and tranfer matrix (CA and To), 
+% taking one body as common ground (PhysGrid.Static.GroundBody):
+
+try
+  Ground=PhysGrid.Static.GroundBody;        % ground body
+catch
+  Ground=[];
+end
+if isempty(Ground)||(Ground>NBodies)||(Ground<1),
+  Ground=NBodies;
+  PhysGrid.Static.GroundBody=Ground;
+  warning(['No ground body defined for transfer matrix calculation,\n',...
+    sprintf('therefore last body used as ground (body number=%d).',Ground)]);
+end
+
+As=setdiff(1:NBodies,Ground);      % antenna bodies
+
+PhysGrid.Static.CA=PhysGrid.Static.Ct(As,As)-...
+  sum(PhysGrid.Static.Ct(As,:),2)*sum(PhysGrid.Static.Ct(:,As),1)/...
+  sum(PhysGrid.Static.Ct(:));
+
+% calculate quasistatic transfer matrices:
+
+Q=eye(NBodies);
+Q(:,Ground)=-1;
+Q=Q([1:Ground-1,Ground+1:end],:);
+
+V=Q/PhysGrid.Static.Ct.';
+
+Qo=V*PhysGrid.Static.Qt;
+
+% center of segments and patches:
+rm=zeros(Nelems,3);
+rm(1:Nsegs,:)=...
+  (PhysGrid.Geom(PhysGrid.Desc(:,1),:)+PhysGrid.Geom(PhysGrid.Desc(:,2),:))/2;
+for p=1:Npats,
+  rm(Nsegs+p,:)=mean(PhysGrid.Geom(PhysGrid.Desc2d{p},:),1);
+end
+
+PhysGrid.Static.To=Qo*rm;
+
+

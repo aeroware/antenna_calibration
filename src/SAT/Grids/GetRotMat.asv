@@ -1,0 +1,27 @@
+
+function M=GetRotMat(phiX,phiY,PhiZ);
+
+% GetRotMat generates the Rotation Matrix, to rotate a vector phiX degrees
+% about the X axis, andsoon.
+% The order of appied rotations is Z->Y->X
+
+
+
+if (nargin<3)
+    M=-1;
+  return  % error
+end % if nargin...
+
+% get indices
+
+MX=[1,0,0
+    0,cos(phiX),-sin(phiX)
+    0,sin(phiX),cos(phiX)];
+
+MY=[cos(phiX),0,sin(phiX)
+    0,1,0
+    -sin(phiX),0,cos(phiX)];
+
+MZ=[cos(phiX),-sin(phiX),0
+    sin(phiX),cos(phiX),0
+    0,0,1];

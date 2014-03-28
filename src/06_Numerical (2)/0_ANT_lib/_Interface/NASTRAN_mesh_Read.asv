@@ -1,0 +1,154 @@
+function [Ant]=NASTRAN_mesh_ReadIn(Ant,WorkingDir,Atta_NASTRAN_mesh_In)
+% [Ant]=NASTRAN_mesh_ReadIn(Ant,WorkingDir,Atta_NASTRAN_mesh_In) 
+% reads the 3D mesh from a NASTRAN file (text). Filename is defined
+% in the variable Atta_NASTRAN_mesh_In and returns it in the structure AntGrid; the
+% following fields are returned: Geom, Desc, Desc2d
+%
+% The fields are filled when the corresponding data are found in the files.
+%
+% *************************************************************************
+% AntGrid : returns the full antenna grid structure (Geom, Desc, Desc2d)
+%
+% Ant                  : antenna grid structure
+% WorkingDir           : ....
+% Atta_NASTRAN_mesh_In  : filename
+%
+% for testing
+Atta_NASTRAN_mesh_In='test.nas';
+
+
+if ~exist('Ant','var')||isempty(Ant),
+  Ant = GridInit();
+  AttaInit;
+end
+
+% open file:
+% ----------
+
+if ~exist('Atta_NASTRAN_mesh_In','var')||isempty(Atta_NASTRAN_mesh_In),
+  Atta_NASTRAN_mesh_In='';
+end
+
+if ~exist('WorkingDir','var')||isempty(WorkingDir),
+  WorkingDir='';
+end
+
+AIF=fullfile(WorkingDir,Atta_NASTRAN_mesh_In);
+
+fid=fopen(AIF,'rt');
+log_id=fopen('NASTRAN_mesh_ReadIn.log','wt');
+
+if fid<0
+  error(['Could not open file ',AIF]);
+elseif log_id<0
+  error(['Could not open log file to write: ','NASTRAN_mesh_ReadIn.log']);
+end
+
+str_line_num=0;
+
+  % search for 'GRID*'
+    found=0;
+    l = strtrim(fgetl(fid));
+    str_line_num=str_line_num+1;
+    
+    while ~feof(fid)
+        [tok, rem]=strtok(l);
+      
+        if strcmp(tok,'GRID*')
+            found=1;
+            break;
+        end
+  
+        l = strtrim(fgetl(fid));
+        str_line_num=str_line_num+1;
+    end % while
+    % go to first line
+    
+    
+    if found==0
+        NASTRANFerror(log_id,...
+       'Error...unexpected end of file after line ',str_line_num);
+    end
+    
+    
+    % parse nodes
+    
+    while ~feof(fid)
+        try
+            if(strcmp(tok,'GRID*'))% node
+           
+                x=l(41:56);
+                y=l(57:73);
+        
+                l = strtrim(fgetl(fid));
+                str_line_num=str_line_num+1;
+                z=l(9:24);
+                l = strtrim(fgetl(fid));
+                str_line_num=str_line_num+1;
+                [tok, rem]=strtok(l);
+            
+                node=[str2num(x),str2num(y),str2num(z)];
+                Ant.Geom(end+1,:)=node;
+            
+            elseif strcmp(tok,'CTRIA3') % triangle
+                A=sscanf(rem,'%d %d %d %d %d');
+                
+                pat=[A(3),A(4),A(5)];
+                Ant.Desc2d(end+1,:)={pat};
+                l = strtrim(fgetl(fid));
+                str_line_num=str_line_num+1;  
+            elseif(strcmp(tok,'CBAR')) % segment
+                A=sscanf(rem,'%d %d %d %d');
+                
+                pat=[A(3),A(4),A(5)];
+                Ant.Desc2d(end+1,:)={pat};
+                l = strtrim(fgetl(fid));
+                str_line_num=str_line_num+1;  
+            else
+                l = strtrim(fgetl(fid));
+                str_line_num=str_line_num+1;
+            end
+    
+
+        catch
+                NASTRANFerror(log_id,...
+                'Error...something wrong at line ',str_line_num);
+        end
+        
+    end %while
+    
+    x=1
+
+
+Atta_NASTRAN_mesh_In=fopen(fid);
+p=fclose(fid);
+q=fclose(log_id);
+if p<0,
+  error(['Could not close file ',AIF]);
+elseif q<0
+  error(['Could not close log file to write: ','COMSOL_mesh_ReadIn.log']);
+else
+  fprintf(1,'\n   Parsing NASTRAN mesh file successfull: %s\n',Atta_NASTRAN_mesh_In);
+end
+
+end  % of COMSOL_mesh_ReadIn
+
+
+%---------------------------------
+
+function NASTRANFerror(file_id,Err,L)
+
+% Displays error message Err after closing the file associated 
+% with file_id. In addition the line number L is output.
+
+Atta_NASTRAN_mesh_In=fopen(file_id);
+
+fclose(file_id);
+
+if nargin>2,
+  fprintf(1,'\NASTRAN file parse error in line %d of ''%s''\n',L,Atta_NASTRAN_mesh_In);
+end
+
+error(Err);
+
+end

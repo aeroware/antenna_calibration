@@ -1,0 +1,28 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: TESTCN - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\windows\TEMP\RSP80F1.TMP" with contents
+[
+/compile_only /include:"Release/" /libs:qwins /nologo /warn:nofileopt /module:"Release/" /object:"Release/" 
+"D:\Dvf\Diglib\Testcn.for"
+"D:\Dvf\Diglib\Contor.for"
+]
+Creating command line "link.exe kernel32.lib /nologo /entry:"WinMainCRTStartup" /subsystem:windows /incremental:no /pdb:"Release/TESTCN.pdb" /machine:I386 /nodefaultlib:"dfconsol.lib" /out:"Release/TESTCN.exe"  .\Release\Contor.obj .\Release\Testcn.obj ..\Release\diglib.lib "
+<h3>Output Window</h3>
+Compiling Fortran...
+D:\Dvf\Diglib\Testcn.for
+D:\Dvf\Diglib\Contor.for
+Linking...
+
+
+
+<h3>Results</h3>
+TESTCN.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

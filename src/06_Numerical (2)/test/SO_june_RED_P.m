@@ -1,0 +1,88 @@
+% *************************************************************************
+% 0.00 - 00.00.0000:  
+% 
+% dependend on ant struct
+% 
+% *************************************************************************
+% determine values
+% *************************************************************************
+
+clear all
+close all
+clc
+                           
+% initialize model grid
+ant = GridInit();
+AttaInit;   % toolbox initialization for global variables
+
+WorkingDir= pwd;
+
+% -----------------------------------------------------------------------
+% overall GRAPHICAL properties of patches, segments and points
+SurfProp=struct('EdgeColor','k',...
+  'DiffuseStrength',0.4,'AmbientStrength',0.6,...
+  'SpecularStrength',0.3,'SpecularColorReflectance',1,'SpecularExponent',3,...
+  'FaceAlpha',1,'FaceLighting','flat','BackFaceLighting','unlit');
+
+% graphical properties of add-ons
+AddSurfProp = SurfProp;
+AddSurfProp.FaceColor = [0.8,0.6,0];
+AddSurfProp.BackFaceLighting = 'reverselit';
+
+% graphical properties of cylindrical antennas
+CylSurfProp = SurfProp;
+CylSurfProp.FaceColor = [0.6,0.2,0];
+CylSurfProp.BackFaceLighting = 'reverselit';
+  
+% graphical properties of wires 
+WireProp=struct('LineWidth',0.5,'Color',[0,0,0]);
+
+%------------------------------------------------------------------------
+% FEEDS - DEFAULT SETTINGS
+feed.pos = 'mmm';
+
+% base functions
+feed.nbases = 3;      
+
+% relevant for cylindrical antennas
+feed.cond = 50e6;
+feed.diam = 2e-3;
+
+%------------------------------------------------------------------------
+% MODEL GENERATION
+
+load('SOGrid_RED_P_1_mm.mat');
+
+ant = SOGrid_RED_P_1_mm;
+
+ant.Desc = [ 4134 3576 ; ...     % inside vertex first !!!
+             4330 3825 ; ...
+             4506 4073 ];       % put feeds in
+
+         
+ant = GridObj(ant,'Wire','all',...
+                  'Name','Feeds',...
+                  'Graf',WireProp);
+
+ant.Obj(end).Phys.Act = 1;
+ant.Obj(end).Phys.Posi = feed.pos;
+ant.Obj(end).Phys.Cond = feed.cond;
+ant.Obj(end).Phys.Diam = feed.diam;
+ant.Obj(end).Phys.NBases = feed.nbases;
+return
+%------------------------------------------------------------------------
+
+Freqs = [400]*1e3;
+
+% directions
+
+er = [1,0,0;0,1,0;0,0,1;-1,0,0;0,-1,0;0,0,-1;...
+      1,1,1;-1,1,1;1,-1,1;1,1,-1;-1,-1,1;-1,1,-1;1,-1,-1;-1,-1,-1];
+
+% calculate:
+Solver='Feko';
+WireOption={};            % {}=keep patches
+FarFieldCalc='Solver';
+Titel = 'SOGrid_RED_P_1_mm: single heatshield plate';
+CalcAnt(ant,WorkingDir,Solver,Freqs,er,Titel,WireOption,FarFieldCalc);
+

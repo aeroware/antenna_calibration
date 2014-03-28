@@ -1,0 +1,83 @@
+
+function Ant=gridInit(Ant0,ResetFields)
+
+% Ant=gridInit(Ant0,ResetFields) initializes antenna structure: 
+% The fields Geom, Desc, Desc2d, Obj are 
+% initialized if not yet present. The field Init is created after 
+% initialization and in future calls of AntInit no intitialization 
+% will be performed if the field Init still exists. 
+% If the optional parameter ResetFields is passed, initialization is
+% forced, even if Ant0.Init exists: if ResetFields is a cell array 
+% of strings, the fields with the given names are reset to their 
+% respective initial value; otherwise all above mentioned fields 
+% are reset (initialized). All other present fields remain unchanged.
+%
+% Ant=gridInit creates a new initialized antenna structure with
+% the above mentioned fields.
+
+% Revision June 2007:
+% Implementation of GlobalMaxPatchCorners, which defines the 
+% maximum number of Corneres a patch may have. This affects the
+% generation of patches in the grid routines GridRevol, GridSphere, 
+% GridMatrix, etc.
+%
+% Revision 01.08 by Thomas Oswald:
+%   AntInit--> gridInit
+
+global GlobalMaxPatchCorners
+
+if isempty(GlobalMaxPatchCorners),
+  GlobalMaxPatchCorners=50;
+end
+
+GridFields={'Geom','Desc','Desc2d','Obj'};
+
+if nargin>0,
+  Ant=Ant0;
+else 
+  Ant=struct('Geom',[]);
+end
+
+if (nargin<2)|isempty(ResetFields),
+  ResetFields={};
+end
+
+if isfield(Ant,'Init'),
+  if isempty(ResetFields),
+    return
+  end
+  InitFields={};
+else
+  InitFields=GridFields;
+end
+
+if ~iscell(ResetFields),
+  ResetFields=GridFields;
+end
+
+PresentFields=fieldnames(Ant);
+for f=intersect(PresentFields,GridFields),
+  if isempty(getfield(Ant,f{1})),
+    ResetFields=union(ResetFields,f(1));
+  end
+end
+
+InitFields=union(setdiff(InitFields,PresentFields),ResetFields);
+
+for f=InitFields,
+  switch f{1},
+  case 'Geom',
+    Ant=setfield(Ant,'Geom',zeros(0,3));
+  case 'Desc',
+    Ant=setfield(Ant,'Desc',zeros(0,2));
+  case 'Desc2d',
+    Ant=setfield(Ant,'Desc2d',cell(0,1));
+  case 'Obj',
+    Ant=setfield(Ant,'Obj',struct('Type','','Name','','Elem',[],'GraphProp',[]));
+    Ant.Obj(1)=[];
+  otherwise
+    Ant=setfield(Ant,f{1},[]);
+  end
+end
+  
+Ant.Init=1;

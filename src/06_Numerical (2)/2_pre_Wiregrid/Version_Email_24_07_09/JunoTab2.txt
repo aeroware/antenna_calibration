@@ -1,0 +1,38 @@
+Tabulated values of the length of the effective length
+vectors and the angle between the two effective length
+vectors as a function of the configuration, the angle between
+the physical antennas and the angle between the z-axis and
+the plane of the antennas.
+
+Configuration 1 means that the antennas are located below a
+solar panel, while at configuration 2 the antennas are located
+between two solar panels.
+
+I want to emphasize that the angle between the antennas is not
+the azimutal abgle, but the real subtended angle between the
+antennas or effective length vectors.
+
+
+Configuration 1
+
+Angle-->        90              95              100             105             110             115             120
+
+Theta: 120	1.950m/30.8d	1.923m/32.2d	1.894m/33.6d	1.863m/35.0d	1.831m/36.3d	1.797m/37.7d	1.761m/39.0d	
+
+Theta: 125	1.974m/30.4d	1.946m/31.8d	1.916m/33.2d	1.884m/34.6d	1.850m/36.0d	1.815m/37.3d	1.777m/38.7d	
+
+Theta: 130	1.994m/30.1d	1.964m/31.5d	1.933m/32.9d	1.900m/34.3d	1.865m/35.7d	1.828m/37.0d	1.789m/38.4d	
+
+Theta: 135	2.008m/29.8d	1.978m/31.2d	1.945m/32.7d	1.911m/34.0d	1.875m/35.4d	1.837m/36.8d	1.798m/38.1d	
+
+Configuration 2
+
+Angle-->        90              95              100             105             110             115             120
+
+Theta: 120	2.042m/23.1d	2.007m/24.2d	1.971m/25.2d	1.932m/26.3d	1.892m/27.3d	1.849m/28.4d	1.805m/29.4d	
+
+Theta: 125	2.059m/23.1d	2.023m/24.2d	1.986m/25.3d	1.947m/26.3d	1.905m/27.4d	1.862m/28.4d	1.818m/29.4d	
+
+Theta: 130	2.070m/23.1d	2.034m/24.2d	1.996m/25.3d	1.957m/26.4d	1.915m/27.4d	1.871m/28.5d	1.826m/29.5d	
+
+Theta: 135	2.077m/23.2d	2.040m/24.3d	2.002m/25.4d	1.962m/26.4d	1.920m/27.5d	1.876m/28.5d	1.830m/29.6d	

@@ -1,0 +1,80 @@
+FEKO      Version  56.591       from 2010-09-14 (FEKO Suite 6.0)
+          PREFEKO version 35.60-107 from 2010-09-08                   BINARY
+          CADFEKO version 6.0.151450-x64 from Sep 20 2010             
+          Copyright (c) 1999-2010 EM Software & Systems-S.A. (Pty) Ltd     
+          Intel(R) MKL version 10.2 (build 20100325) on Intel(R) Core(TM) 2 Duo Processor (1 thread)
+Computer: PC WIN64 EM64T MKL -- phys-edv05                  
+          Microsoft Windows XP Professional x64 Edition Service Pack 2 (Build 3790), Version 5.2.3790 x64 (SP 2.0)
+          Intel(R) Core(TM)2 Duo CPU     E6750  @ 2.66GHz; GenuineIntel family 6 model 15 stepping 11 brand id 0
+          1 physical CPU with a total of 2 processors found (multi-core CPU with max. 2 cores per physical CPU)
+Threads:      1 threads used (OpenMP)
+Date:     2011-06-22 12:26:39                     
+File:     testcube3
+Memory:   Unlimited, system allows maximum usage of    1.923 GByte
+MD5 Check:975DB3F5903B9ECB20C84FB6B331F3A6
+MD5 Total:67FF21A664AD334CBC9591B9F0ADFA7A
+Licence:  Floating licence no. 10935                           
+
+ Number of cores found on this CPU:  2
+ (that many parallel processes may be run with your sequential FEKO licence)
+ NOTE    35127: You are running a sequential version of FEKO, but it was detected that your CPU has more than one core. For best performance, it would be recommended to run the parallel FEKO kernel (your licence allows this)
+
+          Surface of all triangles in m*m:     6.
+
+          Length of the segments in m:         2.
+
+
+                                DATA FOR MEMORY USAGE
+
+ Number of metallic triangles:           24                   max. triangles:MAXNDR   =       24
+ Number of dielectric triangles:          0
+ Number of aperture triangles:            0
+ Number of diel./metallic GO tr.:         0
+ Number of diel. windscreen tr.:          0
+ Number of FEM surface triangles:         0
+ Number of modal port triangles:          0
+ Number of metallic segments:             2                   max. segments: MAXNSEG  =        2
+ Number dielectr./magnet. cuboids:        0                   max. cuboids:  MAXNQUA  =        0
+ Number of tetrahedral elements:          0                   max. tetrah.:  MAXNTETRA=        0
+ Number of edges in PO region:            0                   max. edges:    MAXPOKA  =        0
+ Number of wedges in PO region:           0                   max. wedges:   MAXPOKL  =        0
+ Number of Fock regions:                  0                   max. Fock reg.:MAXFOGE  =        0
+ Number of polygonal surfaces:            0                   max. surfaces: MAXPOLYF =        0
+                                                              max. corner p.:MAXPOLYP =        0
+ Number of UTD cylinders:                 0
+
+ Number of metallic edges (MoM):           36  unknown:       36   max. edges:   MAXNKA    =       36
+                                            0  unknown:        0   (magnet.) 
+ Number of metallic edges (PO):             0  unknown:        0   (electr.)         0 (magnet.)
+ Number of dielectric edges (MoM):          0  unknown:        0   (electr.) 
+                                            0                  0   (magnet.) 
+ Number of dielectric edges (PO):           0  unknown:        0   (electr.)         0 (magnet.)
+ Number of aperture edges (MoM):            0  unknown:        0   (magnet.) 
+ Number of edges FEM/MoM surface:           0  unknown:        0   (electr.) 
+                                            0                  0   (magnet.) 
+ Number of nodes between segments:          0  unknown:        0   max. nodes:   MAXNKNO   =       13
+ Number of connection points:               2  unknown:        2   max. conn.:   MAXNV     =       10
+ Number of dielectric cuboids:              0  unknown:        0   max. cuboids: MAXNQUA   =        0
+ Number of magnetic cuboids:                0  unknown:        0
+
+ Number of basis funct. for MoM:           38  unknown:       38   max. basisf.  MAXNZEILE =       59
+ Number of basis funct. for PO:             0  unknown:        0   max. basisf.  MAXNKAPO  =        0
+
+ read from input file:                             
+DI       0    0   -1    0    0 1.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00 1.000E+03 0.000E+00 0.000E+00
+ read from input file:                             
+FR       0    0    0    0    0 1.000E+06 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00
+ read from input file:                             
+DA       0    0    0    0    0 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00
+ read from input file:                             
+OS       1    0    1    0    0 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00 0.000E+00
+
+
+                              DATA FOR DIELECTRIC MEDIA
+
+internal  relative     relative  conductivity   tan(delta)    tan(delta)    wavelength   mass density    volume     medium
+index  permittivity permeability   in S/m       (electric)    (magnetic)       in m       in kg/m^3      in m^3
+    0      1.00000      1.00000  0.00000E+00   0.00000E+00   0.00000E+00   2.99792E+02   1.00000E+03    infinite    0
+ ERROR      15: No excitation has been defined
+
+Aborted: 2011-06-22 12:26:39                     

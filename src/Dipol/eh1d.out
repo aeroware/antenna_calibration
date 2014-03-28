@@ -1,0 +1,24 @@
+ 
+
+
+
+
+           *****************************************
+           *       MAGNETIC FIELD STRENGTH         *
+           *            (PEAK VALUES)              *
+           *****************************************
+  
+ Field point   1
+ =================
+ Field point coordinates in m:  x=0.0000E+00 y=0.0000E+00 z=0.1000E+01
+
+ x component: Hx  = 0.0000E+00 +j 0.0000E+00 A/m
+                  = 0.0000E+00 A/m * exp( j 0.0000E+00 degrees)
+ y component: Hy  = 0.3795E-09 +j 0.5779E-03 A/m
+                  = 0.5779E-03 A/m * exp( j 0.9000E+02 Grad)
+ z component: Hz  = 0.0000E+00 +j 0.0000E+00 A/m
+                  = 0.0000E+00 A/m * exp( j 0.0000E+00 degrees)
+     
+ Maximum magnitude: Hmax
+                  = 0.5779E-03 A/m 
+ ---------------------------------------------------------------------

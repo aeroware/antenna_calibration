@@ -1,0 +1,26 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: diglib - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\windows\TEMP\RSPB0B5.TMP" with contents
+[
+/assume:noaccuracy_sensitive /compile_only /fpscomp:general /fpscomp:filesfromcmd /include:"Release/" /libdir:noauto /math_library:fast /nologo /warn:nofileopt /unroll:4 /module:"Release/" /object:"Release/" 
+"D:\Dvf\Diglib\Diglib.for"
+]
+Creating command line "link.exe -lib /nologo /out:"Release\diglib.lib"  .\Release\Diglib.obj "
+<h3>Output Window</h3>
+Compiling Fortran...
+D:\Dvf\Diglib\Diglib.for
+Creating library...
+
+
+
+<h3>Results</h3>
+diglib.lib - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

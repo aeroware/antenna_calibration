@@ -1,0 +1,9 @@
+WorkingDir=pwd;
+Atta_Feko_out='antfile.out';
+
+
+
+[AA,f]=FEKO_get_A(Atta_Feko_out,WorkingDir, 1);
+[k,epsi,mu]=Kepsmu(f,PhysGrid) ;
+IA
+Ts(m,:,:,n)=permute(AA,[3,2,1])*(4*pi)/mu/Op(m,n).Vfeed(m);

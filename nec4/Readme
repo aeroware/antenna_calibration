@@ -1,0 +1,53 @@
+                        NEC--4 for Windows 95,98,NT...
+
+
+The enclosed diskettes contain NEC--4 compiled for Windows with the
+Compaq Visual Fortran v. 6.6 compiler.  All of the NEC--4 executables have
+been compiled for a maximum of 12000 segments (MAXSEG=12000).  The number in
+the name (300, 600 or 1200) indicates the value of MAXMAT, setting the maximum
+matrix size before disk storage will be used, and ``S'' or ``D'' in the name
+indicates single or double precision.  We can compile the programs for other
+segment limits if requested, but it is recommended that users have their own
+Fortran compilers. To compile the codes with the Compaq compiler it is necessary to
+set the ``filenames from command line'' option under the menu Project:Settings,
+Tab: Fortran, Catagory: Compatibility; and they must be compiled as Standard
+Graphics Applications to support opening files with dialog boxes.  Failure to set
+"Filenames from command line" may hang Windows.
+
+Also included are the plotting utility programs NECPLOT, ZPLOT and PATPLOT and
+sample data files for testing these programs.  Instructions for using
+the plotting programs are included on separate sheets.  ZPLOT is compiled for a
+maximum of 5000 frequencies, read in or interpolated, and NECPLOT has a maximum
+of 5000 segments.  The Windows versions cannot directly print a plot, but the
+PS command will write a file of PostScript commands that can be printed by
+whatever means you have for rendering PostScript.
+
+NECPLOT will read a NEC input or output file and plot the structure of wires and
+patches from any viewing angle.  Patches are plotted if they were entered with a
+shape (triangular, rectangular, quadrilateral) but are not plotted if input in
+center point-normal-area form.  Patches are plotted only if they are seen
+from the front at the selected viewing angle.  When reading an output file
+NECPLOT will show the real or imaginary parts of current with arrows.  If
+you run it on the infan1.dat data at the sixth frequency it shows the
+transmission-line mode that is associated with a small resonance loop that is
+seen on a Smith chart. 
+
+To try ZPLOT you can read the file dip20.y, data for a dipole with 20
+frequencies, and interpolate to maybe 2000 samples (IN 1 2000), then read
+dip80.y and compare, or interpolate dip80.y, etc.  The rational-function
+interpolation can be very effective in interpolating over resonances, since it
+identifies poles and zeros in the frequency response.  However, if the frequency
+sampling is too sparse near a sharp resonance it can produce incorrect results. 
+Such problems are often apparent from the change in the interpolated curve as
+you change the number of samples in the interpolation window, and they indicate
+where additional frequency samples are needed.   infan1.dat is an output file
+for a bottom-fed fan antenna with few enough samples that interpolation with
+the default of seven samples in the sliding interpolation window gives negative
+resistance over the transmission-line resonance around 7 MHz.  Interpolation with
+a nine-sample window (IN 1 2000 9) gives a reasonably accurate representation
+of the resonance.  infan2.dat has more samples and gives a good interpolated
+result with seven samples.  infan2x.dat, with two more frequencies, can be added
+to the infan2.dat data (AD command) to get a more accurate interpolation of this
+very sharp resonance.  ZPLOT sorts added data, but does not eliminate duplicate
+frequencies, so adding infan1.dat and infan2.dat will result in a singular
+matrix in the interpolation.

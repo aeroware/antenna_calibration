@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/repos/juno/!svn/ver/258/06_Numerical/0_ANT_lib/_0_fortran
+END
+ant-f-lib.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/juno/!svn/ver/254/06_Numerical/0_ANT_lib/_0_fortran/ant-f-lib.h
+END
+SOGrid_RED_P.mat
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/juno/!svn/ver/42/06_Numerical/0_ANT_lib/_0_fortran/SOGrid_RED_P.mat
+END
+generic_mat_f90_interface_code.F90
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/repos/juno/!svn/ver/42/06_Numerical/0_ANT_lib/_0_fortran/generic_mat_f90_interface_code.F90
+END
+temp_interface.F90
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/repos/juno/!svn/ver/37/06_Numerical/0_ANT_lib/_0_fortran/temp_interface.F90
+END
+mat_f_interface.f90
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/repos/juno/!svn/ver/254/06_Numerical/0_ANT_lib/_0_fortran/mat_f_interface.f90
+END
+for_test_prim.m
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/juno/!svn/ver/254/06_Numerical/0_ANT_lib/_0_fortran/for_test_prim.m
+END
+grid-f-lib.F90
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/juno/!svn/ver/258/06_Numerical/0_ANT_lib/_0_fortran/grid-f-lib.F90
+END
+kdtree2.f90
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/juno/!svn/ver/42/06_Numerical/0_ANT_lib/_0_fortran/kdtree2.f90
+END

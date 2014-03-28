@@ -1,0 +1,186 @@
+System Name        : Windows_NT
+Machine Name       : PHYS-MAS
+User Name          : mas
+Source System      : STEP
+Destination System : GENERIC
+Start Time         : Fri Sep 18 15:05:57 2009
+
+--------------------------------------------------------------------------------
+Message : === Translation Options ===
+Message : PropagateColDownwards : true
+Message : TranslateAttributes : true
+Message : TranslateSheetBodies : true
+Message : TranslateSolidAsSolid : true
+Message : Step.Brep.TranslateSolidAsClassIV : false
+Message : Step.Brep.TranslateSolidAsClassIISurface : false
+Message : Step.Brep.TranslateSolidAsClassIIWires : false
+Message : Step.Brep.WriteSolidClass3 : false
+Message : Step.Brep.ConvTrimToClassIVFaces : true
+Message : Step.Brep.ConvTrimToClasLOG: Conversion: Begin
+LOG: Conversion: End
+LOG: Conversion: Begin
+LOG: Conversion: End
+LOG: Conversion: Begin
+LOG: Conversion: End
+LOG: Conversion: Begin
+LOG: Conversion: End
+LOG: Conversion: Begin
+LOG: Conversion: End
+LOG: Conversion: Begin
+LOG: Conversion: End
+LOG: Conversion: Begin
+LOG: Conversion: End
+LOG: Conversion: Begin
+LOG: Conversion: End
+LOG: Conversion: Begin
+LOG: Conversion: End
+LOG: Conversion: Begin
+LOG: Conversion: End
+LOG: Conversion: Begin
+LOG: Conversion: End
+LOG: Conversion: Begin
+LOG: Conversion: End
+Info: 
+Info: Translation succeeded
+Info: Total number of faces: 70
+Info: Total number of edges: 137
+Info: Total number of vertices: 87
+Info: Number of bodies found in the Step file: 14
+Info: =================================================
+Info: Number of bad entities removed: 0
+Info: Number of bodies saved in file: 14
+Info: =================================================
+Info: Simplify Geometry Option
+Info: 
+Info: Simplify Geometry option selected
+Info: Simplify Geometry succeeded
+Info: =================================================
+Info: 
+Info:     ========================
+Info:           Stop_Modeler
+s : false
+Message : Step.AuthorName :   
+Message : Step.OrganizationName :   
+Message : Step.Authorization :   
+Message : Step.ProgramName :   
+Message : Step.DateTimeStamp :   
+Message : Step.ObjectId :   
+Message : Step.FileDescription : STEP AP203
+Message : Step.ImplementationLevel : 1
+Message : Step.SchemaName : CONFIG_CONTROL_DESIGN
+Message : Step.PreProcessorVersion : PSStep 10.1
+Message : Representation : BRep+NewAssembly
+Message : ===========================
+--------------------------------------------------------------------------------
+Start BRep
+--------------------------------------------------------------------------------
+----------------------------File Header Information-----------------------------
+
+FILE_DESCRIPTION DATA
+File Description     : 'STEP AP214'
+Implementation Level : 1
+
+FILE_NAME DATA
+File Name            : C:/Dokumente und Einstellungen/Cosmos/Eigene Dateien/JOB/IWF/Werkvertrag/Juno_Version2_1/Juno_Version2_1.stp
+Date Time Stamp      : 2007-11-27T12:52:50
+Author               : ' '
+Organization         : ' '
+PreProcessor Version : XStep 1.0
+Originating System   :  
+Authorization        :  
+
+FILE_SCHEMA DATA
+File Schema Name     : 'automotive_design'
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+End BRep
+Result : Success
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Start NewAssembly
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+End NewAssembly
+Result : Success
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+-------------------------------Conversion Summary-------------------------------
+No. of Assemblies                         :    0
+No. of Solid Bodies                       :    12
+No. of Trim Bodies                        :    2
+No. of Wire Bodies                        :    0
+No. of Point Bodies                       :    0
+No. of Mixed Bodies		 : 0
+No. of Point Bodies        : 0
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Finish Time : Fri Sep 18 15:05:58 2009
+
+Translation Result : Success
+--------------------------------------------------------------------------------
+Parasolid -> SE
+============================================================
+Dateiname: Y:\mas\JUNO_TEMP\4_JUNO_Numerical\Solidedge_play\Juno_Version2_1.x_t
+Parasolid-Dateiversion: 19.1.254
+Baugruppe 0 beginnen
+Gesamtteile :  14
+Baugruppen: 0
+Volumenkörper: 12
+Flächen:  2
+============================================================
+Volumenkörper 1 of 14 wird verarbeitet
+SE Part-Datei Y:\mas\JUNO_TEMP\4_JUNO_Numerical\Solidedge_play\Antenna1.par wurde erstellt
+Antenna1.par:1 wird platziert
+============================================================
+Volumenkörper 2 of 14 wird verarbeitet
+SE Part-Datei Y:\mas\JUNO_TEMP\4_JUNO_Numerical\Solidedge_play\Panel1.par wurde erstellt
+Panel1.par:1 wird platziert
+============================================================
+Volumenkörper 3 of 14 wird verarbeitet
+SE Part-Datei Y:\mas\JUNO_TEMP\4_JUNO_Numerical\Solidedge_play\Isolation1.par wurde erstellt
+Isolation1.par:1 wird platziert
+============================================================
+Volumenkörper 4 of 14 wird verarbeitet
+SE Part-Datei Y:\mas\JUNO_TEMP\4_JUNO_Numerical\Solidedge_play\Satellite.par wurde erstellt
+Satellite.par:1 wird platziert
+============================================================
+Volumenkörper 5 of 14 wird verarbeitet
+SE Part-Datei Y:\mas\JUNO_TEMP\4_JUNO_Numerical\Solidedge_play\Connection2.par wurde erstellt
+Connection2.par:1 wird platziert
+============================================================
+Volumenkörper 6 of 14 wird verarbeitet
+SE Part-Datei Y:\mas\JUNO_TEMP\4_JUNO_Numerical\Solidedge_play\Panel3.par wurde erstellt
+Panel3.par:1 wird platziert
+============================================================
+Volumenkörper 7 of 14 wird verarbeitet
+SE Part-Datei Y:\mas\JUNO_TEMP\4_JUNO_Numerical\Solidedge_play\Connection3.par wurde erstellt
+Connection3.par:1 wird platziert
+============================================================
+Volumenkörper 8 of 14 wird verarbeitet
+SE Part-Datei Y:\mas\JUNO_TEMP\4_JUNO_Numerical\Solidedge_play\Source1.par wurde erstellt
+Source1.par:1 wird platziert
+============================================================
+Volumenkörper 9 of 14 wird verarbeitet
+SE Part-Datei Y:\mas\JUNO_TEMP\4_JUNO_Numerical\Solidedge_play\Rad_Bound.par wurde erstellt
+Rad_Bound.par:1 wird platziert
+============================================================
+Volumenkörper 10 of 14 wird verarbeitet
+SE Part-Datei Y:\mas\JUNO_TEMP\4_JUNO_Numerical\Solidedge_play\Source2.par wurde erstellt
+Source2.par:1 wird platziert
+============================================================
+Volumenkörper 11 of 14 wird verarbeitet
+SE Part-Datei Y:\mas\JUNO_TEMP\4_JUNO_Numerical\Solidedge_play\Connection1.par wurde erstellt
+Connection1.par:1 wird platziert
+============================================================
+Volumenkörper 12 of 14 wird verarbeitet
+SE Part-Datei Y:\mas\JUNO_TEMP\4_JUNO_Numerical\Solidedge_play\Panel2.par wurde erstellt
+Panel2.par:1 wird platziert
+============================================================
+Volumenkörper 13 of 14 wird verarbeitet
+SE Part-Datei Y:\mas\JUNO_TEMP\4_JUNO_Numerical\Solidedge_play\Isolation2.par wurde erstellt
+Isolation2.par:1 wird platziert
+============================================================
+Volumenkörper 14 of 14 wird verarbeitet
+SE Part-Datei Y:\mas\JUNO_TEMP\4_JUNO_Numerical\Solidedge_play\Antenna2.par wurde erstellt
+Antenna2.par:1 wird platziert
+============================================================

@@ -1,0 +1,638 @@
+
+
+
+
+                            PURPOSE OF THIS DOCUMENT
+
+     This documentation is intended for anyone who desires to add a graphics
+device driver to DIGLIB.  It is assumed that the reader is proficient in FORTRAN
+or MACRO and has some knowledge of graphics.  In addition, the reader should
+become intimately familiar with the target graphics device.
+
+
+                                THE COMMERCIAL.
+
+     DIGLIB is a free product brought to you by Hal R.  Brand.  courtesy of Jack
+Frazer and Ted Michels.  Since DIGLIB was provided to you free, it is my sincere
+hope that DIGLIB device drivers will be freely circulated.  To aid in this
+effort, and to provide a central distribution facility, I request that debugged
+DIGLIB device drivers be fowarded to Hal Brand, L126 x26312 for distribution and
+maintenance.  Yes, that is right!  You write it, I'll distribute and maintain it
+to the best of my ability and available time.  Please send a floppy (single or
+dual density) with the graphic driver to Hal Brand L126.  I will make a copy and
+return your floppy ASAP.  Note also, that before embarking on an adventure
+through graphic device driver land, it will probably be very useful to check
+with Hal Brand x26312 to see if such a driver already exists, or whether there
+is a very similar driver which can be modified.  (It is nearly always easier to
+make minor modifications than to start from scratch.) END OF COMMERCIAL.
+GUIDE TO WRITING A DIGLIB GRAPHICS DRIVER                                 Page 2
+INTRODUCTION
+
+
+                                  INTRODUCTION
+
+     DIGLIB was written to be as device independent as possible.  Accordingly,
+it was assumed that the graphics device was only capable of performing two
+simple graphics primitives:  move and draw.  DIGLIB does, however, provide for
+some "extended" primitives such as:  set color, graphics input, and define
+color.  Because DIGLIB only uses move and draw, authors of graphics device
+drivers need not worry about character generation, line types, etc.  DIGLIB
+performs these functions using only move and draw.
+
+     DIGLIB graphics device drivers basically perform two functions:
+
+     1.  Formatting of graphics commands, and
+
+     2.  Outputing of the formatted graphics commands.
+
+Formatting of graphics commands is very device specific, and will not be
+discussed here.  See the programming manual for your graphics device for this
+information.
+
+     Output of the formatted graphics commands is, however, common among all
+DIGLIB drivers in the sense that all DIGLIB drivers either handle the I/O
+themselves, or pass of the formatted graphics commands to the operating system
+to be output.  All DIGLIB graphics device drivers that drive graphic terminals
+use the terminal I/O capability of the operating system to perform the output
+operation.  All the remaining RSX-11M graphics device drivers use the QIO system
+call to request RSX-11M to perform the output operation using an existing
+RSX-11M device driver.  Thus, those persons desiring to add a graphics device to
+DIGLIB under RSX-11M must have previously written, or obtained an appropriate
+RSX-11M device driver for the target graphics device.  Note:  a general purpose
+RSX-11M serial line driver is available from Hal R.  Brand x26313.
+
+     Most RT-11 graphics device drivers handle the I/O function themselves.
+This avoids the need to obtain or write a RT-11 device driver.
+GUIDE TO WRITING A DIGLIB GRAPHICS DRIVER                                 Page 3
+STANDARD DEVICE DRIVER FUNCTIONS
+
+
+                        STANDARD DEVICE DRIVER FUNCTIONS
+
+     DIGLIB device drivers must perform 7 basic graphics primitives:
+
+     1.  Initialize the graphics device and prepare it for graphics commands.
+
+     2.  Prepare a fresh plotting surface on the graphics device and reset the
+         drawing parameters to the "initial state".
+
+     3.  Move from the current (X,Y) position to a new (X,Y) position without
+         drawing a line.
+
+     4.  Draw a line from the current (X,Y) position to a new (X,Y) position (in
+         the current color).
+
+     5.  Transmit any graphics commands formatted, but not yet output to the
+         graphics device.
+
+     6.  Release the graphics device.
+
+     7.  Return to the caller information about this graphics device (Device
+         Characteristics Values).
+
+
+
+                            INITIALIZE - function 1
+
+     To initialize a graphics device, the graphics driver should first take
+exclusive control of that device on a multi-user system.  Then the device should
+be sent commands to prepare the device for the commands that the graphics driver
+will generate.  Commands should also be included to set any special parameters
+(i.e.  line types) the device may have to the proper values.  If possible, the
+initialize function should not erase the screen.  This will allow for multiple
+programs to all draw on the same "drawing surface".  Sometimes, to initialize
+the device requires the screen to be erased.  If that is the case, just document
+it as a feature.
+
+     On color devices, initialize should set the desired background color and
+foreground color for future drawing if possible.  In addition, for devices with
+definable color sets, initialize should set color 2 to be red, color 3 to be
+green, color 4 to be blue, color 5 to be yellow, color 6 to be magenta, and
+color 7 to be cyan.  Unless you definitely want a different
+foreground/background color scheme, color 0 (background) should be set to black,
+and color 1 (foreground) to white.
+
+     Initialize is also responsible for returning an error indicator when the
+device can not be selected, or some other problem exists.
+GUIDE TO WRITING A DIGLIB GRAPHICS DRIVER                                 Page 4
+STANDARD DEVICE DRIVER FUNCTIONS
+
+
+                            BEGIN PLOT - function 2
+
+     The begin plot function should erase the screen or (more generally) prepare
+a fresh plotting surface on the graphics device (i.e.  advance the page on a
+plotter, etc.).  In addition, it should set colors 0 to 7 to their proper
+default values (black, white, red, green, blue, yellow, magenta, cyan
+respectively).  It should also set the current drawing color to color 1.
+
+
+                       MOVE and DRAW - functions 3 and 4
+DIGLIB always works in centimeter coordinates as far as the graphics device
+drivers are concerned.  Thus all coordinates that flow into or out of the
+graphics device driver are in centimeters.  Also, DIGLIB performs clipping of
+all coordinates based on the device's Device Characteristics Values, eliminating
+all coordinates that lie outside the graphics devices accessable area.
+
+
+                              ENDPLT - function 5
+
+     It is often desirable to buffer the graphics commands before sending them
+to the graphics device.  In fact, a good size buffer will usually increase the
+graphics throughput because of the overhead of the operating system for I/O.
+The problem with buffering graphics commands is that some will almost always
+remain in the buffer after the last graphics subroutine has been called and the
+plot will be incomplete.  DIGLIB solves this problem by requiring the user to
+call ENDPLT.  ENDPLT then calls the graphics driver with function code 5.  The
+graphics driver should then send out the last buffer (even though it is not yet
+full).
+
+
+                          RELEASE DEVICE - function 6
+
+     Release device is the antithesis to initialize device.  The function of
+release device is to return the graphics device to its initial state, or atleast
+to something close to its initial state.  Release device should not erase the
+graphics (if possible).
+
+
+                   RETURN DEVICE CHARACTERISTICS - function 7
+
+     The definitions of each of the 8 device characteristics values is given in
+appendix A.  The 4 values "X axis length", "Y axis length", "X axis resolution",
+and "Y axis resolution" are simple to determine by consulting the graphics
+device specifications, or by measurement and calculation.  However, when using
+the measurement and calculation method, the following pitfall exists:
+
+     1.  Because the graphics device is out of adjustment, the X resolution and
+         the Y resolution appear different, and
+
+     2.  Due to roundoff and measurement errors, the product of the resolution
+         times the screen size when rounded is greater than the device's maximum
+         addressable point.
+
+GUIDE TO WRITING A DIGLIB GRAPHICS DRIVER                                 Page 5
+STANDARD DEVICE DRIVER FUNCTIONS
+
+
+     The problem with 1) is that when a 45 degree line is drawn, it will truly
+be drawn at 45 degrees, but the user will not think so because the line is
+jagging every once in a while along its length.  My solution to this problem is
+to set the "X axis resolution" and "Y axis resolution" to the same value unless
+it is specifically known that they should be different.  Lines drawn at 45
+degrees may not be exactly 45 degrees, but the user will think so, and so you
+are not plagued by users thinking the driver is sick!
+
+     The problem with 2) is that lines drawn at the supposed right and/or top of
+the screen get clipped, or worse, the device driver will get passed a coordinate
+that is outside the device's addressable range.
+
+     The solution to this problem is to average the X and Y resolution to get a
+single resolution for both X and Y unless it is specifically known that the X
+and Y resolution a different.  Then, using the device's maximum addressable
+points in X and Y, and the resolution, back calculate the axis lengths.
+
+     Example:
+         Measurement yields an X axis length of 15.7 centimeters and a Y axis
+         length of 10.4 cm.  The device coordinate ranges are 0 to 639 in X, and
+         0 to 419 in Y.  So:
+            X axis resolution is 40.7 graphic units per centimeter Y axis
+            resolution is 40.3 graphic units per cm.
+             averaging, we get 40.5 GU/CM.
+         Thus, we set:
+            X axis resolution = 40.5 GU/CM.
+            Y axis resolution = 40.5 GU/CM.
+            X axis length = 639/40.5 = 15.7778 CM.
+            Y axis length = 419/40.5 = 10.3457 CM.
+
+     The 8th returned value also requires some discussion.  This value is new to
+DIGLIB V3 and its support of hardware/software polygon fill.  For devices that
+do not support solid filled polygons, DIGLIB's polygon primitive GSPOLY contains
+a software polygon fill algorithm.  The algorithm can handle any polygon (but
+maybe not the way you want - intersecting polygons are of dubious value in my
+opinion).  The 8th device characteristic value only pertains to the software
+fill algorithm.  It tells the software fill algorithm just how dense to draw the
+horizontal lines that fill the polygon.  You should choose this value via trial
+and error.  I suggest choosing it large and working down.  The way to get a
+first guess is to estimate the width of the plotter pen in resolution (graphics)
+units.  Thus, for a pen that drew a line 2 mm.  thick, on a plotter with 0.5 mm.
+per graphics unit, a good first guess would be 2.0/0.5 = 4.  Thus, drawing every
+4th line (skipping 3) should still produce an acceptable solid fill.  Note that
+this parameter should always be one (1) when the size of the (virtual) pen is 1
+graphic unit as is the case with all raster scan devices.
+
+     Since this 8th device characteristic value is new, DEVSEL will
+automatically default it to be 1 if the device driver returns only 7 values.
+However, this is a backward compatibility feature, and all new DIGLIB device
+drivers should return all 8 values!
+GUIDE TO WRITING A DIGLIB GRAPHICS DRIVER                                 Page 6
+EXTENDED DIGLIB DEVICE DRIVER FUNCTIONS
+
+
+                    EXTENDED DIGLIB DEVICE DRIVER FUNCTIONS
+
+
+
+     In addition to the 7 basic graphic primitives, DIGLIB defines 6 extended
+functions that you may optionally implement.  DIGLIB graphics device drivers may
+implement none, all, or any combination of these functions.
+
+     1.  8) Set current drawing color or intensity.
+
+     2.  9) Graphics input with pick character.
+
+     3.  10) Define a color numbers visual value using RGB coordinates.
+
+     4.  11) Define a color numbers visual value using HLS coordinates.
+
+     5.  12) Graphics input with device dependant "botton" input.
+
+     6.  1024+N) Draw a solid filled polygon of N sides
+
+
+     I suggest implementing 8) and either 9) or 12) if possible.  DIGLIB has a
+software polygon fill algorithm, so you can get filled polygons regardless of
+whether you implement the polygon fill section.  However, hardware (firmware)
+fills are typically much faster.
+
+
+                             SET COLOR - function 8
+
+     DIGLIB uses numbers to express the color it wants to use.  The DIGLIB color
+convention is:
+        0       is the background color (usually black)
+        1       is the primary foreground color (usually white if possible)
+        2==>n   are the secondary foreground colors
+The default colors are:
+        0       Black                   4       Blue
+        1       White                   5       Yellow
+        2       Red                     6       Magenta
+        3       Green                   7       Cyan
+If your graphics device has fixed colors, then the graphics driver should map
+the DIGLIB colors numbers into the graphics devices color numbers so that the
+proper color correspondence exists.
+
+
+                GRAPHICS INPUT WITH PICK CHARACTER - function 9
+
+     This function requires a keyboard, since it must return a "pick character".
+This is no problem with graphics terminals, but with graphics heads, there is
+often no keyboard for getting the "pick character".  This can be handled by
+using the interactive terminal keyboard.  I admit this is a kludge, but there
+seems no alternative.
+
+     To perform a graphics input with pick character operation, the following
+steps are necessary:
+GUIDE TO WRITING A DIGLIB GRAPHICS DRIVER                                 Page 7
+EXTENDED DIGLIB DEVICE DRIVER FUNCTIONS
+
+
+     1.  Make the graphic cursor visible if it is not always visible,
+
+     2.  Allow the user to position the graphic cursor,
+
+     3.  When the user strikes a character at the graphics keyboard, read the
+         graphic cursor position,
+
+     4.  Return the character struck, the X position (in cm.) and the Y position
+         (in cm.) of the graphic cursor, and
+
+     5.  Make the graphic cursor invisible if possible.
+
+If your graphic device does not have a keyboard, then the user's terminal is the
+logical choice.
+
+
+                      DEFINE COLOR USING RGB - function 10
+
+     DIGLIB provides a mechanism for selecting the color associated with by
+DIGLIB color number using the (Red, Green, Blue) color coordinate system.  Most
+devices do not allow the color associated with a particular color number to be
+defined.  However, some devices such as the Lexidata 3400, Ramtek 9400, AED 512,
+etc.  have this option.  DIGLIB uses a percentage of full intensity for each of
+the three colors.  Thus, the graphics driver receives the color number and three
+numbers between 0 and 100.  These percentages will probably have to be converted
+to the units your particular graphics device wants.
+
+
+                      DEFINE COLOR USING HLS - function 11
+
+     DIGLIB also provides a mechanism for selecting the color associated with
+any DIGLIB color number using the (Hue, Lightness, Saturation) color coordinate
+system.  For more information concerning the HLS color system, see the SIGGRAPH
+core standard manuals, or see the Tektronix 4027 literature.  There are also
+numerous other sources of information on the HLS color system.
+
+     DIGLIB uses the standard HLS coordinates (see appendix A).
+
+
+                 GRAPHICS INPUT WITH BUTTON INPUT - function 12
+
+     This form of graphics input is designed for graphics devices that use mice,
+digitizers, joysticks, or the like.  Theoritically, the pointing device contains
+a set of buttons, any or all of which may be "pressed" or otherwise caused to
+change binary state.  When a state change occurs, the graphics input operation
+is concluded, and the new state of the buttons is returned.  The buttons are
+numbered from 1 to N for a N button device.  The state of each button is
+represented by a bit in the "button state" returned variable.  The
+correspondance between buttons and bits is:
+        Bit = 2**(n-1)  Where n is the button number.
+A bit value of one means the button is "set" or "pressed", and zero means the
+corresponding button is "clear" or "not pressed".
+
+     For devices that support both graphics input with "pick character" and
+graphics input with "button" input, it is desirable to use different cursors if
+possible.  This will allow the user to determine what action is necessary to
+GUIDE TO WRITING A DIGLIB GRAPHICS DRIVER                                 Page 8
+EXTENDED DIGLIB DEVICE DRIVER FUNCTIONS
+
+
+terminate the graphics input.
+
+     To perform a graphics input with button input operation, the following
+steps are necessary:
+
+     1.  Make the graphic (button) cursor visible if it is not always visible,
+
+     2.  Allow the user to position the graphic cursor,
+
+     3.  When the selects the current position by pressing a "button", read the
+         graphic cursor position,
+
+     4.  Return the button state after the button was pressed, the X position
+         (in cm.) and the Y position (in cm.) of the graphic cursor, and
+
+     5.  Make the graphic (button) cursor invisible if possible.
+
+
+
+                  DRAW SOLID FILLED POLYGON - function 1024+N
+
+     The number of vertices are passed in as a part of the function code.  I
+realize this is unorthodox, but everything else requires too much overhead.  Two
+sophistications of hardware fill are suppored by DIGLIB.  The first is the
+simple "convex polygon fill".  The second is the "any polygon fill".  Some
+devices can only handle convex (non-intersecting) polygons.  If you set the
+DEVICE CHARACTERISTICS bit telling DIGLIB that the device can only handle convex
+polygons, DIGLIB will supply software fill for the concave polygons, and call
+the driver for the convex polygons.
+
+
+               DEVICE CHARACTERISTICS and the EXTENDED FUNCTIONS
+
+     All implementators of primitives 8, 10, 11 and/or 1024+N need be aware of
+the interaction of these primitives with the Device Characteristics Values
+(primitive 7).  Device characteristics value number 6 is the number of
+foreground colors.  This includes color 1 but not color 0.  All devices have
+atleast one foreground color.  In addition, device characteristics value 7 has
+the 2 bit set if the device is capable of writing in the background color (color
+0).  Pen plotters and storage tubes are not capable of writing in the background
+color, but most other graphic devices can handle this function.  Let's take the
+example of the Tektronix 4027 terminal to see how the device characteristics
+values (color only) are set.  A 4027 has the ability to display 8 colors
+simultaneously, out of a palate of 64 total colors.  In addition, the 4027 has a
+programmable Look-Up Table (LUT) so that colors may be defined.  Reading the
+manual, we find that colors may be define by both RGB and HLS.  Thus we would:
+
+     1.  Implement primitive 8,
+
+     2.  Implement primitives 10 and 11,
+
+     3.  Set device characteristics value 6 to 7 foreground colors (one of the 8
+         colors must be background), and
+GUIDE TO WRITING A DIGLIB GRAPHICS DRIVER                                 Page 9
+EXTENDED DIGLIB DEVICE DRIVER FUNCTIONS
+
+
+     4.  Set device characteristics value 7 to 1+4+32+64+128.
+
+Note that we added 4 to the value of device characteristics value 7.  This
+reflects the fact that the 4027 can draw in the background color (erasing
+color).
+
+     If we were to implement the polygon fill section of the 4027 driver, we
+would set bit 7 of the device characteristics bit (value 256) and leave bit 8
+(value 512) clear because the Tek.  4027 can handle polygons all polygons.
+GUIDE TO WRITING A DIGLIB GRAPHICS DRIVER                                Page 10
+DIGLIB DRIVERS - BEFORE YOU START CODING
+
+
+     Before you start writing a DIGLIB device driver, you should first arm
+yourself with a good programmers manual for the target graphics device.  Then,
+find a DIGLIB driver for a similar device and plagiarize, plagiarize,
+plagiarize!  Make sure you don't just kluge it though.  However, the RT and RSX
+drivers have built in buffering subroutines that can be easily "lifted" and the
+VAX/VMS drivers have a common set of terminal buffering subroutines that I
+suggest you use if possible.
+GUIDE TO WRITING A DIGLIB GRAPHICS DRIVER                                Page 11
+DIGLIB GRAPHICS DRIVER EXAMPLES
+
+
+                        DIGLIB GRAPHICS DRIVER EXAMPLES
+
+
+     The file "SKELTN.FTN" gives a skeleton graphics device driver written in
+FORTRAN that may be edited with an editor and used as a starting point for
+writing a DIGLIB graphics device driver.  However, there is no reason that this
+skeleton need be used at all, nor even that the device driver be written in
+FORTRAN as opposed to MACRO.  In addition to "SKELTN.FTN", I have included the
+file "GD4025.FOR" which is a working Tektronix 4025 driver for the VAX.
+
+
+                                      NOTE
+
+               By convention, all graphics  device  driver  names
+               start with the letters "GD" for Graphic Driver.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                   APPENDIX A
+
+                           GRAPHICS DRIVER ARGUMENTS
+
+
+The graphics device driver has 3 arguments:
+
+     1.  The graphics function to be performed,
+
+     2.  A real array whose meaning is dependant on the graphics function to  be
+         performed, and
+
+     3.  A real array whose meaning is dependant on the graphics function to  be
+         performed.
+
+   INPUT
+
+        IFXN            * TYPE: INTEGER CONSTANT OR VARIABLE.
+                        * THE GRAPHICS FUNCTION TO PERFORM:
+                            1 ==> INITIALIZE THE GRAPHICS DEVICE TO PREPARE IT
+                                   FOR GRAPHICS (AND ON MULTI-USER SYSTEMS, TAKE
+                                   EXCLUSIVE CONTROL OF THE DEVICE.)
+                            2 ==> OBTAIN A FRESH PLOTTING SURFACE ON THE
+                                   GRAPHICS DEVICE.
+                            3 ==> MOVE TO A NEW POSITION (X,Y), WHERE THE UNITS
+                                   OF BOTH X AND Y ARE IN CENTIMETERS.
+                            4 ==> DRAW A LINE TO THE POSITION (X,Y), WHERE THE
+                                   UNITS OF X AND Y ARE IN CENTIMETERS.
+                            5 ==> TRANSMIT ANY BUFFERED GRAPHICS COMMANDS THAT
+                                   HAVE NOT YET BEEN TRANSMITTED TO THE
+                                   GRAPHICS DEVICE.
+                            6 ==> RELEASE CONTROL OF THE GRAPHICS DEVICE.
+                            7 ==> RETURN TO THE CALLER THE DEVICE
+                                   CHARACTERISTICS OF THIS DEVICE.
+                            8 ==> SET THE CURRENT DRAWING COLOR.
+                            9 ==> PERFORM A GRAPHICS INPUT WITH PICK CHARACTER
+                                   OPERATION, RETURNING THE USER SELECTED
+                                   LOCATION (X,Y) WITH X AND Y SPECIFIED IN
+                                   CENTIMETERS.
+                           10 ==> SET THE VISUAL COLOR ASSOCIATED WITH A
+                                   SPECIFIED COLOR NUMBER TO THE RGB VALUE
+                                   PROVIDED.
+                           11 ==> SET THE VISUAL COLOR ASSOCIATED WITH A
+                                   SPECIFIED COLOR NUMBER TO THE HLS VALUE
+                                   PROVIDED.
+                        1024+N==> DRAW FILLED POLYGON HAVING N SIDES.
+
+        XA              * TYPE: REAL ARRAY.
+                                                                        Page A-2
+
+
+
+                        * DEPENDANT OF THE GRAPHICS FUNCTION GIVEN BY "IFXN".
+                            1 ==> XA(1) IS RT-11 CHANNAL NUMBER ON WHICH
+                                   TO PERFORM I/O, OR RSX-11M LOGICAL UNIT
+                                   NUMBER ON WHICH TO PERFORM I/O.
+                                  XA(2) --> XA(7) UNUSED.
+                            2 ==> XA(1) --> XA(7) UNUSED.
+                            3 ==> XA(1) IS THE X COORDINATE IN CM. FOR THE
+                                   MOVE OPERATION.
+                                  XA(2) --> XA(7) UNUSED.
+                            4 ==> XA(1) IS THE X COORDINATE IN CM. FOR THE
+                                   DRAW OPERATION.
+                                  XA(2) --> XA(7) UNUSED.
+                            5 ==> XA(1) --> XA(7) UNUSED.
+                            6 ==> XA(1) --> XA(7) UNUSED.
+                            7 ==> XA(1) --> XA(7) UNUSED.
+                            8 ==> XA(1) IS COLOR FOR SUBSEQUENT LINES.
+                                  XA(2) --> XA(7) UNUSED.
+                            9 ==> XA(1) --> XA(7) UNUSED.
+                           10 ==> XA(1) IS THE COLOR TO DEFINE.
+                           11 ==> XA(1) IS THE COLOR TO DEFINE.
+                           12 ==> XA(1) --> XA(7) UNUSED.
+                       1024+N ==> XA(1) --> XA(N) X VERTICES OF POLYGON.
+
+        YA              * TYPE: REAL ARRAY
+                        * DEPENDANT OF THE GRAPHICS FUNCTION GIVEN BY "IFXN".
+                            1 ==> YA(1) IS THE ERROR FLAG FOR DEVICE SELECTION:
+                                         0 ==> NO ERRORS
+                                        >0 ==> ERROR (DEVICE SPECIFIC)
+                                  YA(2) --> YA(3) UNUSED.
+                            2 ==> YA(1) --> YA(3) UNUSED.
+                            3 ==> YA(1) IS THE Y COORDINATE IN CM. FOR THE
+                                   MOVE OPERATION.
+                                  YA(2) --> YA(3) UNUSED.
+                            4 ==> YA(1) IS THE Y COORDINATE IN CM. FOR THE
+                                   DRAW OPERATION.
+                                  YA(2) --> YA(3) UNUSED.
+                            5 ==> YA(1) --> YA(3) UNUSED.
+                            6 ==> YA(1) --> YA(3) UNUSED.
+                            7 ==> YA(1) --> YA(3) UNUSED.
+                            8 ==> YA(1) --> YA(3) UNUSED.
+                            9 ==> YA(1) --> YA(3) UNUSED.
+                           10 ==> YA(1) IS % RED COMPONENT OF COLOR.
+                                  YA(2) IS % GREEN COMPONENT OF COLOR.
+                                  YA(3) IS % BLUE COMPONENT OF COLOR.
+                           11 ==> YA(1) IS THE HUE (0-360).
+                                  YA(2) IS THE LIGHTNESS (0-100).
+                                  YA(3) IS THE SATURATION (0-100).
+                           12 ==> YA(1) --> YA(3) UNUSED.
+                       1024+N ==> YA(1) --> YA(N) Y VERTICES OF POLYGON.
+
+   OUTPUT
+
+        XA              * TYPE: REAL ARRAY.
+                        * DEPENDANT OF THE GRAPHICS FUNCTION GIVEN BY "IFXN".
+                            1 ==> XA(1) --> XA(7) UNUSED.
+                            2 ==> XA(1) --> XA(7) UNUSED.
+                                                                        Page A-3
+
+
+
+                            3 ==> XA(1) --> XA(7) UNUSED.
+                            4 ==> XA(1) --> XA(7) UNUSED.
+                            5 ==> XA(1) --> XA(7) UNUSED.
+                            6 ==> XA(1) --> XA(7) UNUSED.
+                            7 ==> XA(1) --> XA(7) ARE SET TO THIS DEVICES
+                                   CHARACTERISTIC WORDS:
+                                   XA(1) = DEVICE ID. (A UNIQUE DEVICE NUMBER
+                                           OBTAINED FROM HAL BRAND X26312.
+                                   XA(2) = X AXIS LENGTH OF THIS DEVICE IN CM.
+                                   XA(3) = Y AXIS LENGTH IN CM.
+                                   XA(4) = X AXIS RESOLUTION IN GRAPHICS UNITS
+                                           (GU) PER CENTIMETER.
+                                   XA(5) = Y AXIS RESOLUTION IN GU/CM.
+                                   XA(6) = NUMBER OF AVAILABLE FOREGROUND
+                                           COLORS ON THIS DEVICE.
+                                   XA(7) = DEVICE CHARACTERISTICS BITS.
+                                           THE SUM OF:
+                                              0 IF STROKE (PLOTTER) DEVICE.
+                                              1 IF RASTER DEVICE.
+                                              2 IF DVST (STORAGE TUBE)
+                                              3 PRINTER/PLOTTER
+                                              4 IF DRAWING IN THE BACKGROUND
+                                                 COLOR (COLOR 0) IS AVAILABLE.
+                                              8 IF DEVICE IS A HARDCOPY DEVICE.
+                                             16 IF DEVICE IS A SHAREABLE
+                                                 DEVICE.
+                                             32 DEVICE'S COLORS ARE HLS
+                                                 SELECTABLE.
+                                             64 DEVICE'S COLORS ARE RGB
+                                                 SELECTABLE.
+                                            128 GRAPHICS INPUT WITH "PICK
+                                                 CHARACTER" IS AVAILABLE.
+                                            256 DEVICE DRAWS FILLED POLYGONS.
+                                            512 DEVICE REQUIRES CONVEX
+                                                 POLYGONS.
+                                           1024 GRAPHICS INPUT WITH BUTTONS
+                                                 IS AVAILABLE.
+                                  XA(8) = 1 + THE NUMBER OF SCAN LINES TO SKIP
+                                           WHILE DOING A SOFTWARE POLYGON FILL.
+                                           THIS VALUE IS USED TO TAKE ACCOUNT
+                                           OF THE FACT THAT PLOTTERS HAVE PENS
+                                           THAT ARE TYPICALLY MANY TIMES
+                                           THICKER THAN THE PLOTTER STEP SIZE.
+                                           THIS PARAMETER SHOULD BE ONE FOR
+                                           ALL RASTER DEVICES.   NOTE: FOR
+                                           BACKWARDS COMPATIBILITY,  THIS
+                                           VALUE IS DEFAULTED TO ONE, SO ANY
+                                           DRIVER THAT RETURNS ON THE FIRST 7
+                                           ARRAY ELEMENTS WILL GET THIS VALUE
+                                           SET TO 1.
+                            8 ==> XA(1) = PICK CHARACTER FROM GRAPHICS DEVICE
+                                           OR FROM TERMINAL.
+                                  XA(2) = X COORDINATE SELECTED IN CM.
+                                  XA(3) = Y COORDINATE SELECTED IN CM.
+                                  XA(4) --> XA(7) UNUSED.
+                            9 ==> XA(1) --> XA(7) UNUSED.
+                                                                        Page A-4
+
+
+
+                           10 ==> XA(1) --> XA(7) UNUSED.
+                           11 ==> XA(1) --> XA(7) UNUSED.
+                           12 ==> XA(1) = BUTTON BITS FROM GRAPHICS DEVICE
+                                  XA(2) = X COORDINATE SELECTED IN CM.
+                                  XA(3) = Y COORDINATE SELECTED IN CM.
+                                  XA(4) --> XA(7) UNUSED.
+                       1024+N ==> XA(1) --> XA(N) UNUSED.

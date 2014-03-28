@@ -1,0 +1,228 @@
+ *
+ * This is CONCEPT back end, Version 10.0
+ *       Single Processor Version
+ * (c) Copyright 1984-2011 TUHH E-18
+ *
+  
+  
+   The current data file  
+   =====================
+  
+1.1  characterization of the structure                                          
+ Testcube - V0 mesh                                                             
+2.1   symmetry with respect to the xz plane, yz plane or both                   
+     0                                                                          
+2.2   number of wires, id. ground, segments per wavelength, coating             
+     2     0     8     0                                                        
+2.30  wire 1   : coordinates                                                    
+    0.0000     0.0000 0.5000         0.0000     0.0000     1.5000               
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY                     
+    1.0000    3                                                                 
+2.30  wire 2   : coordinates                                                    
+    0.0000 0.5000         0.0000     0.0000     1.5000     0.0000               
+2.31  wire 2   : radius, no. of basis functions, RB, EP, MY                     
+    1.0000    3                                                                 
+2.6   check wire grid                                                           
+     1                                                                          
+3.1  print of currents                                                          
+     1                                                                          
+3.2  excitation                                                                 
+     1                                                                          
+3.3  generator position, internal resistance (excitation=1)                     
+m1       0.000                                                                  
+4.1  representation of frequency(ies) (1-6)                                     
+     1                                                                          
+4.2  basic frequency                                                            
+ 1.0000000                                                                      
+5.1  skin effect (1/0)                                                          
+     1                                                                          
+5.2  number: conductivity value(s), observation point(s) E tang                 
+     1     0                                                                    
+5.3  conductivity value(s) in S/m (max. 3 per line)                             
+ 0.5000E+08                                                                     
+5.4  conductivity domain(s)                                                     
+        2                                                                       
+6.1  number of load impedances                                                  
+     0                                                                          
+7.1  current distribution on wires                                              
+     0                                                                          
+7.3  number of currents at discrete points                                      
+     0                                                                          
+9.0  rcs (0/1)                                                                  
+     0                                                                          
+9.1  number of field points                                                     
+     0                                                                          
+10.3  total number of "cable wires"                                             
+     0                                                                          
+11.1  surface currents (0/1/2/3/4)                                              
+     1                                                                          
+11.10 check surface grid (0/1)                                                  
+     1                                                                          
+11.11 physical optics (0/1)                                                     
+     0                                                                          
+12.1  direct:11,12,13 spec. direct solv.:21,22 iter. solver:31,32,33 aca/svd:41 
+    12                                                                          
+  
+  
+  
+  Wire types computed by the program: 
+  ===========================================
+  
+  wire number:       1 ,  identification:      15
+  wire number:       2 ,  identification:      15
+  
+  
+  
+ Wire data
+ =========
+  
+ Connections at the bottom with other and image wires
+ -> 0 will be printed.
+ Pos. direction of current flow away from node point (kinks).
+ -> neg. wire number
+ Pos. direction of current flow towards the node point 
+ -> pos. wire number
+ Connection with surface patch
+ -> 55000+number of surface patch is printed
+ Wire number:            1
+ 
+ ---------------------------------------------------------------------
+      Xa          Ya           Za         Xe          Ye           Ze
+     0.000       0.000      0.5000       0.000       0.000       1.500    
+ Radius (mm):  1.000       ; no. of basisf. :   3   ; length (m):   1.000    
+ Wire number(s) of the connection(s) at the beginning :     10000013
+ No connection at the end
+  
+ Wire number:            2
+ 
+ ---------------------------------------------------------------------
+      Xa          Ya           Za         Xe          Ye           Ze
+     0.000      0.5000       0.000       0.000       1.500       0.000    
+ Radius (mm):  1.000       ; no. of basisf. :   3   ; length (m):   1.000    
+ Wire number(s) of the connection(s) at the beginning :     10000001
+ No connection at the end
+  
+ 
+
+  Frequency of step:     1           0.10000E+01 MHz; 
+  Total number of wire current amplitudes:            6
+  Total number of patch current amplitudes:           44
+  Total number of unknowns:           50
+  
+  Generator at the middle of wire   1
+  ------------------------------------
+  
+                          Real part    imag. part      magnitude     phase (degrees)
+  Input impedance (Ohm): 0.34458E-01 -0.34258E+05  0.34258E+05 -0.90000E+02
+
+  Internal resist.:   0.0000000E+00  +j   0.0000000E+00  Ohm
+  
+  Input power:   1.4680685E-11  Watt
+  
+ 
+  Current distribution on   1. wire in A (  3 current functions)
+  ------------------------------------------------------------
+    Real part       imag. part      magnitude     phase (degees)  wire coord. (m)   
+  0.35465E-10     0.27406E-04     0.27406E-04     0.90000E+02   0.25000E+00
+  0.29361E-10     0.29190E-04     0.29190E-04     0.90000E+02   0.50000E+00
+  0.16967E-10     0.14475E-04     0.14475E-04     0.90000E+02   0.75000E+00
+ 
+  Current distribution on   2. wire in A (  3 current functions)
+  ------------------------------------------------------------
+    Real part       imag. part      magnitude     phase (degees)  wire coord. (m)   
+ -0.18821E-11    -0.80622E-06     0.80622E-06    -0.90000E+02   0.25000E+00
+ -0.14749E-11    -0.61485E-06     0.61485E-06    -0.90000E+02   0.50000E+00
+ -0.83622E-12    -0.34289E-06     0.34289E-06    -0.90000E+02   0.75000E+00
+  
+  
+                          Surface currents (A/m)
+                          ----------------------
+        Element no.       real part       imag. part     magnitude     phase (degrees)
+  
+                          Space number:            0
+  
+     1    25 =>    13   0.55109E-11     -0.68818E-05    0.68818E-05   -0.90000E+02 Current in A  
+     2    25 =>    14  -0.27156E-10     -0.66130E-05    0.66130E-05   -0.90000E+02 Current in A  
+     3    25 =>    15   0.55109E-11     -0.68818E-05    0.68818E-05   -0.90000E+02 Current in A  
+     4    25 =>    16  -0.19395E-10     -0.66814E-05    0.66814E-05   -0.90000E+02 Current in A  
+     5    26 =>     1  -0.27596E-10     -0.60082E-06    0.60082E-06   -0.90003E+02 Current in A  
+     6    26 =>     2   0.38363E-10      0.13810E-05    0.13810E-05    0.89998E+02 Current in A  
+     7    26 =>     3  -0.47178E-10     -0.12984E-05    0.12984E-05   -0.90002E+02 Current in A  
+     8    26 =>     4   0.38363E-10      0.13810E-05    0.13810E-05    0.89998E+02 Current in A  
+     9    24 =>    23   0.48767E-10      0.21365E-05    0.21365E-05    0.89999E+02               
+    10    24 =>     2  -0.43079E-10      0.84518E-07    0.84518E-07    0.90029E+02               
+    11    24 =>    21   0.13709E-10     -0.10678E-05    0.10678E-05   -0.89999E+02               
+    12    23 =>    15   0.42917E-10      0.42425E-05    0.42425E-05    0.89999E+02               
+    13    23 =>    22  -0.16872E-10     -0.22210E-05    0.22210E-05   -0.90000E+02               
+    14    22 =>    20  -0.31326E-11      0.31935E-07    0.31935E-07    0.90006E+02               
+    15    22 =>    21  -0.11212E-10     -0.10632E-05    0.10632E-05   -0.90001E+02               
+    16    21 =>     6   0.74399E-11     -0.78429E-06    0.78429E-06   -0.89999E+02               
+    17    20 =>    19   0.79417E-11      0.22714E-05    0.22714E-05    0.90000E+02               
+    18    20 =>    17  -0.11274E-10     -0.10214E-05    0.10214E-05   -0.90001E+02               
+    19    19 =>    16   0.75217E-11      0.43781E-05    0.43781E-05    0.90000E+02               
+    20    19 =>    18  -0.79417E-11     -0.22714E-05    0.22714E-05   -0.90000E+02               
+    21    18 =>     9   0.31326E-11     -0.31935E-07    0.31935E-07   -0.89994E+02               
+    22    18 =>    17  -0.11274E-10     -0.10214E-05    0.10214E-05   -0.90001E+02               
+    23    17 =>     5  -0.10479E-10     -0.71742E-06    0.71742E-06   -0.90001E+02               
+    24    16 =>    13  -0.11891E-10      0.47925E-07    0.47925E-07    0.90014E+02               
+    25    16 =>    15  -0.11891E-10      0.47925E-07    0.47925E-07    0.90014E+02               
+    26    15 =>    14   0.49768E-10     -0.33575E-06    0.33575E-06   -0.89992E+02               
+    27    14 =>     3   0.38505E-10     -0.47270E-05    0.47270E-05   -0.90000E+02               
+    28    14 =>    13  -0.49768E-10      0.33575E-06    0.33575E-06    0.90008E+02               
+    29    13 =>    12  -0.42917E-10     -0.42425E-05    0.42425E-05   -0.90001E+02               
+    30    12 =>     9  -0.16872E-10     -0.22210E-05    0.22210E-05   -0.90000E+02               
+    31    12 =>    11  -0.48767E-10     -0.21365E-05    0.21365E-05   -0.90001E+02               
+    32    11 =>     4  -0.43079E-10      0.84518E-07    0.84518E-07    0.90029E+02               
+    33    11 =>    10   0.13709E-10     -0.10678E-05    0.10678E-05   -0.89999E+02               
+    34    10 =>     8   0.74399E-11     -0.78429E-06    0.78429E-06   -0.89999E+02               
+    35    10 =>     9   0.11212E-10      0.10632E-05    0.10632E-05    0.89999E+02               
+    36     8 =>     7   0.22604E-10     -0.17659E-06    0.17659E-06   -0.89993E+02               
+    37     8 =>     5   0.96894E-12      0.25838E-07    0.25838E-07    0.89998E+02               
+    38     7 =>     6  -0.22604E-10      0.17659E-06    0.17659E-06    0.90007E+02               
+    39     7 =>     1   0.41305E-10      0.42068E-06    0.42068E-06    0.89994E+02               
+    40     6 =>     5   0.96894E-12      0.25838E-07    0.25838E-07    0.89998E+02               
+    41     4 =>     1  -0.13749E-10     -0.32976E-06    0.32976E-06   -0.90002E+02               
+    42     4 =>     3   0.85626E-11      0.34932E-05    0.34932E-05    0.90000E+02               
+    43     3 =>     2  -0.85626E-11     -0.34932E-05    0.34932E-05   -0.90000E+02               
+    44     2 =>     1  -0.13749E-10     -0.32976E-06    0.32976E-06   -0.90002E+02               
+  
+  
+                         Normal component of E
+                         ---------------------
+    Number    real part      imag. part      magnitude     phase (degrees)
+  
+                         Space number:            0
+  
+     1     -0.46483E-01     0.41239E-06     0.46483E-01     0.18000E+03
+     2     -0.55459E-01     0.75386E-07     0.55459E-01     0.18000E+03
+     3     -0.78032E-01    -0.24708E-06     0.78032E-01    -0.18000E+03
+     4     -0.55459E-01     0.75386E-07     0.55459E-01     0.18000E+03
+     5     -0.48955E-01     0.65496E-06     0.48955E-01     0.18000E+03
+     6     -0.48726E-01     0.66355E-06     0.48726E-01     0.18000E+03
+     7     -0.48204E-01     0.67138E-06     0.48204E-01     0.18000E+03
+     8     -0.48726E-01     0.66355E-06     0.48726E-01     0.18000E+03
+     9     -0.61159E-01     0.62531E-07     0.61159E-01     0.18000E+03
+    10     -0.51950E-01     0.40801E-06     0.51950E-01     0.18000E+03
+    11     -0.60411E-01     0.78982E-07     0.60411E-01     0.18000E+03
+    12     -0.83501E-01    -0.25143E-06     0.83501E-01    -0.18000E+03
+    13     -0.17026E+00    -0.34720E-06     0.17026E+00    -0.18000E+03
+    14     -0.16974E+00    -0.33943E-06     0.16974E+00    -0.18000E+03
+    15     -0.17026E+00    -0.34720E-06     0.17026E+00    -0.18000E+03
+    16     -0.17048E+00    -0.35543E-06     0.17048E+00    -0.18000E+03
+    17     -0.52275E-01     0.39287E-06     0.52275E-01     0.18000E+03
+    18     -0.61257E-01     0.55827E-07     0.61257E-01     0.18000E+03
+    19     -0.83827E-01    -0.26672E-06     0.83827E-01    -0.18000E+03
+    20     -0.61257E-01     0.55827E-07     0.61257E-01     0.18000E+03
+    21     -0.51950E-01     0.40801E-06     0.51950E-01     0.18000E+03
+    22     -0.61159E-01     0.62531E-07     0.61159E-01     0.18000E+03
+    23     -0.83501E-01    -0.25143E-06     0.83501E-01    -0.18000E+03
+    24     -0.60411E-01     0.78982E-07     0.60411E-01     0.18000E+03
+ 
+ CONCEPT Timings:
+
+ Setup equation system (s)...................            0
+ Solve equation system (s)...................            0
+ Cleanup (s).................................            0
+ 
+ CONCEPT terminated normally.
+

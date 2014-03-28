@@ -1,0 +1,134 @@
+
+function [AA,EE,HH,SS]=FieldFarConcept(ant,Op,er,Opt,Num)
+
+% [AA,EE,HH,SS]=FieldFar(Ant,Op,er) calculates far field generated 
+% by the currents Op.Curr and Op.ConceptCurr excited on the given antenna system.
+% The returned field vectors AA, EE and HH do not take into account
+% the spherical wave factor exp(-j*k*r)/r, which is a function of 
+% the distance r from the origin. So the following vectors are
+% actually returned:
+%   
+%   AA = mu/(4*pi) Int I(r') exp(j*k*er.r') ds'
+%          
+%   EE = - k/(w*eps) * er x HH
+%
+%   HH = - j*k/mu * er x AA
+%
+%   SS = 1/2 EE x HH* = k/(2*w*eps) * |HH|^2 * er
+%
+% The quantities are calculated for the radiation directions
+% defined in er by rows. er is m x 3, where m is the number
+% of directions requested. AA, EE and HH are arrays the same size 
+% as er, containing the vectors as defined above in the corresponding 
+% rows. SS actually not returns vectors but amplitudes, i.e. the 
+% components er.SS=k/(2*w*eps)*|HH|^2 for each given direction,
+% so SS is m x 1.
+% 
+% For reasons mentioned above the proper complex field vectors can
+% be determined from the corresponding returned quantities by:
+%
+%   A = exp(-j*k*r)/r * AA
+%   E = exp(-j*k*r)/r * EE
+%   H = exp(-j*k*r)/r * HH
+%   S = exp(2*Im(k)*r)/r^2 * SS  
+%
+% The time-average power flow P through the unit solid angle is then 
+% easily calculated by (Im(k)<0 represents attenuation):
+%  
+%   P = real(r^2 * S) = real(exp(2*Im(k)*r) * SS)
+%
+%   Opt offers the possibility to compute only the magnitude of the
+%   Poynting flux:
+%
+% SS=FieldFar(Ant,Op,er,'SS') returns only SS.
+%   Num==1:  Numerical Solution
+%   Num==0: Analytical solution
+
+w=2*pi*Op.Freq; % omega
+
+[k,eps,mu]=Kepsmu(Op);
+
+er=er./repmat(Mag(er,2),[1,3]);  % ensure unit vectors
+
+Ner=size(er,1);  % number of directions
+
+AA=zeros(nr,3);
+
+Nsegs=size(Ant.Desc,1);
+
+if (nargin<5)
+  Num=1;    % numerical
+end % if
+
+% ensure ant is in the correct format:
+
+ant=Asap2Concept2(ant);
+
+% vector potential
+
+% integal
+if(Num==1)
+    for s=1:Nsegs  % for all segnents   
+        r1=ant.Geom(Ant.Desc(s,1),:);
+        r2=ant.basecoord1(s,:);
+        r3=ant.basecoord2(s,:);
+        r4=ant.basecoord3(s,:);
+        r5=ant.Geom(Ant.Desc(s,2),:);
+        
+        % Length of segment.
+        
+        L=ant.length(s);        
+        
+        % Unit vector in segment direction.
+        
+        ez=(r5-r1)./L;            
+        
+        x=er*ez.';
+        y=Mag(cross(er,repmat(ez,[nr,1]),2),2);
+        theta=atan2(y,x);         % angle between segment and er
+        
+        I1=Op.Curr(s,1);   % I(z1)
+        I2=Op.ConceptCurr(s,1);
+        I3=Op.ConceptCurr(s,2);
+        I4=Op.ConceptCurr(s,3);
+        I5=Op.Curr(s,2);   % I(z2)
+  
+        for(n=1:200)    % 200 integration steps
+            % do integration
+        end % for all integration steps
+
+        AA=AA+theta*ez;       
+    end % for all segments
+else    % analytical
+    
+    
+end % analytical 
+
+AA=AA*(mu/8/pi);
+
+if 0==1,   % check different ways of calculating SS:
+  HH=(-j*k/mu).*cross(er,AA,2);
+  EE=(-k/w/eps).*cross(er,HH,2);
+  SS=(k/2/w/eps)*Mag(HH,2).^2;
+  SS2=(k/2/w/mu)*Mag(EE,2).^2;
+  SS3=(w*conj(k)/2/mu)*Mag(cross(er,AA,2),2).^2; 
+  max(abs(1-SS(:)./SS2(:)))
+  max(abs(1-SS(:)./SS3(:)))
+end % if
+
+if nargout>1,
+  
+  HH=(-j*k/mu).*cross(er,AA,2);
+  EE=(-k/w/eps).*cross(er,HH,2);
+  if nargout>3,
+    SS=(k/2/w/eps)*Mag(HH,2).^2;
+  end
+
+elseif nargin>3,
+  
+  if ischar(Opt),
+    AA=(w*conj(k)/2/mu)*Mag(cross(er,AA,2),2).^2;  % return SS in AA
+  end
+  
+end
+

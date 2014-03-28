@@ -1,0 +1,1 @@
+      COMMON /GCDPRM/ XS, YS, XT, YT, RCOS, RSIN

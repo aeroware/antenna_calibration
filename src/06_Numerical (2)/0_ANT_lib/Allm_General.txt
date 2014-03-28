@@ -1,0 +1,1615 @@
+============================================================
+
+function s=AppStruct(s1,s2)
+
+% s=AppStruct(s1,s2) appends structure array s2 to structure array s1,
+% giving a structure array s which contains the fields of 
+% both s1 and s2. The resulting s is a structure column vector.
+
+% Written Feb. 2008 (formerly part of SetStruct)
+
+if nargin==0,
+  s=[];
+  return
+end
+
+s=s1(:);
+
+if nargin==1,
+  return 
+end
+
+n2={1:numel(s2)};
+n1={n2{1}+numel(s)};
+
+s=SetStruct(s1(:),s2(:),n1,n2);
+
+s=s(:);
+
+============================================================
+
+function y=Bound(x,x1,x2)
+
+% y=Bound(x,x1,x2) sets y=x if x is in the interval 
+% [x1,x2], otherwise sets y to the closer interval bound.
+% Works also for arrays.
+
+[x1,x2]=deal(min(x1,x2),max(x1,x2));
+
+y=max(min(x,x2),x1);
+
+============================================================
+
+function [Li,Files]=CollectFileText(Fin,Fout)
+
+% Li=CollectFileText(Fin,Fout) collects all text lines from the files
+% given in Fin and writes it to the file Fout.
+% Fout must be a single file name, whereas Fin can contain
+% placeholders (e.g. '*.m') and may also be a cell array of file names.
+% Li returns the text written to Fout, each line in a separate cell.
+
+MaxLF=2;                   % max. number of consecutive line feeds
+FileSep=repmat('=',1,60);  % separator inserted between files
+
+% collect files:
+
+if ~iscell(Fin),
+  Fin=cellstr(Fin);
+end
+
+for n=1:numel(Fin),
+  d=dir(Fin{n});
+  if n==1,
+    Files=d(:);
+  else
+    Files=[Files;d(:)];
+  end
+end
+
+if ~isempty(Files),
+  Files=Files(~[Files.isdir]);
+end
+  
+if isempty(Files),
+  warning('No files found.');
+  return
+end
+
+% read all text lines:
+
+Li={};
+for n=1:numel(Files),
+  fidi=fopen(Files(n).name);
+  x=ReadFileLines(fidi);
+  fclose(fidi);
+  
+  s={};
+  if ~isempty(Li)&&~isempty(Li{end}(~isspace(Li{end}))),
+    s={''};
+  end
+  s=[s;cellstr(FileSep)];
+  if ~isempty(x)&&~isempty(x{1}(~isspace(x{1}))),
+    s=[s;''];
+  end
+  Li=[Li;s;x];  
+end
+
+% remove excess line feeds:
+
+Empties=zeros(length(Li),1);
+if isempty(Li(1)),
+  Empties(1)=1;
+end
+for n=1:length(Li),
+  if isempty(Li(n)),
+    Empties(n)=Empties(n-1)+1;
+  end
+end
+
+Li=Li(Empties<=MaxLF);
+
+% write to output file:
+
+fido=fopen(Fout,'wt');
+for n=1:numel(Li),
+  fprintf(fido,'%s\n',Li{n});
+end
+fclose(fido);
+
+  
+end % of main function
+
+
+% -----------------------------
+
+function [Li,Err]=ReadFileLines(fid)
+
+Li={};
+Err='';
+
+while ~feof(fid)&&isempty(Err);
+
+  Li{end+1,1}=fgetl(fid);
+  Err=ferror(fid);
+
+end
+
+end
+
+============================================================
+
+function varargout=EvaluateFun(f,varargin)
+
+% varargout=EvaluateFun(f,p1,p2,..) evaluates
+% f(p1,p2,...) if f is a function, 
+% otherwise returns f unevaluated.
+
+nout=max(1,nargout);
+
+[ff,msg]=fcnchk(f);
+
+if isempty(msg),
+  [varargout{1:nout}]=ff(varargin{:});
+else
+  varargout={f};
+end
+
+============================================================
+
+function d=FindOnPath(fi,pa)
+
+% d=FindOnPath(fi) finds the file with the name fi on
+% the MATLAB search path and returns the directories where
+% fi has been found in the cell array d. 
+% If the file is not on the path, d={} is returned.
+%
+% d=FindOnPath(fi,pa) does the same assuming the path pa.
+
+if ~exist('pa','var'),
+  pa=path;
+end
+
+pa=Path2Cell(pa);
+
+[p,fi,ext]=fileparts(fi);
+fi=[fi,ext];
+
+d={};
+
+for n=1:numel(pa),
+  
+  fis=dir(pa{n});
+  fis={fis.name};
+  
+  if ismember(upper(fi),upper(fis)),
+    d=[d;pa{n}];
+  end
+  
+end
+
+============================================================
+
+function [Found1,varargout]=FirstArgin(Test1,Default1,Default2,varargin)
+
+% [Found1,oa1,oa2,...]=FirstArgin(Test1,Default1,Default2,ia1,ia2,...)
+% Checks if the first of the input arguments ia1,ia2, etc. is
+% such that Test1(ia1) evaluates to true. In this case
+% Found1=ia1, oa1=ia2, oa2=ia3, etc.; otherwise
+% Found1=Default1, oa1=ia1, oa2=ia2, etc.
+% If there are not enough input arguments to set all oa1, oa2, etc.,
+% the remaining oa's are put Default2.
+% The function is useful to separate the first input argument
+% of any function if it is optional and different from the second 
+% in that Test1 evaluates to true for the first but not the 
+% second argument.
+
+% Written Feb. 2008
+
+if ~isempty(varargin)&&feval(Test1,varargin{1}),
+  Found1=varargin{1};
+  n1=2;
+else
+  Found1=Default1;
+  n1=1;
+end
+
+nn=min(length(varargin)-n1+1,nargout-1);
+
+[varargout{1:nn}]=deal(varargin{n1:n1+nn-1});
+
+[varargout{nn+1:nargout-1}]=deal(Default2);
+
+============================================================
+
+function g=Gather(c)
+
+% g=Gather(c) gathers (collects) all numbers found in c and
+% arranges it in one column vector. c may be a cell array of
+% cell arrays and double arrays. The arrangement of numbers
+% is found by recursively expanding cell arrays into column 
+% cell vectors (e.g. the outermost is expamded by c{:}), and 
+% double arrays into column vectors using (:).
+% For instance, g=Gather({3:5,(4:7)',{1,10;[5;7],0}}) yields
+% g=[3;4;5;4;5;6;7;1;5;7;10;0].
+
+if iscell(c),
+
+  for n=1:numel(c);
+    c{n}=Gather(c{n});
+  end
+  
+  g=cat(1,c{:});
+
+else
+  
+  g=c(:);
+  
+end
+
+============================================================
+
+function M=GatherMat(C,Len)
+
+% M=GatherMat(C) converts cell array of double arrays into the 
+% matrix M by building the following arrangement:
+%   [C{1}(:).'; C{2}(:).'; ...]
+% whereby the final rows are padded with zeros where necessary to 
+% get the same length for all rows. The double arrays may also be 
+% cell arrays of ... of double arrays; in this case Gather is used 
+% to construct the double vectors which represent the final rows.
+%
+% M=GatherMat(C,Len). Here Len is an optional parameter defining the 
+% row length of the returned matrix M. If not given, the row length 
+% is the length of the longest double vector C{k}(:) for all k so 
+% that C is completely contained in M.
+
+if ~iscell(C),
+  C={C};
+end
+
+if (nargin<2),
+  Len=inf;
+end
+
+Rows=numel(C);
+
+CC=cell(Rows,1);
+RL=zeros(Rows,1);
+
+for n=1:Rows,
+  CC{n}=Gather(C{n});
+  RL(n)=length(CC{n});
+end
+
+if isempty(Len)||ischar(Len)||isinf(Len),
+  Len=max(RL);
+end
+
+M=zeros(Rows,Len);
+
+if isempty(M),
+  return
+end
+
+RL=min(RL,Len);
+
+for n=1:Rows,
+  M(n,1:RL(n))=CC{n}(1:RL(n)).';
+end
+
+============================================================
+
+function m=Mag(x,d,p)
+
+% m=Mag(x,d,p) Returns p-norm of vectors along the dimension d:
+%   m=sum(abs(x).^p,d).^(1/p)
+%   p=inf: m=max(abs(x),[],d); p=-inf: m=min(abs(x),[],d)
+% Default values are d=first non-singleton dimension, p=2.
+
+if (nargin<2)||isempty(d),
+  d=find(size(x)>1,1,'first');
+  if isempty(d),
+    m=abs(x);
+    return
+  end
+end
+d=max(1,min(d,ndims(x)));
+
+if (nargin<3)||isempty(p),
+  p=2;
+end
+
+if p==inf,
+  m=max(abs(x),[],d);
+elseif p==-inf,
+  m=min(abs(x),[],d);
+else
+  m=sum(abs(x).^p,d).^(1/p); 
+end
+
+============================================================
+
+function NewInd=MapComp(NewInd1,NewInd2)
+
+% NewInd=MapComp(NewInd1,NewInd2) calculate NewInd2 o NewInd1,
+% i.e. the composition of two index maps. Signs are respected: 
+% the sign of the final indices is the product of the signs of 
+% the corresponding composed indices. 
+% See also MapInd.
+
+n=find(NewInd1&(abs(NewInd1)<=length(NewInd2)));
+
+NewInd=zeros(size(NewInd1));
+
+NewInd(n)=NewInd2(abs(NewInd1(n)));
+
+m=find(NewInd1<0);
+NewInd(m)=-NewInd(m);
+
+============================================================
+
+function y=MapInd(x,NewInd,IndDim)
+
+% y=MapInd(x,NewInd) maps the first non-singleton dimension 
+% of the array x as defined in NewInd to obtain the new array y.
+% NewInd is a vector of the same length as the first non-singleton 
+% dimension of x, associating to each index the respective new one, 
+% for instance y(NewInd(k),...)=x(k,...). Zeros in NewInd indicate 
+% indices to be removed, corresponding parts of x won't be 
+% present in y.
+%
+% y=MapInd(x,NewInd,IndDim) works on the dimension IndDim.
+
+d=size(x);
+
+if nargin<3,
+  IndDim=find(d>1);
+end
+if isempty(IndDim),
+  IndDim=1;
+end
+IndDim=IndDim(1);
+
+NewInd=abs(NewInd);
+
+d=[d,ones(1,IndDim)];
+
+n=length(NewInd);
+
+if n~=d(IndDim),
+  error('Incorrect size of index map (second input argument).');
+end
+
+d1=prod(d(1:IndDim-1));  % MATLAB calculates prod([])=1
+d2=prod(d(IndDim+1:end));
+
+x=reshape(x,[d1,n,d2]);
+
+m=max(NewInd);
+q=find(NewInd);
+
+y=zeros([d1,m,d2]);
+y(:,NewInd(q),:)=x(:,q,:);
+
+d(IndDim)=m;
+y=reshape(y,d);
+
+============================================================
+
+function c=Path2Cell(p,Option)
+
+% c=Path2Cell(p) converts the path p to a cell array of strings 
+% where each cell element contains one directory.
+% 
+% c=Path2Cell(p,'KeepAll') allows for empty entries and returns them as well
+% (empty entries appear when two delimiters have no other characters in
+% between).
+
+Delimiter=';';
+
+if iscell(p),
+  c=p;
+  return
+end
+
+if ~exist('Option','var'),
+  Option='';
+end
+if isequal(upper(Option),upper('KeepAll'));
+  KeepAll=1;
+else
+  KeepAll=0;
+end
+
+n=find(p==Delimiter);
+
+if isempty(n),
+  
+  c={p};
+  m=length(p);
+  
+else
+  
+  c=cell(length(n)+1,1);
+  m=zeros(size(c));
+
+  c{1}=p(1:n(1)-1);
+  m(1)=n(1)-1;
+
+  for q=1:length(n)-1,
+    c{q+1}=p(n(q)+1:n(q+1)-1);
+    m(q+1)=n(q+1)-n(q)-1;
+  end
+
+  c{end}=p(n(end)+1:end);
+  m(end)=length(p)-n(end);
+
+end
+
+if ~KeepAll,
+  c=c(m~=0);
+end
+
+============================================================
+
+function [hp,hr,ha]=PlotPolar2(p,r,LogScale)
+
+% [hp,hr,ha]=PlotPolar2(p,r) creates a polar plot
+% where p is azimuth and r is radius.  
+% hp, hr and ha return handles to the plot lines, the
+% radius annotations and the angle annotations, respectively.
+%
+% [hp,hr,ha]=PlotPolar2(p,r,LogScale) uses logarithmic instead
+% of linear plot. LogScale=[dBmin,r0dB] is a 2-element vector
+% defining the minimum dB at the origin and the gain value used 
+% as reference for the dB-scale (corresponding to zero dB).
+
+if (nargin<3),
+  LogScale=[];
+end
+if isempty(LogScale),
+  dBmin=0;
+else
+  dBmin=LogScale(1);
+  if length(LogScale)>1,
+    r0dB=LogScale(2);
+  else
+    r0dB=nan;
+  end
+  if isnan(r0dB),
+    r0dB=max(r(:));
+  end
+  r=10*log10(max(r/r0dB,realmin));
+  if isnan(dBmin),
+    dBmin=min(r(:));
+  end
+end
+
+r=max(r,dBmin);
+
+% plot:
+
+if isempty(LogScale),
+  hp=polar(p,r);
+else
+  hp=polar(p,r-dBmin);
+end
+
+hr=[];
+ha=[];
+
+hi=get(0,'ShowHiddenHandle');
+set(0,'ShowHiddenHandle','on');
+ht=findobj(gca,'Type','text');
+set(0,'ShowHiddenHandle',hi);
+
+if length(ht)<10,
+  return
+end
+
+ht=setdiff(ht,findobj(ht,'String',''));
+p=get(ht,'Position');
+if iscell(p),
+  p=cat(1,p{:});
+end
+a=round(atan2(p(:,2),p(:,1))/eps/8)*eps*8; % angles of text items
+u=unique(a);
+n=histc(a,u);
+[q,m]=max(n);
+
+n=find(a==u(m));
+hr=ht(n);
+[q,n]=sort(Mag(p(n,:),2));
+hr=hr(n);
+
+q=str2num(char(get(hr,'String')));
+set(hr,{'String'},cellstr([repmat('  ',length(q),1),num2str(q+dBmin)]));
+
+n=find(a~=u(m));
+ha=ht(n);
+[ig,n]=sort(mod(a(n),2*pi));
+ha=ha(n);
+
+============================================================
+
+function [hs,hc,ha,hco,c,hsurf]=PlotPolar3(t,p,r,LogScale,ColScale,...
+  rContour,tmax,ContourAnno)
+
+% [hs,hc,ha]=PlotPolar3(t,p,r) creates a 3-dimensional polar plot.
+% t and p are matrices defining the colatitude and azimuth points
+% for which the radius is given in r. Lines of constant latitude 
+% (parallels) and lines of constant azimuth (meridians) are drawn.
+% The surface is colored using the colormap of the current axes.
+% hs, hc and ha return handles to the plot surface, the colorbar
+% and the drawn axeslines, respectively.
+%
+% [hs,hc,ha]=PlotPolar3(t,p,r,rmin) defines by the scalar rmin
+% the minimum value for r which represents the origin of the 3d polar plot. 
+% Values of r below rmin are mapped to rmin (this also applies to 
+% contour 2d-plots, see below).
+% 
+% [hs,hc,ha]=PlotPolar3(t,p,r,LogScale,ColScale) can be used to define 
+% a logarithmic instead of a linear scale and how colors shall be used.
+% The optional LogScale=[dBmin,r0dB] is a 2-element vector, which
+% defines the minimum dB at the origin, and the gain value used 
+% as reference for the dB-scale (corresponding to zero dB).
+% The optional ColScale=[rCmin,rCmax] defines how the colors are scaled:
+% Cmin and Cmax are the values (gain for linear scale or dB for defined 
+% LogScale) correponding to the lowest and highest color in the colormap,
+% respectively. ColScale='symm' uses a scale symmetric round zero.
+%
+% [hs,hc,ha,hco,c]=PlotPolar3(t,p,r,LogScale,ColScale,rContour)
+% draws countour lines instead of theta- and phi-lines, where
+% rContour is the number of contour lines to be drawn. If rContour
+% is a vector, it gives directly the radius values for which the 
+% contours are drawn.
+% 
+% [hcola,hc,ha,hco,c,hsurf]=PlotPolar3(t,p,r,LogScale,ColScale,...
+%   rContour,tmax,ContourAnno)
+% plot 2-dim polar plot where t is drawn as radius and p as azimuth,
+% the surface is colored as defined by the shown colorbar and contour lines
+% are drawn. tmax sets the maximum t-value (outermost level), and 
+% rContour is the number of contours to be plotted (if a vector is given, 
+% it defines directly the contour levels), ContourAnno=1 causes annotation 
+% of contour lines (a vector defines the levels to be annotated). 
+%   hc color bar handle, 
+%   ha axis lines,
+%   hco contour handles, 
+%   hcola contourlabel handle, 
+%   c contours,
+%   hsurf handle of transparent surface
+
+ContourPatches=0;    % 0/1 .. draw lines/patches for contours
+
+[hs,hc,ha,hco,c,hsurf]=deal([]);
+
+if (nargin<4)||isempty(LogScale),
+  LogScale=nan;
+end
+if length(LogScale)>1,  % dB-plot
+  r0dB=LogScale(2);
+  if isnan(r0dB),
+    r0dB=max(r(:));
+  end
+  r=10*log10(max(r/r0dB,realmin));
+end
+rmin=LogScale(1);
+if isnan(rmin),
+  rmin=min(r(:));
+end
+r=max(r,rmin);
+
+if (nargin<5)||isempty(ColScale),
+  ColScale=[nan,nan];
+end
+if ischar(ColScale),
+  if upper(ColScale(1))=='S',     % scale symmetric round 0
+    q=max(abs([rmin;max(r(:))]));
+    ColScale=[-q,q];
+  end
+end
+if isnan(ColScale(1)),
+  rCmin=rmin;
+else
+  rCmin=ColScale(1);
+end
+if isnan(ColScale(2)),
+  rCmax=max(r(:));
+else
+  rCmax=ColScale(2);
+end
+
+if nargin<6,
+  rContour=[];
+end
+
+if (nargin<7)||isempty(tmax),
+  tmax=0;
+end
+
+if (nargin<8),
+  ContourAnno=[];
+end
+
+h=ishold;
+if ~h, cla('reset'); end
+
+caxis([rCmin,rCmax]);
+%set(gca,'CLim',[rCmin,rCmax],'CLimMode','manual');
+
+if tmax~=0,  % plot 2-dim contour *******************************
+  
+  [ha,hs]=deal([]);
+  
+  deg=pi/180;
+  
+  dt=round(tmax./[3,4,5]/deg*1e3)/1e3;
+  nn=find(dt==round(dt));
+  if isempty(nn), 
+    nn=2;
+  else 
+    nn=nn(1);
+  end
+  dt=dt(nn);
+  tmax=dt*(nn+2)*deg;
+  [hp,hpt,hr,hrt,hpatch]=PolarAxis(30*deg,dt*(1:nn+2));
+  set(hpatch,'FaceColor',[1,1,1]*1);
+  
+  hold on;
+  
+  hsurf=pcolor(t.*cos(p)/deg,t.*sin(p)/deg,r);
+  set(hsurf,'EdgeColor','none','FaceColor','interp','FaceAlpha',0.75); 
+  
+  if ~isempty(rContour),
+    if ContourPatches,
+      [c,hco]=contour(t.*cos(p)/deg,t.*sin(p)/deg,r,rContour);
+      cmap=colormap;
+      clim=caxis(gca);
+      for k=1:length(hco),
+        q=get(hco(k),'CData');
+        q=q(1);
+        q=max(1,min(size(cmap,1),1+(q-clim(1))/diff(clim)*(size(cmap,1))));
+        set(hco(k),'EdgeColor',cmap(fix(q),:)*0.7);  % contour linecolor for patches
+      end
+    else
+      [c,hco]=contour(t.*cos(p)/deg,t.*sin(p)/deg,r,rContour,'-');
+      cmap=colormap;
+      clim=caxis(gca);
+      rC=zeros(length(hco),1);
+      q=1;
+      k=1;
+      while q<size(c,2),
+        rC(k)=c(1,q);
+        q=q+c(2,q)+1;
+        k=k+1;
+      end
+      rC=rC(1:k-1);
+      for k=1:length(rC),
+        q=rC(k);
+        q=max(1,min(size(cmap,1),1+(q-clim(1))/diff(clim)*(size(cmap,1))));
+        set(hco(k),'Color',cmap(fix(q),:)*0.7);  % contour linecolor for lines
+      end
+    end
+    if ~isempty(ContourAnno)&&~isempty(hco),
+      if length(ContourAnno)==1,
+        rC=zeros(rContour,1);
+        q=1;
+        k=1;
+        while q<size(c,2),
+          rC(k)=c(1,q);
+          q=q+c(2,q)+1;
+          k=k+1;
+        end
+        rC=rC(1:k-1);
+        rC=unique(rC);
+        if length(rC)>6,
+          rC=rC(1:round(length(rC)/5):end);
+        end
+      else 
+        rC=unique(ContourAnno);
+      end
+      if ~isempty(rC),
+        hs=clabel(c,hco,rC,'LabelSpacing',150,...
+          'FontAngle','normal','FontWeight','light','FontSize',8);
+      end
+    end
+  end
+  
+  hold off;
+  
+else  % plot 3d pattern surface *************************************
+  
+  hold on;
+  
+  [x,y,z]=sph2cart(p,pi/2-t,r-rmin);
+  
+  hs=surf(x,y,z,r);
+  
+  set(hs,'FaceColor','interp');
+  
+  % if requested draw gain contours instead of theta- and phi-lines:
+  
+  if ~isempty(rContour),
+    
+    set(hs,'EdgeColor','none');
+    
+    if sin(t(1,1))>1e-2,
+      line(x(:,1),y(:,1),z(:,1),'Color','k');
+    end
+    if sin(t(end,end))>1e-2,
+      line(x(:,end),y(:,end),z(:,end),'Color','k');
+    end
+    if sin(abs(p(1,1)-p(end,end))/2)>1e-2,
+      line(x(1,:),y(1,:),z(1,:),'Color','k');
+      line(x(end,:),y(end,:),z(end,:),'Color','k');
+    end
+    
+    if length(rContour)==1,
+      rContour=min(max(round(rContour),1),30);
+      if rContour==1,
+        rContour=min(max(round(min(size(t))/6),4),8);
+      end
+    else
+      rContour=rContour-rmin;
+    end
+    
+    c=contourc(t(1,:),p(:,1),r-rmin,rContour);
+    
+    n=1;
+    hco=[];
+    q=rgb2hsv(colormap);
+    q(:,2)=0;
+    q(:,3)=(1-q(:,3)).^(1/2);
+    q=hsv2rgb(q);
+    while n<=size(c,2),
+      m=c(2,n);
+      [u,v,w]=sph2cart(c(2,n+1:n+m),pi/2-c(1,n+1:n+m),c(1,n));
+      col=round(1+(c(1,n)+rmin-rCmin)/(rCmax-rCmin)*(size(q,1)-1));
+      col=max(1,min(size(q,1),col));
+      hco(end+1)=line(u,v,w,'Color',q(col,:));
+      n=n+m+1;
+    end
+    hco=hco(:);
+  end
+  
+  % draw major axes:
+  
+  m=1.2*[min(x(:)),min(y(:)),min(z(:));max(x(:)),max(y(:)),max(z(:))];
+  z=zeros(2,1); 
+  
+  ha=line([m(:,1),z,z],[z,m(:,2),z],[z,z,m(:,3)],... 
+    'LineWidth',3*get(gca,'DefaultLineLineWidth'));
+  set(ha,{'Color'},{[1,0,0]*0.9;[0,1,0]*0.9;[0,0,1]});
+  
+  % additional plot cosmetics:
+  
+  set(gca,'XTickMode','manual','XTick',[]);
+  set(gca,'YTickMode','manual','YTick',[]);
+  set(gca,'ZTickMode','manual','ZTick',[]);
+  
+  set(gca,'Box','on');  
+  
+  set(gca,'DataAspectRatio',[1,1,1]);
+  
+end % of 3-dim surface pattern plot **********************************
+
+
+% draw colorbar:
+
+ca=gca;
+
+hc=colorbar;
+if length(LogScale)>1,
+  axes(hc);
+  xlabel('dB');
+end
+
+axes(ca);
+if ~h, hold off; end
+
+
+
+============================================================
+
+function ph=PlotProjection(h,p,M,Margin,Title,PrinterOpt,PrintFile)
+
+% ph=PlotProjection(h,p,M,Margin,Title,PrinterOpt,PrintFile) plots 
+% projections of the axes in the figure with handle h. The resulting plots 
+% are shown in different figures, the handles are returned in ph. The  
+% vector p gives the projections to be plotted, which are defined by 
+% numbers:
+%    1,2,3,-1,-2,-3 ... view from +X,+Y,+Z,-X,-Y,-Z,
+% p being any set of these numbers. M is the scale of the plots, Margin 
+% may define figure margins as explained in ToScale (default=[]). 
+% If a string PrinterOpt is passed, the plots are immediately printed with 
+% PrinterOpt as option, 
+%   e.g. PrinterOpt='-dtiff example' 
+% prints in tiff-format to the file 'example.tif'. 
+% Title can be a string array or cell array of strings giving the titles 
+% for the plots, by defaults the view is indicated in the title.
+%
+% Note that the plot-scale M refers to units in centimeters, and 
+% Margin must be given in cm as well!
+
+% ADDED to grid-toolbox 10.4.2003
+
+if (nargin<7)||isempty(PrintFile),
+  PrintFile='';
+end
+[PrintPath,PrintFile,PrintFileExt]=FileParts(PrintFile);
+PrintFile=fullfile(PrintPath,PrintFile);
+
+if nargin<6,
+  PrinterOpt=[];
+end
+if ~isempty(PrinterOpt)&&~ischar(PrinterOpt),
+  PrinterOpt='';
+end
+
+if nargin<4,
+  Margin=[];
+end
+
+ph=[];
+
+if isempty(p), return, end
+
+if nargin<5,
+  Title={};
+end
+if ischar(Title),
+  Title=cellstr(Title);
+elseif ~iscell(Title),
+  Title={};
+end
+
+t=0;
+
+for k=p(:).',
+  ph(end+1)=copyobj(h,0);
+  figure(ph(end));
+  xlabel('X');
+  ylabel('Y');
+  zlabel('Z');
+  switch k,
+  case 1,
+    v='+X';
+    view([1,0,0]);
+  case 2,
+    v='+Y';
+    view([0,1,0]);
+  case 3,
+    v='+Z';
+    view([0,0,1]);
+  case -1,
+    v='-X';
+    view([-1,0,0]);
+  case -2,
+    v='-Y';
+    view([0,-1,0]);
+  case -3,
+    v='-Z';
+    view([0,0,-1]);
+  otherwise
+%    r=get(gca,'CameraPosition');
+    [az,el]=view;
+    v=num2str(round([az,el]),'%1d %1d');
+  end
+  if isempty(Title),
+    title(['\bf View from ',v]);
+  else
+    t=mod(t,length(Title))+1;
+    title(Title{t});
+  end
+  Toscale(M,Margin);
+  if ~isempty(PrinterOpt),
+    if ~isempty(PrintFile),
+      print(PrinterOpt,[PrintFile,' ',v,PrintFileExt]);
+    else
+      print(PrinterOpt);
+    end
+  end
+end
+
+
+============================================================
+
+function RGB=RGBColor(Col,DefaultCol)
+
+% RGB=RGBColor(Col) calculates RGB color values from arbitrary 
+% color specification Col (indicess into colormap). 
+% Col may be a string array or a double
+% column vector. Each row corresponds to a color specification.
+% Valid Color characters are (default=DefaultCol or black):
+%   y(ellow) m(agenta) c(yan) r(ed) g(reen) b(lue) w(hite) (blac)k
+% Valid double values are indices into the current colormap, values
+% outside are mapped onto the smallest or greatest index, resp.
+
+if ischar(Col), 
+  if ~isempty([strmatch('none',Col);strmatch('auto',Col)]),
+    RGB=Col;
+    return
+  end
+end
+
+CM=colormap;
+NC=size(CM,1);
+
+% Color translation matrix:
+
+c=-ones(127,3);
+c(121,:)=[1 1 0];
+c(109,:)=[1 0 1];
+c(99,:)=[0 1 1];
+c(114,:)=[1 0 0];
+c(103,:)=[0 1 0];
+c(98,:)=[0 0 1];
+c(119,:)=[1 1 1];
+c(107,:)=[0 0 0];
+d=find(c(:,1)<0);
+
+% determine default color:
+
+if (nargin<2) || isempty(DefaultCol),
+  DefaultCol=[0,0,0];
+end
+if ischar(DefaultCol),
+  DefaultCol=c(min(max(double(DefaultCol(1)),1),127),:);
+elseif size(DefaultCol,2)==1,
+  DefaultCol=CM(min(max(round(DefaultCol(1)),1),NC),:);
+end
+if any(DefaultCol<0|DefaultCol>1),
+  DefaultCol=[0,0,0];
+end
+c(d,:)=repmat(DefaultCol,[length(d),1]);  
+
+% determine RGB colors for Col:
+
+if ischar(Col),
+  RGB=c(min(max(double(Col(:,1)),1),127),:);
+elseif size(Col,2)==1,
+  RGB=CM(min(max(round(Col),1),NC),:);
+else
+  RGB=Col;
+end
+
+============================================================
+
+function s=SetStruct(s1,s2,n1,n2)
+
+% s=SetStruct(s1,s2) sets s to the structure array s1, extended
+% by the fields of s2. Fields of s1 also present in s2 are overwritten
+% by the respective fields of s2.
+%
+% s=SetStruct(s1,s2,n1,n2) does the same for the structure sub-arrays 
+% s1(n1{:}) and s2(n2{:}). n1 and n2 are corresponding lists of
+% ranges for each dimension. n1 and n2 must define subarrays of the 
+% same size. Elements created to represent the new structure s but
+% not overwritten by elements of s2(n2{:}) are set empty.
+%
+% s=SetStruct(s1,s2,n1) is the same as s=SetStruct(s1,s2,n1,n2)
+% with n2={1:size(s2,1),...,1:size(s2,ndims(s2))}
+
+% Rev. Feb. 2008:
+% input parameter order (s1,n1,s1,n2) changed to (s1,s2,n1,n2);
+% does not work for appending of s2 to s1 any longer, 
+% use AppStruct for this purpose;
+% does not force column-vector for vectorial result s.
+
+if nargin==0,
+  s=struct([]);
+  return
+end
+
+s=s1;
+
+if nargin==1,
+  return 
+end
+
+if (nargin==2)||(nargin==3),
+  n2=num2cell(size(s2));
+  for m=1:length(n2),
+    n2{m}=1:n2{m};
+  end
+end
+
+if nargin==2,
+  n1=n2;
+end
+
+f2=fieldnames(s2);
+
+if isempty(f2)||isempty(n1)||isempty(n2)||isempty(s2),
+  return
+end
+
+% detour using string n1s instead of n1{:}, for
+% n1{:} cannot be used on the left side of assignments:
+
+n1s='n1{1}';  
+for m=2:length(n1),
+  n1s=[n1s,',n1{',num2str(m),'}'];
+end
+
+% assignment:
+
+for m=1:length(f2),
+  eval(['[s(',n1s,').',f2{m},']=deal(s2(n2{:}).',f2{m},');']);
+end
+
+% if (ndims(s)==2)&&(size(s,1)==1),
+%   s=s'; 
+% end
+
+============================================================
+
+function c=ToCellstr(a,m)
+
+% c=ToCellstr(a,m) converts a to 1-dim cell array c of strings.
+% m is the length of c. If a is shorter than c, a is used as often
+% as necessary to fill up c.
+
+if iscell(a),
+  a=a(:);
+end
+
+if (nargin<2)||isempty(m),
+  m=size(a,1);
+end
+
+n=size(a,1);
+
+if ischar(a),
+  c=cellstr(a);
+elseif iscellstr(a),
+  c=a;
+else
+  c=cell(n,1);
+  for k=1:n;
+    c{k}=num2str(a(k,:));
+  end  
+end
+
+c=c(mod(0:m-1,n)+1,1);
+
+============================================================
+
+function Toscale(M,Margin)
+
+% Toscale(M,Margin) sets current axes to scale M.
+% The optional Margin is a numeric vector of 0, 2 or 4 elements
+% defining [left,bottom,right,top] margins between figure
+% edges and respective axes edges; non-defined margins default
+% to the margins of the original figure.
+%
+% If Margin is a 0- or 4-element numeric vector, the figure size 
+% is adapted to cover the axes with margins. If Margin is of 
+% length 2, the figure size is not adapted, so the part of the 
+% axes extending beyond (above and to the right of) the figure window 
+% is clipped. Similarly, if Margin='fix' is passed, the bottom-left 
+% corner of the original axes and the figure window size are 
+% not changed.
+%
+% If the figure window size is to be changed, it is done by changing 
+% the bottom-left corner so that the top-right window buttons stay 
+% accessible. If the window is too large to fit onto the screen, it 
+% is not changed at all and a warning is displayed. Nevertheless, the 
+% paperposition is adapted accordingly so that to-scale printing is 
+% possible as long as the figure fits onto the printer page.
+%
+% Plot coordinates and Margin are supposed to be given
+% in centimeters!
+
+% REVISIONS
+% 10.4.03: 
+% - passing axes handles not possible any longer to prevent 
+%   ambiguities, now works always on current axes;
+% - refresh of figure before return.
+
+if nargin<2,
+  Margin=[];
+end
+
+h=gca;
+
+x=get(h,'XLim');
+y=get(h,'YLim');
+z=get(h,'ZLim');
+
+if ~isequal(camtarget(h,'mode'),'auto'),
+  campos(h,[mean(x),mean(y),mean(z)]+campos(h)-camtarget(h));
+end
+
+camtarget auto;
+camva auto;
+
+axis(h,'equal');
+set(h,'XLim',x,'YLim',y,'ZLim',z);
+
+[x,y,z]=meshgrid(x,y,z);
+
+T=view(h);
+
+set(h,'PlotBoxAspectRatioMode','manual');
+r=get(h,'PlotBoxAspectRatio');
+
+xy=T*[x(:)/r(1),y(:)/r(2),z(:)/r(3),ones([numel(x),1])]';
+xy(1:2,:)=xy(1:2,:)./repmat(xy(4,:),2,1);
+
+dx=max(xy(1,:))-min(xy(1,:));
+dy=max(xy(2,:))-min(xy(2,:));
+
+% figure window:
+
+Pa=get(h,'Parent');
+u=get(Pa,'Units');
+set(Pa,'Units','centimeters');
+Pap=get(Pa,'Position');
+
+% position of axes in figure and print page:
+
+set(h,'Units','centimeters');
+p=get(h,'Position');
+
+if isempty(Margin),
+  Margin=[p(1:2),Pap(3:4)-p(3:4)-p(1:2)]; % use margins of original figure
+elseif ischar(Margin),
+  Margin=p(1:2);
+elseif length(Margin)>1,
+  p(1)=Margin(1);
+  p(2)=Margin(2);
+end
+Margin=max(Margin,0);
+
+p(3:4)=[dx,dy]*M;
+
+set(gcf,'PaperUnits','centimeters');
+ps=get(gcf,'PaperSize');
+
+if length(Margin)>2,  % adapt figure to enclose axes with Margin
+
+  if length(Margin)==3,
+    Margin(4)=Margin(2);
+  end
+  q=Margin(1)+Margin(3)+p(3);
+  Pap(1)=Pap(1)+Pap(3)-q;
+  Pap(3)=q;
+  q=Margin(2)+Margin(4)+p(4);
+  Pap(2)=Pap(2)+Pap(4)-q;
+  Pap(4)=q;
+  if any(Pap<0),
+    warning('Could not adapt figure, it would extend out of screen.');
+  else
+    set(Pa,'Position',Pap);
+  end
+
+  m=(ps-Pap(3:4))/2;  % paper margin for printing
+  
+else  % do not adapt figure, but adapt paper margin for printing:
+  
+  m=(ps-p(3:4)-p(1:2))/2;
+  if m(1)<0,
+    m(1)=(ps(1)-p(3))/2;
+  end
+  if m(2)<0,
+    m(2)=(ps(2)-p(4))/2;
+  end
+  
+end
+
+if any(m<0),
+  warning('Figure exceeds page margins when printing.');
+end
+m=max(0,m);
+
+set(gcf,'PaperPosition',[m,ps-2*m]);
+
+set(h,'Position',p);
+
+set(Pa,'Units',u);
+
+refresh(Pa);
+
+============================================================
+
+function [v,stat]=VarLoad(f,n,VarName,OneFile)
+
+% v=VarLoad(f,n,VarName) reads variable with name VarName_n from file f.
+% n is the number appended to the variable name for identification as used
+% by the function VarWrite. The input parameter n may be a vector of numbers,
+% each element representing a variable to be read. Set n='all' to read from f 
+% all variables of the form VarName*, n='numbers' read all variables of
+% the form VarName_n, n='' reads only VarName.
+%
+% v=VarLoad(f,n,VarName,0) appends the numbers n to f instead of to VarName, 
+% reading the variable VarName from the files f_n. So it works, unlike the
+% former version, with several files but only with one variable per file.
+
+NumberFormat='%06d';  % format of the number appended to the variable name
+Delimiter='_';        % used as delimiter prior to the number n
+
+if (nargin<4)||isempty(OneFile),
+  OneFile=1;
+end
+
+if (nargin<3)||isempty(VarName),
+  VarName='x';
+end
+
+if nargin<2,
+  n=[];
+end
+if ischar(n),
+  n=lower(n);
+end
+
+[pa,na,ex]=fileparts(f);
+if ~exist(pa,'dir')&&~isempty(pa),
+  error('Path of file not found.');
+end
+
+p=numel(n);
+
+v=[];
+stat=0;
+
+if OneFile, % all variables in one file
+  
+  ff=fullfile(pa,[na,'.mat']);
+  if ~exist(ff,'file'),
+    stat=bitset(stat,1);
+    return
+  end
+  
+  if isempty(n),
+    vn=VarName;
+  elseif ischar(n)&&isequal(n(1),'a'),
+    vn=[VarName,'*'];
+  elseif ischar(n)&&isequal(n(1),'n'),
+    vn=[VarName,Delimiter,'*'];
+  else
+    vn=num2str(n(:),NumberFormat);
+    vn=[repmat([VarName,Delimiter],p,1),vn];
+  end
+  vn=cellstr(vn);
+  
+  w=warning('off');
+  s=load(ff,vn{:});
+  warning(w);
+  
+  fn=fieldnames(s);
+  if isempty(fn),
+    stat=bitset(stat,2);
+    return
+  end
+  fn=sort(fn);
+  
+  vv=s.(fn{1});
+  v=vv(:);
+  for k=2:length(fn),
+    vv=s.(fn{k});
+    v=[v;vv(:)];
+  end
+  
+else % each variable stored into an own file
+  
+  ff=fullfile(pa,[na,'.mat']);
+  if ~exist(ff,'file'),
+    stat=bitset(stat,1);
+    return
+  end
+  
+  if isempty(n),
+    ff=fullfile(pa,[na,'.mat']);
+  elseif ischar(n)&&isequal(n(1),'a'),
+    ff=fullfile(pa,[na,'*.mat']);
+  elseif ischar(n)&&isequal(n(1),'n'),
+    ff=fullfile(pa,[na,Delimiter,'*.mat']);
+  else
+    vn=num2str(n(:),NumberFormat);
+    ff=fullfile(pa,[na,Delimiter]);
+    ff=[repmat(ff,p,1),vn,repmat('.mat',p,1)];
+  end
+  ff=cellstr(ff);
+  
+  fn={};
+  for k=1:length(ff),
+    q=dir(ff{k});
+    fn=[fn,{q.name}];
+  end
+  fn=unique(fn);
+  
+  if isempty(fn),
+    stat=bitset(stat,1);
+    return
+  end
+  
+  for k=1:length(fn),
+    
+    w=warning('off');
+    s=load(fn{k},VarName);
+    warning(w);
+    
+    q=fieldnames(s);
+    
+    if ~isempty(q),
+      if k==1,
+        vv=s.(q{1});
+        v=vv(:);
+      else
+        vv=s.(q{1});
+        v=[v;vv(:)];
+      end
+    end
+    
+  end
+  
+  if isempty(v),
+    stat=bitset(stat,2);
+  end
+  
+end
+
+============================================================
+
+function VarSave(f,v,n,VarName,OneFile)
+
+% VarSave(f,v,n,VarName) writes v to the file f using variable name
+% VarName or VarName_n: If n is an array, v must be an array of same size; 
+% in this case each element of v is stored in an own variable, VarName_n, 
+% uniquely identified by the numbers n. If n is scalar, v is saved as a 
+% whole in VarName_n; if n is not defined, no numbers are added to the VarName.
+% 
+% VarSave(f,v,n,VarName,0) writes elements of v to separate files, 
+% appending _n to the filename f, so the filenames identify the various stored 
+% variables and the same variable name VarName is used in all saved files.
+%
+% Defaults: n=[] (no numbers appended), VarName='x'.
+%
+% Extensions of f are substituted by the extension 'mat'.
+
+NumberFormat='%06d';  % format of the number appended to the variable name
+Delimiter='_';        % used as delimiter prior to the number n
+
+if (nargin<5)||isempty(OneFile),
+  OneFile=1;
+end
+
+if (nargin<4)||isempty(VarName),
+  VarName='x';
+end
+
+if nargin<3,
+  n=[];
+end
+
+[pa,na,ex]=fileparts(f);
+if ~exist(pa,'dir')&&~isempty(pa),
+  s=mkdir(pa);
+  if ~s,
+    error(['Could not create directory "',pa,'".']);
+  end
+end
+
+p=numel(n);
+m=numel(v);
+
+if OneFile, % all variables in one file
+  
+  ff=fullfile(pa,[na,'.mat']);
+  
+  if isempty(n)||isequal(p,1),
+    if ~isempty(n),
+      VarName=[VarName,Delimiter,num2str(n,NumberFormat)];
+    end
+    eval([VarName,'=v;']);
+    if exist(ff,'file'),
+      save(ff,VarName,'-append');
+    else
+      save(ff,VarName);
+    end
+    return
+  end
+  
+  if m~=p,
+    error('Variable- and number-array must be of same length.');
+  end
+  
+  for k=1:m,
+    vn=[VarName,Delimiter,num2str(n(k),NumberFormat)];
+    eval([vn,'=v(k);']);
+    if exist(ff,'file'),
+      save(ff,vn,'-append');
+    else
+      save(ff,vn);
+    end
+
+  end
+  
+else % each variable stored into an own file
+  
+  if isempty(n)||isequal(p,1),
+    if isempty(n), 
+      ff=fullfile(pa,[na,'.mat']);
+    else
+      ff=fullfile(pa,[na,Delimiter,num2str(n,NumberFormat),'.mat']);
+    end
+    eval([VarName,'=v;']);
+    save(ff,VarName);
+    return
+  end
+  
+  if m~=p,
+    error('Variable- and number-array must be of same length.');
+  end
+  
+  VarName0='v';
+  if isequal(VarName,VarName0),
+    VarName0='vv';
+    vv=v;
+  end
+  
+  for k=1:m,
+    ff=fullfile(pa,[na,Delimiter,num2str(n(k),NumberFormat),'.mat']);
+    eval([VarName,'=',VarName0,'(k);']);
+    save(ff,VarName);
+  end
+  
+end
+
+============================================================
+
+function [s,J]=Car2Sph(x,dim)
+
+% [s,J]=Car2Sph(x,dim) calculate spherical coordinates s from 
+% cartesian coordinates x. The optional argument dim defines the
+% dimension counting the coordinates (default: first 3-element 
+% dimension). For s the coordinates are (radius, colatitude, azimuth). 
+% J returns the Jacobian matrix ds/dx, where dim is the dimension counting
+% the columns and an additional dimension is inserted after dim to 
+% represent the row index.
+
+si=size(x);
+d=find(si==3);
+if isempty(d),
+  error('Coordinates must be counted by 3-element index.');
+end
+if (nargin<2)|isempty(dim),
+  dim=d(1);
+end
+if ~ismember(dim,d),
+  error('Given coordinate dimension must be of length 3.');
+end
+
+x=permute(x,[dim,1:dim-1,dim+1:ndims(x)]);
+
+q=x(1,:).^2+x(2,:).^2;
+
+s=zeros(size(x));
+
+s(1,:)=sqrt(q+x(3,:).^2);            % radius r
+s(2,:)=pi/2-atan2(x(3,:),sqrt(q));   % colatitude theta
+s(3,:)=atan2(x(2,:),x(1,:));         % azimuth phi
+
+if nargout<2,
+  s=permute(s,[2:dim,1,dim+1:ndims(s)]);
+  return
+end
+
+J=zeros([3,size(s)]);
+
+J(1,1,:)=x(1,:)./s(1,:);
+J(1,2,:)=x(2,:)./s(1,:);
+J(1,3,:)=x(3,:)./s(1,:);
+
+J(2,1,:)=x(1,:).*x(3,:);
+J(2,2,:)=x(2,:).*x(3,:);
+J(2,3,:)=-q;
+J(2,:,:)=J(2,:,:)./shiftdim(repmat(sqrt(q).*s(1,:).^2,[3,1]),-1);
+
+J(3,1,:)=-x(2,:)./q;
+J(3,2,:)=x(1,:)./q;
+
+s=permute(s,[2:dim,1,dim+1:ndims(s)]);
+J=permute(J,[3:dim+1,1,2,dim+2:ndims(J)]);
+
+============================================================
+
+function y=sinq(x)
+
+% y=sinq(x) returns
+%   y(i) = sin(x(i))/x(i)  if x(i) ~= 0
+%        = 1               if x(i) == 0
+% where x(i) is an element of the input matrix and 
+% y(i) is the resultant output element.  
+
+
+y=ones(size(x));
+i=find(x);
+y(i)=sin(x(i))./x(i);
+
+============================================================
+
+function s=sinq1(z)
+
+% s=sinq1(z) returns sin(z)./z - 1
+
+s=sqrt(pi/2*z).*besselj(3/2,z)-2*sin(z/2).^2;
+
+
+============================================================
+
+function s=sinqc(z)
+
+% s=sinqc(z) returns sin(z)./z - cos(z)
+
+s=sqrt(pi/2*z).*besselj(3/2,z);
+
+
+============================================================
+function y=sinqe(x)
+
+% y=sinqe(x) returns 
+% y = (sin(x)/x-exp(ix))/x = sinqc(x)/x-i*sinq(x)
+
+
+y=-i*ones(size(x));
+n=find(x);
+y(n)=Sinqc(x(n))./x(n)-i*Sinq(x(n));
+
+============================================================
+
+function [x,J]=Sph2Car(s,dim)
+
+% [x,J]=Sph2Car(s,dim) calculate cartesian coordinates x from 
+% spherical coordinates s. The optional argument dim defines the
+% dimension counting the coordinates (default: first 3-element 
+% dimension). For s the coordinates are (radius, colatitude, azimuth). 
+% J returns the Jacobian matrix dx/ds, where dim counts the columns 
+% and an additional dimension is inserted after dim to represent the 
+% row index.
+
+si=size(s);
+d=find(si==3);
+if isempty(d),
+  error('Spherical coordinates must be counted by 3-element index.');
+end
+if (nargin<2)|isempty(dim),
+  dim=d(1);
+end
+if ~ismember(dim,d),
+  error('Given coordinate dimension must be of length 3.');
+end
+
+s=permute(s,[dim,1:dim-1,dim+1:ndims(s)]);
+
+x=zeros(size(s));
+
+x(1,:)=sin(s(2,:)).*cos(s(3,:));
+x(2,:)=sin(s(2,:)).*sin(s(3,:));
+x(3,:)=cos(s(2,:));
+
+if nargout<2,
+  x(:,:)=x(:,:).*repmat(s(1,:),3,1);
+  x=permute(x,[2:dim,1,dim+1:ndims(x)]);
+  return
+end
+
+J=zeros([3,size(x)]);
+
+J(1,1,:)=x(1,:);
+J(2,1,:)=x(2,:);
+J(3,1,:)=x(3,:);
+
+J(1,2,:)=s(1,:).*cos(s(2,:)).*cos(s(3,:));
+J(2,2,:)=s(1,:).*cos(s(2,:)).*sin(s(3,:));
+J(3,2,:)=-s(1,:).*sin(s(2,:));
+
+x(:,:)=x(:,:).*repmat(s(1,:),3,1);
+
+J(1,3,:)=-x(2,:);
+J(2,3,:)=x(1,:);
+
+x=permute(x,[2:dim,1,dim+1:ndims(x)]);
+J=permute(J,[3:dim+1,1,2,dim+2:ndims(J)]);

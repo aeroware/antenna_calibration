@@ -1,0 +1,1506 @@
+============================================================
+
+function [ResultFE,ResultBG,ResultBE]=Concept_Call(WorkingDir)
+
+% Concept_Call(WorkingDir) calls the Concept front end,
+% 'buildgeo', and finally the Concept backend to calculate 
+% antenna currents. The results are stored in a myriad of Concept 
+% output files, the most important being 
+% concept.out (main ascii output file), co_ili.bin (binary wire currents), 
+% and co_ifl.bin (binary surface currents).
+
+global Atta_Concept_FE Atta_Concept_BG Atta_Concept_BE
+
+% redirection file for keyboard input to concept front end:
+
+ConceptfeKeyIn='ConceptfeKeyinput.dat'; 
+
+% change to working directory if required:
+
+if ~exist('WorkingDir','var')||isempty(WorkingDir),
+  WorkingDir='';
+end
+
+if ~isempty(WorkingDir),
+  SaveDir=pwd;
+  try
+    cd(WorkingDir);
+  catch
+    error(['Cannot change to working directory "',WorkingDir,'".']);
+  end
+end
+
+% call front end:
+
+Message='Calling Concept front end... ';
+fprintf(Message);
+
+fd=fopen(ConceptfeKeyIn,'w+');
+fprintf(fd,'\n\n14\n');
+fclose(fd);
+ 
+[Status,ResultFE]=dos([Atta_Concept_FE,' < ',ConceptfeKeyIn]);
+if Status~=0
+  fprintf('failed.\n');
+  error([ResultFE,'.']);
+else
+  fprintf(repmat('\b',1,length(Message)));
+end
+
+delete(ConceptfeKeyIn);
+
+% call geometry builder:
+
+Message='Calling geometry builder... ';
+fprintf(Message);
+
+[Status,ResultBG]=dos(Atta_Concept_BG);
+if Status~=0
+  fprintf('failed.\n');
+  error([ResultBG,'.']);
+else
+  fprintf(repmat('\b',1,length(Message)));
+end
+
+% call back end:
+
+Message='Calling Concept back end... ';
+fprintf(Message);
+
+[Status,ResultBE]=dos(Atta_Concept_BE);
+if Status~=0
+  fprintf('failed.\n');
+  error([ResultBE,'.']);
+else
+  fprintf(repmat('\b',1,length(Message)));
+end
+
+% go back to original directory:
+
+if ~isempty(WorkingDir),
+  cd(SaveDir);
+end
+
+============================================================
+
+function Concept_CreateIn(PhysGrid,Freq,FeedNum,Titel,WorkingDir)
+
+% Concept_CreateIn(PhysGrid,Freq,Titel,FeedNum,WorkingDir)
+% creates CONCEPT input file in directory WorkingDir
+% (default is the current working directory) 
+% by translating given data into CONCEPT input format.
+% Freq defines the operation frequency. Titel is an optional title 
+% which is written as first item to the file.
+% PhysGrid defines the antenna system, the following fields of which are used:
+%
+%   Geom .. N x 3, coordinates of grid nodes (x,y,z) 
+%   Desc .. S x 2, wire segments (start node, end node)
+%   Desc2d .. P x 1 cell, patches (represented by node vectors)
+%   Geom_.Feeds, Desc_.Feeds .. loads at nodes and segments, respectively
+%     Feeds.Elem element numbers, 
+%     Feeds.Posi position specification 
+%       (CONCEPT: 'a' beginning, 'm' middle, 'e' end)
+%   Geom_.Loads, Desc_.Loads .. loads at nodes and segments, respectively
+%     Loads.Elem and Loads.Posi the same as for Feeds
+%     Loads.Z    Impedances
+%   Desc_.Wire.Diam, Desc_.Wire.Cond, segment diameters and conductivities
+%   Exterior.epsr  .. dielectric constant of exterior medium
+%
+% All physical quantities are supposed to be in SI-units!
+%
+% The wire conductivities may be inf indicating perfectly conducting wires.
+%
+% FeedNum='all' signifies that all feeds PhysGrid.Desc_.Feeds.Elem are
+% driven, namely by the respective voltages PhysGrid.Desc_.Feeds.V.
+% In case FeedNum is numeric, only the feed with the number FeedNum
+% is driven by 1 Volt, the others are short-circuited.
+
+global Atta_Concept_In Atta_Concept_Wire1 Atta_Concept_Surf1
+
+WriteWireFile=0;     
+% wire file is not needed for CONCEPT calculations
+% since the wire data are included in concept.in
+
+if ~exist('WorkingDir','var')||isempty(WorkingDir),
+  WorkingDir='';
+end
+
+deg=pi/180;
+
+%cL=2.99792458e8;
+%eps0=1/(4e-7*pi*cL^2);
+
+% The following value is substituted for ideal conductivity 
+% when also non-ideal conductors are present:
+InfiniteCond=1e10; 
+
+Nnodes=size(PhysGrid.Geom,1);
+Nsegs=size(PhysGrid.Desc,1);
+Npats=length(PhysGrid.Desc2d);
+
+
+% write wire file
+% ===============
+
+% only correct if the number of bases is the same for all segments, see (*)
+
+if WriteWireFile&&(Nsegs~=0),
+   
+   WireFile=fullfile(WorkingDir,Atta_Concept_Wire1);
+
+   fid=fopen(WireFile,'wt');
+   if fid<0,
+      error(['Could not open/create file ',WireFile]);
+   end
+
+   fprintf(fid,'%i\n',Nsegs);
+
+   for L=1:Nsegs
+      fprintf(fid,'%20.10E %20.10E %20.10E  %20.10E %20.10E %20.10E \n',...
+         PhysGrid.Geom(PhysGrid.Desc(L,1),:),PhysGrid.Geom(PhysGrid.Desc(L,2),:));
+   end
+
+   fprintf(fid,'%i\n',max(3,mode(PhysGrid.Desc_.NBases)));  % (*)
+
+   if fclose(fid)<0,
+      error(['Could not close file ',WireFile]);
+   end
+
+end
+
+
+% write surface file
+% ==================
+
+if Npats~=0,
+   
+   SurfFile=fullfile(WorkingDir,Atta_Concept_Surf1);
+
+   fid=fopen(SurfFile,'wt');
+   if fid<0,
+      error(['Could not open/create file ',SurfFile]);
+   end
+
+   fprintf(fid,'%i  %i\n',Nnodes,Npats);
+
+   for L=1:Nnodes
+      fprintf(fid,'%20.10E %20.10E %20.10E \n',PhysGrid.Geom(L,:));
+   end
+
+   for L=1:Npats
+      switch length(PhysGrid.Desc2d{L})
+         case 3
+            fprintf(fid,'%5i %5i %5i     0 \n',PhysGrid.Desc2d{L});
+         case 4
+            fprintf(fid,'%5i %5i %5i %5i \n',PhysGrid.Desc2d{L});
+         otherwise
+            error('ERROR...Concept accepts only patches with 3 or 4 nodes !');
+      end
+   end
+
+   if fclose(fid)<0,
+      error(['Could not close file ',SurfFile]);
+   end
+
+end
+    
+
+% write Concept main input file
+% =============================
+
+epsr=EvaluateFun(PhysGrid.Exterior.epsr,Freq);
+epsr(epsr==0)=1;
+
+if length(unique(epsr))>1,
+  warning(['Different relative dielectric constants cannot be handled',...
+    'in multi-frequency call; epr of the first frequency is used for all.']);
+end
+
+% open file
+% ---------
+
+CIF=fullfile(WorkingDir,Atta_Concept_In);
+
+fid=fopen(CIF,'wt');
+if fid<0,
+  error(['Could not open/create file ',CIF]);
+end
+
+% Title
+% -----
+
+if ~exist('Titel','var')||isempty(Titel),
+  Titel='';
+end
+if ~ischar(Titel),
+  Titel=char(Titel);
+end
+if size(Titel,1)~=0,
+  Titel=Titel.';
+  Titel=Titel(:).';
+end
+Titel=Titel(1:min(69,length(Titel)));  % max 69 characters are allowed
+
+fprintf(fid,'1.1  characterization of the structure\n');
+fprintf(fid,' %s\n',Titel);
+
+% symmetry (0=no symmetry assumed here)
+% -------------------------------------
+
+fprintf(fid,'2.1   symmetry with respect to the xz plane, yz plane or both\n');
+fprintf(fid,'%6d\n',0);
+
+% wires
+% -----
+
+fprintf(fid,'2.2   number of wires, id. ground, segments per wavelength, coating\n');
+if epsr~=1,
+  fprintf(fid,'%5i %5i %5i %5i\n',Nsegs, 7,8,0);
+else
+  fprintf(fid,'%5i %5i %5i %5i\n',Nsegs, 0,8,0);
+end
+
+for L=1:Nsegs,
+  
+  fprintf(fid,'2.30  wire %i   : coordinates\n', L);
+  fprintf(fid,'%10.5f %10.5f %10.5f %10.5f %10.5f %10.5f \n',...
+    [PhysGrid.Geom(PhysGrid.Desc(L,1),:),PhysGrid.Geom(PhysGrid.Desc(L,2),:)]);
+
+  fprintf(fid,'2.31  wire %i   : radius, no. of basis functions, RB, EP, MY\n', L);
+  % anscheinend braucht man nur die ersten 2
+  fprintf(fid,'%10.6f    %i\n', ...
+    PhysGrid.Desc_.Diam(L)/2*1000,PhysGrid.Desc_.NBases(L)); 
+    % radius in mm, and number of bases
+  
+end
+
+% exterior medium
+% ---------------
+
+if epsr~=1,
+  fprintf(fid,'2.5   tan_delta, rel. permittivity\n');
+  fprintf(fid,'  %12.6E  %12.6E\n', ...
+    imag(epsr)/real(epsr),real(epsr));
+end 
+
+% always require output of wire currents
+% --------------------------------------
+
+fprintf(fid,'3.1  print of currents\n');
+fprintf(fid,'%6d\n',1);
+
+% Excitation 
+% ----------
+
+if ~exist('FeedNum','var')||isempty(FeedNum),
+  FeedNum='all';
+end
+  
+[V,Feeds0,Feeds1,Pos]=GetFeedVolt(PhysGrid,FeedNum);
+
+if length(Feeds0)~=0,
+  error('Feed nodes cannot be used with CONCEPT.');
+end
+
+if isnumeric(FeedNum),
+  
+  fprintf(fid,'3.2  excitation\n');
+  fprintf(fid,'%6d\n',1);
+  % (1=one volt and no phase specified)
+  
+  fprintf(fid,'3.3  generator position, internal resistance (excitation=1)\n');
+  fprintf(fid,' %c%-3d    %f\n',Pos(FeedNum),Feeds1(FeedNum),0);
+  
+else
+  
+  fprintf(fid,'3.2  excitation\n');
+  fprintf(fid,'%6d\n',2);
+  % (2=Volts and phases specified)
+  
+  fprintf(fid,'3.4  lumped/continuous gen. ,no. of voltage gen., ampl./phase (excitation=2)\n');
+  fprintf(fid,'%6d %6d %6d\n',1,length(Feeds1),2);
+  
+  for n=1:length(Feeds1),
+    if mod(n,5)==1,
+      if n~=1,
+        fprintf(fid,'\n');
+      end
+      fprintf(fid,'3.41 generator positions (max. 5 per line)\n');
+    end
+    fprintf(fid,' %c%-5d',Pos(n),Feeds1(n));
+  end
+  fprintf(fid,'\n');
+
+  for n=1:length(Feeds1),
+    fprintf(fid,'3.44 amplitude(%-4d), phase(%-4d)\n',n,n);
+    fprintf(fid,' %15.6f %15.6f\n',abs(V(n)),angle(V(n))/deg);
+  end
+  
+end
+
+% frequency representation
+% ------------------------
+
+if length(Freq)==1,  % 1 .. single frequency
+  
+  fprintf(fid,'4.1  representation of frequency(ies) (1-6)\n');
+  fprintf(fid,'%6d\n',1);
+
+  fprintf(fid,'4.2  basic frequency\n');
+  fprintf(fid,'%12.3E\n',Freq/1e6);
+  
+else  % 2 .. frequency loop
+  
+  fprintf(fid,'4.1  representation of frequency(ies) (1-6)\n');
+  fprintf(fid,'%6d\n',2);
+
+  fprintf(fid,'4.3  basic frequency, frequency step width, number of frequencies\n');
+  fprintf(fid,'%12.3E %12.3E %i\n',...
+    Freq(1)/1e6, (Freq(end)-Freq(1))/((length(Freq)-1)*1e6), length(Freq));
+  
+end
+
+% skin effect, conductivity
+% -------------------------
+
+if (epsr==1)&&~all(isinf(PhysGrid.Desc_.Cond)),
+
+  Co=PhysGrid.Desc_.Cond;
+  Co(isinf(Co))=InfiniteCond;
+  
+  % check if each object has a unique conductivity:
+  if any(diff(Co(:))&~diff(PhysGrid.Desc_.ObjNum(:))),
+    warning('For the following objects there are several conductivities found:');
+    ob=unique(PhysGrid.Desc_.ObjNum);
+    fprintf('Object-number  conductivities [MS/m]\n');
+    for n=ob(:).',
+      cc=unique(Co(PhysGrid.Desc_.ObjNum==n)/1e6);
+      if length(cc)>1,
+        fprintf('%10d    ',n);
+        fprintf('%12.3E',cc);
+        fprintf('\n');
+      end
+    end
+    fprintf('\n');
+  end
+      
+  la=find(diff(Co(:))|diff(PhysGrid.Desc_.ObjNum(:)));
+  la(end+1)=Nsegs;    
+      
+  fprintf(fid,'5.1  skin effect (1/0)\n');
+  fprintf(fid,'%6d\n',1);
+
+  fprintf(fid,'5.2  number: conductivity value(s), observation point(s) E tang\n');
+  fprintf(fid,'%6d     %i\n',length(la),0);
+  
+  for n=1:length(la),
+    if mod(n,3)==1,
+      if n~=1,
+        fprintf(fid,'\n');
+      end
+      fprintf(fid,'5.3  conductivity value(s) in S/m (max. 3 per line)\n');
+    end
+    fprintf(fid,'%15.5E',Co(la(n)));
+  end
+  fprintf(fid,'\n');
+
+  for n=1:length(la),
+    if mod(n,5)==1,
+      if n~=1,
+        fprintf(fid,'\n');
+      end
+      fprintf(fid,'5.4  conductivity domain(s)\n');
+    end
+    fprintf(fid,'%6d',la(n));
+  end
+  fprintf(fid,'\n');
+  
+else  % epsr~=1 or all ideal conductors
+
+  % It seems that Concept cannot handle skin effect
+  % when external relative epsilon ~= 1
+  
+  if ~all(isinf(PhysGrid.Desc_.Cond)),
+    warning(['Conductivity of all conductors is altered to infinity, ',...
+      'otherwise CONCEPT could not handle epsr~=1.']);
+  end
+  
+  fprintf(fid,'5.1  skin effect (1/0)\n');
+  fprintf(fid,'%6d\n',0);     
+  
+end 
+
+% loads
+% -----
+
+try 
+  Lo=PhysGrid.Desc_.Loads.Elem;
+  LoPosi=PhysGrid.Desc_.Loads.Posi;
+  RL=real(PhysGrid.Desc_.Loads.Z);
+  LL=imag(PhysGrid.Desc_.Loads.Z)/(2*pi*Freq(1));
+  if numel(unique(Freq))~=1,
+    warning(['Inconsistency: There are different frequencies to be operated,\n',...
+      'but load inductances can only be determined once,\n',...
+      'so they are calculated on the basis of the first frequency!\n']);
+  end
+catch
+  Lo=[];
+end  
+
+if length(Lo)~=length(LL),
+  error('Inconsistent load information in antenna Desc_ field.');
+end
+
+fprintf(fid,'6.1  number of load impedances\n');
+fprintf(fid,'%6d\n',length(Lo));
+
+if ~isempty(Lo),
+
+  for n=1:length(Lo),
+    if mod(n,5)==1,
+      if n~=1,
+        fprintf(fid,'\n');
+      end
+      fprintf(fid,'6.2  loaded wires (max. 5 per line)\n');
+    end
+    fprintf(fid,' %c%-7d',LoPosi(n),Lo(n));
+  end
+  fprintf(fid,'\n');
+
+  for n=1:length(Lo),
+    if mod(n,5)==1,
+      if n~=1,
+        fprintf(fid,'\n');
+      end
+      fprintf(fid,'6.3  circuitry identifiers (max. 5 per line)\n ');
+    end
+    fprintf(fid,'%8d',1);
+  end
+  fprintf(fid,'\n');
+
+  for n=1:length(Lo),
+    if mod(n,5)==1,
+      if n~=1,
+        fprintf(fid,'\n');
+      end
+      fprintf(fid,'6.4  lumped load: 1, continuous load: 2 ( max. 5 je Zeile)\n ');
+    end
+    fprintf(fid,'%8d',1);
+  end
+  fprintf(fid,'\n');
+
+  for n=1:length(Lo),
+    fprintf(fid,'6.50 load elements  (R-L-C)\n');
+    fprintf(fid,'%15.5f %15.5f\n',RL(n),LL(n)*1e6);
+    % Concept expects R in Ohms, L in microhenrys !!
+  end
+
+  fprintf(fid,'6.6  number of voltage reference points\n');
+  fprintf(fid,'%6d\n',0);
+
+end % if loads exist
+
+% etc.
+% ----
+
+fprintf(fid,'7.1  current distribution on wires\n');
+fprintf(fid,'%6d\n',0);
+fprintf(fid,'7.3  number of currents at discrete points\n');
+fprintf(fid,'%6d\n',0);
+fprintf(fid,'9.0  rcs (0/1)\n');
+fprintf(fid,'%6d\n',0);
+fprintf(fid,'9.1  number of field points\n');
+fprintf(fid,'%6d\n',0);
+fprintf(fid,'10.3  total number of "cable wires"\n');
+fprintf(fid,'%6d\n',0);
+
+fprintf(fid,'11.1  surface currents (0/1/2)\n');   % declare surfaces
+if Npats==0,
+  fprintf(fid,'%6d\n',0);
+else
+  fprintf(fid,'%6d\n',1);
+end
+
+fprintf(fid,'11.11  physical optics (0/1)\n');
+fprintf(fid,'%6d\n',0);
+
+fprintf(fid,'12.1  direct: 11,12,13, special direct solv. 21,22, iter. solver: 31,32,33\n');
+fprintf(fid,'%6d\n',12);
+
+% close Concept input file
+% ------------------------
+  
+if fclose(fid)<0,
+  error(['Could not close file ',CIF]);
+end
+
+
+============================================================
+
+function Op=Concept_Curr(PhysGrid,Freq,FeedNum,WorkingDir,Titel)
+
+% Op=Concept_Curr(PhysGrid,Freq,FeedNum,WorkingDir,Titel) uses Concept to
+% calculate currents on antenna grid PhysGrid when driven at the 
+% frequency Freq as specified by FeedNum. Titel defines the title 
+% added at the beginning of the Concept input and output files.
+% The calculations are done in the directory WorkingDir (default is
+% the current directory).
+
+if ~exist('Titel','var')||isempty(Titel),
+  Titel='';
+end
+
+if ~exist('WorkingDir','var')||isempty(WorkingDir),
+  WorkingDir='';
+end
+
+Concept_CreateIn(PhysGrid,Freq,FeedNum,Titel,WorkingDir);
+
+Concept_Call(WorkingDir);
+
+Op=Concept_ReadAll(WorkingDir);
+
+============================================================
+
+function [dr,Curr1e]=Concept_Curr1(Desc,Curr1,Curr1b)
+
+% [dr,Curr1e]=Concept_Curr1(Desc,Curr1,Curr1b)
+% determines relative distances dr of the maxima of the Concept basis  
+% functions (triangles) within the respective segments (measured from
+% 1st end towards 2nd end); furthermore, calculates the currents Curr1e 
+% at the segment ends. 
+%
+% Curr1 is a cell array of vectors, each vector containing the 
+% current amplitudes associated to the respective basis functions.
+% Curr1b contains the connection identification numbers of the wires, which
+% establishes the arrangement of basis functions along the wire segments.
+%
+% dr is a cell array of the same size as Curr1, with the same internal structure.
+% Curr1e is a nsegs x 2 array, with nsegs being the number of segments.
+% The first column of Curr1e contains the currents at the beginning (1st end) 
+% of the segments, the second column the currents at the (2nd) end of the segments.
+
+% wire identifiers (in Curr1b):
+%
+% 1:      1st end of segment connected to ground (z=0), 
+%           the 2nd end being free (no connections);
+% 3,4:    one connection to ground (z=0), at 1st end (3) or at 2nd end (4), 
+%           the other end connected to further wire(s);
+% 5,-5:   one connection to other wires, at 1st end (5) or 2nd end (-5),
+%           the other segment end free
+% 6:      wire connections at both segment ends (6)
+% 7:      both segment ends free (7)
+% 15,-15: 1st end (15) or 2nd end (-15) is connected to a patch,
+%           with no connections at the other end
+% 16,-16: 1st end (16) or 2nd end (-16) is connected to a patch,
+%           with wire connections at the other end
+% 26:     both ends connected to patches (26)
+
+
+nsegs=size(Desc,1);
+if (length(Curr1)~=nsegs)||(length(Curr1b)~=nsegs),
+  error('Inconsistent size of input arrays.');
+end
+
+nb=cellfun('length',Curr1);   % number of basis functions
+
+% trailing lengths n1 and n2 of basis functions at 1st and 2nd end of segments: 
+
+n1=zeros(nsegs,1);
+n2=zeros(nsegs,1);
+
+n1((Curr1b==1)|(Curr1b==3)|(Curr1b==-5)|(Curr1b==7)|...
+  (Curr1b==15)|(Curr1b==-15)|(Curr1b==16)|(Curr1b==26))=1;
+n1((Curr1b==4)|(Curr1b==5)|(Curr1b==6)|(Curr1b==-16))=0.5;
+
+n2((Curr1b==1)|(Curr1b==4)|(Curr1b==5)|(Curr1b==7)|...
+  (Curr1b==15)|(Curr1b==-15)|(Curr1b==-16)|(Curr1b==26))=1;
+n2((Curr1b==3)|(Curr1b==-5)|(Curr1b==6)|(Curr1b==16))=0.5;
+
+% is surface connection (path or ground) at 1st and 2nd end of segments:
+
+s1=(Curr1b==1)|(Curr1b==3)|(Curr1b==15)|(Curr1b==16)|(Curr1b==26);
+s2=(Curr1b==4)|(Curr1b==-15)|(Curr1b==-16)|(Curr1b==26);
+ 
+% loop over segments:
+
+dr=cell(nsegs,1);
+Curr1e=zeros(nsegs,2);
+
+ss=FindSegs(Desc,'all');
+
+for n=1:nsegs,
+  
+  dr{n}=(n1(n)+(0:nb(n)-1))/(n1(n)+nb(n)-1+n2(n));
+  
+  % 1st end of segment:
+  
+  if s1(n),         % connection to patch or ground
+    Curr1e(n,1)=Curr1{n}(1);
+  elseif n1(n)==1,  % open wire end
+    Curr1e(n,1)=0;
+  else              % connection to other segment(s)
+    Curr1e(n,1)=Curr1e(n,1)+Curr1{n}(1)/2;
+    neigh=setdiff(ss{Desc(n,1)},n); % neighbours (segments met at start node)
+    ind=sub2ind([nsegs,2],abs(neigh),1+(neigh<0));
+    Curr1e(ind)=Curr1e(ind)-sign(neigh).*Curr1{n}(1)/2;
+  end
+
+  % 2nd end of segment:
+
+  if s2(n),         % connection to patch or ground
+    Curr1e(n,2)=Curr1{n}(end);
+  elseif n2(n)==1,  % open wire end
+    Curr1e(n,2)=0;
+  else              % connection to other segment(s)
+    Curr1e(n,2)=Curr1e(n,2)+Curr1{n}(end)/2;
+    neigh=setdiff(ss{Desc(n,2)},-n); % neighbours (segments met at end node)
+    ind=sub2ind([nsegs,2],abs(neigh),1+(neigh<0));
+    Curr1e(ind)=Curr1e(ind)+sign(neigh).*Curr1{n}(end)/2;
+  end
+  
+end
+
+============================================================
+
+function FF=Concept_Far(Freq,AntGrid,r,WorkingDir,Field)
+
+% FF=Concept_Far(Freq,AntGrid,er,WorkingDir,Field) calculates far field radiated 
+% from the antenna system the currents of which already must have been 
+% determined and the results stored in the directory WorkingDir.
+% The field is calculated for the directions er. er is an n x 3 matrix
+% each row of which gives a unit vector (n vectors present) representing
+% the radiation direction. 
+% FF is of same size as er, so FF(m,:) is the electric field radiated 
+% in the direction er(m,:).
+% Field is a string defining the field to be calculated: 'E' or 'H'.
+%
+% Actually, FF is the respective field F apart from the factor
+% exp(-jkr)/r, so the field F can be obtained as
+%   F = (exp(-jkr)/r) * FF.
+
+[RFar,RFresnel,d]=FieldZones(Freq,AntGrid);
+
+dist=10*max(RFar,10*d);
+r=dist*r./repmat(Mag(r,2),[1,3]);
+
+FF=Concept_Near(r,WorkingDir,Field);
+
+jkdist=j*dist*Kepsmu(Freq,AntGrid);
+
+FF=dist*exp(jkdist)*FF;
+
+============================================================
+
+function F=Concept_Near(r,WorkingDir,Field)
+
+% E=Concept_Near(r,DataDir,Field) calculates near field F generated 
+% by the antenna system the currents of which already must have been 
+% determined and the results stored in the directory WorkingDir.
+% The field is calculated for the positions r. r is an n x 3 matrix
+% each row of which gives a radius vector (n vectors present). 
+% F is of same size, so F(m,:) is the electric field at the position r(m,:).
+% Field is a string defining the field to be calculated: 'E' or 'H'.
+
+global Atta_Concept_EHExe Atta_Concept_EHOut Atta_Concept_EHIn
+global Atta_Concept_DelEHFiles Atta_Concept_EOutasc Atta_Concept_HOutasc
+
+KeyinputFile='EH1dKeyinput.dat';  % file for key input redirection
+
+FieldNames='EH';
+
+if ischar(Field),
+  Field=strtrim(Field);
+  Field=upper(Field(1));
+  if isequal(Field,'E'),
+    Field=1;
+  elseif isequal(Field,'H'),
+    Field=2;
+  else
+    Field=-1;
+  end
+end
+if (Field~=1)&&(Field~=2),
+  error('Wrong field identifier.');
+end
+
+if (size(r,2)~=3)||(ndims(r)~=2),
+  error('Radius vectors must be 3-dimensional and stored as rows.');
+end
+
+
+% print message to screen:
+
+Message=sprintf('Applying EH1d to calculate %c-field ... ',FieldNames(Field));
+fprintf(Message);
+
+
+% change to new directory if required:
+
+if ~exist('WorkingDir','var')||isempty(WorkingDir),
+  WorkingDir='';
+end
+
+if ~isempty(WorkingDir),
+  SaveDir=pwd;
+  try
+    cd(WorkingDir);
+  catch
+    error(['Cannot change to directory "',WorkingDir,'".']);
+  end
+end
+
+
+% create eh1d.in (input file for eh1d.exe):
+
+fid=fopen(Atta_Concept_EHIn,'w');
+if fid<0
+  error('Could not open file eh1d.in');
+end
+
+fprintf(fid,'*** E field -> 1, H field -> 2, sar values ->3\n');
+fprintf(fid,'%d\n',Field);
+fprintf(fid,'*** Total number of lines\n');
+fprintf(fid,'0\n');
+fprintf(fid,'*** Field points from a file (y/n)\n');
+fprintf(fid,'n\n');
+fprintf(fid,'*** Total number of field points\n');
+fprintf(fid,'%i\n',size(r,1));
+
+for n=1:size(r,1),
+  fprintf(fid,'*** Coordinates (x y z) for point %i\n',n);
+  fprintf(fid,'%17.8e %17.8e %17.8e\n',r(n,1),r(n,2),r(n,3));
+end
+
+fclose(fid);
+
+
+% call eh1d:
+
+fid=fopen(KeyinputFile,'w');
+fprintf(fid,'1\n');
+fclose(fid);
+
+[Status,Result]=dos([Atta_Concept_EHExe,' < ',KeyinputFile]);
+if Status~=0
+  fprintf('failed.\n');
+  error([Result,'.']);
+end
+
+delete(KeyinputFile);
+
+
+% read results of eh1d from eh1d.out or *.asc:
+
+F=Concept_ReadField('');
+
+
+% delete in- and output files if Atta_Concept_DelEHFiles:
+
+if Atta_Concept_DelEHFiles,
+  x={Atta_Concept_EHIn,Atta_Concept_EHOut,...
+     Atta_Concept_EOutasc,Atta_Concept_HOutasc,'fort.89'};
+  for n=1:length(x),
+    if exist(x{n},'file'),
+      delete(x{n});
+    end
+  end
+end  
+
+
+% go back to directory before call and remove message from screen:
+
+if ~isempty(WorkingDir),
+  cd(SaveDir);
+end
+
+fprintf(repmat('\b',1,length(Message)));
+
+============================================================
+
+function [Op,Surf0Grid]=Concept_ReadAll(WorkingDir)
+
+% Op=Concept_ReadAll(WorkingDir)
+% reads all currents from the CONCEPT output file concept.out;
+% Afterwards co_ili.bin and co_ifl.bin are read additionally
+% and the respective current amplitudes are substituted for
+% the data read from concept.out in oredr to improve precision.
+% WorkingDir is the directory where the file are situated, 
+% default is the current directory.
+%
+% [Op,Surf0Grid]=...
+% additionally reads the surface structure as used for the 
+% CONCEPT calculations from surf.0.
+% This is useful when a check of the patches is necessary
+% (CONCEPT changes patch structure if wires are connected to 
+% nodes which are corners of quadrangular patches or when 
+% fewer than 6 triangular pathes have this node in common; then
+% the new patch geometry used by CONCEPT is saved in surf.0).
+
+if ~exist('WorkingDir','var')||isempty(WorkingDir),
+  WorkingDir='';
+end
+
+Op=Concept_ReadOut(WorkingDir);
+
+Nsegs=length(Op.Curr1);
+Nsegbases=cellfun(@length,Op.Curr1);
+% may be different from PhysGrid.Desc_.NBases, CONCEPT changes it if
+% 1. there were not enoungh bases per wavelenght;
+% 2. there is a feed or load in the middle of a segment with an even
+%    number of bases, then the number is de- or (mostly) increased by 1
+
+Nfreqs=length(Op);
+
+OpIli=Concept_ReadILI(Nsegs,Nsegbases,Nfreqs,WorkingDir);
+for nf=1:Nfreqs,
+  Op(nf).Curr1=OpIli(nf).Curr1;
+end
+
+SurfBases=length(Op.Curr2);
+
+if SurfBases==0,
+  if nargout>1,
+    Surf0Grid.Geom=zeros(0,3);
+    Surf0Grid.Desc2d={};
+  end
+  return
+end
+  
+OpIfl=Concept_ReadIFL(SurfBases,Nfreqs,WorkingDir);
+for nf=1:Nfreqs,
+  Op(nf).Curr2=OpIfl(nf).Curr2;
+end
+
+if nargout>1,
+  Surf0Grid=Concept_ReadSurf(WorkingDir);
+end
+
+
+============================================================
+
+function [F,r,FieldName]=Concept_ReadField(WorkingDir)
+
+% F=Concept_ReadField(FileName) reads complex field vectors from the file
+% which is output by eh1d.exe. The file is expected in the directory
+% WorkingDir.
+% 
+% [F,r,FieldName]=Concept_ReadField(FileName)
+% also returns the positions r at which the field vectors appear, and the
+% name of the field, FieldName.
+
+global Atta_Concept_EHOut Atta_Concept_EHOutasc
+global Atta_Concept_EOutasc Atta_Concept_HOutasc
+
+if ~exist('WorkingDir','var')||isempty(WorkingDir),
+  WorkingDir='';
+end
+
+FileName=fullfile(WorkingDir,Atta_Concept_EHOut);
+d=dir(FileName);
+if isempty(d)||d.isdir,
+  error(['File ',FileName,' not found.']);
+end
+
+fid=fopen(FileName,'r');
+
+if fid<0,
+  error(['File ',FileName,' not found.']);
+end
+
+Eindicator=lower('Electric');
+Hindicator=lower('Magnetic');
+rIndicator=lower('Field point coord');
+  
+Ln=0;
+
+% get field name:
+
+FieldName='';
+while ~feof(fid)&&isempty(FieldName),
+  x=lower(fgetl(fid));
+  Ln=Ln+1;
+  if ~isempty(strfind(x,Eindicator)),
+    FieldName='E';
+    Findicator='Ex';
+  elseif ~isempty(strfind(x,Hindicator)),
+    FieldName='H';
+    Findicator='Hx';
+  end
+end
+
+% read from ascii matrix file if required and possible:
+
+Finished=false;
+
+if Atta_Concept_EHOutasc&&~isempty(FieldName),
+  if isequal(FieldName,'E'),
+    FileNamex=fullfile(WorkingDir,Atta_Concept_EOutasc);
+  elseif isequal(FieldName,'H'),
+    FileNamex=fullfile(WorkingDir,Atta_Concept_HOutasc);
+  end
+  d=dir(FileNamex);
+  if ~(isempty(d)||d.isdir),
+    try
+      x=load(FileNamex);
+      F=x(:,[1,3,5])+j*x(:,[2,4,6]);
+      Finished=true;
+    catch
+      Finished=false;
+    end
+  end
+end
+
+if Finished,
+  fclose(fid);
+  return
+end
+
+% read field vectors F at positions r:
+
+n=0;
+r=zeros(1e4,3);
+F=zeros(1e4,3);
+
+while ~feof(fid),
+  x=lower(fgetl(fid));
+  Ln=Ln+1;
+  if ~isempty(strfind(x,rIndicator)),
+    n=n+1;
+    ii=find(x=='=')+1;
+    if length(ii)~=3,
+      error(['Inconsistent radius vector in line ',num2str(Ln)]);
+    end
+    for q=1:3,
+      r(n,q)=sscanf(x(ii(q):end),'%e');
+    end
+    for q=1:3,
+      ii=[];
+      while ~feof(fid)&&isempty(ii),
+        x=lower(fgetl(fid));
+        Ln=Ln+1;
+        ii=strfind(x,lower(char(Findicator+[0,q-1])));
+      end
+      if isempty(ii),
+        error(['Unexpected end of file in line ',num2str(Ln),...
+          ' reading ',num2str(n),'-th field vector.']);
+      end
+      ii=find((x=='=')|(x=='j'))+1;
+      if length(ii)~=2,
+        error(['Incorrect field data in line ',num2str(Ln),...
+          ' reading ',num2str(n),'-th field vector.']);
+      end
+      F(n,q)=sscanf(x(ii(1):end),'%e')+j*sscanf(x(ii(2):end),'%e');
+    end
+  end
+end
+
+fclose(fid);
+
+r=r(1:n,:);
+F=F(1:n,:);
+
+============================================================
+ 
+function Op=Concept_ReadIFL(Nbases,Nfreqs,Workingdir)
+
+% Op=Concept_ReadIFL(Nbases,Nfreqs,Workingdir) reads the surface
+% currents Op.Curr2 from the Concept binary output file co_ifl.bin,
+% expecting that it is in the directory Workingdir 
+% (default is the current directory).
+% Nbases is the total number of surface basis functions.
+% Nfreqs is the number of current sets to be read (1 set per frequency), 
+% default is to read all. 
+% Op.Curr2 returns a vector of surface current amplitudes.
+
+NumberType='double';   % binary type of numbers in file
+NumberSize=8;          % bytes of memory needed per number
+
+IFL='co_ifl.bin';
+
+if ~exist('Workingdir','var')||isempty(Workingdir),
+  Workingdir='';
+end
+IFL=fullfile(Workingdir,IFL);
+d=dir(IFL);
+if isempty(d),
+  error(['File ',IFL,' not found.']);
+end
+
+if ~exist('Nfreqs','var')||isempty(Nfreqs),
+  Nfreqs=round(d.bytes/NumberSize/Nbasis/4);
+end
+
+if ~exist('Nbases','var')||isempty(Nbases),
+  error('Number of basis functions per segment not defined.');
+end
+
+
+fid=fopen(IFL,'rb');
+
+Op(1,Nfreqs).Curr2=zeros(1,3);
+
+for n=1:Nfreqs,
+  x=fread(fid,2*Nbases,NumberType);
+  x=x(:);
+  Op(n).Curr2=x(1:2:end-1)+i*x(2:2:end);
+end
+
+fclose(fid);
+
+============================================================
+ 
+function Op=Concept_ReadILI(Nsegs,Nbases,Nfreqs,WorkingDir)
+
+% Op=Concept_ReadILI(Nsegs,Nbases,Nfreqs,WorkingDir) reads the wire
+% currents Op.Curr1 from the Concept binary output file co_ili.bin,
+% expecting that it is in the directory WorkingDir (default is the current 
+% directory).
+% Nfreqs is the number of current sets (1 set per frequency), 
+% default is to read all. 
+% Nsegs is the number of segments in the wire grid, Nbases the number of 
+% basis functions per segment (a vector giving the number of basis 
+% funcion for each segment, or a scalar in case all segments have the 
+% same number of basis functions). 
+% Op.Curr1 returns a cell vector, each element of which contains 
+% one current set.
+
+NumberType='double';   % binary type of numbers in file
+NumberSize=8;          % bytes of memory needed per number
+NumbersPerFreq=20000;  % allocated numbers per frequency 
+% ! adapt NumbersPerFreq if necessary, it is JSP7/NumberSize, where JSP7 is 
+% defined in the Concept program directory in the file 
+% $CONCEPT\hfiles\dr_par.inc
+% (JSP7 is the number of bytes reserved per frequency)
+
+ILI='co_ili.bin';
+
+if ~exist('WorkingDir','var')||isempty(WorkingDir),
+  WorkingDir='';
+end
+ILI=fullfile(WorkingDir,ILI);
+d=dir(ILI);
+if isempty(d),
+  error(['File ',ILI,' not found.']);
+end
+
+if ~exist('Nfreqs','var')||isempty(Nfreqs),
+  Nfreqs=round(d.bytes/NumberSize/NumbersPerFreq);
+end
+
+if ~exist('Nsegs','var')||isempty(Nsegs),
+  error('Number of segments not defined.');
+end
+
+if ~exist('Nbases','var')||isempty(Nbases),
+  error('Number of basis functions per segment not defined.');
+end
+if length(Nbases)==1,
+  Nbases=repmat(Nbases,Nsegs,1);
+end
+SumNbases=sum(Nbases);
+
+
+fid=fopen(ILI,'rb');
+
+Op(1,Nfreqs).Curr1={};
+
+for n=1:Nfreqs,
+  for s=1:Nsegs,
+    x=reshape(fread(fid,2*Nbases(s),NumberType),[2,Nbases(s)]);
+    Op(n).Curr1{s,1}=x(1,:)+i*x(2,:);
+  end
+  if n~=Nfreqs,
+    fread(fid,NumbersPerFreq-2*SumNbases,NumberType);
+  end
+end
+
+fclose(fid);
+
+============================================================
+ 
+function Op=Concept_ReadOut(WorkingDir)
+
+% Op=Concept_ReadOut(WorkingDir)
+% reads data from the concept output file COF, default is
+% COF='concept.out'. The returned parameters are the currents for 
+% the wires and surfaces, which are returned in the fields Curr1 and Curr2
+% of the struct Op. If several frequencies are found in COF, Op is an 
+% array where each element contains the respective loaded parameters 
+% of the found frequencies.
+%
+% Op.Reread.Freq returns the frequency.
+%
+% Op.Curr1 is a cell vector of length s, s being the number of segments.  
+% Each cell contains a vector of current amplitudes corresponding 
+% to the wire basis functions of the respective segment. So the length of
+% Op.Curr1{n} is the number of basis functions used to represent 
+% the currents on the n-th segment.
+% Op.Curr1b contains the segment type according to CONCEPT wire
+% identification, i.e. a number which deines the connection types at
+% the segment ends. This is essential since the arrangement of basis 
+% functions along the wire depend on that.
+%
+% Op.Curr2 is a vector of current amplitudes corresponding to the surface 
+% current basis functions defined in Op.Curr2b (which consists of 2
+% columns giving the numbers of the patches from and to which the current 
+% flows, respectively).
+
+
+global Atta_Concept_Out
+
+if ~exist('WorkingDir','var')||isempty(WorkingDir),
+  WorkingDir='';
+end
+
+OutF=fullfile(WorkingDir,Atta_Concept_Out);
+d=dir(OutF);
+if isempty(d)||d.isdir,
+  error(['File ',OutF,' not found.']);
+end
+
+% open file
+
+fid=fopen(OutF,'rb');
+
+% error function
+
+ErrorInLine=@(x)(...
+  error('Errorneous/incomplete declaration encountered, line %d in file.',x));
+
+
+
+% Reread epsr of external medium
+% ------------------------------
+
+Ln=0;
+
+epsr=1;
+  
+while ~feof(fid),
+  
+  x=fgetl(fid);
+  Ln=Ln+1;
+
+  m=strfind(x(~isspace(x)),'2.5tan_delta,rel.permittivity');
+
+  if ~isempty(m),
+    x=[];
+    while ~feof(fid)&&isempty(x),
+      x=fgetl(fid);
+      Ln=Ln+1;
+      x=strtrim(x);
+    end
+    tandeltaepsr=sscanf(x,'%e',inf);
+    if length(tandeltaepsr)~=2,
+      error('Incorrect permittivity declaration encountered.');
+    end
+    epsr=tandeltaepsr(2)+j*tandeltaepsr(1)*tandeltaepsr(2);
+    break
+  end
+  
+end    
+
+if feof(fid),
+  frewind(fid);
+end
+
+
+% determine number of segments and wire (segment connection) type:
+% ----------------------------------------------------------------
+
+[q,Ln]=FindAnnouncedNumbers(fid,Ln,'Wire types computed by the program:');
+if iscell(q),
+  ErrorInLine(Ln); 
+end
+
+fgetl(fid);
+Ln=Ln+1;
+
+WireNumberAnnouncement='wire number:';
+WireTypeAnnouncement='identification:';
+
+[q,Ln,x]=FindAnnouncedNumbers(fid,Ln,WireNumberAnnouncement);
+if ~isequal(q,1),
+  ErrorInLine(Ln); 
+end
+
+Nsegs=0;
+WireType=zeros(2000,1);
+
+m=strfind(x,WireNumberAnnouncement);
+while ~isempty(deblank(x))&&~isempty(m),
+  Nsegs=Nsegs+1;
+  m=m(1)+length(WireNumberAnnouncement);
+  q=sscanf(x(m:end),'%e',1);
+  if ~isequal(q,Nsegs),
+    error('Wire segment counting ?? in line %d.',Ln);
+  end
+  mm=strfind(x,WireTypeAnnouncement);
+  mm=mm(1)+length(WireTypeAnnouncement);
+  qq=sscanf(x(mm:end),'%e',1);
+  if length(qq)~=1,
+    error('Incorrect wire type in line %d.',Ln);
+  end
+  WireType(q)=qq;
+  x=fgetl(fid);
+  Ln=Ln+1;
+  m=strfind(x,WireNumberAnnouncement);
+end  
+
+WireType=WireType(1:Nsegs);
+
+
+% read currents for all frequencies:
+% ----------------------------------
+
+Nfreq=0;
+Op=struct([]);
+
+while ~feof(fid),   % Frequency loop
+  
+  [q,Ln]=FindAnnouncedNumbers(fid,Ln,'Frequency of step:');
+  if length(q)~=2,
+    break
+  end
+  Nfreq=Nfreq+1;
+  Op(1,Nfreq).Reread.Freq=q(2)*1e6; % frequency in MHz -> in Hz
+  
+  Op(Nfreq).Reread.Exterior.epsr=epsr;
+  
+  Lnold=Ln;
+  [q,Ln]=FindAnnouncedNumbers(fid,Ln,'Total number of wire current amplitudes:');
+  if (length(q)~=1)||((Ln-Lnold)~=1),
+    ErrorInLine(Ln); 
+  end
+  Op(Nfreq).WireBases=q;
+  
+  Lnold=Ln;
+  [q,Ln]=FindAnnouncedNumbers(fid,Ln,'Total number of patch current amplitudes:');
+  if (length(q)~=1)||((Ln-Lnold)~=1), 
+    ErrorInLine(Ln); 
+  end
+  Op(Nfreq).SurfBases=q;
+  
+  % wire current amplitudes:
+  
+  Op(Nfreq).Curr1=cell(Nsegs,1);
+
+  if Nsegs>0,
+
+    m=0;
+    for s=1:Nsegs,
+
+      [q,Ln,x]=FindAnnouncedNumbers(fid,Ln,'Current distribution on');
+      if iscell(q), ErrorInLine(Ln); end
+      q=strfind(x,'(');
+      if isempty(q), ErrorInLine(Ln); end
+      q=sscanf(x(q+1:end),'%e',1);
+      if isempty(q)||(q<1)||(q~=round(q)), ErrorInLine(Ln); end
+
+      fgetl(fid);
+      fgetl(fid);
+      if feof(fid),
+        error('Unexpected end of file.');
+      end
+      Ln=Ln+2;
+
+      Op(Nfreq).Curr1{Nsegs}=zeros(1,q);
+      for qq=1:q,
+        x=fgetl(fid);
+        Ln=Ln+1;
+        if feof(fid),
+          error('Unexpected end of file.');
+        end
+        ri=sscanf(x,'%e',2);
+        if length(ri)~=2,
+          error('Error during reading %d-th current amplitude of %d-th segment.',...
+            qq,s);
+        end
+        Op(Nfreq).Curr1{s}(qq)=ri(1)+j*ri(2);
+      end
+
+      m=m+qq;
+
+    end % segments loop
+
+    if m~=Op(Nfreq).WireBases,
+      error('Only %d wire current amplitudes found, %d expected.',...
+        m,Op(Nfreq).WireBases);
+    end
+
+  end
+
+  % wire types:
+  
+  Op(Nfreq).Curr1b=WireType(:);
+  
+  % surface current amplitudes and normal component of E-field:
+  
+  Op(Nfreq).Curr2=zeros(Op(Nfreq).SurfBases,1);
+  Op(Nfreq).Curr2b=zeros(Op(Nfreq).SurfBases,2);
+  Op(Nfreq).Ensurf=zeros(0,1);
+
+  if Op(Nfreq).SurfBases>0,
+
+    [q,Ln,x]=FindAnnouncedNumbers(fid,Ln,'Surface currents (A/m)');
+    if iscell(q), ErrorInLine(Ln); end
+
+    while ~feof(fid)&&isempty(strfind(x,'=>')),
+      x=fgetl(fid);
+      Ln=Ln+1;
+    end
+
+    if feof(fid),
+      error('Announced %d surface current amplitudes not found.',...
+        Op(Nfreq).SurfBases);
+    end
+
+    for s=1:Op(Nfreq).SurfBases,
+
+      m=strfind(x,'=>')+2;
+      if length(m)~=1,
+        error('Error in reading %d-th surface current amplitude.',s);
+      end
+
+      q=sscanf(x,'%e',2);
+      qq=sscanf(x(m:end),'%e',3);
+      
+      if (length(q)~=2)||(length(qq)~=3),
+        error('Error in reading %d-th surface current amplitude.',s);
+      end
+
+      Op(Nfreq).Curr2(s)=qq(2)+j*qq(3);
+      Op(Nfreq).Curr2b(s,:)=[q(2),qq(1)];
+      
+      if feof(fid),
+        error(...
+          ['Reached end of file while reading surface currents ',...
+           'in line ',num2str(Ln),'.']);
+      end
+      
+      x=fgetl(fid);
+      Ln=Ln+1;
+      
+    end
+
+   
+    % read En (component of E-field normal to patches):
+    
+    [q,Ln,x]=FindAnnouncedNumbers(fid,Ln,'Normal component of E');
+    if iscell(q), ErrorInLine(Ln); end
+
+    q=sscanf(x,'%e',inf);
+    while ~(feof(fid)||((length(q)==5)&&(1==q(1))));
+      x=fgetl(fid);
+      Ln=Ln+1;
+      q=sscanf(x,'%e',inf);
+    end
+
+    p=1;  % next patch
+    Op(Nfreq).Ensurf=zeros(max(Op(Nfreq).Curr2b(:)),1);
+    
+    while (length(q)==5)&&(p==q(1)),
+
+      Op(Nfreq).Ensurf(p)=q(2)+j*q(3);
+      
+      if feof(fid), break, end
+      
+      x=fgetl(fid);
+      Ln=Ln+1;
+      p=p+1;
+      q=sscanf(x,'%e',inf);
+      
+    end
+    
+    if p==1,
+      error('Surface normal E-field components not found.');
+    end
+    
+    Op(Nfreq).Ensurf=Op(Nfreq).Ensurf(1:p-1);
+    
+  end % reading surface current amplitudes and En 
+  
+  
+end  % frequency loop
+
+
+Op=rmfield(Op,{'SurfBases','WireBases'});
+
+
+% close file:
+
+fclose(fid);
+
+
+end  % Concept_ReadOut
+
+
+% --------------------------
+
+function [FoundNumbers,Ln,x]=FindAnnouncedNumbers(fid,Ln,Announcement)
+
+FoundNumbers={}; % in case no announcement found
+x='';
+
+while ~feof(fid),
+  
+  x=fgetl(fid);
+  Ln=Ln+1;
+
+  m=strfind(x,Announcement);
+
+  if length(m)==1,
+    m=m+length(Announcement);
+    FoundNumbers=sscanf(x(m:end),'%e',inf);
+    break
+  end
+  
+end    
+    
+end
+
+============================================================
+ 
+function Grid=Concept_ReadSurf(WorkingDir)
+
+% Grid=Concept_ReadSurf(WorkingDir,SurfFile) reads the surface
+% structure from the file the name of which is defined in the
+% global variable Atta_Concept_Surf0. The file is expected in the 
+% directory WorkingDir (default is the current directory).
+% The returned Grid contains the fields Geom and Desc2d
+% defining the surface structure.
+
+global Atta_Concept_Surf0
+
+if ~exist('WorkingDir','var')||isempty(WorkingDir),
+  WorkingDir='';
+end
+
+SurfFile=fullfile(WorkingDir,Atta_Concept_Surf0);
+d=dir(SurfFile);
+if isempty(d)||d.isdir,
+  error(['File "',SurfFile,'" not found.']);
+end
+
+fid=fopen(SurfFile,'r');
+
+NNodes=fscanf(fid,'%e',1);
+NPats=fscanf(fid,'%e',1);
+
+%Grid.Geom=zeros(NNodes,3);
+Grid.Geom=reshape(fscanf(fid,'%e',3*NNodes),3,NNodes).';
+
+Grid.Desc2d=cell(NPats,1);
+for n=1:NPats,
+  x=fscanf(fid,'%e',4);
+  x=x(:).';
+  if x(4)~=0,
+    Grid.Desc2d{n}=x;
+  else
+    Grid.Desc2d{n}=x(1:3);
+  end
+end
+
+fclose(fid);
+

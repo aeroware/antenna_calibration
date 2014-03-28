@@ -1,0 +1,126 @@
+
+
+
+     Both RSX and VAX/VMS now support FORTRAN 77 which has "string support" in
+the form of CHARACTER*n data types.  The problem with CHARACTER*n is that it
+only gives one fixed length strings!  To me, this is so much of a problem that I
+have "ported" the RT-11 SYSLIB string functions/subroutines to RSX and now the
+VAX.  Hopefully, some language (besides BASIC) will support strings in a
+reasonable fashion in the near future.  In the mean time, here is what I have
+done.
+
+     Strings are defined to be simply BYTE arrays of ASCII characters.  The
+string maximum (safe!!!) string length is determined by the dimension of the
+BYTE array to contain the string.  Strings are stored as a linear sequence of
+characters terminated by the NULL character (or zero (0)).  Thus, strings can
+not contain the NULL character!  Also, it is not necessary to count characters
+to make strings!
+
+     All the string subroutines/functions expect their string arguments to be
+this "zero byte terminated" form.  Those subroutines that return strings produce
+zero byte terminated strings.
+
+     There are several known problems/gotchas associated with these strings:
+
+     1.  The ENCODE statement does not produce zero byte terminated strings.
+         This is easily fixed by manually terminating the string, i.e.
+
+                        BYTE STRING(16)
+                        ENCODE (14, 11, STRING) REALNO
+                11      FORMAT(G14.7)
+                        STRING(15)=0                    !TERMINATE STRING
+
+     2.  Forgetting to zero byte terminate strings, using uninitialized strings,
+         placing strings into string variables too short to contain them, or
+         similar foolish practices, can lead to strings "running amuck" and
+         clobbering other variables.  This is just the "array subscript out of
+         bounds" problem in another form!  Most string functions provide safety
+         mechanisms to prevent string "overflow" if you chose to use them.
+
+     3.  Initializing strings with data statements takes patience since you can
+         only set each character one by one, i.e.
+                        BYTE STRING(12)
+                        DATA STRING /'A','N',' ','E','X','A','M','P','L','E',2*0/
+
+     4.  Arrays of strings are possible, but not overly handy.  Arrays of
+         strings are just two (or more) dimensional BYTE arrays.  The character
+         index is always the first index, i.e.
+                        BYTE OPTNS(10,5)
+         declares 5 strings of up to 9 (need 1 byte for termination) characters!
+
+
+
+     The advantages of zero byte terminated strings are:
+
+     1.  True variable length strings are available.
+
+     2.  The RSX and VAX/VMS compilers format quoted string literals (string
+         constants) as zero byte terminated strings so it is easy to use string
+         constants.  Note however that:
+                        BYTE STRING(82)
+RSX and VAX/VMS STRING LIBRARY                                            Page 2
+
+
+                        STRING = 'HELLO'
+         does not work.  Repeat does not work!  You can only use quoted literals
+         as function/subroutine arguments.  Don't despair, there is a string
+         assignment subroutine!
+
+     3.  Variable length string I/O to sequential formatted files is supported.
+
+
+
+
+     The string subroutine/function interfaces are listed given the RT-11 SYSTEM
+LIBRARY documentation.  Interested people are refered to this documentation.
+The two subroutines I wrote to make certain string operations simple are
+documented below.
+RSX and VAX/VMS STRING LIBRARY                                            Page 3
+
+
+                          SGLUE- string concatenation
+
+Usage:  CALL SGLUE(FIRST,SECOND,...,LAST,TARGET)
+
+Purpose:   To concatenate many strings together
+
+Arguments:
+
+  input
+
+        FIRST,SECOND,   * type: string constant(s) or variable(s).
+        ...,LAST        * The strings to concatenate.
+
+
+  output
+
+        TARGET          * type: string variable.
+                        * The string to accept the concatenated result.
+
+
+Programming notes:
+
+        * There is no maximum length parameter.   Be careful.
+RSX and VAX/VMS STRING LIBRARY                                            Page 4
+
+
+             STRPBL - Strip Blanks from the beginning of a string.
+
+Usage:  CALL STRPBL(STRING)
+
+Purpose:   To remove the leading spaces (blanks) from a string.
+
+Arguments:
+
+  inout
+
+        STRING          * type: string variable.
+                        * The string to remove the leading spaces from.
+                            On return, the string with no leading spaces.
+
+
+Programming notes:
+
+        * This subroutine always produces a string who's length is less than
+            or equal to the length of the original string, so no error
+            flags are necessary.
