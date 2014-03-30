@@ -5,7 +5,7 @@
 
 % dielectric medium added
 
-% cotinuous source
+% continuous source
 
 KE= 200;         % number of cells
 
