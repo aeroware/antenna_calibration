@@ -1,0 +1,6 @@
+################################################
+# Script file for the CONCEPT-II program glview 
+#
+load surf surf.2
+set mesh 1
+load data 1 PowerDistribution.asc

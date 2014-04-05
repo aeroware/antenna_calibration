@@ -1,0 +1,4 @@
+################################################
+# Script file for the CONCEPT-II program glview 
+wiremode  1  1 
+load wire conin.w

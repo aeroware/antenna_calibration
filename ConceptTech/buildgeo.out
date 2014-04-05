@@ -1,0 +1,67 @@
+  
+  
+   The actual data file 
+   ====================
+  
+1.1  characterization of the structure                                          
+ Simple Antenna                                                                 
+2.1   symmetry with respect to the xz plane, yz plane or both                   
+     0                                                                          
+2.2   number of wires, id. ground, segments per wavelength, coating             
+     1     0     8     0                                                        
+2.30  wire 1   : coordinates                                                    
+    1.0000     0.0000     1.0000     1.0000     0.0000     1.1000               
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY                     
+    5.0000    3                                                                 
+2.6   check wire grid                                                           
+     1                                                                          
+3.1  print of currents                                                          
+     1                                                                          
+3.2  excitation                                                                 
+     1                                                                          
+3.3  generator position, internal resistance (excitation=1)                     
+a1       0.000                                                                  
+4.1  representation of frequency(ies) (1-6)                                     
+     1                                                                          
+4.2  basic frequency                                                            
+ 100.00000                                                                      
+5.1  skin effect (1/0)                                                          
+     0                                                                          
+6.1  number of load impedances                                                  
+     0                                                                          
+7.1  current distribution on wires                                              
+     0                                                                          
+7.3  number of currents at discrete points                                      
+     0                                                                          
+9.0  rcs (0/1)                                                                  
+     0                                                                          
+9.1  number of field points                                                     
+     0                                                                          
+10.3  total number of "cable wires"                                             
+     0                                                                          
+11.1  surface currents (0/1/2/3/4)                                              
+     1                                                                          
+11.10 check surface grid (0/1)                                                  
+     1                                                                          
+11.11 physical optics (0/1)                                                     
+     0                                                                          
+12.1  direct:11,12,13 spec. direct solv.:21,22 iter. solver:31,32,33 aca/svd:41 
+    12                                                                          
+  
+  
+ 
+
+  From the program computed wire identifiers: 
+  ============================================
+  
+  Wire number:       1 ,  identifier:       7
+ 
+  Statistical Data
+  -----------------------------------------
+  Current workspace size in MB (see concept.cfg):    512.0000    
+  Size of system matrix in MB:    1820.556    
+  Number of in-core matrix rows:                   3071
+  Resulting calculation mode:   out-core  
+ 
+  Total number of patch current amplitudes:        10920
+  Total number of wire current amplitudes :            3

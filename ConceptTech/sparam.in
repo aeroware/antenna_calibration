@@ -1,0 +1,13 @@
+*** Z0 (Ohm) ***
+50
+*** output file name for gnuplot data ***
+s-param.asc
+*** output file name for Touchstone ***
+s-param.ts
+*** output file name for Smith diagram ***
+s-param.ps
+*** Concept title ***
+ Simple Antenna
+*** Number of curves ***
+0
+*** Port selection(s):  input port, output port , smith diagram ***
