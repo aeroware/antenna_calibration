@@ -1,0 +1,263 @@
+\documentclass[a4paper,12pt]{book}
+
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}  
+\usepackage{ngerman} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx} 
+\usepackage{fancybox} 
+\usepackage{makeidx}
+
+\title{Flugnavigation}
+\author{Thomas Oswald}
+\makeindex
+\begin{document}
+\frontmatter
+\maketitle
+\tableofcontents
+\mainmatter
+\part{Navigation im Sichtflug}
+\chapter{Einführung: Was ist Navigation ?}
+\section{Was ist Navigation ?}
+\paragraph*{}
+Wenn man in diversen Lexika nachschlägt, findet man unter dem Begriff \textit{Navigation} die verschiedensten Definitionen. Das Wort \index{Navigation} Navigation kommt wohl aus dem Lateinischen Sprachgebrauch. \textit{Navigare} heisst: Mit dem Schiff fahren. Meine Definition, auf die Fliegerei zugeschnitten, lautet folgendermassen.\\
+\\
+\shadowbox{\parbox{12cm}{Navigation ist die Kunst, folgende Fragen zu beantworten:
+\begin{itemize}
+\item \textbf{WO} bin ich ?
+\item \textbf{WIE} muss ich fliegen, damit ich dorthin komme wo ich hin will ?
+\item \textbf{WANN} werde ich dort sein ? 
+\end{itemize} 
+}} 
+\paragraph*{}
+Etwas fachmännischer Ausgedrückt könnte man es folgendermassen formulieren:\\
+\\
+\shadowbox{\parbox{12cm}{Navigation ist :
+\begin{itemize}
+\item \index{Ortsbestimmung}Ortsbestimmung
+\item Richtungs- oder \index{Kursbestimmung}Kursbestimmung\index{Richtungsbestimmung}
+\item \index{Zeitbestimmung}Zeitbestimmung 
+\end{itemize} 
+}} 
+\paragraph*{}
+Dies sind die drei Aufgaben, mit denen sich der Rest dieses Buches befasst. Es gibt viele verschiedene Möglichkeiten, diese Aufgaben zu lösen, also verschiedene Navigationsarten\index{Navigationsarten} . Der Pilot muss mit den unterschiedlichen Navigationsarten vertraut sein, die auf seinen Flug anwendbar sind, um sicher ans Ziel zu kommen. Jede Navigationsart hat ihre eigenen Stärken und Schwächen, und nur die Kombination der verschiedenen Methoden, verbunden mit sorgfältiger Flugvorbereitung, garantiert einen sicheren Flug. Wie diese Navigationsarten funktionieren, wie man sie erlernen, üben, und kombinieren kann, möchte ich in diesem Buch erläutern. Dabei schrecke ich auch nicht zurück, hier und da etwas technisch zu werden, denn nur wer weiss wie eine Satellitennavigation \index{Satellitennavigation}funktioniert, um ein Beispiel zu nennen, kann auch abschätzen, welche Fehler und Gefahren bei dessen Benutzung zu erwarten sind, und vor allem wie man sie vermeiden kann. Dieses Wissen teilt er wohl nicht mit dem desinteressierten Benutzer, der sich damit begnügt, schnell einmal die Anleitung des Gerätes durchzublättern, bevor er in den Flieger steigt. Solche und andere Fehleinschätzungen in der Navigation haben wohl schon viele Menschenleben gefordert. Wenn dieses Buch dazu beiträgt, nur einen einzigen Unfall zu verhindern, dann habe ich mein Ziel erreicht.
+
+\section{Einteilung der Navigationsarten}
+\paragraph*{}
+Naturgemäss kann man eine vielfältige Materie wie die Navigation nach mehreren Gesichtspunkten unterteilen. Eine, meiner Meinung nach sehr geeignete Methode um die Übersicht zu bewahren, ist die Einteilung gemäss der Art des Fluges, für welche die Navigationsart anwendbar ist. Man kann hier 3 große Gruppen unterscheide:\\
+\begin{itemize}
+\item Sichtflugnavigation\index{Sichtflugnavigation}
+\item Instrumentenflugnavigation\index{Instrumentenflugnavigation}
+\item Langstreckennavigation\index{Langstreckennavigation}
+\end{itemize} 
+
+\paragraph*{}
+Wie Sie sicher bemerkt haben, habe ich die Gliederung dieses Buches auch nach dieser Einteilung vorgenommen. Die Gruppe der Navigationsarten im Sichtflug beinhaltet die \textit{Terrestrische Navigation}\index{Terrestrische Navigation}, sowie die \textit{Koppelnavigation}.\index{Koppelnavigation} 
+\paragraph*{}
+Die Terrestrische Navigation, auch manchmal Franzen genannt (von Franz dem Navigator), ist das zurechtfinden im Gelände mit Hilfe einer Karte. Der Pilot besitzt eine verkleinerte Abbildung der Umgebung (Karte) uns versucht nun, markante Geländemerkmale sowohl auf der Karte, als auch in der Natur zu identifizieren und dadurch seine Position zu ermitteln. Um diese Form der Navigation, die wohl die ursprünglichste ist, betreiben zu können, benötigt man eine Karte\index{Karte}, Erdsicht\index{Erdsicht}, das heisst, freie Sicht auf den Boden, und das präziseste, vielseitigste und beste Instrument, dass sich im Flugzeug befindet: Die Augen.
+
+\paragraph*{}
+Sichtflug ist auch über geschlossenen Wolken, grossen Wasserflächen, oder Wüsten möglich. Hier eignet sich die Methode der terrestrischen Navigation natürlich nicht. In diesem Fall muss man sich der \textit{Koppelnavigation} bedienen. Bei der Koppelnavigation (Dead Reckoning \index{Dead Reckoning}auf Englisch) teilt man die Flugstrecken in Teilstücke mässiger Länge auf (legs)\index{leg}, an deren Ende sich Wegpunkte\index{Wegpunkt} (waypoints) befinden. Man ermittelt Richtung und Distanz zwischen den einzelnen Wegpunkten mithilfe der Karte und berechnet mit diesen Grössen, sowie der wahren Eigengeschwindigkeit \index{wahren Eigengeschwindigkeit}(true airspeed, TAS)\index{true airspeed}, welche man aus dem Flughandbuch\index{Flughandbuch} erhält und dem Wind\index{Wind}, sowohl Steuerkurs \index{Steuerkurs}(heading)\index{heading} als auch die Geschwindigkeit über Grund\index{Geschwindigkeit über Grund} (ground speed, GS).\index{ground speed} Anschliessend berechnet man mit Hilfe der \textit{ground speed} und der Distanz die Zeit, die man von einem Wegpunkt zum nächsten benötigt. Diese Berechnungen sind natürlich Teil der Flugplanung und finden vor dem Flug statt. Im Flug werden sie nur unter speziellen Gegebenheiten (Korrektur, Kursänderung) durchgeführt. Im Flug fliegt man mit Kompass und Stoppuhr von Wegpunkt zu Wegpunkt. Beim Erreichen jedes Wegpunktes versucht man, eventuelle Abweichungen von den geplanten Werten zu erkennen (z.B. hält sich der Wind selten an die Voraussagen) und bei den zukünftigen Teilstrecken zu berücksichtigen. Das erfordert natürlich ein gewissen Mass an Flexibilität. Man benötigt zur Ausübung dieser Navigationsart einen Kompass und eine Uhr. Man muss auch in der Lage sein, die Wegpunkte zu identifizieren, sei es durch Sicht auf markannte Geländemerkmale, oder auch durch die Verwendung radionavigatorischer Hilfsmittel. Der Koppelnavigation ist, aufgrund seiner Wichtigkeit, natürlich ein ganzes Kapitel gewidmet.
+
+\paragraph*{}
+Dem aufmerksamen Leser wird nicht entgangen sein, dass ich oft englische Fachausdrücke, sowie Abkürzungen an die deuschen Worte anhänge. Im Laufe des Textes werde ich oft, oder sogar meistens, die englischen Ausdrücke und Abkürzungen im deutschen Text verwenden. Obwohl dieses Verfahren dem Germanisten wahrscheinlich den Blutdruck in die Höhe treibt, ist es in der Sprache der Navigation durchaus üblich, von \textit{true course} und \textit{ground speed} zu sprechen, und nicht von \textit{Rechtweisendem Kartenkurs} und \textit{Geschwindigkeit über Grund}. Der neue Pilot sollte sich also so schnell wie möglich an diese Ausdrucksweise gewöhnen. Die englische Ausdrücke gestalten den Text auch flüssiger.   
+
+\paragraph*{}
+Die klassische Instrumentenflugnavigation, die \textit{Radionavigation}\index{Radionavigation}, nutzt die Ausbreitungscharakteristik \index{Ausbreitungscharakteristik}der elektromagnetischen Wellen zur Positionsbestimmung. Dabei kann man noch zwischen zwei grundsätzlichen Methoden unterscheiden, nämlich der \textit{Eigenpeilung}\index{Eigenpeilung} und der \textit{Fremdpeilung}\index{Fremdpeilung}. Bei der Eigenpeilung hat man die nötigen Geräte zur Positionsbestimmung an Bord, während die Position des Luftfahrzeugs bei der Fremdpeilung vom Boden aus bestimmt und dem Flugzeugführer dann über Funk mitgeteilt wird. Fremdpeilung umfasst also \textit{Radar} und \textit{VDF}\index{VDF} (VHF direction finding), während die Eigenpeilung Methoden wie \textit{VOR Navigation}, \textit{ADF Navigation}\index{ADF}, das \textit{ILS}\index{ILS} und viele andere Methoden beinhalted. Auf alle diese Navigationsarten werde ich im zweiten Teil des Buches ausführlich eingehen.
+
+\paragraph*{}
+Die ursprünglichste Langstreckennavigationsart\index{Langstreckennavigation} stammt, wie vieles in der Luftfahrt, aus der Seefahrt. Es ist die \textit{Astronavigation}\index{Astronavigation}. Bei der Astronavigation misst man mit Sextant und Peilscheibe die Richtung zur Sonne oder einem Fixstern, sowie den Winkel den der Stern oder die Sonne über dem Horizont steht. Mit dieser Information und der genauen Zeit der Beobachtung kann man den aktuellen Standort bestimmen. Hat man keine genaue Uhr zur Verfügung, kann man lediglich die geographische Breite bestimmen. Kolumbus war in der Situation, denn damals gab es noch keine Chronographen, deren Genauigkeit für diesen Zweck gereicht hätte. Was für die Seefahrt eine brauchbare Methode ist, ist für die Luftfahrt, aufgund der höheren Geschwindigkeiten, weniger geeignet. Die Genauigkeit hat allerdings genügt, um bei einem Transatlantik Flug \index{Transatlantik Flug}von Europa nach Amerika zu finden und umgekehrt. Konnte man dann wieder lokale Funkfeuer empfangen, musste man seine Position dementsprechend korrigieren. Das Navigieren mit Hilfe der Sterne ist so aufwendig, dass dafür ein eigener Navigator im Cockpit seine Arbeit verrichtete. Man kann bei alten Flugzeugen in Flugshows oder Museen noch eine Glaskuppel hinter dem Cockpit erkennen. Das war der Arbeitsplatz des Navigators.
+
+\paragraph*{}
+In den 60er Jahren des letzten Jahrhunderts wurde die Astronavigation (und der Navigator)\index{Navigator} durch die \textit{Trägheitsnavigation}\index{Trägheitsnavigation} (inertial navigation system, INS) abgelöst. Bei der Trägheitsnavigation wird die Beschleunigung entlang 3 Richtungen gemessen. Während des ganzen Fluges wird die Beschleunigung zwei mal über die Zeit aufintegriert und dadurch die momentane Position ermittelt. Die Plattform auf der die Beschleunigungsmesser\index{Beschleunigungsmesser} angebracht sind musste mit Hilfe von Kreiseln konstant im Raum gehalten werden. Das System war sowohl schwer, als auch teuer, weshalb es nur in Grossraumflugzeugen zu finden war. Auch die Genauigkeit war mässig, bei einem Transatlantigflug war die Abweichung am Ende der Strecke ca. 1km. Der Vorteil des INS ist die Unabhängigkeit von Resourcen ausserhalb des Flugzeugs. Es lässt sich daher auch in der Raumfahrt (z.B. beim Apollo \index{Apollo}Projekt) einsetzen. Der Nachteil ist, dass man die ursprüngliche Position und Geschwindigkeit eingeben muss, bevor das System autonom arbeiten kann. Was passieren kann, wenn man sich hierbei irrt hat der Abschuss des Korean Air Jumbo's über sowjetischen Hoheitsgebiet auf tragische Art und Weise demonstriert. Das INS \index{INS}wird auch heute noch eingesetzt, allerdings mit komplett anderer Technologie. Es benutzt jetzt Laserkreisel und misst auch die Beschleunigung \index{Beschleunigung}mit Hilfe von Laser. Auch die Plattform wird nicht mehr konstant im Raum gehalten, sondern deren Ausrichtung mathematisch berücksichtigt. Dadurch ist es genauer und leichter (allerdings nicht billiger) geworden. INS Systeme sind heute auch in mittelgrossen Flugzeugen zu finden. Sie arbeiten meist mit anderen Geräten (z.B. GPS) zusammen um die Fehlerhäufigkeit zu minimieren. Diese Technik nennt man \textit{Integrity Monitoring}\index{Integrity Monitoring}. Sowohl dem INS als auch dem Integrity Monitoring sind noch grössere Abschnitte des Buches gewidmet.  
+
+\paragraph*{}
+Seit 1945 gibt es Langstreckennavigationssysteme, deren Wirkungsweise auf den Ausbreitungseigenschaften von langwelliger elektromagnetischer Strahlung beruht. Langwellige Strahlung bildet einen grossen Bodenwellenanteil aus, welcher der Erdkrümmung folgt. Daher ist bei entsprechender Sendeleistung eine sehr grosse Empfangsreichweite möglich. Für die Luftfahrt von Bedeutung war das \textit{DECCA}\index{DECCA} System, das beinahe anstelle des VOR's als Hauptnavigationsgerät für den Instrumentenflug gewählt worden wäre, sowie das \textit{Loran C}\index{Loran C}, das für die Seefahrt in Küstengebieten entwickelt wurde und das \textit{Omega}\index{Omega}, auch oft VLF genannt, nach dem Frequenzband in dem es arbeitet. Das Lroan C war in der USA an den Küsten und nahe der grossen Seen sehr beliebt. Auch im Mittelmeerraum kann man es gut verwenden. In den Binnenstaaten, wie Österreich ist die Abdeckung jedoch nicht gegeben. Auch in den vorher genannten Gebieten verwendet man mittlerweile stattdessen das GPS. Das Omega war ein System aus 22 Stationen, die gleichmässig auf der Welt verteilt waren und für eine weltweite Abdeckung sorgten. Der Betrieb des Omega's ist mittlerweile eingestellt worden.
+
+\paragraph*{}
+Es gibt zwei Möglichkeiten, die aktuelle Position mit Hilfe elektromagnetischer Wellen und den bekannten Standorten der Sender zu ermitteln. Die eine ist \textit{Laufzeitmessung}\index{Laufzeitmessung}. Die Geschwindigkeit der EM Strahlung ist immer annähernd gleich (ca. 300000 km/s) und sehr genau bekannt. Wenn man die Laufzeit \index{Laufzeit}eines Signals messen kann, kennt man auch die Distanz des Empfängers vom Sender. Dadurch hat man eine Sphäre an möglichen Positionen. Führt man diese Messung mit einer zweiten Station durch, hat man zwei Kugeloberflächen, die sich schneiden, das ergibt einen Kreis an möglichen Positionen. Eine weitere Station führt zu drei Sphären, die einander an einem Punkt schneiden. Die Position ist eindeutig bestimmt. Leider ist die technische Umsetzung dieses Verfahrens nicht so leicht, wie die Theorie suggeriert. Es gibt zwar Kurzstreckennavigationsgeräte wo es machbar ist,die Laufzeit zu messen, indem man ein Signal hin und retour sendet, Sekundärradar \index{Sekundärradar}und DME \index{DME}funktionieren unter anderem auf der Basis, bei Langstreckennavigationsgeräten ist die Distanz allerdings zu gross für eine Zweiwegkommunikation. Derartig hohe Sendeleistungen hat man in einem Flugzeug nicht zur Verfügung. Auch eine extrem genaue Zeitmessung ist an Bord eines Luftfahrzeuges nicht machbar, hauptsächlich auf Grund der hohen Kosten einer genauen Atomuhr\footnote{In der Seefahrt gibt es sehr wohl so ein System, das \textit{LONGTRAN},\index{LONGTRAN} eine Weiterentwicklung des Loran C.}. Lediglich das GPS nutzt einen Trick, um mittels Laufzeitmessung die Position zu bestimmen. Dieser Trick wird im Kapitel über Satellitennavigation beschrieben.
+
+\paragraph*{}
+Theoretisch komplizierter, aber technisch leichter umsetzbar ist die Hyperbelnavigation.\index{Hyperbelnavigation} Hierbei misst man die Differenz der Distanz zu zwei Stationen. Dies kann man, indem man die Phasendifferenz \index{Phasendifferenz}zwischen den Wellen von zwei verschiedenen Stationen misst. Die Phasendifferenz zweier Wellen gleicher Frequenz ist ausschliesslich von dem Entfernungsunterschied \index{Entfernungsunterschied}zu den Stationen abhängig. Dies ergibt eine Hyperbelschar \index{Hyperbelschar}an möglichen Positionen. Der Abstand zwischen den Hyperbeln ist gleich der Wellenlänge \index{Wellenlänge}der verwendeten Strahlung. Ein zweites Stationenpaar ergibt eine weitere Hyperbelschaar. Natürlich kann man eine der Stationen doppelt verwenden, um die Anzahl an notwendigen Sendern, in dessen Empfangsbereich man sein muss, auf drei zu reduzieren. Die eigene Position befindet sich an einem der Schnittpunkte zweier Hyperbeln. Das Gerät kann ohne weitere Information nicht ermitteln, welche Hyperbeln die richtigen sind, weshalb es auch bei der Hyperbelnavigation notwendig ist, die Ausgangposition anzugeben. Von da an kann das Gerät autonom \index{autonom}weiterarbeiten, da sich die Position zwischen zwei Positionsmessungen nur gemäss der Geschwindigkeit verändern kann. Die zu verwendenden Hyperbel \index{Hyperbel}ergeben sich daher aus der letzten Position.
+
+\paragraph*{}
+Die am meisten verwendete Langstreckennavigationsart \index{Langstreckennavigationsart}ist heute die Satellitennavigation.\index{Satellitennavigation} Das \textit{GPS}\index{GPS}, das zweite amerikanische Satellitennavigationssystem \footnote{nach Transit,\index{Transit} dass von der US-Marine betrieben wurde}hat den grossen Durchbruch in alle denkbaren Anwendungen geschafft. Das GPS verwendet 24 Satelliten, die auf 6 Umlaufbahnen in 20000km Höhe aufgeteilt sind. Die Satellitengeometrie \index{Satellitengeometrie}ist so gestaltet, dass von jedem Punkt der Erde, jederzeit 4 Satelliten sichtbar sind. Diese Anzahl wird auch eine komplette Positionsbestimmung benötigt. Die Positionsbestimmung \index{Positionsbestimmung}erfolgt durch eine indirekt Form der Laufzeitmessung.\index{Laufzeitmessung} Obwohl auch das GPS militärisch ist, gibt es Verträge, die sicherstellen sollen, dass das System nicht plötzlich abgeschaltet werden kann. Trotzdem ist es natürlich nicht wünschenswert, dass die ganze Welt sich auf das Wohlwollen der US Armee verlässt. Daher sind einige zivile Projekte in Arbeit, die das GPS auf kurze Sicht ergänzen und auf lange Sicht ersetzten sollen, wie z.B. das europäische Galiläo.\index{Galiläo} Diese Systeme, wie auch das sowjetische GLONASS \index{GLONASS}werden im dementsprechenden Kapitel ausführlich behandelt. GPS und INS werden oft gemeinsam verwendet, da sie einander optimal ergänzen. Das GPS besitzt eine gute Langzeitstabilität\index{Langzeitstabilitä}, dafür eine schlechte Kurzzeitstabilität,\index{Kurzzeitstabilität} während es beim INS genau umgekehrt ist. Kombiniert man beide Systeme, kann man daher deren Vorteile nutzen, und erhält das optimale System, dass sowohl im Kurzzeit-, als auch im Langzeitbereich eine gute Stabilität aufweist. Sollten Sie nicht wissen, was die letzten paar Sätze bedeuten, bitte ich Sie noch um etwas Geduld. Natürlich werden diese Dinge an entsprechender Stelle im Buch ausführlich erklärt. Also lesen Sie bitte weiter...
+\paragraph*{}
+Eine weitere Navigationsart stellt die \textit{Dopplernavigation}\index{Dopplernavigation} dar. Sie basiert auf die Geschwindigkeitsmessung mit Hilfe des Dopplereffektes\index{Dopplereffekt}. Der\textit{Dopplereffekt} wird im Kapitel über elektromagnetische Wellen \index{elektromagnetische Wellen}beschrieben. Es handelt sich dabei um eine Frequenzverschiebung \index{Frequenzverschiebung}der Strahlung wenn sich Sender und Empfänger relativ zueinander bewegen. Ebenso gibt es eine Frequenzverschiebung, wenn ein Sender im Luftfahrzeug ein Signal zum Boden sendet, es dort reflektiert, und anschliessend vom Bordempfänger im Luftfahrzeug empfangen wird. Die Frequenzverschiebung ist eine Funktion der relativen Bewegung von Flugzeug und Erdboden zueinander. Bei der Dopplernavigation werden 2 Signale zum Boden gesendet, eines in Flugrichtung, das andere quer zur Flugrichtung. Aufgrund der berechneten Bewegung über Grund, kann das Greät auf die aktuelle Position schliessen. Natürlich muss man auch hier die Ausgangsposition eingeben, bevor man mit diesem Gerät Navigation betreiben kann.
+  
+\newpage
+\paragraph*{}
+Zum Überblick noch einmal die gesamte Einteilung:\\
+
+
+\shadowbox{\parbox{12cm}{
+\begin{itemize}
+\item Sichtflugnavigation\index{Sichtflugnavigation}
+\begin{itemize}
+\item Terrestrische Navigation\index{Terrestrische Navigation}
+\item Koppelnavigation \index{Koppelnavigation }
+\end{itemize} 
+\item Instrumentenflugnavigation\index{Instrumentenflugnavigation}
+\begin{itemize}
+\item Radionavigation\index{Radionavigation}
+\begin{itemize}
+\item Eigenpeilung\index{Eigenpeilung}
+\begin{itemize}
+\item VOR\index{VOR}
+\item NDB/ADF\index{NDB}\index{ADF}
+\item DME\index{DME}
+\item ILS\index{ILS}
+\item MLS\index{MLS}
+\item RNAV \index{RNAV}
+\end{itemize} 
+\item Fremdpeilung\index{Fremdpeilung}
+\begin{itemize}
+\item VDF\index{VDF}
+\item Radarnavigation \index{Radarnavigation }
+\end{itemize} 
+\end{itemize}  
+\end{itemize} 
+\item Langstreckennavigation\index{Langstreckennavigation}
+\begin{itemize}
+\item Astronavigation\index{Astronavigation}
+\item Trägheitsnavigation\index{Trägheitsnavigation}
+\item DECCA\index{DECCA}
+\item Loran C\index{Loran C}
+\item Omega\index{Omega}
+\item Satellitennavigation\index{Satellitennavigation}
+\item Dopplernavigation \index{Dopplernavigation}
+\end{itemize} 
+\end{itemize} 
+}} 
+\section{Geschichtlicher Überblick}\index{Geschichte}
+\paragraph*{}
+Die Kunst, dorthin zu finden wohin man will, und von dort aus wieder zurück ist ein alltägliches Problem des Menschen. Dies gilt natürlich nicht nur für die Gegenwart, sondern seit Anbegin der Menscheit. Man kann also davon ausgehen, dass sich die Menschen immer schon mit der Problematik Navigation beschäftigt haben. Als es noch keine Hilfsmittel, wie Kompass\index{Kompass} oder Karte\index{Karte}, gab, war der Mensch auf die visuelle Navigation angewiesen. Er musste sich das Aussehen der Landschaft merken um sich orientieren zu können. Bei Tag ist auch die Sonne\index{Sonne}, in der Nacht der Sternenhimmel zur Orientierung nützlich. Das gilt an Land, wie auch auf See. Einen guten Einblick in diese Art der Navigation kann man gewinnen, wenn man sich mit der Navigation der Polynesier beschäftigt. Polynesische Navigatoren\index{Polynesische Navigatoren} benutzen eine jahrtausende alte, nur mündlich überlieverte Methode um mit ihren Auslegerbooten von Insel zu Insel zu fahren. Eintausend Kilometer und mehr auf offenem Ozean sind dabei keine Seltenheit. Die Gestirne, leuchtende Algen und die Beeinflussung von Wind und Wellen spielen dabei eine Rolle. Bemerkenswert ist auch die Tatsache, dass die meisten Navigatoren nicht lesen und schreiben können und keine Hilfsmittel benutzen. Sie können nichts notieren, sondern sind ausschliesslich auf ihr Gedächtnis angewiesen. Eigentlich ist diese Kunst in der zivilisierten Welt unbekannt, da sie als Geheimwissenschaft nur innerhalb der Familie von Generation zu Generation weitergegeben wird. Erst in den letzten Jahren gab es Publikationen über das Thema, dank der Bereitwilligkeit einiger der Auserwählten, dieses Wissen zu teilen. \footnote{Sehr zu diesem Thema zu empfehlen ist\cite{wethenav}.}
+
+\paragraph*{}
+Die ersten Hilfsmittel gab es vielleicht in China.\index{China} Hier sind die Urformen von Kompass \index{Kompass}und Odometer \index{Odometer}schon um 2600 v.Ch. zu finden. Karten \index{Karten}gab es in China zumindest schon 2000 v.Ch..
+
+\paragraph*{}
+Im antiken Griechenland, wo die Naturwissenschaften einen hohen Stellenwert hatten, erkannte man als erstes die Gestalt der Erde, die Existenz von Planeten und die Tatsache, dass sich die Erde um die Sonne bewegt, und nicht etwa umgekehrt. \textit{Erastosthenes }gelang es sogar im 3. Jahrhundert vor unserer Zeitrechnung, den Umfang der Erde zu berechnen. Das Ergebnis seiner Abschätzung war für damalige Verhältnisse sehr genau. Auch Kolumbus verwendete die Daten von Erathosthenes für die Planung seiner grossen Fahrt. Zum Glück verwechselte er römische und arabische Seemeilen und unterschätzte daher die Grösse der Erde bei weitem. Hätte er die Zahlen richtig gedeutet, wäre er vermutlich nie aufgebrochen und die Geschichte wäre anders verlaufen. Die Griechen machten auch viele wichtige Entdeckungen in der Mathematik, und sie führten das erste System von Längen und Breitengraden ein um eine Position auf der Erde zu benennen. \textit{Ptolomäus} fand die Beziehungen von sphärischen Dreiecken, ein Zweig der Mathematik, der für die Navigation extrem wichtig ist. Ausserdem schrieb er den Almagest, \textit{das} Standardwerk, nach dem Astronomie viele Jahrhunderte gelehrt wurde.
+
+\paragraph*{}
+Im Mittelalter gab es in Eoropa generell wenig Interesse für die Naturwissenschaften. Die Navigation jedoch, wahrscheinlich aufgrund ihrer Notwendigkeit, konnte auch in jener Zeitspanne Fortschritte verzeichnen. Um die Jahrtausendwende gab es bereits Karten, die grosse Teile Asien's, Afrika's und Europa's abdeckten. Um das Jahr 1200 tauchten in Italien und China die ersten Kompasse auf. Wahrscheinlich erfolgte die Erfindung in beiden Ländern unabhängig, da der Chinesische Kompass nach Süden wies, der Italienische jedoch nach Norden. Zur selben Zeit entwickelte man in Italien den ersten Quadranten, ein Vorgänger des Sextanten, der dazu dient, den Winkel zwischen Horizont und einem Himmelsobjekt zu messen. Zur Geschwindigkeitsmessung aud See verwendete man zu der Zeit Holzscheite (englisch log), die man über Bord warf. Dann maß man die Zeit, welche die Holzstücke für eine Schiffslänge benötigten. Der Name des Geschwindigkeitsmessinstrumentes auf Schiffen, des Logs, kommt von dieser alten Methode. Später benutzte man Holzstücke, die an einer Schnur festgemacht waren. Entlang der Schnur waren in regelmässigen Abständen Knoten angebracht. So konnte man messen, wieviele Knoten sich das Boot in einer gewissen Zeitspanne fortbewegte. Es ist nicht schwer zu erraten, woher der Knoten als Einheit für die Geschwindigkeit kommt.
+
+\paragraph*{}
+Das 15. und 16. Jahrhundert war die Zeit der Entdecker. \textit{Kolumbus }entdeckte Amerika im Jahr 1492 und kurz darauf schaffte das Schiff \textit{Magellan's} die erste Weltumsegelung. Er selber erlebte die Ankunft in Europa nicht mehr. Ausserdem sind die Mercatorprojektion, die sphärische Trigonometrie und der Logarithmus als grosse Neuerungen dieser Zeit zu nennen.
+
+\paragraph*{}
+Etwa um 1600 brach das neue Zeitalter in Europa an, daher standen das 17. und 18. Jahrhundert ganz im Zeichen von Fortschritt, Technik und Naturwissenschaft. Die Folgen von der neuen Denkweise waren natürlich auch im Gebiet der Navigation zu spüren. \textit{Johannes Kepler} (1571-1630) veröffentlichte in den Jahren 1609 und 1619 seine berühmten 3 Gesetze über die Bewegung der Planeten. Diese Kepler'schen Gesetze sind so fundamental, dass ich sie hier explizit angeben will. \\
+\\
+\shadowbox{\parbox{12cm}{Die Kepler Gesetze\\
+\begin{enumerate}
+\item Planeten bewegen sich auf Ellipsenbahnen. Die Sonne ist in einem der Brennpunkte der Ellipse.
+\item Ein Vektor von der Sonne zum Planeten überstreicht in gleicher Zeit die gleiche Fläche.
+\item Das Verhältnis zwischen Quadrat der Umlaufzeit und Kubus der grossen Halbachse ist für alle Planeten gleich.
+\end{enumerate} 
+}} 
+
+\paragraph*{}
+\textit{Galileo Galilei} (1564-1642) erweiterte das Wissen von Kraft, Impuls und Trägheit wesentlich. Ausserdem war er an der Entwicklung des Teleskops beteiligt. Die Liste von Entdeckungen die \textit{Isaak Newton} (1642-1727) machte ist lang. Darunter findet sich das Gravitationsgesetz, viele Neuerungen in der Optik, das Reflektorteleskop und die Infinidezimalrechnung. Er schätzte auch die Massen von Erde, Sonne und Jupiter. Sein bedeutendstes Vermächnis sind aber wohl die drei Axiome, welche die Grundlage der Mechanik darstellen. Auch sie sind so wichtig, dass ich sie explizit anführen möchte.\\
+\\
+\shadowbox{\parbox{12cm}{Die Axiome Newtons\\
+\begin{enumerate}
+\item Ein Körper auf den keine Kraft wirkt, behält seine Geschwindigkeit und die Richtung seiner Bewegung bei. Ein ruhender Körper bleibt auch in Ruhe solange keine Kraft auf ihn wirkt.
+\item Wirkt eine Kraft auf einen Körper, beschleunigt er mit einer Stärke die proportional zur Grösse der Kraft und entgegengesetzt proportional zu seiner Masse ist.
+\item Zu jeder Kraft existiert eine gleich grosse Gegenkraft.
+\end{enumerate} 
+}} 
+
+\paragraph*{}
+Natürlich sind Newton's Gesetze nur Näherungen der Realität, wie Einstein später zeigen konnte. Dennoch werde sie auch heute in allen naturwissenschaftlichen und technischen Bereichen ständig verwendet. Und sie sind genau genug um Menschen auf den Mond und die Cassini Raumsonde in einen Orbit um Saturn zu bringen, um nur zwei von unzähligen herausragenden Leistungen zu nennen, die nur mit Hilfe dieser 3 Gesetze möglich waren. 1765 wurde das Observatorium in Greenwich gegründet. Kurz darauf entwickelte \textit{John Harrison} (1693-1776) den ersten Chronometer, der im Prinzip genau genug war um die geographische Länge des Standortes durch Astronavigation zu ermitteln. Erst im Jahre 1884 wurde die Lage dess Null Meridians festgelegt und unser heutiges Gradnetz entwickelt.
+
+\paragraph*{}
+Aus navigatorischer Perspektive waren das 19. und 20. Jahrhundert durch die Fortschritte des Verständnisses in den Bereichen Elektrizität und Magnetismus geprägt. In der 2. Hälfte des 20. Jahrhunderts kam die Elektronik noch hinzu, die viele neue Methoden möglich machte. \textit{Alessandro Volta} (1745-1827) entwickelte die erste Batterie, \textit{Michael Faraday} (1797-1867) und \textit{Andre Marie Ampere} (1775-1836) fanden die wichtigsten Beziehungen zwischen elektrischer und magnetischer Feldstärke. \textit{James Clerk Maxwell }(1831-1879) vereinigte alle wichtigen Gesetze in ein Gleichungssystem des Elektromagnetismus und fügte einer der Gleichungen einen Term hinzu, der die Vorhersage elektromagnetischer Wellen, eines der wichtigsten Hilfsmittel der Navigation, erst möglich macht. Es handelt sich bei dem Term um den sogenannten Verschiebestrom, der das Gleichungssystem zwischen elektrischer und magnetischer Feldstärke symmetrisch macht. Sowohl die Maxwell Gleichungen, als auch die Herleitung der Wellenlösung werde ich im Kapitel über elektromagnetische Wellen durchnehmen. \textit{Heinrich Herz} (1857-1894) gelang es, Maxwell's Gleichungen und die Existenz elektromagnetischer Wellen durch Experimente zu verifizieren.
+
+\paragraph*{}
+Die Auslenkung des Kompass durch Metallteile im Schiff wurde schon im 16. Jahrhundert bemerkt, doch erst von \textit{Gerorge Airy} (1801-1891) wissenschaftlich behandelt. Er erkannte, dass es 2 Arten von Magnetismus gab, den permanenten und den induzierten. Dies führte zur Methode der Kompensation des Kompass.  Das Kreiselprinzip wurde von \textit{Jean Foucault} (1819-1868) untersucht, \textit{Elmer Sperry} (1860-1930) baute schliesslich den ersten Kurskreisel. Seinem Sohn gelang es 1914, den ersten Flugzeugstabilisator zu entwickeln. Dies war der erste Autopilot. Das Prinzip eines INS wurde um 1920 ersmals erwähnt. Bis zur Serienreife dauerte es allerdings bis 1963.
+ 
+\paragraph*{}
+Die erste Form der \textit{Radiopeilung} (Direction Finding, DF) wurde von Guglielmo Marconi (1874-1937) mir Hilfe einer Rahmenantenne verwirklicht. In den 20er Jahren des letzten Jahrhunderts kombinierte man diese Form des DF mit Sendern, die in alle Richrungen gleichmässig strahlen, den sogenannten \textit{Nondirectional Beacon}, auch \textit{NDB} genannt. Kurze Zeit später wurden das \textit{VHF Omnidirectional Radio Range} (VOR) und das \textit{Distance Measuring Equipment} (DME) erfunden. 1948 wurde die oberste zivile Luftfahrtbehörde, die \textit{International Civil Aviation Organisation} (ICAO), ins Leben gerufen. Eine der ersten Beschlüsse der ICAO war die Spezifikation eines Instrumentenlandesystem's, dem \textit{ILS}. Das ILS ist nach wie vor in Verwendung, da sein Nachfolger, das \textit{Microwave Landing System} (MLS), welches 1978 spezifiziert wurde, noch in der Testphase. Die Bemühungen gehen jetzt eher dahin, das GPS fit für Prezessionsanflüge zu machen, daher ist das MLS \textit{auf Eis gelegt}, wie man so schön sagt. Sehr wohl wird das MLS auf Flugzeugträgern, und für den Orbiter des Space Shuttle's verwendet.  
+
+\paragraph*{}
+Die Wurzel des \textit{Radar} (radio detecting and ranging) liegt am Beginn des 20. Jahrhundert. Damals konnte Marconi zeigen, dass man Radiowellen dazu nutzen kann, die Position eines Schiffes zu ermitteln. Die Demonstration im Jahre 1904 war zwar ein Erfolg, man schenkte dieser Erfindung allerdings kaum Beachtung. Anscheinend erkannte damals niemand das gewaltige Potential, das in der Methode steckt. Erst der 2. Weltkrieg, und im speziellen die Luftschlacht um England entfachte das Interesse der Entscheidungsträger. Die ersten, die das Radar in grossem Maße einsetzten waren die Briten, gefolgt von Deutschland und den USA.
+
+\paragraph*{}
+Auch die Idee zur Hyperbelnavigation kam zu Beginn des Jahrhunderts. Erst viel später, nämlich 1945 wurde das Loran A in Betrieb genommen, ein Vorgänger des Loran C, das seit 1957 seinen Dienst tut. Auch in der Sowjetunion gab eis ein vergleichbares System, Chayka. In den 50er kamen schliesslich die Navigationssysteme Omega und Decca. 
+
+\paragraph*{}
+Als am 4. Oktober 1957 der erste künstliche Satellit, Sputnik in die Erdumlaufbahn geschossen wurde, sendete er ein Signal, dass jeder, der einen Radioempfänger besaß, empfangen konnte. Amerikanische Raumfahrtingenieure machten sich die Dopplerverschiebung dieses Signal's zunutze um den Orbit zu berechnen dem Sputnik folgte. Der Umkehrschluss liegt nahe: Wenn man den Orbit eines Satelliten kennt, kann man mit Hilfe der Dopplerverschiebung die Position des Empfängers berechnen. Das ist die Grundlage der Satellitennavigation. Bereits 1967 war das Transit System betriebsbereit, wie auch die sowjetische Version, das Tsikada. 1995 war das GPS voll einsatzfähig, ein Jahr später GLONASS. Diese beiden Systeme sind nach wie vor in Verwendung. Sie stellen das Rückgrat der modernen Navigation dar. Das heisst, wir sind jetzt eigentlich in der Gegenwart angelangt, womit der geschichtliche Überblick beendet ist.
+ 
+\chapter{Wo: Die Erde und ihre Gestalt}
+\section{Wo sind wir ?}
+\paragraph*{}
+Um wirklich am Anfang zu beginnen, wir befinden uns irgendwo in einem typischen Teil des Universum's\footnote{Es ist durchaus nicht falsch, zu sagen ,,Im Zentrum des Universum's'', wie wir Menschen gerne glauben, denn genau genommen ist \textit{jeder} ort des Universums das Zentrum.}, in einer typischen Galaxie, der wir den Namen ,,Milchstrasse'' gegeben haben. In dieser Milchstrasse,die eine Spiralgalaxie ist, gibt es in einem typischen Spiralarm im äusseren Drittel einen typischen Stern, der Klasse G5, den wir ,,Sonne'' getauft haben. Und in einer ellipsenförmigen Bahn um diese Sonne, befindet ein absolut untypischer Planet, den wir Heimat nennen. Es ist der dritte Planet im Sonnensystem, die Erde. Diese Erde hat einen natürlichen Satelliten, den Mond. Mond und Erde kreisen mit einer Periode von ca. 28 Tagen um einen gemeinsamen Massenmittelpunkt. Sie gemeinsam brauchen für eine Umkreisung der Sonne 1 Jahr. Auf diese beiden Zeitspannen ist unser Zeitsystem, sowie unsere biologische Uhr ausgerichtet, sie bestimmen also in vielerlei Hinsicht unser Leben, und auch die Navigation, doch das ist Gegenstand eines anderen Kapitel's, wie auch die Rotation der Erde um ihre eigene Achse, die eine Periode von einem Tag hat.
+
+\paragraph*{}
+Da wir zur Zeit noch im Alltagsbetrieb an diesen Planeten gebunden sind, ist es das Ziel der Flugnavigation, die Orientierung auf dessen Oberfläche zu gewährleisten. Für manche Zwecke ist daher eine zweidimensionale Navigation durchaus ausreichen, für andere wieder nicht\footnote{Man denke hierbei an das Instrumentenlandesystem, ein klassisches Beispiel für eine Navigationsart, die nur als 3D Navigation implementierbar ist.}. Ob in zwei oder drei Dimensionen, in jedem Fall benötigt man ein einheitliches System der Positionsangabe um Standorte benennen, notieren und kommunizieren zu können.
+
+\section{Positionsangaben}
+\paragraph*{}
+Prinzipiell gibt es zwei Arten der Positionsangabe:\\
+\begin{itemize}
+\item Relative Positionsangabe
+\item Absolute Positionsangabe 
+\end{itemize} 
+
+\paragraph*{}
+Unabhängig davon, ob es sich um eine relative oder absolute Positionsangabe handelt, benötigt man drei Zahlen, um eine Position im dreidimensionalen Raum eindeutig zu bestimmen. Der Unterschied zwischen den beiden Methoden liegt darin, ob diese Koordinaten relativ zu einem Bezugspunkt zu sehen sind, oder nicht. Bei einer sbsoluten Positionsangabe reichen die drei Koordinaten alleine aus, um den Standort eindeutig zu bestimmen. Auf der Erde ist das dafür geeignete Koordinatensystem normalerweise durch das Gradnetz realisiert. Die drei Koordinaten sind also Längengrade, Breitengrade und die Höhe. 
+
+\paragraph*{}
+Bei der relativen Positionsangabe sind die Koordinaten auf einen Bezugspunkt bezogen. Dieser Bezugspunkt muss natürlich gemeinsam mit den Koordinaten angegeben werden. Eine übliche Form der relativen Positionsangabe wird beispielsweise bei der Navigation mit Funkfeuern verwendet. Die Koordinaten sind die Azimuthalrichtung von der Station, die Distanz zur Station, sowie die Höhe. Als Bezugspunkt muss noch angegeben werden, um welches Funkfeuer es sich handelt.
+
+\paragraph*{}
+Ein Punkt, der beachtet werden muss, ist, dass die Eindeutigkeit des Bezugspunktes gewährleistet sein muss. Dies ist bei Funkfeuern durch den 3-Buchstaben Identifikationscode automatisch gewährleistet. Die internationale Luftfahrtbehörde ICAO achtet darauf, dass Stationen die einen gleichen Code besitzen soweit voneinander entfernt sind, dass man an keinem Ort der Welt beide gleichzeitig empfangen kann. Bei Sichtflügen ist diese Eindeutigkeit nicht immer gegeben. Oft hört man Anweisungen wie ,,Melden sie den Bahnhof'' über Funk. Welcher Bahnhof ? In welchem Ort oder in welcher Stadt ? Glücklicherweise haben Verwechslungen dieser Art meist keine dramatischen Folgen. Trotzdem sollte man darauf achten, sie zu vermeiden.
+
+\section{Das Gradnetz der Erde}
+\section{Die Manipulation von Winkel}
+
+\chapter{Wann: Die Zeit und ihre Rolle in der Navigation}
+\chapter{Wohin: Das Kursschema}
+\chapter{Einheiten der Navigation}
+\chapter{Der Begriff der Höhe}
+\chapter{Zeit-Weg-Distanz}
+\chapter{Das Winddreieck}
+\chapter{Koppelnavigation}
+\chapter{Komplexere (Prüfungs) Aufgaben}
+\chapter{Flugplanung für Sichtflüge}
+\part{Radionavigation}
+\chapter{Elektromagnetische Wellen}
+\chapter{Das VOR}
+\chapter{Das NDB/ADF}
+\chapter{Das DME}
+\chapter{Das ILS}
+\chapter{Das MLS}
+\chapter{RNAV}
+\chapter{VDF}
+\chapter{Das Radar}
+\chapter{Der Radiohöhenmesser}
+\chapter{Flugplanung für Instrumentenflüge}
+
+\part{Langstreckennavigation}
+\chapter{Astronavigation}
+\chapter{Trägheitsnavigation}
+\chapter{DECCA Navigation}
+\chapter{Das Loran C}
+\chapter{Omega/VLF}
+\chapter{Satellitennavigation}
+\chapter{Dopplernavigation}
+
+\chapter{Integrity Monitoring}
+\backmatter
+
+
+\listoffigures
+%\chapter{Appendix B: List of Tables}
+\listoftables
+\begin{thebibliography}{999}
+\bibitem{wethenav}David Lewis - We, the Navigators - University of Hawai'i Press
+\end{thebibliography}
+
+\printindex
+\end{document}
