@@ -33,10 +33,13 @@ epsr=4;                     % relative permittivity in medium
      
 deltaT_E(kstart:KE)=deltaT_E(kstart:KE)./epsr;  % medium right of kstart
 
-ddx = .01;          % cell size 1 cm
+f=700e6;            % frequency
+
+ddx = ((3e8/sqrt(epsr))/f)/10;          % cell size 1 cm
 dt = ddx/(2*3e8);   % timestepsize for source 
 
-f=700e6;            % frequency
+printf("Cellsize = %f m\n",ddx);
+printf("dt = %e s\n",dt);
 
 % boundary conditions
 
