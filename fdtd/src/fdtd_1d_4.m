@@ -86,7 +86,7 @@ while  nsteps > 0
         % Calculate the Hy field 
         
         for  k=1: (KE-1)
-            hy(k) = hy(k) + deltaT* ( ex (k) - ex (k+1) );
+            hy(k) = hy(k) + 0.5* ( ex (k) - ex (k+1) );
         end     % for
     end %for
     
