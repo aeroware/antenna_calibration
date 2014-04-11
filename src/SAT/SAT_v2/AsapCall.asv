@@ -1,0 +1,58 @@
+
+function [Status,Result]=AsapCall(AIF,AOF,AsapExe)
+
+% [Status,Result]=AsapCall(AIF,AOF,AsapExe)
+% Call ASAP with ASAP input-file(s) AIF and store ASAP's output 
+% to the corresponding file(s) AOF. AIF and AOF may be strings,
+% 2-dimensional matrices of row-strings or 1-dimensional 
+% cell arrays of strings. The optional string AsapExe gives
+% the name of the executable ASAP program file (default is 
+% defined at the beginning of the function). 
+% The variables Status and Result are those returned by the 
+% 'dos' function that is used to issue the ASAP executable as 
+% a command to the DOS operating system.
+
+% Default ASAP executable:
+if nargin<3, 
+  AsapExe='asap3g.exe'; 
+end
+
+if nargin<1, 
+  error('No files passed.');
+end
+if ~iscell(AIF),
+  AIF=cellstr(AIF);
+end
+ni=length(AIF);
+
+if nargin<2, AOF={}; end
+if ~iscell(AOF),
+  AOF=cellstr(AOF);
+end
+no=length(AOF);
+
+for k=1:ni,
+  copyfile(AIF{k},'asapin.dat');
+  if ~exist(AsapExe,'file'),
+    error(['Could not find ASAP executable ''',AsapExe,'''']);
+  end
+  fprintf('ASAP calculations running ... ');
+  [Status,Result]=dos(AsapExe);
+  fprintf('finished.\n');
+  if k<=no,
+    q=AOF{k};
+  else
+    [p,f,e,v]=fileparts(AIF{k});
+    if strcmp(e,'.i'),
+      e='.o';
+    elseif strcmp(e,'.in')|strcmp(e,'.inp'),
+      e='.out';
+    else
+      f=[f,e];
+      e='.o';
+    end
+    q=fullfile(p,[f,e,v]);
+  end
+  copyfile('asapout.dat',q);
+end
+

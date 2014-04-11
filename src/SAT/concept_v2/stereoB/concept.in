@@ -1,0 +1,3640 @@
+1.1  characterization of the structure
+ ConceptDesign 1 
+2.1   symmetry with respect to the xz plane, yz plane or both
+     0
+2.2   number of wires, id. ground, segments per wavelength, coating
+  900     0     8     0
+2.30  wire 1   : coordinates
+    -0.5715     -0.6095     -1.0160     -0.3810     -0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 2   : coordinates
+    -0.3810     -0.6095     -1.0160     -0.1905     -0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 3   : coordinates
+    -0.1905     -0.6095     -1.0160      0.0000     -0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 4   : coordinates
+     0.0000     -0.6095     -1.0160      0.1905     -0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 5   : coordinates
+     0.1905     -0.6095     -1.0160      0.3810     -0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 6   : coordinates
+     0.3810     -0.6095     -1.0160      0.5715     -0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 7   : coordinates
+    -0.5715     -0.4063     -1.0160     -0.3810     -0.4063     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 8   : coordinates
+    -0.3810     -0.4063     -1.0160     -0.1905     -0.4063     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 9   : coordinates
+    -0.1905     -0.4063     -1.0160      0.0000     -0.4063     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 10   : coordinates
+     0.0000     -0.4063     -1.0160      0.1905     -0.4063     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 11   : coordinates
+     0.1905     -0.4063     -1.0160      0.3810     -0.4063     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 12   : coordinates
+     0.3810     -0.4063     -1.0160      0.5715     -0.4063     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 13   : coordinates
+    -0.5715     -0.2032     -1.0160     -0.3810     -0.2032     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 14   : coordinates
+    -0.3810     -0.2032     -1.0160     -0.1905     -0.2032     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 15   : coordinates
+    -0.1905     -0.2032     -1.0160      0.0000     -0.2032     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 16   : coordinates
+     0.0000     -0.2032     -1.0160      0.1905     -0.2032     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 17   : coordinates
+     0.1905     -0.2032     -1.0160      0.3810     -0.2032     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 18   : coordinates
+     0.3810     -0.2032     -1.0160      0.5715     -0.2032     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 19   : coordinates
+    -0.5715      0.0000     -1.0160     -0.3810      0.0000     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 20   : coordinates
+    -0.3810      0.0000     -1.0160     -0.1905      0.0000     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 21   : coordinates
+    -0.1905      0.0000     -1.0160      0.0000      0.0000     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 22   : coordinates
+     0.0000      0.0000     -1.0160      0.1905      0.0000     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 23   : coordinates
+     0.1905      0.0000     -1.0160      0.3810      0.0000     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 24   : coordinates
+     0.3810      0.0000     -1.0160      0.5715      0.0000     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 25   : coordinates
+    -0.5715      0.2032     -1.0160     -0.3810      0.2032     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 26   : coordinates
+    -0.3810      0.2032     -1.0160     -0.1905      0.2032     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 27   : coordinates
+    -0.1905      0.2032     -1.0160      0.0000      0.2032     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 28   : coordinates
+     0.0000      0.2032     -1.0160      0.1905      0.2032     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 29   : coordinates
+     0.1905      0.2032     -1.0160      0.3810      0.2032     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 30   : coordinates
+     0.3810      0.2032     -1.0160      0.5715      0.2032     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 31   : coordinates
+    -0.5715      0.4063     -1.0160     -0.3810      0.4063     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 32   : coordinates
+    -0.3810      0.4063     -1.0160     -0.1905      0.4063     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 33   : coordinates
+    -0.1905      0.4063     -1.0160      0.0000      0.4063     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 34   : coordinates
+     0.0000      0.4063     -1.0160      0.1905      0.4063     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 35   : coordinates
+     0.1905      0.4063     -1.0160      0.3810      0.4063     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 36   : coordinates
+     0.3810      0.4063     -1.0160      0.5715      0.4063     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 37   : coordinates
+    -0.5715      0.6095     -1.0160     -0.3810      0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 38   : coordinates
+    -0.3810      0.6095     -1.0160     -0.1905      0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 39   : coordinates
+    -0.1905      0.6095     -1.0160      0.0000      0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 40   : coordinates
+     0.0000      0.6095     -1.0160      0.1905      0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 41   : coordinates
+     0.1905      0.6095     -1.0160      0.3810      0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 42   : coordinates
+     0.3810      0.6095     -1.0160      0.5715      0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 43   : coordinates
+    -0.5715     -0.6095     -1.0160     -0.5715     -0.4063     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 44   : coordinates
+    -0.3810     -0.6095     -1.0160     -0.3810     -0.4063     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 45   : coordinates
+    -0.1905     -0.6095     -1.0160     -0.1905     -0.4063     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 46   : coordinates
+     0.0000     -0.6095     -1.0160      0.0000     -0.4063     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 47   : coordinates
+     0.1905     -0.6095     -1.0160      0.1905     -0.4063     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 48   : coordinates
+     0.5715     -0.6095     -1.0160      0.5715     -0.4063     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 49   : coordinates
+    -0.5715     -0.4063     -1.0160     -0.5715     -0.2032     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 50   : coordinates
+    -0.3810     -0.4063     -1.0160     -0.3810     -0.2032     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 51   : coordinates
+    -0.1905     -0.4063     -1.0160     -0.1905     -0.2032     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 52   : coordinates
+     0.0000     -0.4063     -1.0160      0.0000     -0.2032     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 53   : coordinates
+     0.1905     -0.4063     -1.0160      0.1905     -0.2032     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 54   : coordinates
+     0.3810     -0.4063     -1.0160      0.3810     -0.2032     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 55   : coordinates
+     0.5715     -0.4063     -1.0160      0.5715     -0.2032     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 56   : coordinates
+    -0.5715     -0.2032     -1.0160     -0.5715      0.0000     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 57   : coordinates
+    -0.3810     -0.2032     -1.0160     -0.3810      0.0000     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 58   : coordinates
+    -0.1905     -0.2032     -1.0160     -0.1905      0.0000     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 59   : coordinates
+     0.0000     -0.2032     -1.0160      0.0000      0.0000     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 60   : coordinates
+     0.1905     -0.2032     -1.0160      0.1905      0.0000     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 61   : coordinates
+     0.3810     -0.2032     -1.0160      0.3810      0.0000     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 62   : coordinates
+     0.5715     -0.2032     -1.0160      0.5715      0.0000     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 63   : coordinates
+    -0.5715      0.0000     -1.0160     -0.5715      0.2032     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 64   : coordinates
+    -0.3810      0.0000     -1.0160     -0.3810      0.2032     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 65   : coordinates
+    -0.1905      0.0000     -1.0160     -0.1905      0.2032     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 66   : coordinates
+     0.0000      0.0000     -1.0160      0.0000      0.2032     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 67   : coordinates
+     0.1905      0.0000     -1.0160      0.1905      0.2032     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 68   : coordinates
+     0.3810      0.0000     -1.0160      0.3810      0.2032     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 69   : coordinates
+     0.5715      0.0000     -1.0160      0.5715      0.2032     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 70   : coordinates
+    -0.5715      0.2032     -1.0160     -0.5715      0.4063     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 71   : coordinates
+    -0.3810      0.2032     -1.0160     -0.3810      0.4063     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 72   : coordinates
+    -0.1905      0.2032     -1.0160     -0.1905      0.4063     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 73   : coordinates
+     0.0000      0.2032     -1.0160      0.0000      0.4063     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 74   : coordinates
+     0.1905      0.2032     -1.0160      0.1905      0.4063     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 75   : coordinates
+     0.3810      0.2032     -1.0160      0.3810      0.4063     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 76   : coordinates
+     0.5715      0.2032     -1.0160      0.5715      0.4063     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 77   : coordinates
+    -0.5715      0.4063     -1.0160     -0.5715      0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 78   : coordinates
+    -0.3810      0.4063     -1.0160     -0.3810      0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 79   : coordinates
+    -0.1905      0.4063     -1.0160     -0.1905      0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 80   : coordinates
+     0.0000      0.4063     -1.0160      0.0000      0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 81   : coordinates
+     0.1905      0.4063     -1.0160      0.1905      0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 82   : coordinates
+     0.3810      0.4063     -1.0160      0.3810      0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 83   : coordinates
+     0.5715      0.4063     -1.0160      0.5715      0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 84   : coordinates
+    -0.5715     -0.6095      1.0160     -0.3810     -0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 85   : coordinates
+    -0.3810     -0.6095      1.0160     -0.1905     -0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 86   : coordinates
+    -0.1905     -0.6095      1.0160      0.0000     -0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 87   : coordinates
+     0.0000     -0.6095      1.0160      0.1905     -0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 88   : coordinates
+     0.1905     -0.6095      1.0160      0.3810     -0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 89   : coordinates
+     0.3810     -0.6095      1.0160      0.5715     -0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 90   : coordinates
+    -0.5715     -0.4063      1.0160     -0.3810     -0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 91   : coordinates
+    -0.3810     -0.4063      1.0160     -0.1905     -0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 92   : coordinates
+    -0.1905     -0.4063      1.0160      0.0000     -0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 93   : coordinates
+     0.0000     -0.4063      1.0160      0.1905     -0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 94   : coordinates
+     0.1905     -0.4063      1.0160      0.3810     -0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 95   : coordinates
+     0.3810     -0.4063      1.0160      0.5715     -0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 96   : coordinates
+    -0.5715     -0.2032      1.0160     -0.3810     -0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 97   : coordinates
+    -0.3810     -0.2032      1.0160     -0.1905     -0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 98   : coordinates
+    -0.1905     -0.2032      1.0160      0.0000     -0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 99   : coordinates
+     0.0000     -0.2032      1.0160      0.1905     -0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 100   : coordinates
+     0.1905     -0.2032      1.0160      0.3810     -0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 101   : coordinates
+     0.3810     -0.2032      1.0160      0.5715     -0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 102   : coordinates
+    -0.5715      0.0000      1.0160     -0.3810      0.0000      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 103   : coordinates
+    -0.3810      0.0000      1.0160     -0.1905      0.0000      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 104   : coordinates
+    -0.1905      0.0000      1.0160      0.0000      0.0000      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 105   : coordinates
+     0.0000      0.0000      1.0160      0.1905      0.0000      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 106   : coordinates
+     0.1905      0.0000      1.0160      0.3810      0.0000      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 107   : coordinates
+     0.3810      0.0000      1.0160      0.5715      0.0000      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 108   : coordinates
+    -0.5715      0.2032      1.0160     -0.3810      0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 109   : coordinates
+    -0.3810      0.2032      1.0160     -0.1905      0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 110   : coordinates
+    -0.1905      0.2032      1.0160      0.0000      0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 111   : coordinates
+     0.0000      0.2032      1.0160      0.1905      0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 112   : coordinates
+     0.1905      0.2032      1.0160      0.3810      0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 113   : coordinates
+     0.3810      0.2032      1.0160      0.5715      0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 114   : coordinates
+    -0.5715      0.4063      1.0160     -0.3810      0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 115   : coordinates
+    -0.3810      0.4063      1.0160     -0.1905      0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 116   : coordinates
+    -0.1905      0.4063      1.0160      0.0000      0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 117   : coordinates
+     0.0000      0.4063      1.0160      0.1905      0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 118   : coordinates
+     0.1905      0.4063      1.0160      0.3810      0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 119   : coordinates
+     0.3810      0.4063      1.0160      0.5715      0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 120   : coordinates
+    -0.5715      0.6095      1.0160     -0.3810      0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 121   : coordinates
+    -0.3810      0.6095      1.0160     -0.1905      0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 122   : coordinates
+    -0.1905      0.6095      1.0160      0.0000      0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 123   : coordinates
+     0.0000      0.6095      1.0160      0.1905      0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 124   : coordinates
+     0.1905      0.6095      1.0160      0.3810      0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 125   : coordinates
+     0.3810      0.6095      1.0160      0.5715      0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 126   : coordinates
+    -0.5715     -0.6095      1.0160     -0.5715     -0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 127   : coordinates
+    -0.3810     -0.6095      1.0160     -0.3810     -0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 128   : coordinates
+    -0.1905     -0.6095      1.0160     -0.1905     -0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 129   : coordinates
+     0.0000     -0.6095      1.0160      0.0000     -0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 130   : coordinates
+     0.1905     -0.6095      1.0160      0.1905     -0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 131   : coordinates
+     0.3810     -0.6095      1.0160      0.3810     -0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 132   : coordinates
+     0.5715     -0.6095      1.0160      0.5715     -0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 133   : coordinates
+    -0.5715     -0.4063      1.0160     -0.5715     -0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 134   : coordinates
+    -0.3810     -0.4063      1.0160     -0.3810     -0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 135   : coordinates
+    -0.1905     -0.4063      1.0160     -0.1905     -0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 136   : coordinates
+     0.0000     -0.4063      1.0160      0.0000     -0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 137   : coordinates
+     0.1905     -0.4063      1.0160      0.1905     -0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 138   : coordinates
+     0.3810     -0.4063      1.0160      0.3810     -0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 139   : coordinates
+     0.5715     -0.4063      1.0160      0.5715     -0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 140   : coordinates
+    -0.5715     -0.2032      1.0160     -0.5715      0.0000      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 141   : coordinates
+    -0.3810     -0.2032      1.0160     -0.3810      0.0000      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 142   : coordinates
+    -0.1905     -0.2032      1.0160     -0.1905      0.0000      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 143   : coordinates
+     0.0000     -0.2032      1.0160      0.0000      0.0000      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 144   : coordinates
+     0.1905     -0.2032      1.0160      0.1905      0.0000      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 145   : coordinates
+     0.3810     -0.2032      1.0160      0.3810      0.0000      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 146   : coordinates
+    -0.5715      0.0000      1.0160     -0.5715      0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 147   : coordinates
+    -0.3810      0.0000      1.0160     -0.3810      0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 148   : coordinates
+    -0.1905      0.0000      1.0160     -0.1905      0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 149   : coordinates
+     0.0000      0.0000      1.0160      0.0000      0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 150   : coordinates
+     0.1905      0.0000      1.0160      0.1905      0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 151   : coordinates
+     0.3810      0.0000      1.0160      0.3810      0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 152   : coordinates
+     0.5715      0.0000      1.0160      0.5715      0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 153   : coordinates
+    -0.5715      0.2032      1.0160     -0.5715      0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 154   : coordinates
+    -0.3810      0.2032      1.0160     -0.3810      0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 155   : coordinates
+    -0.1905      0.2032      1.0160     -0.1905      0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 156   : coordinates
+     0.0000      0.2032      1.0160      0.0000      0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 157   : coordinates
+     0.1905      0.2032      1.0160      0.1905      0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 158   : coordinates
+     0.3810      0.2032      1.0160      0.3810      0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 159   : coordinates
+     0.5715      0.2032      1.0160      0.5715      0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 160   : coordinates
+    -0.5715      0.4063      1.0160     -0.5715      0.5485      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 161   : coordinates
+    -0.3810      0.4063      1.0160     -0.3810      0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 162   : coordinates
+    -0.1905      0.4063      1.0160     -0.1905      0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 163   : coordinates
+     0.0000      0.4063      1.0160      0.0000      0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 164   : coordinates
+     0.1905      0.4063      1.0160      0.1905      0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 165   : coordinates
+     0.3810      0.4063      1.0160      0.3810      0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 166   : coordinates
+     0.5715      0.4063      1.0160      0.5715      0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 167   : coordinates
+    -0.5715     -0.6095     -0.6773     -0.5715     -0.4063     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 168   : coordinates
+    -0.5715     -0.4063     -0.6773     -0.5715     -0.2032     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 169   : coordinates
+    -0.5715     -0.2032     -0.6773     -0.5715      0.0000     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 170   : coordinates
+    -0.5715      0.0000     -0.6773     -0.5715      0.2032     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 171   : coordinates
+    -0.5715      0.2032     -0.6773     -0.5715      0.4063     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 172   : coordinates
+    -0.5715      0.4063     -0.6773     -0.5715      0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 173   : coordinates
+    -0.5715     -0.6095     -0.3387     -0.5715     -0.4063     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 174   : coordinates
+    -0.5715     -0.4063     -0.3387     -0.5715     -0.2032     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 175   : coordinates
+    -0.5715     -0.2032     -0.3387     -0.5715      0.0000     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 176   : coordinates
+    -0.5715      0.0000     -0.3387     -0.5715      0.2032     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 177   : coordinates
+    -0.5715      0.2032     -0.3387     -0.5715      0.4063     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 178   : coordinates
+    -0.5715      0.4063     -0.3387     -0.5715      0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 179   : coordinates
+    -0.5715     -0.4063      0.0000     -0.5715     -0.2032      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 180   : coordinates
+    -0.5715     -0.2032      0.0000     -0.5715      0.0000      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 181   : coordinates
+    -0.5715      0.0000      0.0000     -0.5715      0.2032      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 182   : coordinates
+    -0.5715      0.2032      0.0000     -0.5715      0.4063      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 183   : coordinates
+    -0.5715     -0.6095      0.3387     -0.5715     -0.4063      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 184   : coordinates
+    -0.5715     -0.4063      0.3387     -0.5715     -0.2032      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 185   : coordinates
+    -0.5715     -0.2032      0.3387     -0.5715      0.0000      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 186   : coordinates
+    -0.5715      0.0000      0.3387     -0.5715      0.2032      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 187   : coordinates
+    -0.5715      0.2032      0.3387     -0.5715      0.4063      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 188   : coordinates
+    -0.5715      0.4063      0.3387     -0.5715      0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 189   : coordinates
+    -0.5715     -0.6095      0.6773     -0.5715     -0.4063      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 190   : coordinates
+    -0.5715     -0.4063      0.6773     -0.5715     -0.2032      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 191   : coordinates
+    -0.5715     -0.2032      0.6773     -0.5715      0.0000      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 192   : coordinates
+    -0.5715      0.0000      0.6773     -0.5715      0.2032      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 193   : coordinates
+    -0.5715      0.2032      0.6773     -0.5715      0.4063      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 194   : coordinates
+    -0.5715      0.4063      0.6773     -0.5715      0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 195   : coordinates
+    -0.5715     -0.6095     -1.0160     -0.5715     -0.7595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 196   : coordinates
+    -0.5715     -0.4063     -1.0160     -0.5715     -0.4063     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 197   : coordinates
+    -0.5715     -0.2032     -1.0160     -0.5715     -0.2032     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 198   : coordinates
+    -0.5715      0.0000     -1.0160     -0.5715      0.0000     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 199   : coordinates
+    -0.5715      0.2032     -1.0160     -0.5715      0.2032     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 200   : coordinates
+    -0.5715      0.4063     -1.0160     -0.5715      0.4063     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 201   : coordinates
+    -0.5715      0.6095     -1.0160     -0.5715      0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 202   : coordinates
+    -0.5715     -0.6095     -0.6773     -0.5715     -0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 203   : coordinates
+    -0.5715     -0.4063     -0.6773     -0.5715     -0.4063     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 204   : coordinates
+    -0.5715     -0.2032     -0.6773     -0.5715     -0.2032     -0.5080 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 205   : coordinates
+    -0.5715      0.0000     -0.6773     -0.5715      0.0000     -0.5080 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 206   : coordinates
+    -0.5715      0.2032     -0.6773     -0.5715      0.2032     -0.5080 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 207   : coordinates
+    -0.5715      0.4063     -0.6773     -0.5715      0.4063     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 208   : coordinates
+    -0.5715      0.6095     -0.6773     -0.5715      0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 209   : coordinates
+    -0.5715     -0.6095     -0.3387     -0.5715     -0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 210   : coordinates
+    -0.5715     -0.4063     -0.3387     -0.5715     -0.4063     -0.1693 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 211   : coordinates
+    -0.5715     -0.2032     -0.3387     -0.5715     -0.2032      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 212   : coordinates
+    -0.5715      0.0000     -0.3387     -0.5715      0.0000      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 213   : coordinates
+    -0.5715      0.2032     -0.3387     -0.5715      0.2032      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 214   : coordinates
+    -0.5715      0.4063     -0.3387     -0.5715      0.4063     -0.1693 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 215   : coordinates
+    -0.5715      0.6095     -0.3387     -0.5715      0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 216   : coordinates
+    -0.5715     -0.6095      0.0000     -0.5715     -0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 217   : coordinates
+    -0.5715     -0.4063      0.0000     -0.5715     -0.4063      0.1693 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 218   : coordinates
+    -0.5715     -0.2032      0.0000     -0.5715     -0.2032      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 219   : coordinates
+    -0.5715      0.0000      0.0000     -0.5715      0.0000      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 220   : coordinates
+    -0.5715      0.2032      0.0000     -0.5715      0.2032      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 221   : coordinates
+    -0.5715      0.4063      0.0000     -0.5715      0.4063      0.1693 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 222   : coordinates
+    -0.5715      0.6095      0.0000     -0.5715      0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 223   : coordinates
+    -0.5715     -0.6095      0.3387     -0.5715     -0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 224   : coordinates
+    -0.5715     -0.4063      0.3387     -0.5715     -0.4063      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 225   : coordinates
+    -0.5715     -0.2032      0.3387     -0.5715     -0.2032      0.5080 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 226   : coordinates
+    -0.5715      0.0000      0.3387     -0.5715      0.0000      0.5080 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 227   : coordinates
+    -0.5715      0.2032      0.3387     -0.5715      0.2032      0.5080 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 228   : coordinates
+    -0.5715      0.4063      0.3387     -0.5715      0.4063      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 229   : coordinates
+    -0.5715      0.6095      0.3387     -0.5715      0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 230   : coordinates
+    -0.5715     -0.6095      0.6773     -0.5715     -0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 231   : coordinates
+    -0.5715     -0.4063      0.6773     -0.5715     -0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 232   : coordinates
+    -0.5715     -0.2032      0.6773     -0.5715     -0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 233   : coordinates
+    -0.5715      0.0000      0.6773     -0.5715      0.0000      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 234   : coordinates
+    -0.5715      0.2032      0.6773     -0.5715      0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 235   : coordinates
+    -0.5715      0.4063      0.6773     -0.5715      0.4063      0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 236   : coordinates
+    -0.5715      0.6095      0.6773     -0.5715      0.6095      0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 237   : coordinates
+     0.5715     -0.6095     -0.6773      0.5715     -0.4063     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 238   : coordinates
+     0.5715     -0.4063     -0.6773      0.5715     -0.2032     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 239   : coordinates
+     0.5715     -0.2032     -0.6773      0.5715      0.0000     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 240   : coordinates
+     0.5715      0.0000     -0.6773      0.5715      0.2032     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 241   : coordinates
+     0.5715      0.2032     -0.6773      0.5715      0.4063     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 242   : coordinates
+     0.5715      0.4063     -0.6773      0.5715      0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 243   : coordinates
+     0.5715     -0.6095     -0.3387      0.5715     -0.4063     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 244   : coordinates
+     0.5715     -0.4063     -0.3387      0.5715     -0.2032     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 245   : coordinates
+     0.5715     -0.2032     -0.3387      0.5715      0.0000     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 246   : coordinates
+     0.5715      0.0000     -0.3387      0.5715      0.2032     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 247   : coordinates
+     0.5715      0.2032     -0.3387      0.5715      0.4063     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 248   : coordinates
+     0.5715      0.4063     -0.3387      0.5715      0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 249   : coordinates
+     0.5715     -0.6095      0.0000      0.5715     -0.4063      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 250   : coordinates
+     0.5715     -0.4063      0.0000      0.5715     -0.2032      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 251   : coordinates
+     0.5715     -0.2032      0.0000      0.5715      0.0000      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 252   : coordinates
+     0.5715      0.0000      0.0000      0.5715      0.2032      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 253   : coordinates
+     0.5715      0.2032      0.0000      0.5715      0.4063      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 254   : coordinates
+     0.5715      0.4063      0.0000      0.5715      0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 255   : coordinates
+     0.5715     -0.6095      0.3387      0.5715     -0.4063      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 256   : coordinates
+     0.5715     -0.4063      0.3387      0.5715     -0.2032      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 257   : coordinates
+     0.5715     -0.2032      0.3387      0.5715      0.0000      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 258   : coordinates
+     0.5715      0.0000      0.3387      0.5715      0.2032      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 259   : coordinates
+     0.5715      0.2032      0.3387      0.5715      0.4063      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 260   : coordinates
+     0.5715      0.4063      0.3387      0.5715      0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 261   : coordinates
+     0.5715     -0.6095      0.6773      0.5715     -0.4063      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 262   : coordinates
+     0.5715     -0.4063      0.6773      0.5715     -0.2032      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 263   : coordinates
+     0.5715     -0.2032      0.6773      0.5715      0.0000      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 264   : coordinates
+     0.5715      0.0000      0.6773      0.5715      0.2032      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 265   : coordinates
+     0.5715      0.2032      0.6773      0.5715      0.4063      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 266   : coordinates
+     0.5715      0.4063      0.6773      0.5715      0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 267   : coordinates
+     0.5715     -0.6095     -1.0160      0.5715     -0.7595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 268   : coordinates
+     0.5715     -0.4063     -1.0160      0.5715     -0.4063     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 269   : coordinates
+     0.5715     -0.2032     -1.0160      0.5715     -0.2032     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 270   : coordinates
+     0.5715      0.0000     -1.0160      0.5715      0.0000     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 271   : coordinates
+     0.5715      0.2032     -1.0160      0.5715      0.2032     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 272   : coordinates
+     0.5715      0.4063     -1.0160      0.5715      0.4063     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 273   : coordinates
+     0.5715      0.6095     -1.0160      0.5715      0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 274   : coordinates
+     0.5715     -0.6095     -0.6773      0.5715     -0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 275   : coordinates
+     0.5715     -0.4063     -0.6773      0.5715     -0.4063     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 276   : coordinates
+     0.5715     -0.2032     -0.6773      0.5715     -0.2032     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 277   : coordinates
+     0.5715      0.0000     -0.6773      0.5715      0.0000     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 278   : coordinates
+     0.5715      0.2032     -0.6773      0.5715      0.2032     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 279   : coordinates
+     0.5715      0.4063     -0.6773      0.5715      0.4063     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 280   : coordinates
+     0.5715      0.6095     -0.6773      0.5715      0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 281   : coordinates
+     0.5715     -0.6095     -0.3387      0.5715     -0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 282   : coordinates
+     0.5715     -0.4063     -0.3387      0.5715     -0.4063      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 283   : coordinates
+     0.5715     -0.2032     -0.3387      0.5715     -0.2032      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 284   : coordinates
+     0.5715      0.0000     -0.3387      0.5715      0.0000      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 285   : coordinates
+     0.5715      0.2032     -0.3387      0.5715      0.2032      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 286   : coordinates
+     0.5715      0.4063     -0.3387      0.5715      0.4063      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 287   : coordinates
+     0.5715      0.6095     -0.3387      0.5715      0.6095     -0.1693 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 288   : coordinates
+     0.5715     -0.6095      0.0000      0.5715     -0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 289   : coordinates
+     0.5715     -0.4063      0.0000      0.5715     -0.4063      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 290   : coordinates
+     0.5715     -0.2032      0.0000      0.5715     -0.2032      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 291   : coordinates
+     0.5715      0.0000      0.0000      0.5715      0.0000      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 292   : coordinates
+     0.5715      0.2032      0.0000      0.5715      0.2032      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 293   : coordinates
+     0.5715      0.4063      0.0000      0.5715      0.4063      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 294   : coordinates
+     0.5715      0.6095      0.0000      0.5715      0.6095      0.1693 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 295   : coordinates
+     0.5715     -0.6095      0.3387      0.5715     -0.6095      0.5080 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 296   : coordinates
+     0.5715     -0.4063      0.3387      0.5715     -0.4063      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 297   : coordinates
+     0.5715     -0.2032      0.3387      0.5715     -0.2032      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 298   : coordinates
+     0.5715      0.0000      0.3387      0.5715      0.0000      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 299   : coordinates
+     0.5715      0.2032      0.3387      0.5715      0.2032      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 300   : coordinates
+     0.5715      0.4063      0.3387      0.5715      0.4063      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 301   : coordinates
+     0.5715      0.6095      0.3387      0.5715      0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 302   : coordinates
+     0.5715     -0.6095      0.6773      0.5715     -0.6095      0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 303   : coordinates
+     0.5715     -0.4063      0.6773      0.5715     -0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 304   : coordinates
+     0.5715     -0.2032      0.6773      0.5715     -0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 305   : coordinates
+     0.5715      0.0000      0.6773      0.5715      0.0000      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 306   : coordinates
+     0.5715      0.2032      0.6773      0.5715      0.2032      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 307   : coordinates
+     0.5715      0.4063      0.6773      0.5715      0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 308   : coordinates
+     0.5715      0.6095      0.6773      0.5715      0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 309   : coordinates
+    -0.3810     -0.6095     -1.0160     -0.3810     -0.7595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 310   : coordinates
+    -0.3810     -0.6095     -0.6773     -0.3810     -0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 311   : coordinates
+    -0.3810     -0.6095     -0.3387     -0.3810     -0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 312   : coordinates
+    -0.3810     -0.6095      0.0000     -0.3810     -0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 313   : coordinates
+    -0.3810     -0.6095      0.3387     -0.3810     -0.6095      0.5080 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 314   : coordinates
+    -0.3810     -0.6095      0.6773     -0.3810     -0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 315   : coordinates
+    -0.1905     -0.6095     -1.0160     -0.1905     -0.7595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 316   : coordinates
+    -0.1905     -0.6095     -0.6773     -0.1905     -0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 317   : coordinates
+    -0.1905     -0.6095     -0.3387     -0.1905     -0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 318   : coordinates
+    -0.1905     -0.6095      0.0000     -0.1905     -0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 319   : coordinates
+    -0.1905     -0.6095      0.3387     -0.1905     -0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 320   : coordinates
+    -0.1905     -0.6095      0.6773     -0.1905     -0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 321   : coordinates
+     0.0000     -0.6095     -1.0160      0.0000     -0.7595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 322   : coordinates
+     0.0000     -0.6095     -0.6773      0.0000     -0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 323   : coordinates
+     0.0000     -0.6095     -0.3387      0.0000     -0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 324   : coordinates
+     0.0000     -0.6095      0.0000      0.0000     -0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 325   : coordinates
+     0.0000     -0.6095      0.3387      0.0000     -0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 326   : coordinates
+     0.0000     -0.6095      0.6773      0.0000     -0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 327   : coordinates
+     0.1905     -0.6095     -1.0160      0.1905     -0.7595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 328   : coordinates
+     0.1905     -0.6095     -0.6773      0.1905     -0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 329   : coordinates
+     0.1905     -0.6095     -0.3387      0.1905     -0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 330   : coordinates
+     0.1905     -0.6095      0.0000      0.1905     -0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 331   : coordinates
+     0.1905     -0.6095      0.3387      0.1905     -0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 332   : coordinates
+     0.1905     -0.6095      0.6773      0.1905     -0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 333   : coordinates
+     0.3810     -0.6095     -1.0160      0.3810     -0.7595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 334   : coordinates
+     0.3810     -0.6095     -0.6773      0.3810     -0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 335   : coordinates
+     0.3810     -0.6095     -0.3387      0.3810     -0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 336   : coordinates
+     0.3810     -0.6095      0.0000      0.3810     -0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 337   : coordinates
+     0.3810     -0.6095      0.3387      0.3810     -0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 338   : coordinates
+     0.3810     -0.6095      0.6773      0.3810     -0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 339   : coordinates
+    -0.5715     -0.6095     -0.3387     -0.3810     -0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 340   : coordinates
+    -0.5715     -0.6095      0.0000     -0.3810     -0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 341   : coordinates
+    -0.5715     -0.6095      0.3387     -0.3810     -0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 342   : coordinates
+    -0.5715     -0.6095      0.6773     -0.3810     -0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 343   : coordinates
+    -0.3810     -0.6095     -0.6773     -0.1905     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 344   : coordinates
+    -0.3810     -0.6095     -0.3387     -0.1905     -0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 345   : coordinates
+    -0.3810     -0.6095      0.0000     -0.1905     -0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 346   : coordinates
+    -0.3810     -0.6095      0.3387     -0.1905     -0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 347   : coordinates
+    -0.3810     -0.6095      0.6773     -0.1905     -0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 348   : coordinates
+    -0.1905     -0.6095     -0.6773      0.0000     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 349   : coordinates
+    -0.1905     -0.6095     -0.3387      0.0000     -0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 350   : coordinates
+    -0.1905     -0.6095      0.0000      0.0000     -0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 351   : coordinates
+    -0.1905     -0.6095      0.3387      0.0000     -0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 352   : coordinates
+    -0.1905     -0.6095      0.6773      0.0000     -0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 353   : coordinates
+     0.0000     -0.6095     -0.6773      0.1905     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 354   : coordinates
+     0.0000     -0.6095     -0.3387      0.1905     -0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 355   : coordinates
+     0.0000     -0.6095      0.0000      0.1905     -0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 356   : coordinates
+     0.0000     -0.6095      0.3387      0.1905     -0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 357   : coordinates
+     0.0000     -0.6095      0.6773      0.1905     -0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 358   : coordinates
+     0.1905     -0.6095     -0.6773      0.3810     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 359   : coordinates
+     0.1905     -0.6095     -0.3387      0.3810     -0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 360   : coordinates
+     0.1905     -0.6095      0.0000      0.3810     -0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 361   : coordinates
+     0.1905     -0.6095      0.3387      0.3810     -0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 362   : coordinates
+     0.1905     -0.6095      0.6773      0.3810     -0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 363   : coordinates
+     0.3810     -0.6095     -0.6773      0.5715     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 364   : coordinates
+     0.3810     -0.6095     -0.3387      0.5715     -0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 365   : coordinates
+     0.3810     -0.6095      0.0000      0.5715     -0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 366   : coordinates
+     0.3810     -0.6095      0.3387      0.5715     -0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 367   : coordinates
+     0.3810     -0.6095      0.6773      0.5715     -0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 368   : coordinates
+    -0.3810      0.6095     -1.0160     -0.3810      0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 369   : coordinates
+    -0.3810      0.6095     -0.6773     -0.3810      0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 370   : coordinates
+    -0.3810      0.6095     -0.3387     -0.3810      0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 371   : coordinates
+    -0.3810      0.6095      0.0000     -0.3810      0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 372   : coordinates
+    -0.3810      0.6095      0.3387     -0.3810      0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 373   : coordinates
+    -0.3810      0.6095      0.6773     -0.3810      0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 374   : coordinates
+    -0.1905      0.6095     -1.0160     -0.1905      0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 375   : coordinates
+    -0.1905      0.6095     -0.6773     -0.1905      0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 376   : coordinates
+    -0.1905      0.6095     -0.3387     -0.1905      0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 377   : coordinates
+    -0.1905      0.6095      0.0000     -0.1905      0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 378   : coordinates
+    -0.1905      0.6095      0.3387     -0.1905      0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 379   : coordinates
+    -0.1905      0.6095      0.6773     -0.1905      0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 380   : coordinates
+     0.0000      0.6095     -1.0160      0.0000      0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 381   : coordinates
+     0.0000      0.6095     -0.6773      0.0000      0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 382   : coordinates
+     0.0000      0.6095     -0.3387      0.0000      0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 383   : coordinates
+     0.0000      0.6095      0.0000      0.0000      0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 384   : coordinates
+     0.0000      0.6095      0.3387      0.0000      0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 385   : coordinates
+     0.0000      0.6095      0.6773      0.0000      0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 386   : coordinates
+     0.1905      0.6095     -1.0160      0.1905      0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 387   : coordinates
+     0.1905      0.6095     -0.6773      0.1905      0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 388   : coordinates
+     0.1905      0.6095     -0.3387      0.1905      0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 389   : coordinates
+     0.1905      0.6095      0.0000      0.1905      0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 390   : coordinates
+     0.1905      0.6095      0.3387      0.1905      0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 391   : coordinates
+     0.1905      0.6095      0.6773      0.1905      0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 392   : coordinates
+     0.3810      0.6095     -1.0160      0.3810      0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 393   : coordinates
+     0.3810      0.6095     -0.6773      0.3810      0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 394   : coordinates
+     0.3810      0.6095     -0.3387      0.3810      0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 395   : coordinates
+     0.3810      0.6095      0.0000      0.3810      0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 396   : coordinates
+     0.3810      0.6095      0.3387      0.3810      0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 397   : coordinates
+     0.3810      0.6095      0.6773      0.3810      0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 398   : coordinates
+    -0.5715      0.6095     -0.6773     -0.3810      0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 399   : coordinates
+    -0.5715      0.6095     -0.3387     -0.3810      0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 400   : coordinates
+    -0.5715      0.6095      0.0000     -0.3810      0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 401   : coordinates
+    -0.5715      0.6095      0.3387     -0.3810      0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 402   : coordinates
+    -0.5715      0.6095      0.6773     -0.3810      0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 403   : coordinates
+    -0.3810      0.6095     -0.6773     -0.1905      0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 404   : coordinates
+    -0.3810      0.6095     -0.3387     -0.1905      0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 405   : coordinates
+    -0.3810      0.6095      0.0000     -0.1905      0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 406   : coordinates
+    -0.3810      0.6095      0.3387     -0.1905      0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 407   : coordinates
+    -0.3810      0.6095      0.6773     -0.1905      0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 408   : coordinates
+    -0.1905      0.6095     -0.6773      0.0000      0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 409   : coordinates
+    -0.1905      0.6095     -0.3387      0.0000      0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 410   : coordinates
+    -0.1905      0.6095      0.0000      0.0000      0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 411   : coordinates
+    -0.1905      0.6095      0.3387      0.0000      0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 412   : coordinates
+    -0.1905      0.6095      0.6773      0.0000      0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 413   : coordinates
+     0.0000      0.6095     -0.6773      0.1905      0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 414   : coordinates
+     0.0000      0.6095     -0.3387      0.1905      0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 415   : coordinates
+     0.0000      0.6095      0.0000      0.1905      0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 416   : coordinates
+     0.0000      0.6095      0.3387      0.1905      0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 417   : coordinates
+     0.0000      0.6095      0.6773      0.1905      0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 418   : coordinates
+     0.1905      0.6095     -0.6773      0.3810      0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 419   : coordinates
+     0.1905      0.6095     -0.3387      0.3810      0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 420   : coordinates
+     0.1905      0.6095      0.0000      0.3810      0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 421   : coordinates
+     0.1905      0.6095      0.3387      0.3810      0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 422   : coordinates
+     0.1905      0.6095      0.6773      0.3810      0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 423   : coordinates
+     0.3810      0.6095     -0.6773      0.5715      0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 424   : coordinates
+     0.3810      0.6095     -0.3387      0.5715      0.6095     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 425   : coordinates
+     0.3810      0.6095      0.0000      0.5715      0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 426   : coordinates
+     0.3810      0.6095      0.3387      0.5715      0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 427   : coordinates
+     0.3810      0.6095      0.6773      0.5715      0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 428   : coordinates
+     0.5715     -0.6095      0.8467      0.5715     -0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 429   : coordinates
+     0.5715     -0.6095      0.5080      0.5715     -0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 430   : coordinates
+     0.5715      0.6095      0.1693      0.5715      0.6095      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 431   : coordinates
+     0.5715      0.6095     -0.1693      0.5715      0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 432   : coordinates
+     0.7215     -0.9793      0.3564      0.7215     -0.6616      0.3564 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 433   : coordinates
+     0.7215     -1.2970      0.3564      0.7215     -0.9793      0.3564 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 434   : coordinates
+     0.7215     -1.6147      0.3564      0.7215     -1.2970      0.3564 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 435   : coordinates
+     0.7215     -1.9324      0.3564      0.7215     -1.6147      0.3564 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 436   : coordinates
+     0.7215     -2.2501      0.3564      0.7215     -1.9324      0.3564 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 437   : coordinates
+     0.7215     -2.5679      0.3564      0.7215     -2.2501      0.3564 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 438   : coordinates
+     0.7215     -2.8856      0.3564      0.7215     -2.5679      0.3564 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 439   : coordinates
+     0.7215     -3.2033      0.3564      0.7215     -2.8856      0.3564 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 440   : coordinates
+     0.7215     -0.9793      0.4797      0.7215     -0.6616      0.4797 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 441   : coordinates
+     0.7215     -1.2970      0.4797      0.7215     -0.9793      0.4797 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 442   : coordinates
+     0.7215     -1.6147      0.4797      0.7215     -1.2970      0.4797 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 443   : coordinates
+     0.7215     -1.9324      0.4797      0.7215     -1.6147      0.4797 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 444   : coordinates
+     0.7215     -2.2501      0.4797      0.7215     -1.9324      0.4797 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 445   : coordinates
+     0.7215     -2.5679      0.4797      0.7215     -2.2501      0.4797 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 446   : coordinates
+     0.7215     -2.8856      0.4797      0.7215     -2.5679      0.4797 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 447   : coordinates
+     0.7215     -3.2033      0.4797      0.7215     -2.8856      0.4797 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 448   : coordinates
+     0.7215     -0.9793      0.6030      0.7215     -0.6616      0.6030 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 449   : coordinates
+     0.7215     -1.2970      0.6030      0.7215     -0.9793      0.6030 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 450   : coordinates
+     0.7215     -1.6147      0.6030      0.7215     -1.2970      0.6030 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 451   : coordinates
+     0.7215     -1.9324      0.6030      0.7215     -1.6147      0.6030 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 452   : coordinates
+     0.7215     -2.2501      0.6030      0.7215     -1.9324      0.6030 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 453   : coordinates
+     0.7215     -2.5679      0.6030      0.7215     -2.2501      0.6030 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 454   : coordinates
+     0.7215     -2.8856      0.6030      0.7215     -2.5679      0.6030 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 455   : coordinates
+     0.7215     -3.2033      0.6030      0.7215     -2.8856      0.6030 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 456   : coordinates
+     0.7215     -0.9793      0.7262      0.7215     -0.6616      0.7262 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 457   : coordinates
+     0.7215     -1.2970      0.7262      0.7215     -0.9793      0.7262 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 458   : coordinates
+     0.7215     -1.6147      0.7262      0.7215     -1.2970      0.7262 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 459   : coordinates
+     0.7215     -1.9324      0.7262      0.7215     -1.6147      0.7262 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 460   : coordinates
+     0.7215     -2.2501      0.7262      0.7215     -1.9324      0.7262 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 461   : coordinates
+     0.7215     -2.5679      0.7262      0.7215     -2.2501      0.7262 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 462   : coordinates
+     0.7215     -2.8856      0.7262      0.7215     -2.5679      0.7262 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 463   : coordinates
+     0.7215     -3.2033      0.7262      0.7215     -2.8856      0.7262 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 464   : coordinates
+     0.7215     -0.9793      0.8495      0.7215     -0.6616      0.8495 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 465   : coordinates
+     0.7215     -1.2970      0.8495      0.7215     -0.9793      0.8495 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 466   : coordinates
+     0.7215     -1.6147      0.8495      0.7215     -1.2970      0.8495 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 467   : coordinates
+     0.7215     -1.9324      0.8495      0.7215     -1.6147      0.8495 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 468   : coordinates
+     0.7215     -2.2501      0.8495      0.7215     -1.9324      0.8495 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 469   : coordinates
+     0.7215     -2.5679      0.8495      0.7215     -2.2501      0.8495 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 470   : coordinates
+     0.7215     -2.8856      0.8495      0.7215     -2.5679      0.8495 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 471   : coordinates
+     0.7215     -3.2033      0.8495      0.7215     -2.8856      0.8495 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 472   : coordinates
+     0.7215     -0.9793      0.9727      0.7215     -0.6616      0.9727 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 473   : coordinates
+     0.7215     -1.2970      0.9727      0.7215     -0.9793      0.9727 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 474   : coordinates
+     0.7215     -1.6147      0.9727      0.7215     -1.2970      0.9727 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 475   : coordinates
+     0.7215     -1.9324      0.9727      0.7215     -1.6147      0.9727 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 476   : coordinates
+     0.7215     -2.2501      0.9727      0.7215     -1.9324      0.9727 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 477   : coordinates
+     0.7215     -2.5679      0.9727      0.7215     -2.2501      0.9727 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 478   : coordinates
+     0.7215     -2.8856      0.9727      0.7215     -2.5679      0.9727 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 479   : coordinates
+     0.7215     -3.2033      0.9727      0.7215     -2.8856      0.9727 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 480   : coordinates
+     0.7215     -0.9793      1.0960      0.7215     -0.6616      1.0960 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 481   : coordinates
+     0.7215     -1.2970      1.0960      0.7215     -0.9793      1.0960 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 482   : coordinates
+     0.7215     -1.6147      1.0960      0.7215     -1.2970      1.0960 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 483   : coordinates
+     0.7215     -1.9324      1.0960      0.7215     -1.6147      1.0960 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 484   : coordinates
+     0.7215     -2.2501      1.0960      0.7215     -1.9324      1.0960 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 485   : coordinates
+     0.7215     -2.5679      1.0960      0.7215     -2.2501      1.0960 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 486   : coordinates
+     0.7215     -2.8856      1.0960      0.7215     -2.5679      1.0960 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 487   : coordinates
+     0.7215     -3.2033      1.0960      0.7215     -2.8856      1.0960 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 488   : coordinates
+     0.7215     -0.6616      0.4797      0.7215     -0.6616      0.3564 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 489   : coordinates
+     0.7215     -0.9793      0.4797      0.7215     -0.9793      0.3564 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 490   : coordinates
+     0.7215     -1.2970      0.4797      0.7215     -1.2970      0.3564 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 491   : coordinates
+     0.7215     -1.6147      0.4797      0.7215     -1.6147      0.3564 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 492   : coordinates
+     0.7215     -1.9324      0.4797      0.7215     -1.9324      0.3564 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 493   : coordinates
+     0.7215     -2.2501      0.4797      0.7215     -2.2501      0.3564 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 494   : coordinates
+     0.7215     -2.5679      0.4797      0.7215     -2.5679      0.3564 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 495   : coordinates
+     0.7215     -2.8856      0.4797      0.7215     -2.8856      0.3564 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 496   : coordinates
+     0.7215     -3.2033      0.4797      0.7215     -3.2033      0.3564 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 497   : coordinates
+     0.7215     -0.6616      0.6030      0.7215     -0.6616      0.4797 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 498   : coordinates
+     0.7215     -0.9793      0.6030      0.7215     -0.9793      0.4797 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 499   : coordinates
+     0.7215     -1.2970      0.6030      0.7215     -1.2970      0.4797 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 500   : coordinates
+     0.7215     -1.6147      0.6030      0.7215     -1.6147      0.4797 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 501   : coordinates
+     0.7215     -1.9324      0.6030      0.7215     -1.9324      0.4797 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 502   : coordinates
+     0.7215     -2.2501      0.6030      0.7215     -2.2501      0.4797 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 503   : coordinates
+     0.7215     -2.5679      0.6030      0.7215     -2.5679      0.4797 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 504   : coordinates
+     0.7215     -2.8856      0.6030      0.7215     -2.8856      0.4797 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 505   : coordinates
+     0.7215     -3.2033      0.6030      0.7215     -3.2033      0.4797 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 506   : coordinates
+     0.7215     -0.6616      0.7262      0.7215     -0.6616      0.6030 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 507   : coordinates
+     0.7215     -0.9793      0.7262      0.7215     -0.9793      0.6030 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 508   : coordinates
+     0.7215     -1.2970      0.7262      0.7215     -1.2970      0.6030 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 509   : coordinates
+     0.7215     -1.6147      0.7262      0.7215     -1.6147      0.6030 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 510   : coordinates
+     0.7215     -1.9324      0.7262      0.7215     -1.9324      0.6030 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 511   : coordinates
+     0.7215     -2.2501      0.7262      0.7215     -2.2501      0.6030 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 512   : coordinates
+     0.7215     -2.5679      0.7262      0.7215     -2.5679      0.6030 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 513   : coordinates
+     0.7215     -2.8856      0.7262      0.7215     -2.8856      0.6030 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 514   : coordinates
+     0.7215     -3.2033      0.7262      0.7215     -3.2033      0.6030 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 515   : coordinates
+     0.7215     -0.6616      0.8495      0.7215     -0.6616      0.7262 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 516   : coordinates
+     0.7215     -0.9793      0.8495      0.7215     -0.9793      0.7262 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 517   : coordinates
+     0.7215     -1.2970      0.8495      0.7215     -1.2970      0.7262 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 518   : coordinates
+     0.7215     -1.6147      0.8495      0.7215     -1.6147      0.7262 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 519   : coordinates
+     0.7215     -1.9324      0.8495      0.7215     -1.9324      0.7262 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 520   : coordinates
+     0.7215     -2.2501      0.8495      0.7215     -2.2501      0.7262 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 521   : coordinates
+     0.7215     -2.5679      0.8495      0.7215     -2.5679      0.7262 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 522   : coordinates
+     0.7215     -2.8856      0.8495      0.7215     -2.8856      0.7262 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 523   : coordinates
+     0.7215     -3.2033      0.8495      0.7215     -3.2033      0.7262 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 524   : coordinates
+     0.7215     -0.6616      0.9727      0.7215     -0.6616      0.8495 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 525   : coordinates
+     0.7215     -0.9793      0.9727      0.7215     -0.9793      0.8495 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 526   : coordinates
+     0.7215     -1.2970      0.9727      0.7215     -1.2970      0.8495 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 527   : coordinates
+     0.7215     -1.6147      0.9727      0.7215     -1.6147      0.8495 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 528   : coordinates
+     0.7215     -1.9324      0.9727      0.7215     -1.9324      0.8495 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 529   : coordinates
+     0.7215     -2.2501      0.9727      0.7215     -2.2501      0.8495 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 530   : coordinates
+     0.7215     -2.5679      0.9727      0.7215     -2.5679      0.8495 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 531   : coordinates
+     0.7215     -2.8856      0.9727      0.7215     -2.8856      0.8495 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 532   : coordinates
+     0.7215     -3.2033      0.9727      0.7215     -3.2033      0.8495 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 533   : coordinates
+     0.7215     -0.6616      1.0960      0.7215     -0.6616      0.9727 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 534   : coordinates
+     0.7215     -0.9793      1.0960      0.7215     -0.9793      0.9727 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 535   : coordinates
+     0.7215     -1.2970      1.0960      0.7215     -1.2970      0.9727 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 536   : coordinates
+     0.7215     -1.6147      1.0960      0.7215     -1.6147      0.9727 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 537   : coordinates
+     0.7215     -1.9324      1.0960      0.7215     -1.9324      0.9727 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 538   : coordinates
+     0.7215     -2.2501      1.0960      0.7215     -2.2501      0.9727 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 539   : coordinates
+     0.7215     -2.5679      1.0960      0.7215     -2.5679      0.9727 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 540   : coordinates
+     0.7215     -2.8856      1.0960      0.7215     -2.8856      0.9727 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 541   : coordinates
+     0.7215     -3.2033      1.0960      0.7215     -3.2033      0.9727 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 542   : coordinates
+     0.6215      0.6616     -0.3736      0.6215      0.9793     -0.3736 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 543   : coordinates
+     0.6215      0.9793     -0.3736      0.6215      1.2970     -0.3736 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 544   : coordinates
+     0.6215      1.2970     -0.3736      0.6215      1.6147     -0.3736 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 545   : coordinates
+     0.6215      1.6147     -0.3736      0.6215      1.9324     -0.3736 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 546   : coordinates
+     0.6215      1.9324     -0.3736      0.6215      2.2501     -0.3736 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 547   : coordinates
+     0.6215      2.2501     -0.3736      0.6215      2.5679     -0.3736 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 548   : coordinates
+     0.6215      2.5679     -0.3736      0.6215      2.8856     -0.3736 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 549   : coordinates
+     0.6215      2.8856     -0.3736      0.6215      3.2033     -0.3736 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 550   : coordinates
+     0.6215      0.6616     -0.2503      0.6215      0.9793     -0.2503 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 551   : coordinates
+     0.6215      0.9793     -0.2503      0.6215      1.2970     -0.2503 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 552   : coordinates
+     0.6215      1.2970     -0.2503      0.6215      1.6147     -0.2503 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 553   : coordinates
+     0.6215      1.6147     -0.2503      0.6215      1.9324     -0.2503 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 554   : coordinates
+     0.6215      1.9324     -0.2503      0.6215      2.2501     -0.2503 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 555   : coordinates
+     0.6215      2.2501     -0.2503      0.6215      2.5679     -0.2503 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 556   : coordinates
+     0.6215      2.5679     -0.2503      0.6215      2.8856     -0.2503 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 557   : coordinates
+     0.6215      2.8856     -0.2503      0.6215      3.2033     -0.2503 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 558   : coordinates
+     0.6215      0.6616     -0.1270      0.6215      0.9793     -0.1270 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 559   : coordinates
+     0.6215      0.9793     -0.1270      0.6215      1.2970     -0.1270 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 560   : coordinates
+     0.6215      1.2970     -0.1270      0.6215      1.6147     -0.1270 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 561   : coordinates
+     0.6215      1.6147     -0.1270      0.6215      1.9324     -0.1270 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 562   : coordinates
+     0.6215      1.9324     -0.1270      0.6215      2.2501     -0.1270 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 563   : coordinates
+     0.6215      2.2501     -0.1270      0.6215      2.5679     -0.1270 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 564   : coordinates
+     0.6215      2.5679     -0.1270      0.6215      2.8856     -0.1270 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 565   : coordinates
+     0.6215      2.8856     -0.1270      0.6215      3.2033     -0.1270 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 566   : coordinates
+     0.6215      0.6616     -0.0038      0.6215      0.9793     -0.0038 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 567   : coordinates
+     0.6215      0.9793     -0.0038      0.6215      1.2970     -0.0038 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 568   : coordinates
+     0.6215      1.2970     -0.0038      0.6215      1.6147     -0.0038 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 569   : coordinates
+     0.6215      1.6147     -0.0038      0.6215      1.9324     -0.0038 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 570   : coordinates
+     0.6215      1.9324     -0.0038      0.6215      2.2501     -0.0038 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 571   : coordinates
+     0.6215      2.2501     -0.0038      0.6215      2.5679     -0.0038 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 572   : coordinates
+     0.6215      2.5679     -0.0038      0.6215      2.8856     -0.0038 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 573   : coordinates
+     0.6215      2.8856     -0.0038      0.6215      3.2033     -0.0038 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 574   : coordinates
+     0.6215      0.6616      0.1195      0.6215      0.9793      0.1195 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 575   : coordinates
+     0.6215      0.9793      0.1195      0.6215      1.2970      0.1195 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 576   : coordinates
+     0.6215      1.2970      0.1195      0.6215      1.6147      0.1195 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 577   : coordinates
+     0.6215      1.6147      0.1195      0.6215      1.9324      0.1195 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 578   : coordinates
+     0.6215      1.9324      0.1195      0.6215      2.2501      0.1195 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 579   : coordinates
+     0.6215      2.2501      0.1195      0.6215      2.5679      0.1195 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 580   : coordinates
+     0.6215      2.5679      0.1195      0.6215      2.8856      0.1195 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 581   : coordinates
+     0.6215      2.8856      0.1195      0.6215      3.2033      0.1195 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 582   : coordinates
+     0.6215      0.6616      0.2427      0.6215      0.9793      0.2427 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 583   : coordinates
+     0.6215      0.9793      0.2427      0.6215      1.2970      0.2427 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 584   : coordinates
+     0.6215      1.2970      0.2427      0.6215      1.6147      0.2427 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 585   : coordinates
+     0.6215      1.6147      0.2427      0.6215      1.9324      0.2427 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 586   : coordinates
+     0.6215      1.9324      0.2427      0.6215      2.2501      0.2427 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 587   : coordinates
+     0.6215      2.2501      0.2427      0.6215      2.5679      0.2427 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 588   : coordinates
+     0.6215      2.5679      0.2427      0.6215      2.8856      0.2427 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 589   : coordinates
+     0.6215      2.8856      0.2427      0.6215      3.2033      0.2427 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 590   : coordinates
+     0.6215      0.6616      0.3660      0.6215      0.9793      0.3660 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 591   : coordinates
+     0.6215      0.9793      0.3660      0.6215      1.2970      0.3660 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 592   : coordinates
+     0.6215      1.2970      0.3660      0.6215      1.6147      0.3660 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 593   : coordinates
+     0.6215      1.6147      0.3660      0.6215      1.9324      0.3660 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 594   : coordinates
+     0.6215      1.9324      0.3660      0.6215      2.2501      0.3660 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 595   : coordinates
+     0.6215      2.2501      0.3660      0.6215      2.5679      0.3660 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 596   : coordinates
+     0.6215      2.5679      0.3660      0.6215      2.8856      0.3660 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 597   : coordinates
+     0.6215      2.8856      0.3660      0.6215      3.2033      0.3660 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 598   : coordinates
+     0.6215      0.6616     -0.3736      0.6215      0.6616     -0.2503 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 599   : coordinates
+     0.6215      0.9793     -0.3736      0.6215      0.9793     -0.2503 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 600   : coordinates
+     0.6215      1.2970     -0.3736      0.6215      1.2970     -0.2503 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 601   : coordinates
+     0.6215      1.6147     -0.3736      0.6215      1.6147     -0.2503 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 602   : coordinates
+     0.6215      1.9324     -0.3736      0.6215      1.9324     -0.2503 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 603   : coordinates
+     0.6215      2.2501     -0.3736      0.6215      2.2501     -0.2503 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 604   : coordinates
+     0.6215      2.5679     -0.3736      0.6215      2.5679     -0.2503 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 605   : coordinates
+     0.6215      2.8856     -0.3736      0.6215      2.8856     -0.2503 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 606   : coordinates
+     0.6215      3.2033     -0.3736      0.6215      3.2033     -0.2503 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 607   : coordinates
+     0.6215      0.6616     -0.2503      0.6215      0.6616     -0.1270 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 608   : coordinates
+     0.6215      0.9793     -0.2503      0.6215      0.9793     -0.1270 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 609   : coordinates
+     0.6215      1.2970     -0.2503      0.6215      1.2970     -0.1270 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 610   : coordinates
+     0.6215      1.6147     -0.2503      0.6215      1.6147     -0.1270 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 611   : coordinates
+     0.6215      1.9324     -0.2503      0.6215      1.9324     -0.1270 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 612   : coordinates
+     0.6215      2.2501     -0.2503      0.6215      2.2501     -0.1270 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 613   : coordinates
+     0.6215      2.5679     -0.2503      0.6215      2.5679     -0.1270 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 614   : coordinates
+     0.6215      2.8856     -0.2503      0.6215      2.8856     -0.1270 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 615   : coordinates
+     0.6215      3.2033     -0.2503      0.6215      3.2033     -0.1270 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 616   : coordinates
+     0.6215      0.6616     -0.1270      0.6215      0.6616     -0.0038 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 617   : coordinates
+     0.6215      0.9793     -0.1270      0.6215      0.9793     -0.0038 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 618   : coordinates
+     0.6215      1.2970     -0.1270      0.6215      1.2970     -0.0038 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 619   : coordinates
+     0.6215      1.6147     -0.1270      0.6215      1.6147     -0.0038 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 620   : coordinates
+     0.6215      1.9324     -0.1270      0.6215      1.9324     -0.0038 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 621   : coordinates
+     0.6215      2.2501     -0.1270      0.6215      2.2501     -0.0038 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 622   : coordinates
+     0.6215      2.5679     -0.1270      0.6215      2.5679     -0.0038 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 623   : coordinates
+     0.6215      2.8856     -0.1270      0.6215      2.8856     -0.0038 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 624   : coordinates
+     0.6215      3.2033     -0.1270      0.6215      3.2033     -0.0038 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 625   : coordinates
+     0.6215      0.6616     -0.0038      0.6215      0.6616      0.1195 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 626   : coordinates
+     0.6215      0.9793     -0.0038      0.6215      0.9793      0.1195 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 627   : coordinates
+     0.6215      1.2970     -0.0038      0.6215      1.2970      0.1195 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 628   : coordinates
+     0.6215      1.6147     -0.0038      0.6215      1.6147      0.1195 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 629   : coordinates
+     0.6215      1.9324     -0.0038      0.6215      1.9324      0.1195 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 630   : coordinates
+     0.6215      2.2501     -0.0038      0.6215      2.2501      0.1195 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 631   : coordinates
+     0.6215      2.5679     -0.0038      0.6215      2.5679      0.1195 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 632   : coordinates
+     0.6215      2.8856     -0.0038      0.6215      2.8856      0.1195 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 633   : coordinates
+     0.6215      3.2033     -0.0038      0.6215      3.2033      0.1195 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 634   : coordinates
+     0.6215      0.6616      0.1195      0.6215      0.6616      0.2427 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 635   : coordinates
+     0.6215      0.9793      0.1195      0.6215      0.9793      0.2427 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 636   : coordinates
+     0.6215      1.2970      0.1195      0.6215      1.2970      0.2427 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 637   : coordinates
+     0.6215      1.6147      0.1195      0.6215      1.6147      0.2427 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 638   : coordinates
+     0.6215      1.9324      0.1195      0.6215      1.9324      0.2427 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 639   : coordinates
+     0.6215      2.2501      0.1195      0.6215      2.2501      0.2427 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 640   : coordinates
+     0.6215      2.5679      0.1195      0.6215      2.5679      0.2427 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 641   : coordinates
+     0.6215      2.8856      0.1195      0.6215      2.8856      0.2427 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 642   : coordinates
+     0.6215      3.2033      0.1195      0.6215      3.2033      0.2427 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 643   : coordinates
+     0.6215      0.6616      0.2427      0.6215      0.6616      0.3660 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 644   : coordinates
+     0.6215      0.9793      0.2427      0.6215      0.9793      0.3660 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 645   : coordinates
+     0.6215      1.2970      0.2427      0.6215      1.2970      0.3660 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 646   : coordinates
+     0.6215      1.6147      0.2427      0.6215      1.6147      0.3660 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 647   : coordinates
+     0.6215      1.9324      0.2427      0.6215      1.9324      0.3660 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 648   : coordinates
+     0.6215      2.2501      0.2427      0.6215      2.2501      0.3660 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 649   : coordinates
+     0.6215      2.5679      0.2427      0.6215      2.5679      0.3660 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 650   : coordinates
+     0.6215      2.8856      0.2427      0.6215      2.8856      0.3660 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 651   : coordinates
+     0.6215      3.2033      0.2427      0.6215      3.2033      0.3660 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 652   : coordinates
+     0.5715     -0.6095      0.5080      0.7215     -0.6616      0.3564 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 653   : coordinates
+     0.5715     -0.6095      0.8467      0.7215     -0.6616      1.0960 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 654   : coordinates
+    -0.4898     -1.3655      0.2604     -0.6461     -1.2092      0.2604 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 655   : coordinates
+    -0.6461     -1.2092      0.2604     -0.8024     -1.3655      0.2604 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 656   : coordinates
+    -0.8024     -1.3655      0.2604     -0.6461     -1.5218      0.2604 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 657   : coordinates
+    -0.6461     -1.5218      0.2604     -0.4898     -1.3655      0.2604 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 658   : coordinates
+    -0.4898     -1.3655      0.2604     -0.3334     -1.3655      0.2180 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 659   : coordinates
+    -0.6461     -1.2092      0.2604     -0.6461     -1.0527      0.2180 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 660   : coordinates
+    -0.8024     -1.3655      0.2604     -0.9589     -1.3655      0.2180 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 661   : coordinates
+    -0.6461     -1.5218      0.2604     -0.6461     -1.6782      0.2180 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 662   : coordinates
+    -0.3334     -1.3655      0.2180     -0.4250     -1.1443      0.2180 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 663   : coordinates
+    -0.4250     -1.1443      0.2180     -0.6461     -1.0527      0.2180 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 664   : coordinates
+    -0.6461     -1.0527      0.2180     -0.8673     -1.1443      0.2180 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 665   : coordinates
+    -0.8673     -1.1443      0.2180     -0.9589     -1.3655      0.2180 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 666   : coordinates
+    -0.9589     -1.3655      0.2180     -0.8673     -1.5866      0.2180 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 667   : coordinates
+    -0.8673     -1.5866      0.2180     -0.6461     -1.6782      0.2180 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 668   : coordinates
+    -0.6461     -1.6782      0.2180     -0.4250     -1.5866      0.2180 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 669   : coordinates
+    -0.4250     -1.5866      0.2180     -0.3334     -1.3655      0.2180 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 670   : coordinates
+    -0.3334     -1.3655      0.2180     -0.1871     -1.3655      0.1482 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 671   : coordinates
+    -0.4250     -1.1443      0.2180     -0.3215     -1.0409      0.1482 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 672   : coordinates
+    -0.6461     -1.0527      0.2180     -0.6461     -0.9064      0.1482 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 673   : coordinates
+    -0.8673     -1.1443      0.2180     -0.9707     -1.0409      0.1482 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 674   : coordinates
+    -0.9589     -1.3655      0.2180     -1.1052     -1.3655      0.1482 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 675   : coordinates
+    -0.8673     -1.5866      0.2180     -0.9707     -1.6901      0.1482 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 676   : coordinates
+    -0.6461     -1.6782      0.2180     -0.6461     -1.8245      0.1482 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 677   : coordinates
+    -0.4250     -1.5866      0.2180     -0.3215     -1.6901      0.1482 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 678   : coordinates
+    -0.1871     -1.3655      0.1482     -0.2220     -1.1898      0.1482 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 679   : coordinates
+    -0.2220     -1.1898      0.1482     -0.3215     -1.0409      0.1482 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 680   : coordinates
+    -0.3215     -1.0409      0.1482     -0.4705     -0.9414      0.1482 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 681   : coordinates
+    -0.4705     -0.9414      0.1482     -0.6461     -0.9064      0.1482 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 682   : coordinates
+    -0.6461     -0.9064      0.1482     -0.8218     -0.9414      0.1482 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 683   : coordinates
+    -0.8218     -0.9414      0.1482     -0.9707     -1.0409      0.1482 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 684   : coordinates
+    -0.9707     -1.0409      0.1482     -1.0702     -1.1898      0.1482 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 685   : coordinates
+    -1.0702     -1.1898      0.1482     -1.1052     -1.3655      0.1482 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 686   : coordinates
+    -1.1052     -1.3655      0.1482     -1.0702     -1.5411      0.1482 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 687   : coordinates
+    -1.0702     -1.5411      0.1482     -0.9707     -1.6901      0.1482 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 688   : coordinates
+    -0.9707     -1.6901      0.1482     -0.8218     -1.7896      0.1482 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 689   : coordinates
+    -0.8218     -1.7896      0.1482     -0.6461     -1.8245      0.1482 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 690   : coordinates
+    -0.6461     -1.8245      0.1482     -0.4705     -1.7896      0.1482 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 691   : coordinates
+    -0.4705     -1.7896      0.1482     -0.3215     -1.6901      0.1482 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 692   : coordinates
+    -0.3215     -1.6901      0.1482     -0.2220     -1.5411      0.1482 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 693   : coordinates
+    -0.2220     -1.5411      0.1482     -0.1871     -1.3655      0.1482 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 694   : coordinates
+    -0.1871     -1.3655      0.1482     -0.0557     -1.3655      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 695   : coordinates
+    -0.2220     -1.1898      0.1482     -0.1006     -1.1395      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 696   : coordinates
+    -0.3215     -1.0409      0.1482     -0.2286     -0.9480      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 697   : coordinates
+    -0.4705     -0.9414      0.1482     -0.4202     -0.8200      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 698   : coordinates
+    -0.6461     -0.9064      0.1482     -0.6461     -0.7750      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 699   : coordinates
+    -0.8218     -0.9414      0.1482     -0.8721     -0.8200      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 700   : coordinates
+    -0.9707     -1.0409      0.1482     -1.0636     -0.9480      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 701   : coordinates
+    -1.0702     -1.1898      0.1482     -1.1916     -1.1395      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 702   : coordinates
+    -1.1052     -1.3655      0.1482     -1.2366     -1.3655      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 703   : coordinates
+    -1.0702     -1.5411      0.1482     -1.1916     -1.5914      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 704   : coordinates
+    -0.9707     -1.6901      0.1482     -1.0636     -1.7830      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 705   : coordinates
+    -0.8218     -1.7896      0.1482     -0.8721     -1.9110      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 706   : coordinates
+    -0.6461     -1.8245      0.1482     -0.6461     -1.9559      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 707   : coordinates
+    -0.4705     -1.7896      0.1482     -0.4202     -1.9110      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 708   : coordinates
+    -0.3215     -1.6901      0.1482     -0.2286     -1.7830      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 709   : coordinates
+    -0.2220     -1.5411      0.1482     -0.1006     -1.5914      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 710   : coordinates
+    -0.0557     -1.3655      0.0533     -0.1006     -1.1395      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 711   : coordinates
+    -0.1006     -1.1395      0.0533     -0.2286     -0.9480      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 712   : coordinates
+    -0.2286     -0.9480      0.0533     -0.4202     -0.8200      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 713   : coordinates
+    -0.4202     -0.8200      0.0533     -0.6461     -0.7750      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 714   : coordinates
+    -0.6461     -0.7750      0.0533     -0.8721     -0.8200      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 715   : coordinates
+    -0.8721     -0.8200      0.0533     -1.0636     -0.9480      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 716   : coordinates
+    -1.0636     -0.9480      0.0533     -1.1916     -1.1395      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 717   : coordinates
+    -1.1916     -1.1395      0.0533     -1.2366     -1.3655      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 718   : coordinates
+    -1.2366     -1.3655      0.0533     -1.1916     -1.5914      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 719   : coordinates
+    -1.1916     -1.5914      0.0533     -1.0636     -1.7830      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 720   : coordinates
+    -1.0636     -1.7830      0.0533     -0.8721     -1.9110      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 721   : coordinates
+    -0.8721     -1.9110      0.0533     -0.6461     -1.9559      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 722   : coordinates
+    -0.6461     -1.9559      0.0533     -0.4202     -1.9110      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 723   : coordinates
+    -0.4202     -1.9110      0.0533     -0.2286     -1.7830      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 724   : coordinates
+    -0.2286     -1.7830      0.0533     -0.1006     -1.5914      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 725   : coordinates
+    -0.1006     -1.5914      0.0533     -0.0557     -1.3655      0.0533 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 726   : coordinates
+    -0.3810     -0.6095      0.5080     -0.3810     -0.6095      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 727   : coordinates
+    -0.3810     -0.6095      0.5080     -0.5136     -0.9093      0.3842 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 728   : coordinates
+    -0.5136     -0.9093      0.3842     -0.6461     -1.2092      0.2604 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 729   : coordinates
+    -0.5715      0.0000      0.5080     -0.5715      0.0000      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 730   : coordinates
+    -0.5715      0.2032      0.5080     -0.5715      0.2032      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 731   : coordinates
+    -0.5715      0.4063      0.1693     -0.5715      0.4063      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 732   : coordinates
+    -0.5715      0.4063     -0.1693     -0.5715      0.4063      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 733   : coordinates
+    -0.5715      0.2032     -0.5080     -0.5715      0.2032     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 734   : coordinates
+    -0.5715      0.0000     -0.5080     -0.5715      0.0000     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 735   : coordinates
+    -0.5715     -0.2032     -0.5080     -0.5715     -0.2032     -0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 736   : coordinates
+    -0.5715     -0.4063     -0.1693     -0.5715     -0.4063      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 737   : coordinates
+    -0.5715     -0.4063      0.1693     -0.5715     -0.4063      0.3387 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 738   : coordinates
+    -0.5715     -0.2032      0.5080     -0.5715     -0.2032      0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 739   : coordinates
+    -0.7747      0.0000      0.4794     -0.7747      0.2397      0.4152 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 740   : coordinates
+    -0.7747      0.2397      0.4152     -0.7747      0.4152      0.2397 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 741   : coordinates
+    -0.7747      0.4152      0.2397     -0.7747      0.4794      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 742   : coordinates
+    -0.7747      0.4794      0.0000     -0.7747      0.4152     -0.2397 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 743   : coordinates
+    -0.7747      0.4152     -0.2397     -0.7747      0.2397     -0.4152 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 744   : coordinates
+    -0.7747      0.2397     -0.4152     -0.7747      0.0000     -0.4794 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 745   : coordinates
+    -0.7747      0.0000     -0.4794     -0.7747     -0.2397     -0.4152 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 746   : coordinates
+    -0.7747     -0.2397     -0.4152     -0.7747     -0.4152     -0.2397 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 747   : coordinates
+    -0.7747     -0.4152     -0.2397     -0.7747     -0.4794     -0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 748   : coordinates
+    -0.7747     -0.4794     -0.0000     -0.7747     -0.4152      0.2397 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 749   : coordinates
+    -0.7747     -0.4152      0.2397     -0.7747     -0.2397      0.4152 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 750   : coordinates
+    -0.7747     -0.2397      0.4152     -0.7747      0.0000      0.4794 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 751   : coordinates
+    -0.5715      0.0000      0.5080     -0.7747      0.0000      0.4794 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 752   : coordinates
+    -0.5715      0.2032      0.5080     -0.7747      0.2397      0.4152 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 753   : coordinates
+    -0.5715      0.4063      0.1693     -0.7747      0.4152      0.2397 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 754   : coordinates
+    -0.5715      0.4063     -0.1693     -0.7747      0.4152     -0.2397 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 755   : coordinates
+    -0.5715      0.2032     -0.5080     -0.7747      0.2397     -0.4152 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 756   : coordinates
+    -0.5715      0.0000     -0.5080     -0.7747      0.0000     -0.4794 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 757   : coordinates
+    -0.5715     -0.2032     -0.5080     -0.7747     -0.2397     -0.4152 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 758   : coordinates
+    -0.5715     -0.4063     -0.1693     -0.7747     -0.4152     -0.2397 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 759   : coordinates
+    -0.5715     -0.4063      0.1693     -0.7747     -0.4152      0.2397 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 760   : coordinates
+    -0.5715     -0.2032      0.5080     -0.7747     -0.2397      0.4152 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 761   : coordinates
+    -0.5715     -0.7595     -0.8467     -0.5715     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 762   : coordinates
+    -0.3810     -0.7595     -0.8467     -0.3810     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 763   : coordinates
+    -0.1905     -0.7595     -0.8467     -0.1905     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 764   : coordinates
+     0.0000     -0.7595     -0.8467      0.0000     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 765   : coordinates
+     0.1905     -0.7595     -0.8467      0.1905     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 766   : coordinates
+     0.3810     -0.7595     -0.8467      0.3810     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 767   : coordinates
+     0.5715     -0.7595     -0.8467      0.5715     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 768   : coordinates
+    -0.5715     -0.7595     -0.8467     -0.3810     -0.7595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 769   : coordinates
+    -0.3810     -0.7595     -0.8467     -0.1905     -0.7595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 770   : coordinates
+    -0.1905     -0.7595     -0.8467      0.0000     -0.7595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 771   : coordinates
+     0.0000     -0.7595     -0.8467      0.1905     -0.7595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 772   : coordinates
+     0.1905     -0.7595     -0.8467      0.3810     -0.7595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 773   : coordinates
+     0.3810     -0.7595     -0.8467      0.5715     -0.7595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 774   : coordinates
+    -0.5715     -0.7595     -0.8467     -0.8377     -0.7595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 775   : coordinates
+    -0.8377     -0.7595     -0.8467     -1.1040     -0.7595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 776   : coordinates
+    -1.1040     -0.7595     -0.8467     -1.3703     -0.7595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 777   : coordinates
+    -1.3703     -0.7595     -0.8467     -1.6365     -0.7595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 778   : coordinates
+    -1.6365     -0.7595     -0.8467     -1.9027     -0.7595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 779   : coordinates
+    -1.9027     -0.7595     -0.8467     -2.1690     -0.7595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 780   : coordinates
+    -2.1690     -0.7595     -0.8467     -2.4352     -0.7595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 781   : coordinates
+    -2.4352     -0.7595     -0.8467     -2.7015     -0.7595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 782   : coordinates
+    -0.5715     -0.6095     -1.0160     -0.8377     -0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 783   : coordinates
+    -0.8377     -0.6095     -1.0160     -1.1040     -0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 784   : coordinates
+    -1.1040     -0.6095     -1.0160     -1.3703     -0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 785   : coordinates
+    -1.3703     -0.6095     -1.0160     -1.6365     -0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 786   : coordinates
+    -1.6365     -0.6095     -1.0160     -1.9027     -0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 787   : coordinates
+    -1.9027     -0.6095     -1.0160     -2.1690     -0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 788   : coordinates
+    -2.1690     -0.6095     -1.0160     -2.4352     -0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 789   : coordinates
+    -2.4352     -0.6095     -1.0160     -2.7015     -0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 790   : coordinates
+    -0.5715     -0.6095     -0.6773     -0.8377     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 791   : coordinates
+    -0.8377     -0.6095     -0.6773     -1.1040     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 792   : coordinates
+    -1.1040     -0.6095     -0.6773     -1.3703     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 793   : coordinates
+    -1.3703     -0.6095     -0.6773     -1.6365     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 794   : coordinates
+    -1.6365     -0.6095     -0.6773     -1.9027     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 795   : coordinates
+    -1.9027     -0.6095     -0.6773     -2.1690     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 796   : coordinates
+    -2.1690     -0.6095     -0.6773     -2.4352     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 797   : coordinates
+    -2.4352     -0.6095     -0.6773     -2.7015     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 798   : coordinates
+    -2.7015     -0.7595     -0.8467     -2.7015     -0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 799   : coordinates
+    -2.7015     -0.6095     -1.0160     -2.7015     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 800   : coordinates
+    -2.7015     -0.7595     -0.8467     -2.7015     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 801   : coordinates
+    -0.8377     -0.7595     -0.8467     -0.8377     -0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 802   : coordinates
+    -0.8377     -0.6095     -1.0160     -0.8377     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 803   : coordinates
+    -0.8377     -0.7595     -0.8467     -0.8377     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 804   : coordinates
+    -1.1040     -0.7595     -0.8467     -1.1040     -0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 805   : coordinates
+    -1.1040     -0.6095     -1.0160     -1.1040     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 806   : coordinates
+    -1.1040     -0.7595     -0.8467     -1.1040     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 807   : coordinates
+    -1.3703     -0.7595     -0.8467     -1.3703     -0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 808   : coordinates
+    -1.3703     -0.6095     -1.0160     -1.3703     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 809   : coordinates
+    -1.3703     -0.7595     -0.8467     -1.3703     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 810   : coordinates
+    -1.6365     -0.7595     -0.8467     -1.6365     -0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 811   : coordinates
+    -1.6365     -0.6095     -1.0160     -1.6365     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 812   : coordinates
+    -1.6365     -0.7595     -0.8467     -1.6365     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 813   : coordinates
+    -1.9027     -0.7595     -0.8467     -1.9027     -0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 814   : coordinates
+    -1.9027     -0.6095     -1.0160     -1.9027     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 815   : coordinates
+    -1.9027     -0.7595     -0.8467     -1.9027     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 816   : coordinates
+    -2.1690     -0.7595     -0.8467     -2.1690     -0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 817   : coordinates
+    -2.1690     -0.6095     -1.0160     -2.1690     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 818   : coordinates
+    -2.1690     -0.7595     -0.8467     -2.1690     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 819   : coordinates
+    -2.4352     -0.7595     -0.8467     -2.4352     -0.6095     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 820   : coordinates
+    -2.4352     -0.6095     -1.0160     -2.4352     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 821   : coordinates
+    -2.4352     -0.7595     -0.8467     -2.4352     -0.6095     -0.6773 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 822   : coordinates
+    -2.7015     -0.7595     -0.8467     -3.0015     -0.6595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 823   : coordinates
+    -2.7015     -0.6095     -1.0160     -3.0015     -0.6595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 824   : coordinates
+    -2.7015     -0.6095     -0.6773     -3.0015     -0.6595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 825   : coordinates
+    -3.0015     -0.6595     -0.8467     -3.3432     -0.6595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 826   : coordinates
+    -3.3432     -0.6595     -0.8467     -3.6848     -0.6595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 827   : coordinates
+    -3.6848     -0.6595     -0.8467     -4.0265     -0.6595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 828   : coordinates
+    -4.0265     -0.6595     -0.8467     -4.3681     -0.6595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 829   : coordinates
+    -4.3681     -0.6595     -0.8467     -4.7098     -0.6595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 830   : coordinates
+    -4.7098     -0.6595     -0.8467     -5.0514     -0.6595     -0.8467 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 831   : coordinates
+    -0.5715      0.6095      0.8467     -0.5715      0.6095      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 832   : coordinates
+    -0.6715      0.5345      0.8460     -0.7677      0.5345      0.7099 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 833   : coordinates
+    -0.7677      0.5345      0.7099     -0.8639      0.5345      0.5738 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 834   : coordinates
+    -0.8639      0.5345      0.5738     -1.0564      0.5345      0.3016 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 835   : coordinates
+    -1.0564      0.5345      0.3016     -1.2488      0.5345      0.0295 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 836   : coordinates
+    -1.2488      0.5345      0.0295     -1.4412      0.5345     -0.2427 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 837   : coordinates
+    -1.4412      0.5345     -0.2427     -1.6336      0.5345     -0.5149 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 838   : coordinates
+    -1.6336      0.5345     -0.5149     -1.8261      0.5345     -0.7871 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 839   : coordinates
+    -1.8261      0.5345     -0.7871     -2.0185      0.5345     -1.0593 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 840   : coordinates
+    -2.0185      0.5345     -1.0593     -2.2109      0.5345     -1.3314 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 841   : coordinates
+    -2.2109      0.5345     -1.3314     -2.4034      0.5345     -1.6036 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 842   : coordinates
+    -2.4034      0.5345     -1.6036     -2.5958      0.5345     -1.8758 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 843   : coordinates
+    -2.5958      0.5345     -1.8758     -2.7882      0.5345     -2.1480 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 844   : coordinates
+    -2.7882      0.5345     -2.1480     -2.9807      0.5345     -2.4202 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 845   : coordinates
+    -2.9807      0.5345     -2.4202     -3.1731      0.5345     -2.6923 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 846   : coordinates
+    -3.1731      0.5345     -2.6923     -3.3655      0.5345     -2.9645 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 847   : coordinates
+    -3.3655      0.5345     -2.9645     -3.5579      0.5345     -3.2367 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 848   : coordinates
+    -3.5579      0.5345     -3.2367     -3.7504      0.5345     -3.5089 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 849   : coordinates
+    -3.7504      0.5345     -3.5089     -3.9428      0.5345     -3.7811 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 850   : coordinates
+    -3.9428      0.5345     -3.7811     -4.1352      0.5345     -4.0532 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 851   : coordinates
+    -0.5715      0.6095      0.8467     -0.6715      0.5345      0.8460 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 852   : coordinates
+    -0.6715      0.5095      0.9160     -0.7677      0.6274      0.9840 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 853   : coordinates
+    -0.7677      0.6274      0.9840     -0.8639      0.7452      1.0521 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 854   : coordinates
+    -0.8639      0.7452      1.0521     -1.0564      0.9809      1.1882 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 855   : coordinates
+    -1.0564      0.9809      1.1882     -1.2488      1.2166      1.3243 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 856   : coordinates
+    -1.2488      1.2166      1.3243     -1.4412      1.4524      1.4604 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 857   : coordinates
+    -1.4412      1.4524      1.4604     -1.6336      1.6881      1.5965 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 858   : coordinates
+    -1.6336      1.6881      1.5965     -1.8261      1.9238      1.7325 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 859   : coordinates
+    -1.8261      1.9238      1.7325     -2.0185      2.1595      1.8686 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 860   : coordinates
+    -2.0185      2.1595      1.8686     -2.2109      2.3952      2.0047 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 861   : coordinates
+    -2.2109      2.3952      2.0047     -2.4034      2.6309      2.1408 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 862   : coordinates
+    -2.4034      2.6309      2.1408     -2.5958      2.8667      2.2769 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 863   : coordinates
+    -2.5958      2.8667      2.2769     -2.7882      3.1024      2.4130 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 864   : coordinates
+    -2.7882      3.1024      2.4130     -2.9807      3.3381      2.5491 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 865   : coordinates
+    -2.9807      3.3381      2.5491     -3.1731      3.5738      2.6852 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 866   : coordinates
+    -3.1731      3.5738      2.6852     -3.3655      3.8095      2.8213 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 867   : coordinates
+    -3.3655      3.8095      2.8213     -3.5579      4.0452      2.9574 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 868   : coordinates
+    -3.5579      4.0452      2.9574     -3.7504      4.2809      3.0934 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 869   : coordinates
+    -3.7504      4.2809      3.0934     -3.9428      4.5167      3.2295 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 870   : coordinates
+    -3.9428      4.5167      3.2295     -4.1352      4.7524      3.3656 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 871   : coordinates
+    -0.5715      0.5485      1.0160     -0.6715      0.5095      0.9160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 872   : coordinates
+    -0.5715      0.4063      0.8467     -0.5715      0.4063      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 873   : coordinates
+    -0.6715      0.4845      0.8460     -0.7677      0.3666      0.9140 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 874   : coordinates
+    -0.7677      0.3666      0.9140     -0.8639      0.2488      0.9821 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 875   : coordinates
+    -0.8639      0.2488      0.9821     -1.0564      0.0131      1.1182 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 876   : coordinates
+    -1.0564      0.0131      1.1182     -1.2488     -0.2226      1.2543 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 877   : coordinates
+    -1.2488     -0.2226      1.2543     -1.4412     -0.4584      1.3904 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 878   : coordinates
+    -1.4412     -0.4584      1.3904     -1.6336     -0.6941      1.5265 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 879   : coordinates
+    -1.6336     -0.6941      1.5265     -1.8261     -0.9298      1.6625 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 880   : coordinates
+    -1.8261     -0.9298      1.6625     -2.0185     -1.1655      1.7986 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 881   : coordinates
+    -2.0185     -1.1655      1.7986     -2.2109     -1.4012      1.9347 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 882   : coordinates
+    -2.2109     -1.4012      1.9347     -2.4034     -1.6369      2.0708 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 883   : coordinates
+    -2.4034     -1.6369      2.0708     -2.5958     -1.8727      2.2069 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 884   : coordinates
+    -2.5958     -1.8727      2.2069     -2.7882     -2.1084      2.3430 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 885   : coordinates
+    -2.7882     -2.1084      2.3430     -2.9807     -2.3441      2.4791 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 886   : coordinates
+    -2.9807     -2.3441      2.4791     -3.1731     -2.5798      2.6152 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 887   : coordinates
+    -3.1731     -2.5798      2.6152     -3.3655     -2.8155      2.7513 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 888   : coordinates
+    -3.3655     -2.8155      2.7513     -3.5579     -3.0512      2.8874 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 889   : coordinates
+    -3.5579     -3.0512      2.8874     -3.7504     -3.2869      3.0234 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 890   : coordinates
+    -3.7504     -3.2869      3.0234     -3.9428     -3.5227      3.1595 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 891   : coordinates
+    -3.9428     -3.5227      3.1595     -4.1352     -3.7584      3.2956 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 892   : coordinates
+    -0.5715      0.4063      0.8467     -0.6715      0.4845      0.8460 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 893   : coordinates
+    -0.5715     -0.6095      0.0000     -0.5715     -0.4063      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 894   : coordinates
+    -0.5715      0.4063      0.0000     -0.5715      0.6095      0.0000 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 895   : coordinates
+     0.5715      0.6095     -0.1693      0.6215      0.6616     -0.3736 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 896   : coordinates
+     0.5715      0.6095      0.1693      0.6215      0.6616      0.3660 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 897   : coordinates
+     0.3810     -0.5486     -1.0160      0.3810     -0.4063     -1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 898   : coordinates
+     0.3810     -0.5486     -1.0160      0.3810     -0.5486     -1.2465 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 899   : coordinates
+     0.5715     -0.1422      1.0160      0.5715      0.0000      1.0160 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+2.30  wire 900   : coordinates
+     0.5715     -0.1422      1.0160      0.5715     -0.1422      1.3462 
+2.31  wire 1   : radius, no. of basis functions, RB, EP, MY
+  2.000000    3
+3.1  print of currents
+     1
+3.2  excitation
+     1
+3.3  generator position, internal resistance (excitation=1)
+a  0    0.0000E+000
+4.1  representation of frequency(ies) (1-6)
+     1
+4.2  basic frequency
+0.100000
+5.1  skin effect (1/0)
+     1
+5.2  number: conductivity value(s), observation point(s) E tang
+     1     0
+5.3  conductivity value(s) in S/m (max. 3 per line)
+5.000000E+007
+5.4  conductivity domain(s)
+   900
+6.1  number of load impedances
+     0
+7.1  current distribution on wires
+     0
+7.3  number of currents at discrete points
+     0
+9.0  rcs (0/1)
+     0
+9.1  number of field points
+     0
+10.3  total number of "cable wires"
+     0
+11.1  surface currents (0/1/2)
+     0
+12.1  direct: 11,12,13, special direct solv. 21,22, iter. solver: 31,32,33
+    12

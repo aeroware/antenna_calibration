@@ -1,0 +1,74 @@
+ 
+function [relBasePos, BaseCoord]=CGetBasePosition(ant);
+
+% function [relBasePos, BaseCoord]=CGetBasePosition(ant); computes the
+% relative Position of the base points and the absolute coordinates of the
+% basepoints. 
+%
+% The only input parameter is the antenna structure
+%
+% There are two output parameters:
+%
+%   -   relBasePos(Nsegs,3) holds the relative position of each
+%       basepoint on each wire
+%  
+%   -   BaseCoord(Nsegs,3,3) hold the coordinates of 
+%       each basepoint of each segment
+
+
+
+ deg=pi/180;
+  
+ 
+ Nnodes=length(ant.Geom);
+ Nsegs=length(ant.Desc);
+ 
+     
+
+ relBasePos=zeros(Nsegs,3);
+ BaseCoord=zeros(Nsegs,3,3);
+ 
+ for n=1:Nsegs
+    switch ant.wiretype(n)
+        case 0
+            relBasePos(n,1)=0.25;
+            relBasePos(n,2)=0.5;
+            relBasePos(n,3)=0.75;
+        case 1
+            relBasePos(n,1)=1/7;
+            relBasePos(n,2)=3/7;
+            relBasePos(n,3)=5/7;
+        case 2
+            relBasePos(n,1)=2/7;
+            relBasePos(n,2)=4/7;
+            relBasePos(n,3)=6/7;
+        case 3
+            relBasePos(n,1)=1/6;
+            relBasePos(n,2)=3/6;
+            relBasePos(n,3)=5/6;
+    end %switch
+    
+     %  Coordinates, basepoints
+ 
+     for m=1:3
+        BaseCoord(n,:)=ant.Geom(ant.Desc(n,1),:)+ant.relbasepoints(n,1)*(ant.Geom(ant.Desc(n,2),:)-ant.Geom(ant.Desc(n,1),:));
+        BaseCoord(n,:)=ant.Geom(ant.Desc(n,1),:)+ant.relbasepoints(n,2)*(ant.Geom(ant.Desc(n,2),:)-ant.Geom(ant.Desc(n,1),:));
+    (n,:)=ant.Geom(ant.Desc(n,1),:)+ant.relbasepoints(n,3)*(ant.Geom(ant.Desc(n,2),:)-ant.Geom(ant.Desc(n,1),:));
+     end% for all m
+ end % for all segs
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

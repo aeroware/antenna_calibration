@@ -1,0 +1,67 @@
+
+function ant=AddPatch(ant0,n1,n2,n3,n4);
+
+% ant=AddPatch(ant0,n1,n2,n3,n4) inserts a new patch, that connects nodes 
+% n1-n4. If n4 is not defined, the patch will be a triangle. If n1-n4 are 
+% integers, they are interpreted as indices to the respecting nodes. If 
+% they are vectors in R3, they are the endpoints of the new vector.
+%
+% Written by Thomas Oswald, June 2007
+ 
+
+if (nargin<3)  
+  error('error...You need at least 3 nodes to construct a patch ;-)' )
+end % if nargin...
+
+if (nargin<4)  
+    quad=0;
+else
+    quad=0;
+end % if nargin...
+
+% get indices
+
+if length(n1) ==1
+    i1=n1;
+else
+    ant0.Geom(length(ant0.Geom)+1)=n1;
+    i1=length(ant0.Geom);
+end % else
+
+if length(n2) ==1
+    i2=n2;
+else
+    ant0.Geom(length(ant0.Geom)+1,:)=n2;
+    i2=length(ant0.Geom);
+end % else
+
+if length(n3) ==1
+    i3=n3;
+else
+    ant0.Geom(length(ant0.Geom)+1,:)=n3;
+    i3=length(ant0.Geom);
+end % else
+
+if quad
+    if length(n4) ==1
+        i4=n4;
+    else
+        ant0.Geom(length(ant0.Geom)+1,:)=n2;
+        i4=length(ant0.Geom);
+    end % else
+end % if quad
+
+Ant0.Desc(length(Ant0.Desc)+1,1)=i1;
+Ant0.Desc(length(Ant0.Desc),2)=i2;
+
+% splitting
+
+while n>1
+    frac = 1/n;
+    
+    i=length(Ant0.Desc);
+    [Ant0,i]=GridSplitSegs(Ant0,i,frac);
+    n=n-1;
+end %while
+
+ant=ant0;

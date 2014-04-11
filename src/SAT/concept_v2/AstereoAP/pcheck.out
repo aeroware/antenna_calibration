@@ -1,0 +1,11 @@
+pcheck:
+file: surf.1
+node=563
+patch=808
+worst quadrangle ratio: 1:0
+worst triangle ratio: 1:7.54073
+number of double nodes: 0
+number of triangles (+wire connections): 808
+currents: 1171
+open edges: 82
+pcheck: done

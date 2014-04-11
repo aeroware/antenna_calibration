@@ -1,0 +1,603 @@
+
+function [AntGrid,h]=MarsisGrid(C,PlotProj,M,PrintFile)
+
+% AntGrid=MarsisGrid(ModelConfig) 
+% generates Mars Express grid model for the analysis of MARSIS antennas, 
+% several features of the configuration can be adjusted as defined by 
+% the fields of the struct ModelConfig: 
+%
+% 	HullMesh ... determines how wide the hull-mesh (central body) is:
+%                =1 wide-mesh, =2 middle, 3=fine-mesh,               
+% 	SolMesh  ... determines the mesh of the solar panels:
+%                =1 wide-mesh, =2 middle, 3=fine-mesh, 0=no solar panels
+%                at all; a 2-element vector may be used to determine the 
+%                exact segmentation: [number of segments in X-direction 
+%                (short side), Y-direction (long)]
+% 	SolAngle ... rotation angle of solar panels around y-axis from x 
+%                towards -z,
+%   HGAMesh  ... High Gain Antenna, 
+%                =0: off, 1: on, 2: on fine mesh,
+%   HGAShift ... additional shift (vector) of HGA from staandard position,
+%                scalar indicates length of shift along skew hull plane towards
+%                antennas (increasing z).
+%   Engine   ... =1: creates engine ring at the bottom
+%                =2: engine ring and engine jet
+% 	FeedConf ... =1: monopole feed, no dipole,
+%                =2: 2 feeds (1. monopole; 2. dipole separated from hull),
+%                =3: 3 feeds (1. monopole; 2. +x and 3. -x dipole arm),
+%                =-3: like 3, but degenerated monopole 
+%                    (1 small segment simulating non-deployment)
+%                !only 3 and -3 implemented yet!
+%   FeedPos  ... contains in row-vectors the position of feeds w.r.t. reference points:
+%                for FeedConf=3: [monopole feed; +x dipole feed; -x dipole feed]
+%                each antenna has its own reference point:
+%                monopole: the nearest hull-edge (~in its middlepoint)
+%                dipole arms: ~nearest corner of hull, +X and -X symm. w.r.t. monopole
+% 	MonoBend ... Vector determining the bend of the monopole antenna:
+%                [monopole tip offset towards y, 
+%                 monopole rot. angle from y to x]
+% 	DipoBend ... Vector determining the bend of the dipole antenna:
+%                [dipole tip offset towards y, 
+%                 dipole rotation angle from y to z]
+%   WireBody ... wire specification for all grid segments except antennas
+%   WireAnt  ... wire specification for segments of antennas
+%   GridFile ... defines a file where the grid model is to be saved, 
+%                the saved variable name is AntGrid.
+%
+% 	Defaults: HullMesh=3, SolMesh=3, SolAngle=0, HGAMesh=2, HGAShift=0,
+%             Engine=2, FeedConf=3, MonoBend=[0,0], DipoBend=[0,0],  
+%             WireBody=[2e-3,50e6], WireAnt=[2e-3,50e6], GridFile='' (no saving),
+%             FeedPos=[0,-75,-300; 125,-100,-65; -125,-100,-65]*1e-3.
+%
+% All angles are to be given in degrees, lengths in meters. 
+% The returned grid geometry AntGrid.Geom is defined in meters.
+%
+% AntGrid returns the generated grid with feed numbers (field Feed), 
+% loads (field Load) and the model configuration (field Config).
+% 	
+% [AntGrid,h]=MarsisGrid(ModelConfig,PlotProj,M,PrintFile)
+% additionally plots the generated grid on the scale M, returning the 
+% corresponding figure handles in h and saving the figures in PrintFile.
+% PlotProj defines the projections to be plotted, which may be any 
+% subset of the following:
+%
+%   PlotProj =0 standard view; 
+%            =1,2,3,-1,-2,-3 view from +X,+Y,+Z,-X,-Y,-Z, respectively.
+%
+%   Defaults: PlotProj=0 in case h is requested, otherwise =[] (no plot);
+%             M=1/40, PrintFile=[] (no saving).
+
+
+h1=1;         % number (handle) of first figure
+
+DefaultConfig=struct('HullMesh',3, 'SolMesh',3, 'SolAngle',0, ...
+  'HGAMesh',2, 'Engine',2, 'FeedConf',3, 'MonoBend',[0,0], 'DipoBend',[0,0], ...
+  'WireBody',[2e-3,50e6],'WireAnt',[3e-3,50e6],'GridFile','',...
+  'HGAShift',0,'FeedPos',[0,-75,-300; 125,-100,-65; -125,-100,-65]*1e-3);
+  
+if (nargin<1)|isempty(C),
+  C=DefaultConfig;
+else
+  C=DefaultStruct(C,DefaultConfig,1);
+end
+
+if (nargin<2)|isempty(PlotProj),
+  if nargout>1,
+    PlotProj=0;
+  else
+    PlotProj=[];
+  end
+end
+
+if (nargin<3)|isempty(M),
+  M=1/40;
+end
+
+if (nargin<4)|isempty(PrintFile),
+  PrintFile='';
+end
+
+% conversion degrees->radians, m->mm:
+
+deg=pi/180;
+
+C.SolAngle=C.SolAngle*deg;
+C.MonoBend=[C.MonoBend(1)*1e3,C.MonoBend(2)*deg];
+C.DipoBend=[C.DipoBend(1)*1e3,C.DipoBend(2)*deg];
+C.HGAShift=C.HGAShift*1e3;
+C.FeedPos=C.FeedPos*1e3;
+
+% initialize model grid:
+
+AntGrid=GridInit;  
+
+% --------------------------------------------------------------
+% overall graphical properties of patches, segments and points
+% --------------------------------------------------------------
+
+SurfProp=struct('EdgeColor','none',...
+  'DiffuseStrength',0.4,'AmbientStrength',0.6,...
+  'SpecularStrength',0.3,'SpecularColorReflectance',1,'SpecularExponent',3,...
+  'FaceAlpha',1,'FaceLighting','flat','BackFaceLighting','unlit');
+
+WireProp=struct('LineWidth',0.5,'Color',[0,0,0]);
+
+PointProp=struct('Marker','o','MarkerEdgeColor','r','MarkerFaceColor','r');
+
+EdgeDarken=0.3;
+
+% --------------------
+% hull (central body)
+% --------------------
+
+% graphical properties:
+
+HullPropWire=WireProp;
+HullPropSurf=SurfProp;
+HullPropSurf.FaceColor=[0.9,0.8,0.5]*0.8;
+
+% geometrical specifications:
+
+HullLenZ=1140;
+HullLenX=1220;
+HullLenY=2030;
+HullDeltaX=0;   % X-narrowing from bottom to top of hull
+
+HullPos=[-HullLenX/2,-HullLenY/2,-HullLenZ/2];    % position of hull wrt. origin,
+                                 % used as an additional final shift
+% -------------------
+
+BC=HullPos+[HullLenX,HullLenY,HullLenZ]/2;  % center of hull base (bottom face)
+
+HullSegNumX=2*C.HullMesh;
+HullSegNumY=2*C.HullMesh;
+HullSegNumZ=2*C.HullMesh;
+
+HullSegLenX=HullLenX/HullSegNumX;
+HullSegLenY=HullLenY/HullSegNumY;
+HullSegLenZ=HullLenZ/HullSegNumZ;
+
+Hull=GridCuboid(HullSegLenX,HullSegLenY,HullSegLenZ,...
+  HullSegNumX,HullSegNumY,HullSegNumZ);
+
+% introduce slope of -X plane (where HGA mounted):
+
+Hull.Geom(:,1)=Hull.Geom(:,1)+...
+  HullDeltaX/HullLenZ*Hull.Geom(:,3).*(HullLenX-Hull.Geom(:,1))/HullLenX;
+
+% Move to final position:
+
+Hull.Geom(:,1)=Hull.Geom(:,1)+HullPos(1);
+Hull.Geom(:,2)=Hull.Geom(:,2)+HullPos(2);
+Hull.Geom(:,3)=Hull.Geom(:,3)+HullPos(3);
+
+% create wire and surface objects:
+
+Hull=GridObj(Hull,'Wire','Hull','all',HullPropWire);
+Hull=GridObj(Hull,'Surf','Hull','all',HullPropSurf);
+
+AntGrid=GridJoin(AntGrid,Hull);
+
+%%-------------------------------------------------------------------------
+
+% -----------------
+% solar panels
+% -----------------
+
+if C.SolMesh>0,
+  
+  % graphical properties:
+  
+  SolPropWire=WireProp;
+  SolPropSurf=SurfProp;
+  SolPropSurf.FaceColor=[0,0.2,0.8];
+  SolPropSurf.BackFaceLighting='reverselit';
+  %SolPropSurf.EdgeColor=SolPropSurf.FaceColor*EdgeDarken; 
+  SolConPointProp=...
+    struct('Marker','o','MarkerEdgeColor','b','MarkerFaceColor','b');
+  
+  % geometrical specifications:
+  
+  SolAxisX=0;              % X-coord. of panel central axis
+  SolAxisZ=1200;           % Z-coord. of panel central axis
+  
+  Dist=650;                % distance from hull to sol panel
+  
+  TrapX=400;               % small-width of trapezoidal part
+  TrapY=850;               % hight of trapezoidal part
+  
+  SolY=3400;               % length of solar panel without trapezoidal part
+  SolX=1800;               % width of solar panel
+  
+  SolPos=[SolAxisX,Dist+TrapY+HullLenY/2,SolAxisZ];  % position of +Y-panel axis
+  
+  % -----------------
+  
+  if length(C.SolMesh)>1,
+    SolYNum=C.SolMesh(2);      % number of segments along long side
+    SolXNum=C.SolMesh(1);      % number of segments along short side
+  else
+    SolYNum=2+2*C.SolMesh;     % number of segments along long side
+    SolXNum=2*C.SolMesh;       % number of segments along short side
+  end
+  
+  SolYSeg=SolY/SolYNum;
+  SolXSeg=SolX/SolXNum;
+  
+  % generate surface of solar cells:
+  
+  X=repmat((-SolXNum/2:SolXNum/2)*SolXSeg,SolYNum+1,1);
+  Y=repmat((0:SolYNum)'*SolYSeg,1,SolXNum+1);
+  Sol=GridMatrix(X,Y,zeros(size(X)));
+  
+  % add trapezoid:
+  
+  Trap=GridMatrix([-SolX,0,SolX],-TrapY*[1,1,1],[0,0,0]);
+  Sol=GridJoin(Sol,Trap,'all',[1,3],1);
+  Sol.Geom([end-2,end],1)=Sol.Geom([end-2,end],1)/SolX*TrapX/2;
+  
+  % move to final position:
+  
+  Sol=GridMove(Sol,[0,C.SolAngle,0],SolPos);
+  
+  % duplicate panel:
+  
+  Sol_=Sol;
+  Sol_.Geom(:,2)=-Sol_.Geom(:,2);
+  Sol_=GridFlip(Sol_,'all');
+  Sol=GridJoin(Sol,Sol_);
+  
+  % define wire and surface object:
+  
+  Sol=GridObj(Sol,'Wire','Solar Panels','all',SolPropWire);
+  Sol=GridObj(Sol,'Surf','Solar Panels','all',SolPropSurf);
+  
+  % connect panels to s/c hull:
+  
+  SolCon=[size(Sol.Geom,1)/2-1,size(Sol.Geom,1)-1]; % connection nodes at panels
+  
+  [n,F]=GridNearest(AntGrid.Geom,AntGrid.Desc,Sol.Geom(SolCon,:));
+  
+  [AntGrid,HullConSol]=GridSplitSegs(AntGrid,n,1/2,1,1,1); % connection nodes at hull
+  
+  AntGrid=GridJoin(AntGrid,Sol,HullConSol,SolCon,[],'Solar Panels'); % join & connect
+  
+  % create electric connection nodes as object 'SolConNodes':
+  
+  n=size(AntGrid.Desc,1)-[1,0];
+  [AntGrid,n]=GridSplitSegs(AntGrid,n,1/2,0,1,1);
+  
+  AntGrid=GridObj(AntGrid,'Point','SolGrounds',n,SolConPointProp);
+  
+end
+
+% ------------------
+% high gain antenna
+% ------------------
+
+if C.HGAMesh>0,
+  
+  % graphical properties:
+  
+  HGAPropWire=WireProp;
+  HGAPropSurf=SurfProp;
+  HGAPropSurf.FaceColor=[0.7,0.7,0.7];
+  
+  % geometrical specifications:
+  
+  HGARadius=1300;         % radius of HGA
+  
+  HGAinner=20*deg;        % inner half-opening angle 
+  HGAouter=41*deg;        % outer half-opening angle
+  
+  HGAincli=5*deg;         % inclination of HGA
+  
+  HGAPos=[-2000,0,1200];  % shift vector to the final position
+  
+  if C.HGAMesh==1,
+    HGAParSegs=8;         % number of segments for parallels 
+    HGAMerSegs=2;         % number of segments for meridians
+  elseif C.HGAMesh==2,
+    HGAParSegs=12;        % number of segments for parallels 
+    HGAMerSegs=2;         % number of segments for meridians
+  else
+    HGAParSegs=16;        % number of segments for parallels 
+    HGAMerSegs=3;         % number of segments for meridians
+  end
+  
+  % -----------------
+  
+  HGA=GridSphere(HGARadius,HGAinner,HGAouter,HGAMerSegs,2*pi,HGAParSegs);
+  
+  if isequal(size(C.HGAShift),[1,1]),
+    C.HGAShift=GridMove([C.HGAShift,0,0],[0,90*deg+HGAincli,0]);
+  end
+  HGAPos=HGAPos+C.HGAShift;
+  
+  HGA=GridMove(HGA,[0,90*deg+HGAincli,0],HGAPos);
+  
+  HGA=GridObj(HGA,'Wire','HGA','all',HGAPropWire);
+  HGA=GridObj(HGA,'Surf','HGA','all',HGAPropSurf);
+  
+  % connect HGA to s/c-hull:
+  
+  m=GridNearest(AntGrid.Geom,AntGrid.Desc,...
+    [-800, 500, 475;...
+      -800,-500, 475;...
+      -800, 500,1400;...
+      -800,-500,1400]);
+  [AntGrid,m]=GridSplitSegs(AntGrid,m,0.5,1,1,1);      % con-nodes at hull
+  
+  n=HGA.Desc(HGAParSegs+1:2*HGAParSegs,:);
+  n=GridNearest(HGA.Geom,n,AntGrid.Geom(m,:))+HGAParSegs;
+  [HGA,n]=GridSplitSegs(HGA,n,0.5,1,1,1);          % con-nodes at HGA
+  
+  HGADist=Mag(AntGrid.Geom(m,:)-HGA.Geom(n,:),2);
+  
+  AntGrid=GridJoin(AntGrid,HGA,m,n,[],'HGA');
+  
+end
+
+% ------------
+% engine
+% ------------
+
+if C.Engine,
+  
+  % graphical properties:
+  
+  EnginePropWire=WireProp;
+  EnginePropWire.LineWidth=1;
+  
+  % geometrical specifications:
+  
+  EngineRingR=475;       % radius of ring around jet
+  EngineRingH=205;       % height of ring
+  
+  EngineJetR=125;        % radius at end of jet
+  EngineJetH=425;        % height of jet
+  
+  EngineXshift=0;        % X-direction shift wrt. origin 
+  
+  % create ring:   -----------------
+  
+  if C.HullMesh==1,
+    EngineRingNodes=4;
+    EngineRingCon=1:4;
+  else
+    EngineRingNodes=8;
+    EngineRingCon=1:2:7;
+  end
+  
+  EngineRing=GridCircle(EngineRingR,2*pi,EngineRingNodes);
+  
+  EngineRing=GridMove(EngineRing,[0,0,0],[EngineXshift,0,-EngineRingH]);
+  EngineRing=GridObj(EngineRing,'Wire','Engine Ring','all',EnginePropWire);
+  
+  % connect ring to hull:
+  
+  [HullConRing,q]=...
+    GridNearest(AntGrid.Geom,AntGrid.Desc,EngineRing.Geom(EngineRingCon,:));
+  if C.HullMesh~=1,
+    q=0.5;
+  end
+  [AntGrid,HullConRing]=GridSplitSegs(AntGrid,HullConRing,q,1,1);
+  
+  AntGrid=GridJoin(AntGrid,EngineRing,HullConRing,EngineRingCon,[],'Engine Ring');
+  
+  % create jet:   -----------------
+  
+  if C.Engine>1,
+    
+    EngineJetNodes=4;
+    EngineJetCon=1:EngineJetNodes;
+    
+    EngineJet=GridCircle(EngineJetR,2*pi,EngineJetNodes);
+    
+    EngineJet=GridMove(EngineJet,[0,0,0],[EngineXshift,0,-EngineJetH]);
+    EngineJet=GridObj(EngineJet,'Wire','Engine Jet','all',EnginePropWire);
+    
+    % connect Jet to hull:
+    
+    q=EngineJet.Geom(EngineJetCon,:);
+    q(:,3)=0;
+    [HullConJet,q]=GridNearest(AntGrid.Geom,AntGrid.Desc,q);
+    q=0.5;
+    [AntGrid,HullConJet]=GridSplitSegs(AntGrid,HullConJet,q,1,1);
+    
+    AntGrid=GridJoin(AntGrid,EngineJet,HullConJet,EngineJetCon,[],'Engine Jet');
+    
+  end
+  
+end
+
+% ------------------
+% marsis antennas
+% ------------------
+
+% graphical properties:
+
+AntPropWire=WireProp;
+AntPropWire.Color=[0.8,0,0];
+
+FeedPointProp=struct('Marker','o','MarkerEdgeColor','r','MarkerFaceColor','r');
+
+% geometrical specifications:
+
+% reference points for antennas (middle of edge for monopole, corners for dipole):
+RefP=[0,HullLenY/2,0; HullLenX/2,HullLenY/2,0; -HullLenX/2,HullLenY/2,0];
+
+% [0,775,-300; 950,750,-65; -950,750,-65]*1e-3  absolute ant. standard pos.
+% [0,-75,-300; 125,-100,-65; -125,-100,-65]*1e-3  rel. antenna standard pos.
+
+DipoLen=20000;                % length of each dipole element
+DipoSegs=50;                  % number of segments to be used per dipole element
+DipoFeedPosp=C.FeedPos(2,:)+RefP(2,:);   % feed position of +X dipole element
+DipoFeedPosm=C.FeedPos(3,:)+RefP(3,:);   % feed position of -X dipole element
+
+MonoLen=7000;                 % length of monopole
+MonoSegs=18;                  % number of segments to be used for monopole
+MonoFeedPos=C.FeedPos(1,:)+RefP(1,:);    % position of monopole feed
+
+% dipole: ---------------
+
+[x,y]=AntBend(DipoLen,C.DipoBend(1),DipoSegs);
+z=zeros(size(x));
+phi=[1,0,0]*C.DipoBend(2);
+
+% create and connect +X:
+
+Dipop=GridMove(GridMatrix(x,y,z),phi,DipoFeedPosp);
+Dipop=GridObj(Dipop,'Wire','+X','all',AntPropWire);
+
+q=AntGrid.Geom(GridNearest(AntGrid.Geom,DipoFeedPosp),:);
+q(:,1)=q(:,1)*0.99;
+[HullConDipop,q]=GridNearest(AntGrid.Geom,AntGrid.Desc,q);
+[AntGrid,HullConDipop]=GridSplitSegs(AntGrid,HullConDipop,0.5,1,1);
+AntGrid=GridJoin(AntGrid,Dipop,HullConDipop,1,[],'Con +X');
+AntGrid.Obj(end).GraphProp=HullPropWire;
+
+% create and connect -X:
+
+Dipom=GridMove(GridMatrix(-x,y,z),phi,DipoFeedPosm);
+Dipom=GridObj(Dipom,'Wire','-X','all',AntPropWire);
+
+q=AntGrid.Geom(GridNearest(AntGrid.Geom,DipoFeedPosm),:);
+q(:,1)=q(:,1)*0.99;
+[HullConDipom,q]=GridNearest(AntGrid.Geom,AntGrid.Desc,q);
+[AntGrid,HullConDipom]=GridSplitSegs(AntGrid,HullConDipom,0.5,1,1);
+AntGrid=GridJoin(AntGrid,Dipom,HullConDipom,1,[],'Con -X');
+AntGrid.Obj(end).GraphProp=HullPropWire;
+
+% monopole: ---------------
+
+if C.FeedConf<0,   % degenerated monopole (simulating non-deployment) 
+  z=[0;150];
+  y=zeros(size(z));
+  x=y;
+else
+  [z,y]=AntBend(MonoLen,C.MonoBend(1),MonoSegs);
+  x=zeros(size(z));
+  phi=[0,0,-1]*C.MonoBend(2);
+end
+
+% create and connect to hull:
+
+Monopole=GridMove(GridMatrix(x,y,-z),phi,MonoFeedPos);
+Monopole=GridObj(Monopole,'Wire','-Z','all',AntPropWire);
+
+[HullConMono,q]=GridNearest(AntGrid.Geom,AntGrid.Desc,...
+  [BC(1),MonoFeedPos(2:3)]);
+[AntGrid,HullConMono]=GridSplitSegs(AntGrid,HullConMono,0.5,1,1);
+AntGrid=GridJoin(AntGrid,Monopole,HullConMono,1,[],'Con -Z');
+AntGrid.Obj(end).GraphProp=HullPropWire;
+
+% define feeds as object: -------------
+
+n=GridNearest(AntGrid.Geom,[MonoFeedPos;DipoFeedPosp;DipoFeedPosm]);
+AntGrid=GridObj(AntGrid,'Point','Feeds',n,FeedPointProp);
+
+% -------------------------------
+% finalize AntGrid and save
+% -------------------------------
+
+% extract all objects and pack:
+
+AntGrid=GridExtract(AntGrid,'all');
+AntGrid=GridPack(AntGrid,1,'all',[1,1]);
+
+% change scale mm->m:
+
+AntGrid.Geom=AntGrid.Geom/1e3;  
+
+% determine fields .Config, .Feed, .Load, .Wire:
+
+C.SolAngle=C.SolAngle/deg;
+C.MonoBend=[C.MonoBend(1)/1e3,C.MonoBend(2)/deg];
+C.DipoBend=[C.DipoBend(1)/1e3,C.DipoBend(2)/deg];
+C.HGAShift=C.HGAShift/1e3;
+C.FeedPos=C.FeedPos/1e3;
+AntGrid.Config=C;
+
+FeedObj=GridFindObj(AntGrid,'Name','Feeds');
+AntGrid.Feed=[AntGrid.Obj(FeedObj).Elem];
+ 
+AntGrid.Load=AntGrid.Obj(GridFindObj(AntGrid,'Name','SolGrounds')).Elem(:);
+
+[AntGrid.Obj.Prop]=deal(struct('Radius',C.WireBody(1),'Cond',C.WireBody(2)));
+AntObj=[...
+  GridFindObj(AntGrid,'Name','-Z'),...
+  GridFindObj(AntGrid,'Name','+X'),...
+  GridFindObj(AntGrid,'Name','-X')];
+[AntGrid.Obj(AntObj).Prop]=deal(struct('Radius',C.WireAnt(1),'Cond',C.WireAnt(2)));
+
+% save AntGrid in GridFile:
+
+if ~isempty(C.GridFile),
+  VarSave(C.GridFile,AntGrid,[],'AntGrid');
+end
+
+% ------------
+% plots
+% ------------
+
+h=[];
+if isempty(PlotProj),
+  return,
+end
+
+figure(999);
+hold on;
+PlotGrid(AntGrid,'all');
+hold off;
+fig1=gcf;
+set(gcf,'renderer','opengl');
+axis([-2,2,-2,2,-1,3]);
+
+% lightangle(0,30);
+% lightangle(120,30);
+% lightangle(0,-30);
+% lightangle(120,-30);
+% lightangle(180,-65);
+% set(gca,'AmbientLight',[1,1,1]);
+
+u=get(0,'units');
+set(0,'units','pixels');
+s=get(0,'ScreenSize');
+set(0,'units',u);
+u=get(gcf,'units');
+set(gcf,'units','pixels');
+p=get(gcf,'Position');
+set(gcf,'Position',[s(3:4)-p(3:4)-[5,80],p(3:4)]);
+set(gcf,'units',u);
+
+if isempty(PrintFile),
+  PrintDriver='';
+else
+  PrintDriver='-djpeg'; %'-dpsc2';
+end
+Margin=[1.2,1,1,0.8]*1.5;
+
+h=PlotProjection(gcf,PlotProj,100*M,Margin,[],PrintDriver,PrintFile);
+
+close(fig1);
+
+
+%=========================================================================
+
+function [x,y]=AntBend(L,d,n)
+
+% [x,y]=AntBend(L,d,n) calculates bend function y(x) for wire antenna
+% of length L and tip deviation d. n segments are used to represent 
+% the antenna wire.
+
+% x/L as a function of y/L on the curve y=k*x^2 (L=length of curve, y<<L assumed):
+
+XOL=inline('polyval([-44588/467775,346/14175,-92/945,-2/45,-2/3,1],yol2)','yol2');
+
+% calculate x and y:
+
+x=XOL((d/L)^2)*L;
+k=d/x^2;
+x=([0,0.5,1:n])'/n*x;
+y=k*x.^2;

@@ -1,0 +1,187 @@
+ 
+function [NewAnt,NewOp]=ConceptRead(ant,Op,k,currsrc);
+
+% function [NewAnt,NewOp]=ConceptRead(ant,Op,k,currsrc) reads data from the
+% relevant concept output files concept out and co_ili.bin. NewAnt and 
+% NewOp are filled when the corresponding data is found and returned to 
+% the calling routine. 
+% 
+% k is the number of the excited antenna.
+%
+% The wire currents are read from the binary file co_ili.bin, while all 
+% other data read in from concept.out. Only if currsrc is set to 2, the
+% wire currents are also read in from concept.out.
+%
+% The currents are stored in the two matrices Op.Curr and Op.ConceptCurr.
+% The former holds the currents at the endpoints of each segment, while
+% Op.ConceptCurr is a complex Nsegs x 3 matrix which holds the currents at
+% the base points.
+
+if nargin<4
+    currsrc=1;
+end % if
+
+ %-----------------------
+ % read concept.out
+ %-----------------------
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ %-----------------------
+ % read co_ili.bin
+ %-----------------------
+ 
+ if currsrc==1  
+    nf=length(Op.Freq);
+ 
+ % prepare matrix to load data
+ 
+    Nsegs=length(ant.Desc);
+    Nnodes=length(ant.Geom);
+    
+    filesize=Nsegs*48;
+    
+    M=zeros(nf,filesize);
+    M_complex=zeros(nf,filesize/2);
+ 
+ 
+    fid = fopen('co_ili.bin','rb');                                                                                                                                                                     
+ 
+    for n=1:nf
+         M(n,:)=fread(fid,1,'double');
+    end % for
+    fclose(fid);
+ 
+ % Convert to complex data
+ 
+    for n=1:nf
+        for m=1:5000
+            M_complex(n,m)=M(n,2*m-1);
+            M_complex(n,m)=M_complex(n,m)+i*M(n,2*m);
+        end % for all m
+    end % for all n
+ 
+    
+ 
+    ConceptCurrents=zeros(Nsegs,5);
+ 
+ % copy first frequency (at the moment) into structure
+ 
+    for n=1:Nsegs
+        ConceptCurrents(n,2)=M_complex(1,3*n-2);
+        ConceptCurrents(n,3)=M_complex(1,3*n-1);
+        ConceptCurrents(n,4)=M_complex(1,3*n);
+    end % for all segs
+ 
+
+ % compute the currents at the endpoints from the own base functions
+ 
+    for n=1:Nsegs
+        switch ant.wiretype(n)
+            case 0
+                ConceptCurrents(n,1)=0;
+                ConceptCurrents(n,5)=0;
+            case 1
+                ConceptCurrents(n,1)=ConceptCurrents(n,2)/2;
+                ConceptCurrents(n,5)=0;
+            case 2
+                ConceptCurrents(n,1)=0;
+                ConceptCurrents(n,5)=ConceptCurrents(n,4)/2;
+            case 3
+                ConceptCurrents(n,1)=ConceptCurrents(n,2)/2;
+                ConceptCurrents(n,5)=ConceptCurrents(n,4)/2;
+        end %switch
+    end % for all segs
+ 
+ % add the currents at the endpoints from the other base functions
+ 
+ % get the adjacent segments to each node
+ 
+    [Nadj,adj]=GetAdjacent(ant);
+ 
+    for n=1:Nsegs
+        switch ant.wiretype(n)
+            case 0
+                % do nothing
+            case 1         
+                % only connections at node 1
+            
+                nodenumber = ant.Desc(n,1);
+                NN=Nadj(nodenumber);
+          
+                for m= 1:NN
+                    if(adj(nodenumber,m)~=n)
+                        if(ant.Desc(adj(nodenumber,m),1)==nodenumber)
+                            ConceptCurrents(n,1)= ConceptCurrents(n,1)-ConceptCurrents(adj(nodenumber,m),2)/2;
+                        else
+                            ConceptCurrents(n,1)= ConceptCurrents(n,1)+ConceptCurrents(adj(nodenumber,m),4)/2;
+                        end % if
+                    end % not myself
+                end % for
+            case 2
+            % only connections at node 2
+            
+                nodenumber = ant.Desc(n,2);
+                NN=Nadj(nodenumber);
+            
+                for m= 1:NN
+                    if(adj(nodenumber,m)~=n)
+                        if(ant.Desc(adj(nodenumber,m),1)==nodenumber)
+                            ConceptCurrents(n,5)= ConceptCurrents(n,5)+ConceptCurrents(adj(nodenumber,m),2)/2;
+                        else
+                            ConceptCurrents(n,5)= ConceptCurrents(n,5)-ConceptCurrents(adj(nodenumber,m),4)/2;
+                        end % if
+                    end % not myself
+                end % for
+            case 3
+            % connections at both nodes
+            
+            % first node 1
+            
+                nodenumber = ant.Desc(n,1);
+                NN=Nadj(nodenumber);
+            
+                for m= 1:NN
+                    if(adj(nodenumber,m)~=n)
+                        if(ant.Desc(adj(nodenumber,m),1)==nodenumber)
+                            ConceptCurrents(n,1)= ConceptCurrents(n,1)-ConceptCurrents(adj(nodenumber,m),2)/2;
+                        else
+                            ConceptCurrents(n,1)= ConceptCurrents(n,1)+ConceptCurrents(adj(nodenumber,m),4)/2;
+                        end % if
+                    end % not myself
+                end % for
+            
+            % then node 2
+            
+                nodenumber = ant.Desc(n,2);
+                NN=Nadj(nodenumber);
+            
+                for m= 1:NN
+                    if(adj(nodenumber,m)~=n)
+                        if(ant.Desc(adj(nodenumber,m),1)==nodenumber)
+                            ConceptCurrents(n,5)= ConceptCurrents(n,5)+ConceptCurrents(adj(nodenumber,m),2)/2;
+                        else
+                            ConceptCurrents(n,5)= ConceptCurrents(n,5)-ConceptCurrents(adj(nodenumber,m),4)/2;
+                        end % if
+                    end % not myself
+                end % for
+         end %switch
+    end % for all segs
+    
+% Copy endpoint currents to Op.Curr and other Currents to Op.ConceptCurr
+
+    Op.Curr(k,:,1)=ConceptCurrents(:,1);
+    Op.Curr(k,:,2)=ConceptCurrents(:,5);
+
+    Op.ConceptCurr(k,:,1)=ConceptCurrents(:,2);
+    Op.ConceptCurr(k,:,2)=ConceptCurrents(:,3);
+    Op.ConceptCurr(k,:,3)=ConceptCurrents(:,4);
+
+    NewAnt=ant;
+    NewOp=Op;
+end %if currsrc==1
+

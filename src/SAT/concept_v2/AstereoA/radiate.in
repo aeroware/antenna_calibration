@@ -1,0 +1,10 @@
+*** 3D radiation diagram->1, polardiagrams->2, oblique diagram->3
+1
+*** far field->1, elec. near field->2, magn. near field->3
+1
+*** Maximum magnitude, THETA component, PHI component
+1
+*** THETA start, THETA end, PHI start, PHI end
+0 180 0 360
+*** Elements in THETA direction, elements in PHI direction
+40 40

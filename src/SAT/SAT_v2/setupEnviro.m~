@@ -1,0 +1,40 @@
+% setupEnviro sets up the environment for an antenna calculation
+
+global f;
+global solver;
+global ca;     
+global baseCaps;
+global force;
+global forcegain;
+global forcegridcreate;
+global patches;
+global er;
+
+f=3e5;                   % frequency
+solver='ASAP';
+ca=0;                    % include capacitances ?
+force=1;                 % force calculation
+forcegain=0;             % force gain calculation 
+forcegridcreate=0;       % create the grid ?
+patches=0;  
+er=[0,0,1];              % direction of the incident radiation
+base
+
+% plasma 
+
+global f_pe;
+global epsilonr;
+
+f_pe=1e5;                % plasma electron frequency
+epsilonr=1;              % relative permittivity
+% global epsilonr=1-(f_pe/f)^2;
+
+% solver
+
+global concurrent;                 
+global asapexe;
+global nec2bin;
+
+concurrent=0;                   % concurrent computation ?
+asapexe='./asap2d.bin';
+nec2bin='nec2++';

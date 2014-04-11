@@ -1,0 +1,20 @@
+*** Output file (1->output.ps , 2->output.hpgl)
+1
+*** Function: 1->i, 2->u, 3->cab, 4->et, 5->zin, 6->e, 7->h
+5
+*** Representation: Real part + imag. part->1, magnitude->2
+2
+*** Representation phase curve (y/n)
+n
+*** log. x axis (y/n) 
+y
+*** log. y axis (y/n) 
+n
+*** Frequency limitation (y/n)
+n
+*** Total number of figures (Maximum = 4)
+1
+*** Field point number(i = 1...NZPL)
+1
+*** Interpolation (y/n)
+n

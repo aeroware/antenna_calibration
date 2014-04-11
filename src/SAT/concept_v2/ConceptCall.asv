@@ -1,0 +1,42 @@
+
+function result= AsapCall()
+
+%   function result= AsapCall() calls the nescessary programs of the
+%   concept software package to perform the current calculation. 
+ 
+  
+  fprintf('Calling Concept front end... ');
+  
+  % create indirection file
+  
+  fd=fopen('input.dat','w+');
+  fprintf(fd,'\n\n14\n');
+  fclose(fd);
+  
+  [Status,Result]=dos('concept.fe.exe < input.dat');
+  if Status ~=0
+      fprintf('failed\n');
+  else
+      fprintf('done\n');
+  end
+  
+  fprintf('Calling buildgeo... ');
+  [Status,Result]=dos('buildgeo.exe');
+  if Status ~=0
+      fprintf('failed\n');
+  else
+      fprintf('done\n');
+  end
+  
+   fprintf('Calling Concept back end... ');
+  [Status,Result]=dos('concept.be.exe');
+  if Status ~=0
+      fprintf('failed\n');
+  else
+      fprintf('done\n');
+  end
+ 
+  result=Status;
+ 
+  
+

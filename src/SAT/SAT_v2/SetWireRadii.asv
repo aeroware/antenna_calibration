@@ -1,0 +1,40 @@
+ 
+function [ant]=SetWireRadii(ant, antRadius);
+
+%   function [ant]=SetWireRadii(ant, antRadius); iis a function which takes the
+%   grid structure ant as input parameter and inserts a NSegs x 1 vector
+%   which holds the radius of the wire of each edge. The radius of the
+%   antennas is set to antRadius, all other radii to ant.Wire(1).
+%
+%   This function was written by Thomas Oswald, 2007
+%   Extension to deal with S/C of different number of antennas by Thomas
+%   Oswald, March 2007
+
+ %-----------------------
+ % read ant
+ %-----------------------
+ 
+ 
+ Nsegs=length(ant.Desc);
+ 
+ % vector to save the number of adjacent segments
+ 
+ ant.WireRadii=zeros(Nsegs,2);
+ 
+ % radii of all edges
+ 
+ ant.WireRadii(n)=ant.Wire(1);
+ 
+ for n=1:length(ant.Feed)
+    
+ 
+% radii of the antennas
+ 
+    ant.WireRadii(ant.Obj(ant.Antennae(n).Obj).Elem)=antRadius;
+ end
+
+ 
+ 
+ 
+ 
+ 

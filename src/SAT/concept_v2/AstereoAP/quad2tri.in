@@ -1,0 +1,9 @@
+*** Name of the input file  ***
+surf.1
+*** Name of the output file  ***
+surf.1
+*** Quad. with > input angles to tri. -> 1, all quad. to triangles -> 2
+*** Give patch numbers of narrow triangles with angle < limit angle -> 3
+3
+*** Limit angle for mode 1 or mode 3
+10

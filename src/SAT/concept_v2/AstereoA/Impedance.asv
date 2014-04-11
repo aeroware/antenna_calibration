@@ -1,0 +1,47 @@
+% this script computes the imedance from the sketch of stuart bale's paper
+% as a function of frequency
+clear;
+
+cb=60e-12;
+rb=5e6;
+c1=100e-12;
+c2=100e-12;
+r1=100;
+r2=33e6;
+r3=33e6;
+r4=150e6;
+
+n=1;
+Iges=zeros(160,1);
+freq=zeros(160,1);
+Iba
+
+for f=1e5:1e5:16e6
+    omega=2*pi*f;
+    
+    Ib=1/(1/rb+i*omega*cb);
+    I23=1/(1/r2+i*omega*c2);
+    I223=r2+I23;
+    I14=r4+1/(i*omega*c1);
+    I22314=1/(1/I223+1/I14);
+    Ipreamp=r1+I22314;
+    
+    Iges(n)=1/(1/Ib+1/Ipreamp);
+    freq(n)=f;
+    
+    
+    
+    n=n+1;
+end % for
+
+lab=cellstr(['Frequency/MHz                                    '
+                 'Impedance-Real Part/Ohm                          '
+                 'Impedance-Imaginary Part/Ohm                     '
+                 '                                                 '
+                 'Impedances: Real and Imaginary Part vs. Frequency']);
+
+    figure(1)
+     [h1,h2]=PlotComplex(freq,Iges,1,'',1);
+      
+     
+     

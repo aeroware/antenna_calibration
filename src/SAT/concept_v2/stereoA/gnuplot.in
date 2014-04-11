@@ -1,0 +1,25 @@
+########################################################
+#
+# File generated from 'Gnuplot Front-End For Concept-II'
+#
+set key right top
+set terminal windows
+set title ' ConceptDesign 1'
+set xlabel ''
+set ylabel ''
+set zlabel ''
+set nopolar
+set size nosquare
+set xtics
+set ytics
+set grid
+set nologscale x
+set nologscale y
+set nologscale z
+set linestyle 1 lt 1 lw 3 pt 3 ps 3
+set xrange [*:*] 
+set yrange [*:*] 
+set zrange [*:*] 
+plot 'freqzin.asc' with lines ls 1 
+pause 0
+exit

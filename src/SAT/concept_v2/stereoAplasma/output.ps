@@ -1,0 +1,580 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%Creator: CONCEPT
+%%BoundingBox: 30 30 578 765
+%%EndComments
+%Version: 1.4.00
+%Date: 18.09.97
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%% USER DEFINIERBARE KONSTANTEN UND VARIABLEN %%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ausgabe in Farbe (setze COLOR auf true) oder in S/W (setze COLOR auf false)
+/COLOR     {true} def
+% Konstanten des Zeichenbereichs
+/Left      30 def      % Breite des nichtbedruckbaren Randes links
+/Down      40 def      % Hoehe des nichtbedruckbaren Randes unten
+/MyFont  /Times-Roman findfont def
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%% ENDE DES VOM USER VERAENDERBAREN BLOCKS %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/Background 1 def      % Hintergrundfarbe 1-> weiss
+/Hoehe      765 def
+/Breite     578 def
+/Rechteck
+{
+   1 index 0 rlineto
+   0 exch    rlineto
+   neg 0    rlineto
+   closepath
+ } def
+% Zeichenumgebung einrichten
+/VstartC {
+    gsave
+    MyFont 10 scalefont setfont
+    Left Down translate
+    0.8 setlinewidth
+    Background setgray
+    0 -10  moveto
+    Breite Hoehe Rechteck
+    fill
+} def
+/FillColorTable [
+% Farbtabelle fuer Polygone
+     [1.000 1.000 1.000]    % 64  0  0  (weiss)
+     [0.000 0.300 1.000]    %  0  0 64  (blau)
+     [0.000 0.672 1.000]    %  0 43 64
+     [0.000 1.000 0.672]    %  0 64 43
+     [0.000 1.000 0.000]    %  0 64  0  (gruen)
+     [0.672 1.000 0.000]    % 43 64  0
+     [1.000 1.000 0.000]    % 64 64  0  (gelb)
+     [1.000 0.672 0.000]    % 64 43  0
+     [1.000 0.000 0.000]    % 64  0  0  (rot)
+] def
+/LineColorTable [
+% Farbtabelle fuer Text
+     [0.000 0.000 0.000]    %  0  0 64  (schwarz)
+     [0.000 0.000 1.000]    %  0  0 64  (blau)
+     [0.000 1.000 0.000]    %  0 64  0  (gruen)
+     [1.000 0.000 0.000]    % 64  0  0  (rot)
+     [1.000 1.000 0.000]    % 64 64  0  (gelb)
+% fuer ISO-Linien
+     [0.000 0.000 1.000]    %  0  0 64  (blau)
+     [0.000 0.672 1.000]    %  0 43 64
+     [0.000 1.000 0.672]    %  0 64 43
+     [0.000 1.000 0.000]    %  0 64  0  (gruen)
+     [0.672 1.000 0.000]    % 43 64  0
+     [1.000 1.000 0.000]    % 64 64  0  (gelb)
+     [1.000 0.672 0.000]    % 64 43  0
+     [1.000 0.000 0.000]    % 64  0  0  (rot)
+] def
+/LC {
+     % Setze Farbwert gemaess Farbtabelle (falls COLOR wahr ist)
+     % bzw. entsprechenden Grauwert (falls COLOR falsch ist).
+     COLOR
+     {  % true: Farbe setzen
+        1 sub             % Index = Index - 1
+        LineColorTable    % Stack: Index Array
+        exch              % Stack: Array Index
+        get               % lese Teilarray [ri,gi,bi] fuer Farbwert aus
+        aload pop         % Packe Arrayinhalt auf den Stack
+        setrgbcolor       % Farbe ri,gi,bi setzten
+     }
+     {  % false: Grauwert setzen
+        dup
+        6 lt
+        {pop 0}     % Grauwert
+        {5 sub 0.08 mul neg 1 add}  % Grauwert fuer ISO-Linien
+        ifelse
+        setgray           % Grauwert setzen
+     } ifelse
+} bind def
+/SC {
+     % Setze Farbwert gemaess Farbtabelle fuer Polygone (falls COLOR
+     % wahr ist) bzw. entsprechenden Grauwert (falls COLOR falsch ist).
+     COLOR
+     {  % true: Farbe setzen
+%        1 sub             % Index = Index - 1
+        FillColorTable    % Stack: Index Array
+        exch              % Stack: Array Index
+        get               % lese Teilarray [ri,gi,bi] fuer Farbwert aus
+        aload pop         % Packe Arrayinhalt auf den Stack
+        setrgbcolor       % Farbe ri,gi,bi setzten
+     }
+     {  % false: Grauwert setzen
+        0.08 mul neg 1 add
+        setgray           % Grauwert setzen
+     } ifelse
+} bind def
+/AR {
+    % Usage: x y r fillmode AR
+    % Zeichnet einen Kreis mit Radius r an (x,y). Bei fillmode!=0
+    % wird der Kreis zudem mit der aktuellen Fuellfarbe ausgefuellt.
+    0 360
+    3 -1 roll 6 1 roll % Bringe fillmode ans Ende des Stacks
+    newpath arc
+    0 eq {stroke} {fill} ifelse
+} bind def
+/LB {
+    % Outputs a string at a specified point
+    % Usage: x y angle height string Symbol
+    5 3 roll           % put specified point on the top of the stack
+    moveto             % move to specified point
+    MyFont 3 2 roll    % put font parameters in wright order
+    scalefont setfont  % scale the font (in pica pixels!)
+    exch dup rotate    % put angle on the top, make a copy and rotate
+    exch show          % put the string on the top and display it
+    neg rotate         % undo the rotation by doing a reversed rotation
+} bind def
+/PG { 3 1 roll moveto 1 sub {lineto} repeat fill 0 setgray } bind def
+/PL { 3 1 roll moveto 1 sub {lineto} repeat stroke } bind def
+/DT { lineto stroke } bind def
+/LT { lineto } bind def
+/MT { moveto } bind def
+/SL { setlinewidth } bind def
+% Titel und Scale-Range
+VstartC
+ 1 LC
+ 524.401  28.346 MT
+ 170.076  28.346 DT
+ 170.076  28.346 MT
+ 170.076 510.228 DT
+ 170.076 510.228 MT
+ 524.401 510.228 DT
+ 524.401 510.228 MT
+ 524.401  28.346 DT
+ 467.709  28.346 MT
+ 467.709 510.228 DT
+ 192.753  28.346 MT
+ 192.753 510.228 DT
+ 255.114 439.363 MT
+ 255.114  99.211 DT
+ 255.114  99.211 MT
+ 260.783  99.211 DT
+   271  94  90  8
+ (8.0) LB
+ 255.114 141.730 MT
+ 260.783 141.730 DT
+   271  137  90  8
+ (9.0) LB
+ 255.114 184.249 MT
+ 260.783 184.249 DT
+   271  179  90  8
+ (10.0) LB
+ 255.114 226.768 MT
+ 260.783 226.768 DT
+   271  222  90  8
+ (11.0) LB
+ 255.114 269.287 MT
+ 260.783 269.287 DT
+   271  265  90  8
+ (12.0) LB
+ 255.114 311.806 MT
+ 260.783 311.806 DT
+   271  307  90  8
+ (13.0) LB
+ 255.114 354.325 MT
+ 260.783 354.325 DT
+   271  350  90  8
+ (14.0) LB
+ 255.114 396.844 MT
+ 260.783 396.844 DT
+   271  392  90  8
+ (15.0) LB
+ 255.114 439.363 MT
+ 260.783 439.363 DT
+   271  435  90  8
+ (16.0) LB
+   286  231  90  10
+ (FREQUENCY MHz  ) LB
+ 3 LC
+ 253.949  99.211 MT
+ 253.916 103.463 DT
+ 253.916 103.463 MT
+ 253.881 107.715 DT
+ 253.881 107.715 MT
+ 253.846 111.967 DT
+ 253.846 111.967 MT
+ 253.810 116.219 DT
+ 253.810 116.219 MT
+ 253.774 120.471 DT
+ 253.774 120.471 MT
+ 253.736 124.723 DT
+ 253.736 124.723 MT
+ 253.699 128.974 DT
+ 253.699 128.974 MT
+ 253.660 133.226 DT
+ 253.660 133.226 MT
+ 253.620 137.478 DT
+ 253.620 137.478 MT
+ 253.580 141.730 DT
+ 253.580 141.730 MT
+ 253.539 145.982 DT
+ 253.539 145.982 MT
+ 253.497 150.234 DT
+ 253.497 150.234 MT
+ 253.454 154.486 DT
+ 253.454 154.486 MT
+ 253.411 158.738 DT
+ 253.411 158.738 MT
+ 253.367 162.990 DT
+ 253.367 162.990 MT
+ 253.321 167.242 DT
+ 253.321 167.242 MT
+ 253.275 171.494 DT
+ 253.275 171.494 MT
+ 253.228 175.745 DT
+ 253.228 175.745 MT
+ 253.180 179.997 DT
+ 253.180 179.997 MT
+ 253.131 184.249 DT
+ 253.131 184.249 MT
+ 253.081 188.501 DT
+ 253.081 188.501 MT
+ 253.030 192.753 DT
+ 253.030 192.753 MT
+ 252.978 197.005 DT
+ 252.978 197.005 MT
+ 252.925 201.257 DT
+ 252.925 201.257 MT
+ 252.871 205.509 DT
+ 252.871 205.509 MT
+ 252.815 209.761 DT
+ 252.815 209.761 MT
+ 252.759 214.013 DT
+ 252.759 214.013 MT
+ 252.702 218.265 DT
+ 252.702 218.265 MT
+ 252.643 222.517 DT
+ 252.643 222.517 MT
+ 252.583 226.768 DT
+ 252.583 226.768 MT
+ 252.522 231.020 DT
+ 252.522 231.020 MT
+ 252.459 235.272 DT
+ 252.459 235.272 MT
+ 252.395 239.524 DT
+ 252.395 239.524 MT
+ 252.330 243.776 DT
+ 252.330 243.776 MT
+ 252.264 248.028 DT
+ 252.264 248.028 MT
+ 252.196 252.280 DT
+ 252.196 252.280 MT
+ 252.126 256.532 DT
+ 252.126 256.532 MT
+ 252.055 260.784 DT
+ 252.055 260.784 MT
+ 251.982 265.036 DT
+ 251.982 265.036 MT
+ 251.908 269.288 DT
+ 251.908 269.288 MT
+ 251.832 273.540 DT
+ 251.832 273.540 MT
+ 251.755 277.791 DT
+ 251.755 277.791 MT
+ 251.675 282.043 DT
+ 251.675 282.043 MT
+ 251.594 286.295 DT
+ 251.594 286.295 MT
+ 251.510 290.547 DT
+ 251.510 290.547 MT
+ 251.425 294.799 DT
+ 251.425 294.799 MT
+ 251.338 299.051 DT
+ 251.338 299.051 MT
+ 251.248 303.303 DT
+ 251.248 303.303 MT
+ 251.156 307.555 DT
+ 251.156 307.555 MT
+ 251.062 311.807 DT
+ 251.062 311.807 MT
+ 250.965 316.059 DT
+ 250.965 316.059 MT
+ 250.866 320.311 DT
+ 250.866 320.311 MT
+ 250.764 324.563 DT
+ 250.764 324.563 MT
+ 250.659 328.814 DT
+ 250.659 328.814 MT
+ 250.551 333.066 DT
+ 250.551 333.066 MT
+ 250.440 337.318 DT
+ 250.440 337.318 MT
+ 250.326 341.570 DT
+ 250.326 341.570 MT
+ 250.208 345.822 DT
+ 250.208 345.822 MT
+ 250.087 350.074 DT
+ 250.087 350.074 MT
+ 249.961 354.326 DT
+ 249.961 354.326 MT
+ 249.831 358.578 DT
+ 249.831 358.578 MT
+ 249.697 362.830 DT
+ 249.697 362.830 MT
+ 249.558 367.082 DT
+ 249.558 367.082 MT
+ 249.414 371.334 DT
+ 249.414 371.334 MT
+ 249.264 375.586 DT
+ 249.264 375.586 MT
+ 249.107 379.837 DT
+ 249.107 379.837 MT
+ 248.945 384.089 DT
+ 248.945 384.089 MT
+ 248.775 388.341 DT
+ 248.775 388.341 MT
+ 248.597 392.593 DT
+ 248.597 392.593 MT
+ 248.410 396.845 DT
+ 248.410 396.845 MT
+ 248.214 401.097 DT
+ 248.214 401.097 MT
+ 248.006 405.349 DT
+ 248.006 405.349 MT
+ 247.787 409.601 DT
+ 247.787 409.601 MT
+ 247.554 413.853 DT
+ 247.554 413.853 MT
+ 247.306 418.105 DT
+ 247.306 418.105 MT
+ 247.040 422.357 DT
+ 247.040 422.357 MT
+ 246.755 426.609 DT
+ 246.755 426.609 MT
+ 246.446 430.860 DT
+ 246.446 430.860 MT
+ 246.110 435.112 DT
+ 246.110 435.112 MT
+ 245.743 439.364 DT
+ 4 LC
+ 412.692  99.211 MT
+ 409.793 103.463 DT
+ 409.793 103.463 MT
+ 406.951 107.715 DT
+ 406.951 107.715 MT
+ 404.164 111.967 DT
+ 404.164 111.967 MT
+ 401.430 116.219 DT
+ 401.430 116.219 MT
+ 398.746 120.471 DT
+ 398.746 120.471 MT
+ 396.111 124.723 DT
+ 396.111 124.723 MT
+ 393.522 128.974 DT
+ 393.522 128.974 MT
+ 390.979 133.226 DT
+ 390.979 133.226 MT
+ 388.480 137.478 DT
+ 388.480 137.478 MT
+ 386.023 141.730 DT
+ 386.023 141.730 MT
+ 383.606 145.982 DT
+ 383.606 145.982 MT
+ 381.229 150.234 DT
+ 381.229 150.234 MT
+ 378.889 154.486 DT
+ 378.889 154.486 MT
+ 376.586 158.738 DT
+ 376.586 158.738 MT
+ 374.318 162.990 DT
+ 374.318 162.990 MT
+ 372.084 167.242 DT
+ 372.084 167.242 MT
+ 369.884 171.494 DT
+ 369.884 171.494 MT
+ 367.714 175.745 DT
+ 367.714 175.745 MT
+ 365.576 179.997 DT
+ 365.576 179.997 MT
+ 363.467 184.249 DT
+ 363.467 184.249 MT
+ 361.387 188.501 DT
+ 361.387 188.501 MT
+ 359.334 192.753 DT
+ 359.334 192.753 MT
+ 357.308 197.005 DT
+ 357.308 197.005 MT
+ 355.308 201.257 DT
+ 355.308 201.257 MT
+ 353.333 205.509 DT
+ 353.333 205.509 MT
+ 351.382 209.761 DT
+ 351.382 209.761 MT
+ 349.455 214.013 DT
+ 349.455 214.013 MT
+ 347.550 218.265 DT
+ 347.550 218.265 MT
+ 345.667 222.517 DT
+ 345.667 222.517 MT
+ 343.805 226.768 DT
+ 343.805 226.768 MT
+ 341.963 231.020 DT
+ 341.963 231.020 MT
+ 340.141 235.272 DT
+ 340.141 235.272 MT
+ 338.338 239.524 DT
+ 338.338 239.524 MT
+ 336.554 243.776 DT
+ 336.554 243.776 MT
+ 334.787 248.028 DT
+ 334.787 248.028 MT
+ 333.037 252.280 DT
+ 333.037 252.280 MT
+ 331.304 256.532 DT
+ 331.304 256.532 MT
+ 329.587 260.784 DT
+ 329.587 260.784 MT
+ 327.885 265.036 DT
+ 327.885 265.036 MT
+ 326.198 269.288 DT
+ 326.198 269.288 MT
+ 324.526 273.540 DT
+ 324.526 273.540 MT
+ 322.867 277.791 DT
+ 322.867 277.791 MT
+ 321.222 282.043 DT
+ 321.222 282.043 MT
+ 319.589 286.295 DT
+ 319.589 286.295 MT
+ 317.969 290.547 DT
+ 317.969 290.547 MT
+ 316.360 294.799 DT
+ 316.360 294.799 MT
+ 314.763 299.051 DT
+ 314.763 299.051 MT
+ 313.176 303.303 DT
+ 313.176 303.303 MT
+ 311.600 307.555 DT
+ 311.600 307.555 MT
+ 310.034 311.807 DT
+ 310.034 311.807 MT
+ 308.477 316.059 DT
+ 308.477 316.059 MT
+ 306.929 320.311 DT
+ 306.929 320.311 MT
+ 305.390 324.563 DT
+ 305.390 324.563 MT
+ 303.859 328.814 DT
+ 303.859 328.814 MT
+ 302.335 333.066 DT
+ 302.335 333.066 MT
+ 300.819 337.318 DT
+ 300.819 337.318 MT
+ 299.310 341.570 DT
+ 299.310 341.570 MT
+ 297.806 345.822 DT
+ 297.806 345.822 MT
+ 296.309 350.074 DT
+ 296.309 350.074 MT
+ 294.817 354.326 DT
+ 294.817 354.326 MT
+ 293.330 358.578 DT
+ 293.330 358.578 MT
+ 291.847 362.830 DT
+ 291.847 362.830 MT
+ 290.369 367.082 DT
+ 290.369 367.082 MT
+ 288.893 371.334 DT
+ 288.893 371.334 MT
+ 287.421 375.586 DT
+ 287.421 375.586 MT
+ 285.951 379.837 DT
+ 285.951 379.837 MT
+ 284.483 384.089 DT
+ 284.483 384.089 MT
+ 283.017 388.341 DT
+ 283.017 388.341 MT
+ 281.551 392.593 DT
+ 281.551 392.593 MT
+ 280.086 396.845 DT
+ 280.086 396.845 MT
+ 278.619 401.097 DT
+ 278.619 401.097 MT
+ 277.152 405.349 DT
+ 277.152 405.349 MT
+ 275.683 409.601 DT
+ 275.683 409.601 MT
+ 274.212 413.853 DT
+ 274.212 413.853 MT
+ 272.737 418.105 DT
+ 272.737 418.105 MT
+ 271.259 422.357 DT
+ 271.259 422.357 MT
+ 269.777 426.609 DT
+ 269.777 426.609 MT
+ 268.289 430.860 DT
+ 268.289 430.860 MT
+ 266.796 435.112 DT
+ 266.796 435.112 MT
+ 265.297 439.364 DT
+ 1 LC
+ 1 LC
+ 226.768  99.211 MT
+ 425.190  99.211 DT
+ 255.114  99.211 MT
+ 255.114  93.542 DT
+   259  90  180  8
+ (0.0) LB
+ 226.768  99.211 MT
+ 226.768  93.542 DT
+ 283.460  99.211 MT
+ 283.460  93.542 DT
+   287  90  180  8
+ (-10.0) LB
+ 311.806  99.211 MT
+ 311.806  93.542 DT
+   316  90  180  8
+ (-20.0) LB
+ 340.152  99.211 MT
+ 340.152  93.542 DT
+   344  90  180  8
+ (-30.0) LB
+ 368.498  99.211 MT
+ 368.498  93.542 DT
+   372  90  180  8
+ (-40.0) LB
+ 396.844  99.211 MT
+ 396.844  93.542 DT
+   401  90  180  8
+ (-50.0) LB
+ 425.190  99.211 MT
+ 425.190  93.542 DT
+   429  90  180  8
+ (-60.0) LB
+   348  78  180  10
+ (ZIN \(OHM\)) LB
+   282  78  180  10
+ (* 10) LB
+   254  70  180  8
+ (1) LB
+ 2 LC
+   184  31  90  12
+ (CONCEPT DATA: ) LB
+  currentpoint   90  12
+ ( ConceptDesign 2 Plasma                                               ) LB
+   493  31  90  10
+ (INPUT IMPEDANCE) LB
+ 3 LC
+   493  396  90  8
+ ( -- ) LB
+ 2 LC
+  currentpoint   90  8
+ (:Re) LB
+ 4 LC
+  currentpoint   90  8
+ ( -- ) LB
+ 2 LC
+  currentpoint   90  8
+ (:Im) LB
+   504  31  90  10
+ (FREQUENCY INTERVAL: ) LB
+  currentpoint   90  10
+ (8.00) LB
+  currentpoint   90  10
+ ( MHz - ) LB
+  currentpoint   90  10
+ (16.00) LB
+  currentpoint   90  10
+ ( MHz) LB
+ showpage
+ grestore

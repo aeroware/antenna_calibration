@@ -1,0 +1,1608 @@
+*** E field -> 1, H field -> 2, sar values ->3
+1
+*** Total number of lines
+0
+*** Field points from a file (y/n)
+n
+*** Total number of field points
+800
+*** Coordinates (x y z) for point 1
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 2
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 3
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 4
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 5
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 6
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 7
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 8
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 9
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 10
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 11
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 12
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 13
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 14
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 15
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 16
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 17
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 18
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 19
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 20
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 21
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 22
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 23
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 24
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 25
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 26
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 27
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 28
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 29
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 30
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 31
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 32
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 33
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 34
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 35
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 36
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 37
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 38
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 39
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 40
+0.000000 0.000000 10000.000000
+*** Coordinates (x y z) for point 41
+1645.945903 0.000000 9863.613034
+*** Coordinates (x y z) for point 42
+1624.631336 264.028290 9863.613034
+*** Coordinates (x y z) for point 43
+1561.239670 521.218387 9863.613034
+*** Coordinates (x y z) for point 44
+1457.412718 764.909201 9863.613034
+*** Coordinates (x y z) for point 45
+1315.839541 988.789268 9863.613034
+*** Coordinates (x y z) for point 46
+1140.186811 1187.060213 9863.613034
+*** Coordinates (x y z) for point 47
+935.003842 1354.586922 9863.613034
+*** Coordinates (x y z) for point 48
+705.604765 1487.030541 9863.613034
+*** Coordinates (x y z) for point 49
+457.930895 1580.960850 9863.613034
+*** Coordinates (x y z) for point 50
+198.396855 1633.945104 9863.613034
+*** Coordinates (x y z) for point 51
+-66.275559 1644.611038 9863.613034
+*** Coordinates (x y z) for point 52
+-329.231471 1612.682409 9863.613034
+*** Coordinates (x y z) for point 53
+-583.660461 1538.986154 9863.613034
+*** Coordinates (x y z) for point 54
+-822.972951 1425.430965 9863.613034
+*** Coordinates (x y z) for point 55
+-1040.970875 1274.957863 9863.613034
+*** Coordinates (x y z) for point 56
+-1232.008199 1091.464022 9863.613034
+*** Coordinates (x y z) for point 57
+-1391.137158 879.701837 9863.613034
+*** Coordinates (x y z) for point 58
+-1514.236396 645.155836 9863.613034
+*** Coordinates (x y z) for point 59
+-1598.117706 393.900637 9863.613034
+*** Coordinates (x y z) for point 60
+-1640.608607 132.443619 9863.613034
+*** Coordinates (x y z) for point 61
+-1640.608607 -132.443619 9863.613034
+*** Coordinates (x y z) for point 62
+-1598.117706 -393.900637 9863.613034
+*** Coordinates (x y z) for point 63
+-1514.236396 -645.155836 9863.613034
+*** Coordinates (x y z) for point 64
+-1391.137158 -879.701837 9863.613034
+*** Coordinates (x y z) for point 65
+-1232.008199 -1091.464022 9863.613034
+*** Coordinates (x y z) for point 66
+-1040.970875 -1274.957863 9863.613034
+*** Coordinates (x y z) for point 67
+-822.972951 -1425.430965 9863.613034
+*** Coordinates (x y z) for point 68
+-583.660461 -1538.986154 9863.613034
+*** Coordinates (x y z) for point 69
+-329.231471 -1612.682409 9863.613034
+*** Coordinates (x y z) for point 70
+-66.275559 -1644.611038 9863.613034
+*** Coordinates (x y z) for point 71
+198.396855 -1633.945104 9863.613034
+*** Coordinates (x y z) for point 72
+457.930895 -1580.960850 9863.613034
+*** Coordinates (x y z) for point 73
+705.604765 -1487.030541 9863.613034
+*** Coordinates (x y z) for point 74
+935.003842 -1354.586922 9863.613034
+*** Coordinates (x y z) for point 75
+1140.186811 -1187.060213 9863.613034
+*** Coordinates (x y z) for point 76
+1315.839541 -988.789268 9863.613034
+*** Coordinates (x y z) for point 77
+1457.412718 -764.909201 9863.613034
+*** Coordinates (x y z) for point 78
+1561.239670 -521.218387 9863.613034
+*** Coordinates (x y z) for point 79
+1624.631336 -264.028290 9863.613034
+*** Coordinates (x y z) for point 80
+1645.945903 -0.000000 9863.613034
+*** Coordinates (x y z) for point 81
+3246.994692 0.000000 9458.172417
+*** Coordinates (x y z) for point 82
+3204.946964 520.854577 9458.172417
+*** Coordinates (x y z) for point 83
+3079.892792 1028.219295 9458.172417
+*** Coordinates (x y z) for point 84
+2875.071015 1508.953673 9458.172417
+*** Coordinates (x y z) for point 85
+2595.786409 1950.606943 9458.172417
+*** Coordinates (x y z) for point 86
+2249.272299 2341.740518 9458.172417
+*** Coordinates (x y z) for point 87
+1844.503217 2672.224244 9458.172417
+*** Coordinates (x y z) for point 88
+1391.962471 2933.498766 9458.172417
+*** Coordinates (x y z) for point 89
+903.370629 3118.797210 9458.172417
+*** Coordinates (x y z) for point 90
+391.381961 3223.320445 9458.172417
+*** Coordinates (x y z) for point 91
+-130.743294 3244.361373 9458.172417
+*** Coordinates (x y z) for point 92
+-649.482366 3181.375046 9458.172417
+*** Coordinates (x y z) for point 93
+-1151.400186 3035.992777 9458.172417
+*** Coordinates (x y z) for point 94
+-1623.497346 2811.979889 9458.172417
+*** Coordinates (x y z) for point 95
+-2053.546778 2515.138199 9458.172417
+*** Coordinates (x y z) for point 96
+-2430.410426 2153.155751 9458.172417
+*** Coordinates (x y z) for point 97
+-2744.327722 1735.407701 9458.172417
+*** Coordinates (x y z) for point 98
+-2987.168370 1272.713502 9458.172417
+*** Coordinates (x y z) for point 99
+-3152.642927 777.056692 9458.172417
+*** Coordinates (x y z) for point 100
+-3236.465689 261.274522 9458.172417
+*** Coordinates (x y z) for point 101
+-3236.465689 -261.274522 9458.172417
+*** Coordinates (x y z) for point 102
+-3152.642927 -777.056692 9458.172417
+*** Coordinates (x y z) for point 103
+-2987.168370 -1272.713502 9458.172417
+*** Coordinates (x y z) for point 104
+-2744.327722 -1735.407701 9458.172417
+*** Coordinates (x y z) for point 105
+-2430.410426 -2153.155751 9458.172417
+*** Coordinates (x y z) for point 106
+-2053.546778 -2515.138199 9458.172417
+*** Coordinates (x y z) for point 107
+-1623.497346 -2811.979889 9458.172417
+*** Coordinates (x y z) for point 108
+-1151.400186 -3035.992777 9458.172417
+*** Coordinates (x y z) for point 109
+-649.482366 -3181.375046 9458.172417
+*** Coordinates (x y z) for point 110
+-130.743294 -3244.361373 9458.172417
+*** Coordinates (x y z) for point 111
+391.381961 -3223.320445 9458.172417
+*** Coordinates (x y z) for point 112
+903.370629 -3118.797210 9458.172417
+*** Coordinates (x y z) for point 113
+1391.962471 -2933.498766 9458.172417
+*** Coordinates (x y z) for point 114
+1844.503217 -2672.224244 9458.172417
+*** Coordinates (x y z) for point 115
+2249.272299 -2341.740518 9458.172417
+*** Coordinates (x y z) for point 116
+2595.786409 -1950.606943 9458.172417
+*** Coordinates (x y z) for point 117
+2875.071015 -1508.953673 9458.172417
+*** Coordinates (x y z) for point 118
+3079.892792 -1028.219295 9458.172417
+*** Coordinates (x y z) for point 119
+3204.946964 -520.854577 9458.172417
+*** Coordinates (x y z) for point 120
+3246.994692 -0.000000 9458.172417
+*** Coordinates (x y z) for point 121
+4759.473930 0.000000 8794.737512
+*** Coordinates (x y z) for point 122
+4697.839993 763.473309 8794.737512
+*** Coordinates (x y z) for point 123
+4514.534467 1507.173061 8794.737512
+*** Coordinates (x y z) for point 124
+4214.304871 2211.837822 8794.737512
+*** Coordinates (x y z) for point 125
+3804.926991 2859.217146 8794.737512
+*** Coordinates (x y z) for point 126
+3297.003501 3432.544247 8794.737512
+*** Coordinates (x y z) for point 127
+2703.689353 3916.970255 8794.737512
+*** Coordinates (x y z) for point 128
+2040.351070 4299.948791 8794.737512
+*** Coordinates (x y z) for point 129
+1324.168766 4571.560912 8794.737512
+*** Coordinates (x y z) for point 130
+573.691187 4724.772007 8794.737512
+*** Coordinates (x y z) for point 131
+-191.644692 4755.613988 8794.737512
+*** Coordinates (x y z) for point 132
+-952.017075 4663.288066 8794.737512
+*** Coordinates (x y z) for point 133
+-1687.732715 4450.185432 8794.737512
+*** Coordinates (x y z) for point 134
+-2379.736965 4121.825332 8794.737512
+*** Coordinates (x y z) for point 135
+-3010.107278 3686.712122 8794.737512
+*** Coordinates (x y z) for point 136
+-3562.517393 3156.115005 8794.737512
+*** Coordinates (x y z) for point 137
+-4022.660178 2543.776166 8794.737512
+*** Coordinates (x y z) for point 138
+-4378.618179 1865.554861 8794.737512
+*** Coordinates (x y z) for point 139
+-4621.172268 1139.016665 8794.737512
+*** Coordinates (x y z) for point 140
+-4744.040423 382.978536 8794.737512
+*** Coordinates (x y z) for point 141
+-4744.040423 -382.978536 8794.737512
+*** Coordinates (x y z) for point 142
+-4621.172268 -1139.016665 8794.737512
+*** Coordinates (x y z) for point 143
+-4378.618179 -1865.554861 8794.737512
+*** Coordinates (x y z) for point 144
+-4022.660178 -2543.776166 8794.737512
+*** Coordinates (x y z) for point 145
+-3562.517393 -3156.115005 8794.737512
+*** Coordinates (x y z) for point 146
+-3010.107278 -3686.712122 8794.737512
+*** Coordinates (x y z) for point 147
+-2379.736965 -4121.825332 8794.737512
+*** Coordinates (x y z) for point 148
+-1687.732715 -4450.185432 8794.737512
+*** Coordinates (x y z) for point 149
+-952.017075 -4663.288066 8794.737512
+*** Coordinates (x y z) for point 150
+-191.644692 -4755.613988 8794.737512
+*** Coordinates (x y z) for point 151
+573.691187 -4724.772007 8794.737512
+*** Coordinates (x y z) for point 152
+1324.168766 -4571.560912 8794.737512
+*** Coordinates (x y z) for point 153
+2040.351070 -4299.948791 8794.737512
+*** Coordinates (x y z) for point 154
+2703.689353 -3916.970255 8794.737512
+*** Coordinates (x y z) for point 155
+3297.003501 -3432.544247 8794.737512
+*** Coordinates (x y z) for point 156
+3804.926991 -2859.217146 8794.737512
+*** Coordinates (x y z) for point 157
+4214.304871 -2211.837822 8794.737512
+*** Coordinates (x y z) for point 158
+4514.534467 -1507.173061 8794.737512
+*** Coordinates (x y z) for point 159
+4697.839993 -763.473309 8794.737512
+*** Coordinates (x y z) for point 160
+4759.473930 -0.000000 8794.737512
+*** Coordinates (x y z) for point 161
+6142.127127 0.000000 7891.405094
+*** Coordinates (x y z) for point 162
+6062.588194 985.266480 7891.405094
+*** Coordinates (x y z) for point 163
+5826.031411 1945.015075 7891.405094
+*** Coordinates (x y z) for point 164
+5438.583475 2854.388802 7891.405094
+*** Coordinates (x y z) for point 165
+4910.279084 3689.835357 7891.405094
+*** Coordinates (x y z) for point 166
+4254.801043 4429.717116 7891.405094
+*** Coordinates (x y z) for point 167
+3489.125891 5054.871528 7891.405094
+*** Coordinates (x y z) for point 168
+2633.084210 5549.107422 7891.405094
+*** Coordinates (x y z) for point 169
+1708.847032 5899.624349 7891.405094
+*** Coordinates (x y z) for point 170
+740.351614 6097.344105 7891.405094
+*** Coordinates (x y z) for point 171
+-247.318523 6137.145851 7891.405094
+*** Coordinates (x y z) for point 172
+-1228.583240 6017.998743 7891.405094
+*** Coordinates (x y z) for point 173
+-2178.028296 5742.988628 7891.405094
+*** Coordinates (x y z) for point 174
+-3071.063563 5319.238125 7891.405094
+*** Coordinates (x y z) for point 175
+-3884.559898 4757.722149 7891.405094
+*** Coordinates (x y z) for point 176
+-4597.448171 4072.983668 7891.405094
+*** Coordinates (x y z) for point 177
+-5191.264952 3282.757049 7891.405094
+*** Coordinates (x y z) for point 178
+-5650.630697 2407.508747 7891.405094
+*** Coordinates (x y z) for point 179
+-5963.648075 1469.907234 7891.405094
+*** Coordinates (x y z) for point 180
+-6122.210101 494.235895 7891.405094
+*** Coordinates (x y z) for point 181
+-6122.210101 -494.235895 7891.405094
+*** Coordinates (x y z) for point 182
+-5963.648075 -1469.907234 7891.405094
+*** Coordinates (x y z) for point 183
+-5650.630697 -2407.508747 7891.405094
+*** Coordinates (x y z) for point 184
+-5191.264952 -3282.757049 7891.405094
+*** Coordinates (x y z) for point 185
+-4597.448171 -4072.983668 7891.405094
+*** Coordinates (x y z) for point 186
+-3884.559898 -4757.722149 7891.405094
+*** Coordinates (x y z) for point 187
+-3071.063563 -5319.238125 7891.405094
+*** Coordinates (x y z) for point 188
+-2178.028296 -5742.988628 7891.405094
+*** Coordinates (x y z) for point 189
+-1228.583240 -6017.998743 7891.405094
+*** Coordinates (x y z) for point 190
+-247.318523 -6137.145851 7891.405094
+*** Coordinates (x y z) for point 191
+740.351614 -6097.344105 7891.405094
+*** Coordinates (x y z) for point 192
+1708.847032 -5899.624349 7891.405094
+*** Coordinates (x y z) for point 193
+2633.084210 -5549.107422 7891.405094
+*** Coordinates (x y z) for point 194
+3489.125891 -5054.871528 7891.405094
+*** Coordinates (x y z) for point 195
+4254.801043 -4429.717116 7891.405094
+*** Coordinates (x y z) for point 196
+4910.279084 -3689.835357 7891.405094
+*** Coordinates (x y z) for point 197
+5438.583475 -2854.388802 7891.405094
+*** Coordinates (x y z) for point 198
+5826.031411 -1945.015075 7891.405094
+*** Coordinates (x y z) for point 199
+6062.588194 -985.266480 7891.405094
+*** Coordinates (x y z) for point 200
+6142.127127 -0.000000 7891.405094
+*** Coordinates (x y z) for point 201
+7357.239107 0.000000 6772.815716
+*** Coordinates (x y z) for point 202
+7261.964793 1180.184149 6772.815716
+*** Coordinates (x y z) for point 203
+6978.609405 2329.802148 6772.815716
+*** Coordinates (x y z) for point 204
+6514.511699 3419.079495 6772.815716
+*** Coordinates (x y z) for point 205
+5881.691563 4419.804480 6772.815716
+*** Coordinates (x y z) for point 206
+5096.538704 5306.058849 6772.815716
+*** Coordinates (x y z) for point 207
+4179.388170 6054.889082 6772.815716
+*** Coordinates (x y z) for point 208
+3153.993678 6646.900869 6772.815716
+*** Coordinates (x y z) for point 209
+2046.912406 7066.761414 6772.815716
+*** Coordinates (x y z) for point 210
+886.817178 7303.596550 6772.815716
+*** Coordinates (x y z) for point 211
+-296.246149 7351.272372 6772.815716
+*** Coordinates (x y z) for point 212
+-1471.636857 7208.554102 6772.815716
+*** Coordinates (x y z) for point 213
+-2608.912942 6879.138066 6772.815716
+*** Coordinates (x y z) for point 214
+-3678.619553 6371.555968 6772.815716
+*** Coordinates (x y z) for point 215
+-4653.051850 5698.953917 6772.815716
+*** Coordinates (x y z) for point 216
+-5506.972548 4878.751954 6772.815716
+*** Coordinates (x y z) for point 217
+-6218.265550 3932.192877 6772.815716
+*** Coordinates (x y z) for point 218
+-6768.508740 2883.792071 6772.815716
+*** Coordinates (x y z) for point 219
+-7143.451110 1760.702564 6772.815716
+*** Coordinates (x y z) for point 220
+-7333.381847 592.011786 6772.815716
+*** Coordinates (x y z) for point 221
+-7333.381847 -592.011786 6772.815716
+*** Coordinates (x y z) for point 222
+-7143.451110 -1760.702564 6772.815716
+*** Coordinates (x y z) for point 223
+-6768.508740 -2883.792071 6772.815716
+*** Coordinates (x y z) for point 224
+-6218.265550 -3932.192877 6772.815716
+*** Coordinates (x y z) for point 225
+-5506.972548 -4878.751954 6772.815716
+*** Coordinates (x y z) for point 226
+-4653.051850 -5698.953917 6772.815716
+*** Coordinates (x y z) for point 227
+-3678.619553 -6371.555968 6772.815716
+*** Coordinates (x y z) for point 228
+-2608.912942 -6879.138066 6772.815716
+*** Coordinates (x y z) for point 229
+-1471.636857 -7208.554102 6772.815716
+*** Coordinates (x y z) for point 230
+-296.246149 -7351.272372 6772.815716
+*** Coordinates (x y z) for point 231
+886.817178 -7303.596550 6772.815716
+*** Coordinates (x y z) for point 232
+2046.912406 -7066.761414 6772.815716
+*** Coordinates (x y z) for point 233
+3153.993678 -6646.900869 6772.815716
+*** Coordinates (x y z) for point 234
+4179.388170 -6054.889082 6772.815716
+*** Coordinates (x y z) for point 235
+5096.538704 -5306.058849 6772.815716
+*** Coordinates (x y z) for point 236
+5881.691563 -4419.804480 6772.815716
+*** Coordinates (x y z) for point 237
+6514.511699 -3419.079495 6772.815716
+*** Coordinates (x y z) for point 238
+6978.609405 -2329.802148 6772.815716
+*** Coordinates (x y z) for point 239
+7261.964793 -1180.184149 6772.815716
+*** Coordinates (x y z) for point 240
+7357.239107 -0.000000 6772.815716
+*** Coordinates (x y z) for point 241
+8371.664783 0.000000 5469.481581
+*** Coordinates (x y z) for point 242
+8263.253922 1342.909471 5469.481581
+*** Coordinates (x y z) for point 243
+7940.829126 2651.038291 5469.481581
+*** Coordinates (x y z) for point 244
+7412.741027 3890.506613 5469.481581
+*** Coordinates (x y z) for point 245
+6692.666828 5029.212857 5469.481581
+*** Coordinates (x y z) for point 246
+5799.256074 6037.665130 5469.481581
+*** Coordinates (x y z) for point 247
+4755.647634 6889.745047 5469.481581
+*** Coordinates (x y z) for point 248
+3588.870419 7563.384186 5469.481581
+*** Coordinates (x y z) for point 249
+2329.143345 8041.135648 5469.481581
+*** Coordinates (x y z) for point 250
+1009.092681 8310.625921 5469.481581
+*** Coordinates (x y z) for point 251
+-337.092953 8364.875347 5469.481581
+*** Coordinates (x y z) for point 252
+-1674.548056 8202.478896 5469.481581
+*** Coordinates (x y z) for point 253
+-2968.633245 7827.642550 5469.481581
+*** Coordinates (x y z) for point 254
+-4185.832391 7250.074374 5469.481581
+*** Coordinates (x y z) for point 255
+-5294.620678 6484.733079 5469.481581
+*** Coordinates (x y z) for point 256
+-6266.281070 5551.440605 5469.481581
+*** Coordinates (x y z) for point 257
+-7075.648074 4474.368734 5469.481581
+*** Coordinates (x y z) for point 258
+-7701.759509 3281.413064 5469.481581
+*** Coordinates (x y z) for point 259
+-8128.399419 2003.470519 5469.481581
+*** Coordinates (x y z) for point 260
+-8344.518053 673.639140 5469.481581
+*** Coordinates (x y z) for point 261
+-8344.518053 -673.639140 5469.481581
+*** Coordinates (x y z) for point 262
+-8128.399419 -2003.470519 5469.481581
+*** Coordinates (x y z) for point 263
+-7701.759509 -3281.413064 5469.481581
+*** Coordinates (x y z) for point 264
+-7075.648074 -4474.368734 5469.481581
+*** Coordinates (x y z) for point 265
+-6266.281070 -5551.440605 5469.481581
+*** Coordinates (x y z) for point 266
+-5294.620678 -6484.733079 5469.481581
+*** Coordinates (x y z) for point 267
+-4185.832391 -7250.074374 5469.481581
+*** Coordinates (x y z) for point 268
+-2968.633245 -7827.642550 5469.481581
+*** Coordinates (x y z) for point 269
+-1674.548056 -8202.478896 5469.481581
+*** Coordinates (x y z) for point 270
+-337.092953 -8364.875347 5469.481581
+*** Coordinates (x y z) for point 271
+1009.092681 -8310.625921 5469.481581
+*** Coordinates (x y z) for point 272
+2329.143345 -8041.135648 5469.481581
+*** Coordinates (x y z) for point 273
+3588.870419 -7563.384186 5469.481581
+*** Coordinates (x y z) for point 274
+4755.647634 -6889.745047 5469.481581
+*** Coordinates (x y z) for point 275
+5799.256074 -6037.665130 5469.481581
+*** Coordinates (x y z) for point 276
+6692.666828 -5029.212857 5469.481581
+*** Coordinates (x y z) for point 277
+7412.741027 -3890.506613 5469.481581
+*** Coordinates (x y z) for point 278
+7940.829126 -2651.038291 5469.481581
+*** Coordinates (x y z) for point 279
+8263.253922 -1342.909471 5469.481581
+*** Coordinates (x y z) for point 280
+8371.664783 -0.000000 5469.481581
+*** Coordinates (x y z) for point 281
+9157.733267 0.000000 4016.954247
+*** Coordinates (x y z) for point 282
+9039.143026 1469.003723 4016.954247
+*** Coordinates (x y z) for point 283
+8686.443729 2899.961021 4016.954247
+*** Coordinates (x y z) for point 284
+8108.770102 4255.810852 4016.954247
+*** Coordinates (x y z) for point 285
+7321.083589 5501.437418 4016.954247
+*** Coordinates (x y z) for point 286
+6343.784857 6604.579644 4016.954247
+*** Coordinates (x y z) for point 287
+5202.185429 7536.666727 4016.954247
+*** Coordinates (x y z) for point 288
+3925.852131 8273.558100 4016.954247
+*** Coordinates (x y z) for point 289
+2547.841325 8796.168664 4016.954247
+*** Coordinates (x y z) for point 290
+1103.842767 9090.963080 4016.954247
+*** Coordinates (x y z) for point 291
+-368.744739 9150.306328 4016.954247
+*** Coordinates (x y z) for point 292
+-1831.781950 8972.661448 4016.954247
+*** Coordinates (x y z) for point 293
+-3247.376971 8562.629350 4016.954247
+*** Coordinates (x y z) for point 294
+-4578.866633 7930.829650 4016.954247
+*** Coordinates (x y z) for point 295
+-5791.766055 7093.625627 4016.954247
+*** Coordinates (x y z) for point 296
+-6854.661779 6072.700427 4016.954247
+*** Coordinates (x y z) for point 297
+-7740.025363 4894.495476 4016.954247
+*** Coordinates (x y z) for point 298
+-8424.926356 3589.525662 4016.954247
+*** Coordinates (x y z) for point 299
+-8891.626181 2191.589020 4016.954247
+*** Coordinates (x y z) for point 300
+-9128.037559 736.891373 4016.954247
+*** Coordinates (x y z) for point 301
+-9128.037559 -736.891373 4016.954247
+*** Coordinates (x y z) for point 302
+-8891.626181 -2191.589020 4016.954247
+*** Coordinates (x y z) for point 303
+-8424.926356 -3589.525662 4016.954247
+*** Coordinates (x y z) for point 304
+-7740.025363 -4894.495476 4016.954247
+*** Coordinates (x y z) for point 305
+-6854.661779 -6072.700427 4016.954247
+*** Coordinates (x y z) for point 306
+-5791.766055 -7093.625627 4016.954247
+*** Coordinates (x y z) for point 307
+-4578.866633 -7930.829650 4016.954247
+*** Coordinates (x y z) for point 308
+-3247.376971 -8562.629350 4016.954247
+*** Coordinates (x y z) for point 309
+-1831.781950 -8972.661448 4016.954247
+*** Coordinates (x y z) for point 310
+-368.744739 -9150.306328 4016.954247
+*** Coordinates (x y z) for point 311
+1103.842767 -9090.963080 4016.954247
+*** Coordinates (x y z) for point 312
+2547.841325 -8796.168664 4016.954247
+*** Coordinates (x y z) for point 313
+3925.852131 -8273.558100 4016.954247
+*** Coordinates (x y z) for point 314
+5202.185429 -7536.666727 4016.954247
+*** Coordinates (x y z) for point 315
+6343.784857 -6604.579644 4016.954247
+*** Coordinates (x y z) for point 316
+7321.083589 -5501.437418 4016.954247
+*** Coordinates (x y z) for point 317
+8108.770102 -4255.810852 4016.954247
+*** Coordinates (x y z) for point 318
+8686.443729 -2899.961021 4016.954247
+*** Coordinates (x y z) for point 319
+9039.143026 -1469.003723 4016.954247
+*** Coordinates (x y z) for point 320
+9157.733267 -0.000000 4016.954247
+*** Coordinates (x y z) for point 321
+9694.002659 0.000000 2454.854871
+*** Coordinates (x y z) for point 322
+9568.467871 1555.027383 2454.854871
+*** Coordinates (x y z) for point 323
+9195.114791 3069.780374 2454.854871
+*** Coordinates (x y z) for point 324
+8583.613067 4505.027666 2454.854871
+*** Coordinates (x y z) for point 325
+7749.800274 5823.597107 2454.854871
+*** Coordinates (x y z) for point 326
+6715.271725 6991.338443 2454.854871
+*** Coordinates (x y z) for point 327
+5506.821166 7978.007785 2454.854871
+*** Coordinates (x y z) for point 328
+4155.746830 8758.050916 2454.854871
+*** Coordinates (x y z) for point 329
+2697.040835 9311.265129 2454.854871
+*** Coordinates (x y z) for point 330
+1168.482899 9623.322466 2454.854871
+*** Coordinates (x y z) for point 331
+-390.338131 9686.140806 2454.854871
+*** Coordinates (x y z) for point 332
+-1939.049607 9498.093187 2454.854871
+*** Coordinates (x y z) for point 333
+-3437.540718 9064.049943 2454.854871
+*** Coordinates (x y z) for point 334
+-4847.001330 8395.252567 2454.854871
+*** Coordinates (x y z) for point 335
+-6130.927153 7509.022560 2454.854871
+*** Coordinates (x y z) for point 336
+-7256.065183 6428.312812 2454.854871
+*** Coordinates (x y z) for point 337
+-8193.274937 5181.113140 2454.854871
+*** Coordinates (x y z) for point 338
+-8918.283173 3799.725358 2454.854871
+*** Coordinates (x y z) for point 339
+-9412.312560 2319.926686 2454.854871
+*** Coordinates (x y z) for point 340
+-9662.567996 780.043131 2454.854871
+*** Coordinates (x y z) for point 341
+-9662.567996 -780.043131 2454.854871
+*** Coordinates (x y z) for point 342
+-9412.312560 -2319.926686 2454.854871
+*** Coordinates (x y z) for point 343
+-8918.283173 -3799.725358 2454.854871
+*** Coordinates (x y z) for point 344
+-8193.274937 -5181.113140 2454.854871
+*** Coordinates (x y z) for point 345
+-7256.065183 -6428.312812 2454.854871
+*** Coordinates (x y z) for point 346
+-6130.927153 -7509.022560 2454.854871
+*** Coordinates (x y z) for point 347
+-4847.001330 -8395.252567 2454.854871
+*** Coordinates (x y z) for point 348
+-3437.540718 -9064.049943 2454.854871
+*** Coordinates (x y z) for point 349
+-1939.049607 -9498.093187 2454.854871
+*** Coordinates (x y z) for point 350
+-390.338131 -9686.140806 2454.854871
+*** Coordinates (x y z) for point 351
+1168.482899 -9623.322466 2454.854871
+*** Coordinates (x y z) for point 352
+2697.040835 -9311.265129 2454.854871
+*** Coordinates (x y z) for point 353
+4155.746830 -8758.050916 2454.854871
+*** Coordinates (x y z) for point 354
+5506.821166 -7978.007785 2454.854871
+*** Coordinates (x y z) for point 355
+6715.271725 -6991.338443 2454.854871
+*** Coordinates (x y z) for point 356
+7749.800274 -5823.597107 2454.854871
+*** Coordinates (x y z) for point 357
+8583.613067 -4505.027666 2454.854871
+*** Coordinates (x y z) for point 358
+9195.114791 -3069.780374 2454.854871
+*** Coordinates (x y z) for point 359
+9568.467871 -1555.027383 2454.854871
+*** Coordinates (x y z) for point 360
+9694.002659 -0.000000 2454.854871
+*** Coordinates (x y z) for point 361
+9965.844930 0.000000 825.793455
+*** Coordinates (x y z) for point 362
+9836.789856 1598.633950 825.793455
+*** Coordinates (x y z) for point 363
+9452.967091 3155.864121 825.793455
+*** Coordinates (x y z) for point 364
+8824.317444 4631.359068 825.793455
+*** Coordinates (x y z) for point 365
+7967.122611 5986.904248 825.793455
+*** Coordinates (x y z) for point 366
+6903.583486 7187.391753 825.793455
+*** Coordinates (x y z) for point 367
+5661.245176 8201.729587 825.793455
+*** Coordinates (x y z) for point 368
+4272.283590 9003.646933 825.793455
+*** Coordinates (x y z) for point 369
+2772.672102 9572.374553 825.793455
+*** Coordinates (x y z) for point 370
+1201.249864 9893.182700 825.793455
+*** Coordinates (x y z) for point 371
+-401.284115 9957.762612 825.793455
+*** Coordinates (x y z) for point 372
+-1993.425046 9764.441702 825.793455
+*** Coordinates (x y z) for point 373
+-3533.937316 9318.226882 825.793455
+*** Coordinates (x y z) for point 374
+-4982.922465 8630.674880 825.793455
+*** Coordinates (x y z) for point 375
+-6302.852540 7719.592932 825.793455
+*** Coordinates (x y z) for point 376
+-7459.542045 6608.577582 825.793455
+*** Coordinates (x y z) for point 377
+-8423.033329 5326.403544 825.793455
+*** Coordinates (x y z) for point 378
+-9168.372474 3906.278452 825.793455
+*** Coordinates (x y z) for point 379
+-9676.255589 2384.982800 825.793455
+*** Coordinates (x y z) for point 380
+-9933.528766 801.917346 825.793455
+*** Coordinates (x y z) for point 381
+-9933.528766 -801.917346 825.793455
+*** Coordinates (x y z) for point 382
+-9676.255589 -2384.982800 825.793455
+*** Coordinates (x y z) for point 383
+-9168.372474 -3906.278452 825.793455
+*** Coordinates (x y z) for point 384
+-8423.033329 -5326.403544 825.793455
+*** Coordinates (x y z) for point 385
+-7459.542045 -6608.577582 825.793455
+*** Coordinates (x y z) for point 386
+-6302.852540 -7719.592932 825.793455
+*** Coordinates (x y z) for point 387
+-4982.922465 -8630.674880 825.793455
+*** Coordinates (x y z) for point 388
+-3533.937316 -9318.226882 825.793455
+*** Coordinates (x y z) for point 389
+-1993.425046 -9764.441702 825.793455
+*** Coordinates (x y z) for point 390
+-401.284115 -9957.762612 825.793455
+*** Coordinates (x y z) for point 391
+1201.249864 -9893.182700 825.793455
+*** Coordinates (x y z) for point 392
+2772.672102 -9572.374553 825.793455
+*** Coordinates (x y z) for point 393
+4272.283590 -9003.646933 825.793455
+*** Coordinates (x y z) for point 394
+5661.245176 -8201.729587 825.793455
+*** Coordinates (x y z) for point 395
+6903.583486 -7187.391753 825.793455
+*** Coordinates (x y z) for point 396
+7967.122611 -5986.904248 825.793455
+*** Coordinates (x y z) for point 397
+8824.317444 -4631.359068 825.793455
+*** Coordinates (x y z) for point 398
+9452.967091 -3155.864121 825.793455
+*** Coordinates (x y z) for point 399
+9836.789856 -1598.633950 825.793455
+*** Coordinates (x y z) for point 400
+9965.844930 -0.000000 825.793455
+*** Coordinates (x y z) for point 401
+9965.844930 0.000000 -825.793455
+*** Coordinates (x y z) for point 402
+9836.789856 1598.633950 -825.793455
+*** Coordinates (x y z) for point 403
+9452.967091 3155.864121 -825.793455
+*** Coordinates (x y z) for point 404
+8824.317444 4631.359068 -825.793455
+*** Coordinates (x y z) for point 405
+7967.122611 5986.904248 -825.793455
+*** Coordinates (x y z) for point 406
+6903.583486 7187.391753 -825.793455
+*** Coordinates (x y z) for point 407
+5661.245176 8201.729587 -825.793455
+*** Coordinates (x y z) for point 408
+4272.283590 9003.646933 -825.793455
+*** Coordinates (x y z) for point 409
+2772.672102 9572.374553 -825.793455
+*** Coordinates (x y z) for point 410
+1201.249864 9893.182700 -825.793455
+*** Coordinates (x y z) for point 411
+-401.284115 9957.762612 -825.793455
+*** Coordinates (x y z) for point 412
+-1993.425046 9764.441702 -825.793455
+*** Coordinates (x y z) for point 413
+-3533.937316 9318.226882 -825.793455
+*** Coordinates (x y z) for point 414
+-4982.922465 8630.674880 -825.793455
+*** Coordinates (x y z) for point 415
+-6302.852540 7719.592932 -825.793455
+*** Coordinates (x y z) for point 416
+-7459.542045 6608.577582 -825.793455
+*** Coordinates (x y z) for point 417
+-8423.033329 5326.403544 -825.793455
+*** Coordinates (x y z) for point 418
+-9168.372474 3906.278452 -825.793455
+*** Coordinates (x y z) for point 419
+-9676.255589 2384.982800 -825.793455
+*** Coordinates (x y z) for point 420
+-9933.528766 801.917346 -825.793455
+*** Coordinates (x y z) for point 421
+-9933.528766 -801.917346 -825.793455
+*** Coordinates (x y z) for point 422
+-9676.255589 -2384.982800 -825.793455
+*** Coordinates (x y z) for point 423
+-9168.372474 -3906.278452 -825.793455
+*** Coordinates (x y z) for point 424
+-8423.033329 -5326.403544 -825.793455
+*** Coordinates (x y z) for point 425
+-7459.542045 -6608.577582 -825.793455
+*** Coordinates (x y z) for point 426
+-6302.852540 -7719.592932 -825.793455
+*** Coordinates (x y z) for point 427
+-4982.922465 -8630.674880 -825.793455
+*** Coordinates (x y z) for point 428
+-3533.937316 -9318.226882 -825.793455
+*** Coordinates (x y z) for point 429
+-1993.425046 -9764.441702 -825.793455
+*** Coordinates (x y z) for point 430
+-401.284115 -9957.762612 -825.793455
+*** Coordinates (x y z) for point 431
+1201.249864 -9893.182700 -825.793455
+*** Coordinates (x y z) for point 432
+2772.672102 -9572.374553 -825.793455
+*** Coordinates (x y z) for point 433
+4272.283590 -9003.646933 -825.793455
+*** Coordinates (x y z) for point 434
+5661.245176 -8201.729587 -825.793455
+*** Coordinates (x y z) for point 435
+6903.583486 -7187.391753 -825.793455
+*** Coordinates (x y z) for point 436
+7967.122611 -5986.904248 -825.793455
+*** Coordinates (x y z) for point 437
+8824.317444 -4631.359068 -825.793455
+*** Coordinates (x y z) for point 438
+9452.967091 -3155.864121 -825.793455
+*** Coordinates (x y z) for point 439
+9836.789856 -1598.633950 -825.793455
+*** Coordinates (x y z) for point 440
+9965.844930 -0.000000 -825.793455
+*** Coordinates (x y z) for point 441
+9694.002659 0.000000 -2454.854871
+*** Coordinates (x y z) for point 442
+9568.467871 1555.027383 -2454.854871
+*** Coordinates (x y z) for point 443
+9195.114791 3069.780374 -2454.854871
+*** Coordinates (x y z) for point 444
+8583.613067 4505.027666 -2454.854871
+*** Coordinates (x y z) for point 445
+7749.800274 5823.597107 -2454.854871
+*** Coordinates (x y z) for point 446
+6715.271725 6991.338443 -2454.854871
+*** Coordinates (x y z) for point 447
+5506.821166 7978.007785 -2454.854871
+*** Coordinates (x y z) for point 448
+4155.746830 8758.050916 -2454.854871
+*** Coordinates (x y z) for point 449
+2697.040835 9311.265129 -2454.854871
+*** Coordinates (x y z) for point 450
+1168.482899 9623.322466 -2454.854871
+*** Coordinates (x y z) for point 451
+-390.338131 9686.140806 -2454.854871
+*** Coordinates (x y z) for point 452
+-1939.049607 9498.093187 -2454.854871
+*** Coordinates (x y z) for point 453
+-3437.540718 9064.049943 -2454.854871
+*** Coordinates (x y z) for point 454
+-4847.001330 8395.252567 -2454.854871
+*** Coordinates (x y z) for point 455
+-6130.927153 7509.022560 -2454.854871
+*** Coordinates (x y z) for point 456
+-7256.065183 6428.312812 -2454.854871
+*** Coordinates (x y z) for point 457
+-8193.274937 5181.113140 -2454.854871
+*** Coordinates (x y z) for point 458
+-8918.283173 3799.725358 -2454.854871
+*** Coordinates (x y z) for point 459
+-9412.312560 2319.926686 -2454.854871
+*** Coordinates (x y z) for point 460
+-9662.567996 780.043131 -2454.854871
+*** Coordinates (x y z) for point 461
+-9662.567996 -780.043131 -2454.854871
+*** Coordinates (x y z) for point 462
+-9412.312560 -2319.926686 -2454.854871
+*** Coordinates (x y z) for point 463
+-8918.283173 -3799.725358 -2454.854871
+*** Coordinates (x y z) for point 464
+-8193.274937 -5181.113140 -2454.854871
+*** Coordinates (x y z) for point 465
+-7256.065183 -6428.312812 -2454.854871
+*** Coordinates (x y z) for point 466
+-6130.927153 -7509.022560 -2454.854871
+*** Coordinates (x y z) for point 467
+-4847.001330 -8395.252567 -2454.854871
+*** Coordinates (x y z) for point 468
+-3437.540718 -9064.049943 -2454.854871
+*** Coordinates (x y z) for point 469
+-1939.049607 -9498.093187 -2454.854871
+*** Coordinates (x y z) for point 470
+-390.338131 -9686.140806 -2454.854871
+*** Coordinates (x y z) for point 471
+1168.482899 -9623.322466 -2454.854871
+*** Coordinates (x y z) for point 472
+2697.040835 -9311.265129 -2454.854871
+*** Coordinates (x y z) for point 473
+4155.746830 -8758.050916 -2454.854871
+*** Coordinates (x y z) for point 474
+5506.821166 -7978.007785 -2454.854871
+*** Coordinates (x y z) for point 475
+6715.271725 -6991.338443 -2454.854871
+*** Coordinates (x y z) for point 476
+7749.800274 -5823.597107 -2454.854871
+*** Coordinates (x y z) for point 477
+8583.613067 -4505.027666 -2454.854871
+*** Coordinates (x y z) for point 478
+9195.114791 -3069.780374 -2454.854871
+*** Coordinates (x y z) for point 479
+9568.467871 -1555.027383 -2454.854871
+*** Coordinates (x y z) for point 480
+9694.002659 -0.000000 -2454.854871
+*** Coordinates (x y z) for point 481
+9157.733267 0.000000 -4016.954247
+*** Coordinates (x y z) for point 482
+9039.143026 1469.003723 -4016.954247
+*** Coordinates (x y z) for point 483
+8686.443729 2899.961021 -4016.954247
+*** Coordinates (x y z) for point 484
+8108.770102 4255.810852 -4016.954247
+*** Coordinates (x y z) for point 485
+7321.083589 5501.437418 -4016.954247
+*** Coordinates (x y z) for point 486
+6343.784857 6604.579644 -4016.954247
+*** Coordinates (x y z) for point 487
+5202.185429 7536.666727 -4016.954247
+*** Coordinates (x y z) for point 488
+3925.852131 8273.558100 -4016.954247
+*** Coordinates (x y z) for point 489
+2547.841325 8796.168664 -4016.954247
+*** Coordinates (x y z) for point 490
+1103.842767 9090.963080 -4016.954247
+*** Coordinates (x y z) for point 491
+-368.744739 9150.306328 -4016.954247
+*** Coordinates (x y z) for point 492
+-1831.781950 8972.661448 -4016.954247
+*** Coordinates (x y z) for point 493
+-3247.376971 8562.629350 -4016.954247
+*** Coordinates (x y z) for point 494
+-4578.866633 7930.829650 -4016.954247
+*** Coordinates (x y z) for point 495
+-5791.766055 7093.625627 -4016.954247
+*** Coordinates (x y z) for point 496
+-6854.661779 6072.700427 -4016.954247
+*** Coordinates (x y z) for point 497
+-7740.025363 4894.495476 -4016.954247
+*** Coordinates (x y z) for point 498
+-8424.926356 3589.525662 -4016.954247
+*** Coordinates (x y z) for point 499
+-8891.626181 2191.589020 -4016.954247
+*** Coordinates (x y z) for point 500
+-9128.037559 736.891373 -4016.954247
+*** Coordinates (x y z) for point 501
+-9128.037559 -736.891373 -4016.954247
+*** Coordinates (x y z) for point 502
+-8891.626181 -2191.589020 -4016.954247
+*** Coordinates (x y z) for point 503
+-8424.926356 -3589.525662 -4016.954247
+*** Coordinates (x y z) for point 504
+-7740.025363 -4894.495476 -4016.954247
+*** Coordinates (x y z) for point 505
+-6854.661779 -6072.700427 -4016.954247
+*** Coordinates (x y z) for point 506
+-5791.766055 -7093.625627 -4016.954247
+*** Coordinates (x y z) for point 507
+-4578.866633 -7930.829650 -4016.954247
+*** Coordinates (x y z) for point 508
+-3247.376971 -8562.629350 -4016.954247
+*** Coordinates (x y z) for point 509
+-1831.781950 -8972.661448 -4016.954247
+*** Coordinates (x y z) for point 510
+-368.744739 -9150.306328 -4016.954247
+*** Coordinates (x y z) for point 511
+1103.842767 -9090.963080 -4016.954247
+*** Coordinates (x y z) for point 512
+2547.841325 -8796.168664 -4016.954247
+*** Coordinates (x y z) for point 513
+3925.852131 -8273.558100 -4016.954247
+*** Coordinates (x y z) for point 514
+5202.185429 -7536.666727 -4016.954247
+*** Coordinates (x y z) for point 515
+6343.784857 -6604.579644 -4016.954247
+*** Coordinates (x y z) for point 516
+7321.083589 -5501.437418 -4016.954247
+*** Coordinates (x y z) for point 517
+8108.770102 -4255.810852 -4016.954247
+*** Coordinates (x y z) for point 518
+8686.443729 -2899.961021 -4016.954247
+*** Coordinates (x y z) for point 519
+9039.143026 -1469.003723 -4016.954247
+*** Coordinates (x y z) for point 520
+9157.733267 -0.000000 -4016.954247
+*** Coordinates (x y z) for point 521
+8371.664783 0.000000 -5469.481581
+*** Coordinates (x y z) for point 522
+8263.253922 1342.909471 -5469.481581
+*** Coordinates (x y z) for point 523
+7940.829126 2651.038291 -5469.481581
+*** Coordinates (x y z) for point 524
+7412.741027 3890.506613 -5469.481581
+*** Coordinates (x y z) for point 525
+6692.666828 5029.212857 -5469.481581
+*** Coordinates (x y z) for point 526
+5799.256074 6037.665130 -5469.481581
+*** Coordinates (x y z) for point 527
+4755.647634 6889.745047 -5469.481581
+*** Coordinates (x y z) for point 528
+3588.870419 7563.384186 -5469.481581
+*** Coordinates (x y z) for point 529
+2329.143345 8041.135648 -5469.481581
+*** Coordinates (x y z) for point 530
+1009.092681 8310.625921 -5469.481581
+*** Coordinates (x y z) for point 531
+-337.092953 8364.875347 -5469.481581
+*** Coordinates (x y z) for point 532
+-1674.548056 8202.478896 -5469.481581
+*** Coordinates (x y z) for point 533
+-2968.633245 7827.642550 -5469.481581
+*** Coordinates (x y z) for point 534
+-4185.832391 7250.074374 -5469.481581
+*** Coordinates (x y z) for point 535
+-5294.620678 6484.733079 -5469.481581
+*** Coordinates (x y z) for point 536
+-6266.281070 5551.440605 -5469.481581
+*** Coordinates (x y z) for point 537
+-7075.648074 4474.368734 -5469.481581
+*** Coordinates (x y z) for point 538
+-7701.759509 3281.413064 -5469.481581
+*** Coordinates (x y z) for point 539
+-8128.399419 2003.470519 -5469.481581
+*** Coordinates (x y z) for point 540
+-8344.518053 673.639140 -5469.481581
+*** Coordinates (x y z) for point 541
+-8344.518053 -673.639140 -5469.481581
+*** Coordinates (x y z) for point 542
+-8128.399419 -2003.470519 -5469.481581
+*** Coordinates (x y z) for point 543
+-7701.759509 -3281.413064 -5469.481581
+*** Coordinates (x y z) for point 544
+-7075.648074 -4474.368734 -5469.481581
+*** Coordinates (x y z) for point 545
+-6266.281070 -5551.440605 -5469.481581
+*** Coordinates (x y z) for point 546
+-5294.620678 -6484.733079 -5469.481581
+*** Coordinates (x y z) for point 547
+-4185.832391 -7250.074374 -5469.481581
+*** Coordinates (x y z) for point 548
+-2968.633245 -7827.642550 -5469.481581
+*** Coordinates (x y z) for point 549
+-1674.548056 -8202.478896 -5469.481581
+*** Coordinates (x y z) for point 550
+-337.092953 -8364.875347 -5469.481581
+*** Coordinates (x y z) for point 551
+1009.092681 -8310.625921 -5469.481581
+*** Coordinates (x y z) for point 552
+2329.143345 -8041.135648 -5469.481581
+*** Coordinates (x y z) for point 553
+3588.870419 -7563.384186 -5469.481581
+*** Coordinates (x y z) for point 554
+4755.647634 -6889.745047 -5469.481581
+*** Coordinates (x y z) for point 555
+5799.256074 -6037.665130 -5469.481581
+*** Coordinates (x y z) for point 556
+6692.666828 -5029.212857 -5469.481581
+*** Coordinates (x y z) for point 557
+7412.741027 -3890.506613 -5469.481581
+*** Coordinates (x y z) for point 558
+7940.829126 -2651.038291 -5469.481581
+*** Coordinates (x y z) for point 559
+8263.253922 -1342.909471 -5469.481581
+*** Coordinates (x y z) for point 560
+8371.664783 -0.000000 -5469.481581
+*** Coordinates (x y z) for point 561
+7357.239107 0.000000 -6772.815716
+*** Coordinates (x y z) for point 562
+7261.964793 1180.184149 -6772.815716
+*** Coordinates (x y z) for point 563
+6978.609405 2329.802148 -6772.815716
+*** Coordinates (x y z) for point 564
+6514.511699 3419.079495 -6772.815716
+*** Coordinates (x y z) for point 565
+5881.691563 4419.804480 -6772.815716
+*** Coordinates (x y z) for point 566
+5096.538704 5306.058849 -6772.815716
+*** Coordinates (x y z) for point 567
+4179.388170 6054.889082 -6772.815716
+*** Coordinates (x y z) for point 568
+3153.993678 6646.900869 -6772.815716
+*** Coordinates (x y z) for point 569
+2046.912406 7066.761414 -6772.815716
+*** Coordinates (x y z) for point 570
+886.817178 7303.596550 -6772.815716
+*** Coordinates (x y z) for point 571
+-296.246149 7351.272372 -6772.815716
+*** Coordinates (x y z) for point 572
+-1471.636857 7208.554102 -6772.815716
+*** Coordinates (x y z) for point 573
+-2608.912942 6879.138066 -6772.815716
+*** Coordinates (x y z) for point 574
+-3678.619553 6371.555968 -6772.815716
+*** Coordinates (x y z) for point 575
+-4653.051850 5698.953917 -6772.815716
+*** Coordinates (x y z) for point 576
+-5506.972548 4878.751954 -6772.815716
+*** Coordinates (x y z) for point 577
+-6218.265550 3932.192877 -6772.815716
+*** Coordinates (x y z) for point 578
+-6768.508740 2883.792071 -6772.815716
+*** Coordinates (x y z) for point 579
+-7143.451110 1760.702564 -6772.815716
+*** Coordinates (x y z) for point 580
+-7333.381847 592.011786 -6772.815716
+*** Coordinates (x y z) for point 581
+-7333.381847 -592.011786 -6772.815716
+*** Coordinates (x y z) for point 582
+-7143.451110 -1760.702564 -6772.815716
+*** Coordinates (x y z) for point 583
+-6768.508740 -2883.792071 -6772.815716
+*** Coordinates (x y z) for point 584
+-6218.265550 -3932.192877 -6772.815716
+*** Coordinates (x y z) for point 585
+-5506.972548 -4878.751954 -6772.815716
+*** Coordinates (x y z) for point 586
+-4653.051850 -5698.953917 -6772.815716
+*** Coordinates (x y z) for point 587
+-3678.619553 -6371.555968 -6772.815716
+*** Coordinates (x y z) for point 588
+-2608.912942 -6879.138066 -6772.815716
+*** Coordinates (x y z) for point 589
+-1471.636857 -7208.554102 -6772.815716
+*** Coordinates (x y z) for point 590
+-296.246149 -7351.272372 -6772.815716
+*** Coordinates (x y z) for point 591
+886.817178 -7303.596550 -6772.815716
+*** Coordinates (x y z) for point 592
+2046.912406 -7066.761414 -6772.815716
+*** Coordinates (x y z) for point 593
+3153.993678 -6646.900869 -6772.815716
+*** Coordinates (x y z) for point 594
+4179.388170 -6054.889082 -6772.815716
+*** Coordinates (x y z) for point 595
+5096.538704 -5306.058849 -6772.815716
+*** Coordinates (x y z) for point 596
+5881.691563 -4419.804480 -6772.815716
+*** Coordinates (x y z) for point 597
+6514.511699 -3419.079495 -6772.815716
+*** Coordinates (x y z) for point 598
+6978.609405 -2329.802148 -6772.815716
+*** Coordinates (x y z) for point 599
+7261.964793 -1180.184149 -6772.815716
+*** Coordinates (x y z) for point 600
+7357.239107 -0.000000 -6772.815716
+*** Coordinates (x y z) for point 601
+6142.127127 0.000000 -7891.405094
+*** Coordinates (x y z) for point 602
+6062.588194 985.266480 -7891.405094
+*** Coordinates (x y z) for point 603
+5826.031411 1945.015075 -7891.405094
+*** Coordinates (x y z) for point 604
+5438.583475 2854.388802 -7891.405094
+*** Coordinates (x y z) for point 605
+4910.279084 3689.835357 -7891.405094
+*** Coordinates (x y z) for point 606
+4254.801043 4429.717116 -7891.405094
+*** Coordinates (x y z) for point 607
+3489.125891 5054.871528 -7891.405094
+*** Coordinates (x y z) for point 608
+2633.084210 5549.107422 -7891.405094
+*** Coordinates (x y z) for point 609
+1708.847032 5899.624349 -7891.405094
+*** Coordinates (x y z) for point 610
+740.351614 6097.344105 -7891.405094
+*** Coordinates (x y z) for point 611
+-247.318523 6137.145851 -7891.405094
+*** Coordinates (x y z) for point 612
+-1228.583240 6017.998743 -7891.405094
+*** Coordinates (x y z) for point 613
+-2178.028296 5742.988628 -7891.405094
+*** Coordinates (x y z) for point 614
+-3071.063563 5319.238125 -7891.405094
+*** Coordinates (x y z) for point 615
+-3884.559898 4757.722149 -7891.405094
+*** Coordinates (x y z) for point 616
+-4597.448171 4072.983668 -7891.405094
+*** Coordinates (x y z) for point 617
+-5191.264952 3282.757049 -7891.405094
+*** Coordinates (x y z) for point 618
+-5650.630697 2407.508747 -7891.405094
+*** Coordinates (x y z) for point 619
+-5963.648075 1469.907234 -7891.405094
+*** Coordinates (x y z) for point 620
+-6122.210101 494.235895 -7891.405094
+*** Coordinates (x y z) for point 621
+-6122.210101 -494.235895 -7891.405094
+*** Coordinates (x y z) for point 622
+-5963.648075 -1469.907234 -7891.405094
+*** Coordinates (x y z) for point 623
+-5650.630697 -2407.508747 -7891.405094
+*** Coordinates (x y z) for point 624
+-5191.264952 -3282.757049 -7891.405094
+*** Coordinates (x y z) for point 625
+-4597.448171 -4072.983668 -7891.405094
+*** Coordinates (x y z) for point 626
+-3884.559898 -4757.722149 -7891.405094
+*** Coordinates (x y z) for point 627
+-3071.063563 -5319.238125 -7891.405094
+*** Coordinates (x y z) for point 628
+-2178.028296 -5742.988628 -7891.405094
+*** Coordinates (x y z) for point 629
+-1228.583240 -6017.998743 -7891.405094
+*** Coordinates (x y z) for point 630
+-247.318523 -6137.145851 -7891.405094
+*** Coordinates (x y z) for point 631
+740.351614 -6097.344105 -7891.405094
+*** Coordinates (x y z) for point 632
+1708.847032 -5899.624349 -7891.405094
+*** Coordinates (x y z) for point 633
+2633.084210 -5549.107422 -7891.405094
+*** Coordinates (x y z) for point 634
+3489.125891 -5054.871528 -7891.405094
+*** Coordinates (x y z) for point 635
+4254.801043 -4429.717116 -7891.405094
+*** Coordinates (x y z) for point 636
+4910.279084 -3689.835357 -7891.405094
+*** Coordinates (x y z) for point 637
+5438.583475 -2854.388802 -7891.405094
+*** Coordinates (x y z) for point 638
+5826.031411 -1945.015075 -7891.405094
+*** Coordinates (x y z) for point 639
+6062.588194 -985.266480 -7891.405094
+*** Coordinates (x y z) for point 640
+6142.127127 -0.000000 -7891.405094
+*** Coordinates (x y z) for point 641
+4759.473930 0.000000 -8794.737512
+*** Coordinates (x y z) for point 642
+4697.839993 763.473309 -8794.737512
+*** Coordinates (x y z) for point 643
+4514.534467 1507.173061 -8794.737512
+*** Coordinates (x y z) for point 644
+4214.304871 2211.837822 -8794.737512
+*** Coordinates (x y z) for point 645
+3804.926991 2859.217146 -8794.737512
+*** Coordinates (x y z) for point 646
+3297.003501 3432.544247 -8794.737512
+*** Coordinates (x y z) for point 647
+2703.689353 3916.970255 -8794.737512
+*** Coordinates (x y z) for point 648
+2040.351070 4299.948791 -8794.737512
+*** Coordinates (x y z) for point 649
+1324.168766 4571.560912 -8794.737512
+*** Coordinates (x y z) for point 650
+573.691187 4724.772007 -8794.737512
+*** Coordinates (x y z) for point 651
+-191.644692 4755.613988 -8794.737512
+*** Coordinates (x y z) for point 652
+-952.017075 4663.288066 -8794.737512
+*** Coordinates (x y z) for point 653
+-1687.732715 4450.185432 -8794.737512
+*** Coordinates (x y z) for point 654
+-2379.736965 4121.825332 -8794.737512
+*** Coordinates (x y z) for point 655
+-3010.107278 3686.712122 -8794.737512
+*** Coordinates (x y z) for point 656
+-3562.517393 3156.115005 -8794.737512
+*** Coordinates (x y z) for point 657
+-4022.660178 2543.776166 -8794.737512
+*** Coordinates (x y z) for point 658
+-4378.618179 1865.554861 -8794.737512
+*** Coordinates (x y z) for point 659
+-4621.172268 1139.016665 -8794.737512
+*** Coordinates (x y z) for point 660
+-4744.040423 382.978536 -8794.737512
+*** Coordinates (x y z) for point 661
+-4744.040423 -382.978536 -8794.737512
+*** Coordinates (x y z) for point 662
+-4621.172268 -1139.016665 -8794.737512
+*** Coordinates (x y z) for point 663
+-4378.618179 -1865.554861 -8794.737512
+*** Coordinates (x y z) for point 664
+-4022.660178 -2543.776166 -8794.737512
+*** Coordinates (x y z) for point 665
+-3562.517393 -3156.115005 -8794.737512
+*** Coordinates (x y z) for point 666
+-3010.107278 -3686.712122 -8794.737512
+*** Coordinates (x y z) for point 667
+-2379.736965 -4121.825332 -8794.737512
+*** Coordinates (x y z) for point 668
+-1687.732715 -4450.185432 -8794.737512
+*** Coordinates (x y z) for point 669
+-952.017075 -4663.288066 -8794.737512
+*** Coordinates (x y z) for point 670
+-191.644692 -4755.613988 -8794.737512
+*** Coordinates (x y z) for point 671
+573.691187 -4724.772007 -8794.737512
+*** Coordinates (x y z) for point 672
+1324.168766 -4571.560912 -8794.737512
+*** Coordinates (x y z) for point 673
+2040.351070 -4299.948791 -8794.737512
+*** Coordinates (x y z) for point 674
+2703.689353 -3916.970255 -8794.737512
+*** Coordinates (x y z) for point 675
+3297.003501 -3432.544247 -8794.737512
+*** Coordinates (x y z) for point 676
+3804.926991 -2859.217146 -8794.737512
+*** Coordinates (x y z) for point 677
+4214.304871 -2211.837822 -8794.737512
+*** Coordinates (x y z) for point 678
+4514.534467 -1507.173061 -8794.737512
+*** Coordinates (x y z) for point 679
+4697.839993 -763.473309 -8794.737512
+*** Coordinates (x y z) for point 680
+4759.473930 -0.000000 -8794.737512
+*** Coordinates (x y z) for point 681
+3246.994692 0.000000 -9458.172417
+*** Coordinates (x y z) for point 682
+3204.946964 520.854577 -9458.172417
+*** Coordinates (x y z) for point 683
+3079.892792 1028.219295 -9458.172417
+*** Coordinates (x y z) for point 684
+2875.071015 1508.953673 -9458.172417
+*** Coordinates (x y z) for point 685
+2595.786409 1950.606943 -9458.172417
+*** Coordinates (x y z) for point 686
+2249.272299 2341.740518 -9458.172417
+*** Coordinates (x y z) for point 687
+1844.503217 2672.224244 -9458.172417
+*** Coordinates (x y z) for point 688
+1391.962471 2933.498766 -9458.172417
+*** Coordinates (x y z) for point 689
+903.370629 3118.797210 -9458.172417
+*** Coordinates (x y z) for point 690
+391.381961 3223.320445 -9458.172417
+*** Coordinates (x y z) for point 691
+-130.743294 3244.361373 -9458.172417
+*** Coordinates (x y z) for point 692
+-649.482366 3181.375046 -9458.172417
+*** Coordinates (x y z) for point 693
+-1151.400186 3035.992777 -9458.172417
+*** Coordinates (x y z) for point 694
+-1623.497346 2811.979889 -9458.172417
+*** Coordinates (x y z) for point 695
+-2053.546778 2515.138199 -9458.172417
+*** Coordinates (x y z) for point 696
+-2430.410426 2153.155751 -9458.172417
+*** Coordinates (x y z) for point 697
+-2744.327722 1735.407701 -9458.172417
+*** Coordinates (x y z) for point 698
+-2987.168370 1272.713502 -9458.172417
+*** Coordinates (x y z) for point 699
+-3152.642927 777.056692 -9458.172417
+*** Coordinates (x y z) for point 700
+-3236.465689 261.274522 -9458.172417
+*** Coordinates (x y z) for point 701
+-3236.465689 -261.274522 -9458.172417
+*** Coordinates (x y z) for point 702
+-3152.642927 -777.056692 -9458.172417
+*** Coordinates (x y z) for point 703
+-2987.168370 -1272.713502 -9458.172417
+*** Coordinates (x y z) for point 704
+-2744.327722 -1735.407701 -9458.172417
+*** Coordinates (x y z) for point 705
+-2430.410426 -2153.155751 -9458.172417
+*** Coordinates (x y z) for point 706
+-2053.546778 -2515.138199 -9458.172417
+*** Coordinates (x y z) for point 707
+-1623.497346 -2811.979889 -9458.172417
+*** Coordinates (x y z) for point 708
+-1151.400186 -3035.992777 -9458.172417
+*** Coordinates (x y z) for point 709
+-649.482366 -3181.375046 -9458.172417
+*** Coordinates (x y z) for point 710
+-130.743294 -3244.361373 -9458.172417
+*** Coordinates (x y z) for point 711
+391.381961 -3223.320445 -9458.172417
+*** Coordinates (x y z) for point 712
+903.370629 -3118.797210 -9458.172417
+*** Coordinates (x y z) for point 713
+1391.962471 -2933.498766 -9458.172417
+*** Coordinates (x y z) for point 714
+1844.503217 -2672.224244 -9458.172417
+*** Coordinates (x y z) for point 715
+2249.272299 -2341.740518 -9458.172417
+*** Coordinates (x y z) for point 716
+2595.786409 -1950.606943 -9458.172417
+*** Coordinates (x y z) for point 717
+2875.071015 -1508.953673 -9458.172417
+*** Coordinates (x y z) for point 718
+3079.892792 -1028.219295 -9458.172417
+*** Coordinates (x y z) for point 719
+3204.946964 -520.854577 -9458.172417
+*** Coordinates (x y z) for point 720
+3246.994692 -0.000000 -9458.172417
+*** Coordinates (x y z) for point 721
+1645.945903 0.000000 -9863.613034
+*** Coordinates (x y z) for point 722
+1624.631336 264.028290 -9863.613034
+*** Coordinates (x y z) for point 723
+1561.239670 521.218387 -9863.613034
+*** Coordinates (x y z) for point 724
+1457.412718 764.909201 -9863.613034
+*** Coordinates (x y z) for point 725
+1315.839541 988.789268 -9863.613034
+*** Coordinates (x y z) for point 726
+1140.186811 1187.060213 -9863.613034
+*** Coordinates (x y z) for point 727
+935.003842 1354.586922 -9863.613034
+*** Coordinates (x y z) for point 728
+705.604765 1487.030541 -9863.613034
+*** Coordinates (x y z) for point 729
+457.930895 1580.960850 -9863.613034
+*** Coordinates (x y z) for point 730
+198.396855 1633.945104 -9863.613034
+*** Coordinates (x y z) for point 731
+-66.275559 1644.611038 -9863.613034
+*** Coordinates (x y z) for point 732
+-329.231471 1612.682409 -9863.613034
+*** Coordinates (x y z) for point 733
+-583.660461 1538.986154 -9863.613034
+*** Coordinates (x y z) for point 734
+-822.972951 1425.430965 -9863.613034
+*** Coordinates (x y z) for point 735
+-1040.970875 1274.957863 -9863.613034
+*** Coordinates (x y z) for point 736
+-1232.008199 1091.464022 -9863.613034
+*** Coordinates (x y z) for point 737
+-1391.137158 879.701837 -9863.613034
+*** Coordinates (x y z) for point 738
+-1514.236396 645.155836 -9863.613034
+*** Coordinates (x y z) for point 739
+-1598.117706 393.900637 -9863.613034
+*** Coordinates (x y z) for point 740
+-1640.608607 132.443619 -9863.613034
+*** Coordinates (x y z) for point 741
+-1640.608607 -132.443619 -9863.613034
+*** Coordinates (x y z) for point 742
+-1598.117706 -393.900637 -9863.613034
+*** Coordinates (x y z) for point 743
+-1514.236396 -645.155836 -9863.613034
+*** Coordinates (x y z) for point 744
+-1391.137158 -879.701837 -9863.613034
+*** Coordinates (x y z) for point 745
+-1232.008199 -1091.464022 -9863.613034
+*** Coordinates (x y z) for point 746
+-1040.970875 -1274.957863 -9863.613034
+*** Coordinates (x y z) for point 747
+-822.972951 -1425.430965 -9863.613034
+*** Coordinates (x y z) for point 748
+-583.660461 -1538.986154 -9863.613034
+*** Coordinates (x y z) for point 749
+-329.231471 -1612.682409 -9863.613034
+*** Coordinates (x y z) for point 750
+-66.275559 -1644.611038 -9863.613034
+*** Coordinates (x y z) for point 751
+198.396855 -1633.945104 -9863.613034
+*** Coordinates (x y z) for point 752
+457.930895 -1580.960850 -9863.613034
+*** Coordinates (x y z) for point 753
+705.604765 -1487.030541 -9863.613034
+*** Coordinates (x y z) for point 754
+935.003842 -1354.586922 -9863.613034
+*** Coordinates (x y z) for point 755
+1140.186811 -1187.060213 -9863.613034
+*** Coordinates (x y z) for point 756
+1315.839541 -988.789268 -9863.613034
+*** Coordinates (x y z) for point 757
+1457.412718 -764.909201 -9863.613034
+*** Coordinates (x y z) for point 758
+1561.239670 -521.218387 -9863.613034
+*** Coordinates (x y z) for point 759
+1624.631336 -264.028290 -9863.613034
+*** Coordinates (x y z) for point 760
+1645.945903 -0.000000 -9863.613034
+*** Coordinates (x y z) for point 761
+0.000000 0.000000 -10000.000000
+*** Coordinates (x y z) for point 762
+0.000000 0.000000 -10000.000000
+*** Coordinates (x y z) for point 763
+0.000000 0.000000 -10000.000000
+*** Coordinates (x y z) for point 764
+0.000000 0.000000 -10000.000000
+*** Coordinates (x y z) for point 765
+0.000000 0.000000 -10000.000000
+*** Coordinates (x y z) for point 766
+0.000000 0.000000 -10000.000000
+*** Coordinates (x y z) for point 767
+0.000000 0.000000 -10000.000000
+*** Coordinates (x y z) for point 768
+0.000000 0.000000 -10000.000000
+*** Coordinates (x y z) for point 769
+0.000000 0.000000 -10000.000000
+*** Coordinates (x y z) for point 770
+0.000000 0.000000 -10000.000000
+*** Coordinates (x y z) for point 771
+-0.000000 0.000000 -10000.000000
+*** Coordinates (x y z) for point 772
+-0.000000 0.000000 -10000.000000
+*** Coordinates (x y z) for point 773
+-0.000000 0.000000 -10000.000000
+*** Coordinates (x y z) for point 774
+-0.000000 0.000000 -10000.000000
+*** Coordinates (x y z) for point 775
+-0.000000 0.000000 -10000.000000
+*** Coordinates (x y z) for point 776
+-0.000000 0.000000 -10000.000000
+*** Coordinates (x y z) for point 777
+-0.000000 0.000000 -10000.000000
+*** Coordinates (x y z) for point 778
+-0.000000 0.000000 -10000.000000
+*** Coordinates (x y z) for point 779
+-0.000000 0.000000 -10000.000000
+*** Coordinates (x y z) for point 780
+-0.000000 0.000000 -10000.000000
+*** Coordinates (x y z) for point 781
+-0.000000 -0.000000 -10000.000000
+*** Coordinates (x y z) for point 782
+-0.000000 -0.000000 -10000.000000
+*** Coordinates (x y z) for point 783
+-0.000000 -0.000000 -10000.000000
+*** Coordinates (x y z) for point 784
+-0.000000 -0.000000 -10000.000000
+*** Coordinates (x y z) for point 785
+-0.000000 -0.000000 -10000.000000
+*** Coordinates (x y z) for point 786
+-0.000000 -0.000000 -10000.000000
+*** Coordinates (x y z) for point 787
+-0.000000 -0.000000 -10000.000000
+*** Coordinates (x y z) for point 788
+-0.000000 -0.000000 -10000.000000
+*** Coordinates (x y z) for point 789
+-0.000000 -0.000000 -10000.000000
+*** Coordinates (x y z) for point 790
+-0.000000 -0.000000 -10000.000000
+*** Coordinates (x y z) for point 791
+0.000000 -0.000000 -10000.000000
+*** Coordinates (x y z) for point 792
+0.000000 -0.000000 -10000.000000
+*** Coordinates (x y z) for point 793
+0.000000 -0.000000 -10000.000000
+*** Coordinates (x y z) for point 794
+0.000000 -0.000000 -10000.000000
+*** Coordinates (x y z) for point 795
+0.000000 -0.000000 -10000.000000
+*** Coordinates (x y z) for point 796
+0.000000 -0.000000 -10000.000000
+*** Coordinates (x y z) for point 797
+0.000000 -0.000000 -10000.000000
+*** Coordinates (x y z) for point 798
+0.000000 -0.000000 -10000.000000
+*** Coordinates (x y z) for point 799
+0.000000 -0.000000 -10000.000000
+*** Coordinates (x y z) for point 800
+0.000000 -0.000000 -10000.000000

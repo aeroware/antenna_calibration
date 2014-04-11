@@ -1,0 +1,275 @@
+
+function [Ant,NewPats,SubDiv]=GridRevol(z,r,n,phi,AutoReduce,nmin);
+
+% Ant=GridRevol(z,r,n,phi,AutoReduce,nmin) creates a 
+% surface of revolution about the z-axis. Actually, only an 
+% azimuth-section extending from 0 to phi is drawn. This 
+% amounts to an entire rotatory figure for phi=2*pi. If phi 
+% is omitted, left empty or equal to an integer multiple of 
+% 2*pi, phi=2*pi is assumed. The figure is composed of 
+% m=length(z)=length(r)=length(n) polygons (representing 
+% horizontal cross-sections) drawn counterclockwise about the 
+% z-axis, starting at zero azimuth. The corners of the n(k)
+% segments of the k-th polygon lie the radius r(k) away from 
+% the z-axis at height z(k). When n is a negative scalar, 
+% it defines the number of segments of the first polygon at
+% (z(1),r(1)); in this case the number of horizontal segments 
+% of the other polygons are determined automatically. When n 
+% is positive, abs(n) defines the minimum number of segments 
+% that should be used for the widest polygon. When n is not passed
+% it is adapted in such a way that each latitudinal segment extends
+% approximately 18 degrees.
+% The corners of successive polygons are connected in such 
+% a way that the connecting segments have minimum length and 
+% no multiple connections occur. When 1 is passed for the 
+% optional parameter AutoReduce, the number of intermediate 
+% polygons is automatically reduced so that distances between 
+% successive polygons are not "much" smaller than the 
+% horizontal segments of the polygons. The optional parameter 
+% nmin defines the minimum number of segments that are used 
+% to represent a horizontal polygon.
+% Optional: phi,AutoReduce,nmin
+
+global GlobalMaxPatchCorners;
+
+% ensure column vectors:
+
+z=z(:); 
+r=abs(r(:));
+n=n(:);
+
+% no automatic reduction by default:
+
+if (nargin<5)|isempty(AutoReduce),
+  AutoReduce=0;
+end
+
+% check phi, determine if complete revolution:
+
+if (nargin<4)|isempty(phi),
+  phi=0;
+end
+pi2=2*pi;
+phi=phi-fix(phi/pi2)*pi2;
+ClosedFigure=(abs((abs(phi)-pi2)*phi)<1e-10);
+if ClosedFigure,
+  phi=pi2;
+end
+
+% set default n corresponding to 18 degrees steps in phi:
+
+if (nargin<3)|isempty(n),
+  n=ones(length(z),1)*max(round(phi/pi*10),1);
+end
+n=round(n);
+
+% nmin must be greater than 2, default=3
+% (to ensure that a maximum of 4 segments may meet 
+% on the symmetry axis set nmin<5):
+
+if (nargin<6)|isempty(nmin)|(nmin<3),
+  nminfixed=0;
+  nmin=3; 
+else
+  nminfixed=1;
+end
+
+% check number m of polygons to be drawn; 
+% if less than 2, return empty grid:
+
+Ant=GridInit;
+
+m=length(z); 
+if m<2, return, end
+
+% tolerance factor for segment length:
+
+LTol=sqrt(2);
+
+% calculate maximum radius and ensure that points on the axis 
+% are properly connected to adjacent polygons (see end of file):
+
+rmax=max(r); 
+if rmax==0, return, end
+
+rzaxis=rmax*1e-10;  % virtual radius of z-axis
+
+r=max(r,rzaxis); 
+
+% check if automatic calculation of n required: 
+
+if length(n)~=m, 
+  Auton=1;  % automatic n
+  n1=max(abs(n(1)),nmin)*sign(n(1));
+  n=abs(n1);
+  if n1>0,  % n(1) free
+    rref=rmax;
+  else      % n(1) fixed
+    rref=r(1);
+    if rref<2*rzaxis,  
+      warning(['Inconsistent input parameters, ',...
+        'radius of first polygon too small.']);
+      rref=rmax;
+      n1=-n1;
+    end
+  end
+  L=rref*2*pi/n*ones(m,1);  % nom. seglen. for AutoReduce
+else
+  Auton=0;  % fixed n-vector 
+  n=max(abs(n),nmin);
+  L=(2*pi)*r./n;  % nominal segment length for AutoReduce
+end
+
+% find polygon-cross-sections to be drawn:
+
+if AutoReduce,
+  md=ones(1,m);
+  zold=z(1);
+  rold=r(1);
+  for k=2:(m-1),  
+    if Mag([z(k)-zold;r(k)-rold],1)<L(k)/LTol,
+      md(k)=0;
+    else
+      zold=z(k);
+      rold=r(k);
+    end
+  end
+  md=find(md);
+  if length(md)>2,
+    k=md(end-1);
+    if Mag([z(k)-z(m);r(k)-r(m)],1)<L(k)/LTol/2,
+      md=md([1:end-2,end]);
+    end
+  end
+else
+  md=1:m;
+end
+z=z(md);
+r=r(md);
+if Auton==0,
+  n=n(md);
+end
+m=length(md);
+
+% calculate vector of nominal-n for automatic n-determination:
+
+if Auton,
+  n=max(r/rref*n,nmin);   % ideal n
+  if m==2,
+    n=max(n)*[1;1];
+  else
+    n=[max(n(1),n(2)/LTol);...
+       max(max(n(1:end-2)/LTol,n(2:end-1)),n(3:end)/LTol);...
+       max(n(end-1)/LTol,n(end))];
+  end
+  if nmin<5,
+    na=find(r<2*rzaxis);
+    n(na)=min(n(na),3);
+  end
+  n=round(n); 
+  % prepare nold for main loop:
+  if n1>0, % n(1) free
+    nold=min(n);  
+    if nminfixed==0,
+      maxn=max(n);
+      nnew=nmin+1;
+      if abs(nold*2^ceil(log2(maxn/nold)-1/4)-maxn)>...
+         abs(nnew*2^ceil(log2(maxn/nnew)-1/4)-maxn),
+        nold=nnew;
+      end
+    end
+  else  % n(1) fix
+    nold=abs(n1);
+    n(1)=nold;
+  end
+end
+
+% main loop:
+
+for k=1:m,  
+    
+  if Auton,
+    nnew=nold*2^ceil(log2(n(k)/nold)-1/4);
+    if nnew~=round(nnew),
+      nnew=min(n);
+      nnew=nnew*2^ceil(log2(n(k)/nnew)-1/4);
+    end
+    if k==m,
+      nnew=min(nnew,nold);
+    elseif (k==1)&(n1>0),
+      if ceil(log2(n(2)/nnew)-1/4)<=-1,
+        nnew=nnew/2;
+      end
+    end
+  else
+    nnew=n(k);
+  end
+  
+  A=GridCircle(r(k),phi,nnew);
+  A.Geom(:,3)=A.Geom(:,3)+z(k);
+  
+  if k==1,
+    Ant.Geom=A.Geom;
+    Ant.Desc=A.Desc;
+    Desc2d=cell(10000,1);
+  else
+    dn=min(nold,nnew);
+    do=max(nold,nnew);
+    t=0:(dn-ClosedFigure);
+    do=1+round(t*do/dn);
+    dn=1+t;    
+    if nnew>nold,
+      [do,dn]=deal(dn,do);
+    end
+    x=size(Ant.Geom,1);
+    do=do+x-nold-1+ClosedFigure;
+    dn=dn+x;
+    Ant.Geom=[Ant.Geom;A.Geom];
+    Ant.Desc=[Ant.Desc;[do',dn'];A.Desc+x];
+    for q=1:(length(dn)-1),
+      Ant.Desc2d{end+1,1}=...
+        [do(q),dn(q):dn(q+1),do(q+1):-1:do(q)+1];
+    end
+    if ClosedFigure,
+      Ant.Desc2d{end+1,1}=...
+        [do(end),dn(end):size(Ant.Geom,1),dn(1),do(1),x:-1:do(end)+1];
+    end     
+  end
+
+  nold=nnew; 
+  
+end  % main loop
+
+% identify nodes on z-axis which have been radially 
+% offset for proper connections:
+
+NewNodes=zeros(size(Ant.Geom,1),1);
+
+n=find(sqrt(Ant.Geom(:,1).^2+Ant.Geom(:,2).^2)<2*rzaxis); % nodes on z-axis
+
+[z,m,k]=unique(Ant.Geom(n,3));
+rep=n(m(k));                        % representatives of z-axis nodes
+Ant.Geom(rep,1:2)=0;
+
+d=setdiff(n,rep);                   % nodes on z-axis to be deleted
+Ant.Geom(d,:)=[];
+
+m=setdiff(1:length(NewNodes),d);    % nodes kept 
+NewNodes(m)=1:length(m);
+NewNodes(n)=NewNodes(rep);
+
+Ant=GridUpdate(Ant,'Nodes',NewNodes,[1,0]);
+
+for n=1:length(Ant.Desc2d),         % remove zero-length edges present
+  d=Ant.Desc2d{n};                  % from z-axis node handling.
+  [dd,k]=unique(d);
+  Ant.Desc2d{n}=d(sort(k));
+end
+
+% subdivide patches with more than GlobalMaxPatchCorners nodes:
+
+if ~isempty(GlobalMaxPatchCorners)&&~isempty(Ant.Desc2d),
+  [Ant,NewPats,SubDiv]=SubdivPatches(Ant,'all',4,{[0,0,0],[0,0,1]});
+end
+
+

@@ -1,0 +1,1061 @@
+%!PS-Adobe-2.0 EPSF-1.2
+%%Title: Smith-Diagram
+%%BoundingBox: 0 0 612 792
+%%EndComments
+%%BeginProlog
+/Circle{newpath 0 360 arc stroke} bind def
+/Line{newpath moveto lineto stroke} bind def
+/centertext{dup stringwidth pop 2 div neg 0 rmoveto show} bind def
+%%EndProlog
+%%BeginScript
+.1 setlinewidth
+306 288 219 Circle
+306 288 236 Circle
+306 288 253 Circle
+/buf 8 string def
+gsave
+306 288 translate
+1 1 180 {219 0 221 0 Line 2 rotate pop} for
+1 1 36 {219 0 224 0 Line 10 rotate pop} for
+1 1 250 {236 0 238 0 Line 1.44 rotate pop} for
+1 1 50 {236 0 241 0 Line 7.2 rotate pop} for
+ 
+/Helvetica findfont 9 scalefont setfont
+/zahl 0 def
+1 1 36 {
+   227 0 moveto
+   zahl buf cvs
+   gsave
+   -90 rotate
+   centertext
+   grestore
+   /zahl zahl 10 add def
+   10 rotate
+   pop} for
+/zahl 0 def
+1 1 50 {
+   -244 0 moveto
+   zahl buf cvs
+   gsave
+   90 rotate
+   centertext
+   grestore
+   /buf (        ) def
+   /zahl zahl 0.01 add def
+   -7.2 rotate
+   pop} for
+grestore
+%
+/Times-Roman findfont 20 scalefont setfont
+  72.00   702.00  moveto
+ (CONCEPT-Data:  ConceptDesign 2) show
+/Times-Roman findfont 14 scalefont setfont
+  72.00   660.60  moveto
+ (Line impedance 90.00 Ohm, frequency interval 1.00 MHz - 16.90 MHz) show
+ 1.00 setlinewidth
+  72.00   635.40  moveto
+ (Generator no.1, wire no. 99 middle) show
+ [] 0 setdash
+ 288.00   635.40   360.00   635.40  Line
+ [] 0 setdash
+ 0.30 setlinewidth
+  306.00    288.00    216.00  Circle
+ newpath
+  325.64    288.00    196.36    57.62   302.38  arc
+ stroke
+ newpath
+  342.00    288.00    180.00    43.60   316.40  arc
+ stroke
+ newpath
+  355.85    288.00    166.15    66.05   293.95  arc
+ stroke
+ newpath
+  367.71    288.00    154.29    50.03   309.97  arc
+ stroke
+ newpath
+  378.00    288.00    144.00    73.74   286.26  arc
+ stroke
+ newpath
+  387.00    288.00    135.00    56.14   303.86  arc
+ stroke
+ newpath
+  394.94    288.00    127.06    80.73   279.27  arc
+ stroke
+ newpath
+  402.00    288.00    120.00    61.93   298.07  arc
+ stroke
+ newpath
+  408.32    288.00    113.68    87.06   272.94  arc
+ stroke
+ newpath
+  414.00    288.00    108.00    22.62   337.38  arc
+ stroke
+ newpath
+  435.60    288.00     86.40   102.68   257.32  arc
+ stroke
+ newpath
+  450.00    288.00     72.00    17.06   342.94  arc
+ stroke
+ newpath
+  468.00    288.00     54.00    43.60   316.40  arc
+ stroke
+ newpath
+  478.80    288.00     43.20    53.13   306.87  arc
+ stroke
+ newpath
+  486.00    288.00     36.00    33.40   326.60  arc
+ stroke
+ newpath
+  502.36    288.00     19.64    57.62   302.38  arc
+ stroke
+ newpath
+  511.71    288.00     10.29    92.79   267.21  arc
+ stroke
+  517.76    288.00      4.24  Circle
+ 0.01 setlinewidth
+ newpath
+  316.29    288.00    205.71    92.79   267.21  arc
+ stroke
+ newpath
+  334.17    288.00    187.83    97.98   262.02  arc
+ stroke
+ newpath
+  349.20    288.00    172.80   102.68   257.32  arc
+ stroke
+ newpath
+  362.00    288.00    160.00   106.94   253.06  arc
+ stroke
+ newpath
+  373.03    288.00    148.97   110.82   249.18  arc
+ stroke
+ newpath
+  382.65    288.00    139.35   114.34   245.66  arc
+ stroke
+ newpath
+  391.09    288.00    130.91   117.56   242.44  arc
+ stroke
+ newpath
+  398.57    288.00    123.43   120.51   239.49  arc
+ stroke
+ newpath
+  405.24    288.00    116.76   123.21   236.79  arc
+ stroke
+ newpath
+  411.23    288.00    110.77   125.70   234.30  arc
+ stroke
+ newpath
+  419.14    288.00    102.86    92.79   267.21  arc
+ stroke
+ newpath
+  423.82    288.00     98.18    72.51   287.49  arc
+ stroke
+ newpath
+  428.09    288.00     93.91    97.98   262.02  arc
+ stroke
+ newpath
+  432.00    288.00     90.00    77.32   282.68  arc
+ stroke
+ newpath
+  438.92    288.00     83.08    81.83   278.17  arc
+ stroke
+ newpath
+  442.00    288.00     80.00   106.94   253.06  arc
+ stroke
+ newpath
+  444.86    288.00     77.14    86.05   273.95  arc
+ stroke
+ newpath
+  447.52    288.00     74.48   110.82   249.18  arc
+ stroke
+ newpath
+  454.50    288.00     67.50   115.99   244.01  arc
+ stroke
+ newpath
+  458.47    288.00     63.53   119.07   240.93  arc
+ stroke
+ newpath
+  462.00    288.00     60.00   121.89   238.11  arc
+ stroke
+ newpath
+  465.16    288.00     56.84   124.48   235.52  arc
+ stroke
+ newpath
+  474.00    288.00     48.00    83.97   276.03  arc
+ stroke
+ newpath
+  482.73    288.00     39.27    95.45   264.55  arc
+ stroke
+ newpath
+  491.14    288.00     30.86    69.98   290.02  arc
+ stroke
+ newpath
+  495.00    288.00     27.00    77.32   282.68  arc
+ stroke
+ newpath
+  498.00    288.00     24.00    83.97   276.03  arc
+ stroke
+ newpath
+  500.40    288.00     21.60    90.00   270.00  arc
+ stroke
+ newpath
+  508.50    288.00     13.50    77.32   282.68  arc
+ stroke
+ newpath
+  378.00    288.00    144.00    33.40    53.13  arc
+ stroke
+ newpath
+  378.00    288.00    144.00   306.87   326.60  arc
+ stroke
+ newpath
+  435.60    288.00     86.40    53.13    79.61  arc
+ stroke
+ newpath
+  435.60    288.00     86.40   280.39   306.87  arc
+ stroke
+ newpath
+  460.29    288.00     61.71    69.98   120.51  arc
+ stroke
+ newpath
+  460.29    288.00     61.71   239.49   290.02  arc
+ stroke
+ 0.30 setlinewidth
+ 522.00   288.00    90.00   288.00  Line
+ newpath
+  522.00  -1872.00   2160.00   453.82   101.42  arc
+ stroke
+ newpath
+  522.00   2448.00   2160.00   258.58   -93.82  arc
+ stroke
+ newpath
+  522.00   -792.00   1080.00   455.72   112.62  arc
+ stroke
+ newpath
+  522.00   1368.00   1080.00   247.38   -95.72  arc
+ stroke
+ newpath
+  522.00   -432.00    720.00   461.42   123.40  arc
+ stroke
+ newpath
+  522.00   1008.00    720.00   236.60  -101.42  arc
+ stroke
+ newpath
+  522.00   -252.00    540.00   461.42   133.60  arc
+ stroke
+ newpath
+  522.00    828.00    540.00   226.40  -101.42  arc
+ stroke
+ newpath
+  522.00   -144.00    432.00   468.92   143.13  arc
+ stroke
+ newpath
+  522.00    720.00    432.00   216.87  -108.92  arc
+ stroke
+ newpath
+  522.00    -72.00    360.00   467.06   151.93  arc
+ stroke
+ newpath
+  522.00    648.00    360.00   208.07  -107.06  arc
+ stroke
+ newpath
+  522.00    -20.57    308.57   476.27   159.98  arc
+ stroke
+ newpath
+  522.00    596.57    308.57   200.02  -116.27  arc
+ stroke
+ newpath
+  522.00     18.00    270.00   472.62   167.32  arc
+ stroke
+ newpath
+  522.00    558.00    270.00   192.68  -112.62  arc
+ stroke
+ newpath
+  522.00     48.00    240.00   483.40   173.97  arc
+ stroke
+ newpath
+  522.00    528.00    240.00   186.03  -123.40  arc
+ stroke
+ newpath
+  522.00     72.00    216.00   460.39   180.00  arc
+ stroke
+ newpath
+  522.00    504.00    216.00   180.00  -100.39  arc
+ stroke
+ newpath
+  522.00    144.00    144.00   503.13   202.62  arc
+ stroke
+ newpath
+  522.00    432.00    144.00   157.38  -143.13  arc
+ stroke
+ newpath
+  522.00    180.00    108.00   460.88   216.87  arc
+ stroke
+ newpath
+  522.00    396.00    108.00   143.13  -100.88  arc
+ stroke
+ newpath
+  522.00    216.00     72.00   480.51   233.13  arc
+ stroke
+ newpath
+  522.00    360.00     72.00   126.87  -120.51  arc
+ stroke
+ newpath
+  522.00    234.00     54.00   489.97   241.93  arc
+ stroke
+ newpath
+  522.00    342.00     54.00   118.07  -129.97  arc
+ stroke
+ newpath
+  522.00    244.80     43.20   476.79   247.38  arc
+ stroke
+ newpath
+  522.00    331.20     43.20   112.62  -116.79  arc
+ stroke
+ newpath
+  522.00    266.40     21.60   500.93   258.58  arc
+ stroke
+ newpath
+  522.00    309.60     21.60   101.42  -140.93  arc
+ stroke
+ newpath
+  522.00    277.20     10.80   492.83   264.28  arc
+ stroke
+ newpath
+  522.00    298.80     10.80    95.72  -132.83  arc
+ stroke
+ 0.01 setlinewidth
+ newpath
+  522.00  -4032.00   4320.00   452.86    95.72  arc
+ stroke
+ newpath
+  522.00   4608.00   4320.00   264.28   -92.86  arc
+ stroke
+ newpath
+  522.00  -1152.00   1440.00   458.58   107.06  arc
+ stroke
+ newpath
+  522.00   1728.00   1440.00   252.94   -98.58  arc
+ stroke
+ newpath
+  522.00   -576.00    864.00   464.25   118.07  arc
+ stroke
+ newpath
+  522.00   1152.00    864.00   241.93  -104.25  arc
+ stroke
+ newpath
+  522.00   -329.14    617.14   469.85   128.58  arc
+ stroke
+ newpath
+  522.00    905.14    617.14   231.42  -109.85  arc
+ stroke
+ newpath
+  522.00   -192.00    480.00   475.36   138.46  arc
+ stroke
+ newpath
+  522.00    768.00    480.00   221.54  -115.36  arc
+ stroke
+ newpath
+  522.00   -104.73    392.73   480.75   147.62  arc
+ stroke
+ newpath
+  522.00    680.73    392.73   212.38  -120.75  arc
+ stroke
+ newpath
+  522.00    -44.31    332.31   486.01   156.05  arc
+ stroke
+ newpath
+  522.00    620.31    332.31   203.95  -126.01  arc
+ stroke
+ newpath
+  522.00      0.00    288.00   491.11   163.74  arc
+ stroke
+ newpath
+  522.00    576.00    288.00   196.26  -131.11  arc
+ stroke
+ newpath
+  522.00     33.88    254.12   496.05   170.73  arc
+ stroke
+ newpath
+  522.00    542.12    254.12   189.27  -136.05  arc
+ stroke
+ newpath
+  522.00     60.63    227.37   500.82   177.06  arc
+ stroke
+ newpath
+  522.00    515.37    227.37   182.94  -140.82  arc
+ stroke
+ newpath
+  522.00     91.64    196.36   490.27   185.45  arc
+ stroke
+ newpath
+  522.00    484.36    196.36   174.55  -130.27  arc
+ stroke
+ newpath
+  522.00    108.00    180.00   483.40   190.39  arc
+ stroke
+ newpath
+  522.00    468.00    180.00   169.61  -123.40  arc
+ stroke
+ newpath
+  522.00    121.85    166.15   496.86   194.86  arc
+ stroke
+ newpath
+  522.00    454.15    166.15   165.14  -136.86  arc
+ stroke
+ newpath
+  522.00    133.71    154.29   488.58   198.92  arc
+ stroke
+ newpath
+  522.00    442.29    154.29   161.08  -128.58  arc
+ stroke
+ newpath
+  522.00    153.00    135.00   493.60   205.99  arc
+ stroke
+ newpath
+  522.00    423.00    135.00   154.01  -133.60  arc
+ stroke
+ newpath
+  522.00    160.94    127.06   509.08   209.07  arc
+ stroke
+ newpath
+  522.00    415.06    127.06   150.93  -149.08  arc
+ stroke
+ newpath
+  522.00    168.00    120.00   498.46   211.89  arc
+ stroke
+ newpath
+  522.00    408.00    120.00   148.11  -138.46  arc
+ stroke
+ newpath
+  522.00    174.32    113.68   514.69   214.48  arc
+ stroke
+ newpath
+  522.00    401.68    113.68   145.52  -154.69  arc
+ stroke
+ newpath
+  522.00    189.82     98.18   522.51   221.11  arc
+ stroke
+ newpath
+  522.00    386.18     98.18   138.89  -162.51  arc
+ stroke
+ newpath
+  522.00    198.00     90.00   527.32   224.76  arc
+ stroke
+ newpath
+  522.00    378.00     90.00   135.24  -167.32  arc
+ stroke
+ newpath
+  522.00    204.92     83.08   531.83   227.93  arc
+ stroke
+ newpath
+  522.00    371.08     83.08   132.07  -171.83  arc
+ stroke
+ newpath
+  522.00    210.86     77.14   536.05   230.69  arc
+ stroke
+ newpath
+  522.00    365.14     77.14   129.31  -176.05  arc
+ stroke
+ newpath
+  522.00    226.29     61.71   510.51   238.11  arc
+ stroke
+ newpath
+  522.00    349.71     61.71   121.89  -150.51  arc
+ stroke
+ newpath
+  522.00    240.00     48.00   523.74   244.94  arc
+ stroke
+ newpath
+  522.00    336.00     48.00   115.06  -163.74  arc
+ stroke
+ newpath
+  522.00    252.00     36.00   507.22   251.08  arc
+ stroke
+ newpath
+  522.00    324.00     36.00   108.92  -147.22  arc
+ stroke
+ newpath
+  522.00    257.14     30.86   514.94   253.74  arc
+ stroke
+ newpath
+  522.00    318.86     30.86   106.26  -154.94  arc
+ stroke
+ newpath
+  522.00    261.00     27.00   522.05   255.75  arc
+ stroke
+ newpath
+  522.00    315.00     27.00   104.25  -162.05  arc
+ stroke
+ newpath
+  522.00    264.00     24.00   528.58   257.32  arc
+ stroke
+ newpath
+  522.00    312.00     24.00   102.68  -168.58  arc
+ stroke
+ newpath
+  522.00    273.60     14.40   521.08   262.37  arc
+ stroke
+ newpath
+  522.00    302.40     14.40    97.63  -161.08  arc
+ stroke
+ newpath
+  522.00    720.00    432.00  -104.25   -99.53  arc
+ stroke
+ newpath
+  522.00   -144.00    432.00    99.53   104.25  arc
+ stroke
+ newpath
+  522.00    432.00    144.00  -131.11  -118.07  arc
+ stroke
+ newpath
+  522.00    144.00    144.00   118.07   131.11  arc
+ stroke
+ newpath
+  522.00    374.40     86.40  -169.61  -135.24  arc
+ stroke
+ newpath
+  522.00    201.60     86.40   135.24   169.61  arc
+ stroke
+/Helvetica findfont  6 scalefont setfont
+  93.60   291.60  moveto
+   0.00  rotate
+(0)  show
+   0.00  rotate
+ 127.83   288.00  moveto
+  90.00  rotate
+( 0.1)  show
+ -90.00  rotate
+ 160.56   288.00  moveto
+  90.00  rotate
+( 0.2)  show
+ -90.00  rotate
+ 188.25   288.00  moveto
+  90.00  rotate
+( 0.3)  show
+ -90.00  rotate
+ 211.99   288.00  moveto
+  90.00  rotate
+( 0.4)  show
+ -90.00  rotate
+ 232.56   288.00  moveto
+  90.00  rotate
+( 0.5)  show
+ -90.00  rotate
+ 250.56   288.00  moveto
+  90.00  rotate
+( 0.6)  show
+ -90.00  rotate
+ 266.44   288.00  moveto
+  90.00  rotate
+( 0.7)  show
+ -90.00  rotate
+ 280.56   288.00  moveto
+  90.00  rotate
+( 0.8)  show
+ -90.00  rotate
+ 293.19   288.00  moveto
+  90.00  rotate
+( 0.9)  show
+ -90.00  rotate
+ 304.56   288.00  moveto
+  90.00  rotate
+( 1.0)  show
+ -90.00  rotate
+ 347.76   288.00  moveto
+  90.00  rotate
+( 1.5)  show
+ -90.00  rotate
+ 376.56   288.00  moveto
+  90.00  rotate
+( 2.0)  show
+ -90.00  rotate
+ 412.56   288.00  moveto
+  90.00  rotate
+( 3.0)  show
+ -90.00  rotate
+ 434.16   288.00  moveto
+  90.00  rotate
+( 4.0)  show
+ -90.00  rotate
+ 448.56   288.00  moveto
+  90.00  rotate
+( 5.0)  show
+ -90.00  rotate
+ 481.29   288.00  moveto
+  90.00  rotate
+( 10)  show
+ -90.00  rotate
+ 499.99   288.00  moveto
+  90.00  rotate
+( 20)  show
+ -90.00  rotate
+ 104.52   326.88  moveto
+ 169.08  rotate
+( 0.1)  show
+-169.08  rotate
+  93.91   247.08  moveto
+  10.92  rotate
+( 0.1)  show
+ -10.92  rotate
+ 115.90   365.27  moveto
+ 157.88  rotate
+( 0.2)  show
+-157.88  rotate
+ 105.90   206.67  moveto
+  22.12  rotate
+( 0.2)  show
+ -22.12  rotate
+ 133.71   399.45  moveto
+ 147.10  rotate
+( 0.3)  show
+-147.10  rotate
+ 124.64   170.68  moveto
+  32.90  rotate
+( 0.3)  show
+ -32.90  rotate
+ 156.18   428.22  moveto
+ 136.90  rotate
+( 0.4)  show
+-136.90  rotate
+ 148.29   140.41  moveto
+  43.10  rotate
+( 0.4)  show
+ -43.10  rotate
+ 181.45   451.08  moveto
+ 127.37  rotate
+( 0.5)  show
+-127.37  rotate
+ 174.90   116.34  moveto
+  52.63  rotate
+( 0.5)  show
+ -52.63  rotate
+ 207.86   468.21  moveto
+ 118.57  rotate
+( 0.6)  show
+-118.57  rotate
+ 202.69    98.31  moveto
+  61.43  rotate
+( 0.6)  show
+ -61.43  rotate
+ 234.08   480.19  moveto
+ 110.52  rotate
+( 0.7)  show
+-110.52  rotate
+ 230.30    85.70  moveto
+  69.48  rotate
+( 0.7)  show
+ -69.48  rotate
+ 259.21   487.79  moveto
+ 103.18  rotate
+( 0.8)  show
+-103.18  rotate
+ 256.75    77.69  moveto
+  76.82  rotate
+( 0.8)  show
+ -76.82  rotate
+ 282.68   491.87  moveto
+  96.53  rotate
+( 0.9)  show
+ -96.53  rotate
+ 281.45    73.40  moveto
+  83.47  rotate
+( 0.9)  show
+ -83.47  rotate
+ 304.21   493.19  moveto
+  90.50  rotate
+( 1.0)  show
+ -90.50  rotate
+ 304.12    72.01  moveto
+  89.50  rotate
+( 1.0)  show
+ -89.50  rotate
+ 383.27   478.10  moveto
+  67.88  rotate
+( 1.5)  show
+ -67.88  rotate
+ 387.33    87.90  moveto
+ 112.12  rotate
+( 1.5)  show
+-112.12  rotate
+ 427.68   453.23  moveto
+  53.63  rotate
+( 2.0)  show
+ -53.63  rotate
+ 434.09   114.08  moveto
+ 126.37  rotate
+( 2.0)  show
+-126.37  rotate
+ 469.08   412.55  moveto
+  37.37  rotate
+( 3.0)  show
+ -37.37  rotate
+ 477.66   156.90  moveto
+ 142.63  rotate
+( 3.0)  show
+-142.63  rotate
+ 486.21   386.14  moveto
+  28.57  rotate
+( 4.0)  show
+ -28.57  rotate
+ 495.69   184.69  moveto
+ 151.43  rotate
+( 4.0)  show
+-151.43  rotate
+ 494.72   368.57  moveto
+  23.12  rotate
+( 5.0)  show
+ -23.12  rotate
+ 504.65   203.19  moveto
+ 156.88  rotate
+( 5.0)  show
+-156.88  rotate
+ 508.89   330.83  moveto
+  11.92  rotate
+( 10)  show
+ -11.92  rotate
+ 517.34   243.38  moveto
+ 168.08  rotate
+( 10)  show
+-168.08  rotate
+ 512.14   310.48  moveto
+   6.22  rotate
+( 20)  show
+  -6.22  rotate
+ 520.73   264.58  moveto
+ 173.78  rotate
+( 20)  show
+-173.78  rotate
+ 306.00   288.00  translate
+/Times-Roman findfont 14 scalefont setfont
+ 0.0 setgray
+ [] 0 setdash
+ 1.00 setlinewidth
+ newpath
+ 215.70   -11.34  moveto
+ 215.64   -12.48  lineto
+ 215.57   -13.63  lineto
+ 215.49   -14.79  lineto
+ 215.41   -15.94  lineto
+ 215.32   -17.11  lineto
+ 215.22   -18.27  lineto
+ 215.12   -19.45  lineto
+ 215.01   -20.63  lineto
+ 214.89   -21.81  lineto
+ 214.77   -23.00  lineto
+ 214.64   -24.20  lineto
+ 214.50   -25.41  lineto
+ 214.35   -26.62  lineto
+ 214.19   -27.84  lineto
+ 214.03   -29.07  lineto
+ 213.85   -30.31  lineto
+ 213.67   -31.55  lineto
+ 213.48   -32.81  lineto
+ 213.28   -34.08  lineto
+ 213.07   -35.36  lineto
+ 212.85   -36.65  lineto
+ 212.62   -37.95  lineto
+ 212.38   -39.26  lineto
+ 212.12   -40.59  lineto
+ 211.86   -41.93  lineto
+ 211.58   -43.28  lineto
+ 211.29   -44.65  lineto
+ 210.99   -46.03  lineto
+ 210.68   -47.43  lineto
+ 210.35   -48.84  lineto
+ 210.00   -50.27  lineto
+ 209.64   -51.72  lineto
+ 209.27   -53.19  lineto
+ 208.88   -54.67  lineto
+ 208.47   -56.17  lineto
+ 208.04   -57.70  lineto
+ 207.59   -59.25  lineto
+ 207.12   -60.81  lineto
+ 206.64   -62.40  lineto
+ 206.13   -64.02  lineto
+ 205.60   -65.66  lineto
+ 205.04   -67.32  lineto
+ 204.46   -69.01  lineto
+ 203.85   -70.73  lineto
+ 203.21   -72.47  lineto
+ 202.54   -74.24  lineto
+ 201.85   -76.05  lineto
+ 201.12   -77.88  lineto
+ 200.35   -79.75  lineto
+ 199.55   -81.65  lineto
+ 198.71   -83.59  lineto
+ 197.82   -85.56  lineto
+ 196.90   -87.57  lineto
+ 195.92   -89.61  lineto
+ 194.90   -91.70  lineto
+ 193.83   -93.83  lineto
+ 192.70   -96.00  lineto
+ 191.51   -98.21  lineto
+ 190.26  -100.47  lineto
+ 188.94  -102.77  lineto
+ 187.55  -105.12  lineto
+ 186.08  -107.52  lineto
+ 184.54  -109.97  lineto
+ 182.90  -112.47  lineto
+ 181.18  -115.02  lineto
+ 179.35  -117.62  lineto
+ 177.42  -120.28  lineto
+ 175.37  -122.99  lineto
+ 173.20  -125.76  lineto
+ 170.90  -128.58  lineto
+ 168.46  -131.46  lineto
+ 165.87  -134.39  lineto
+ 163.11  -137.37  lineto
+ 160.18  -140.41  lineto
+ 157.05  -143.49  lineto
+ 153.73  -146.62  lineto
+ 150.18  -149.79  lineto
+ 146.40  -152.99  lineto
+ 142.36  -156.23  lineto
+ 138.05  -159.48  lineto
+ 133.44  -162.74  lineto
+ 128.51  -166.00  lineto
+ 123.23  -169.23  lineto
+ 117.59  -172.43  lineto
+ 111.55  -175.55  lineto
+ 105.08  -178.58  lineto
+  98.16  -181.49  lineto
+  90.76  -184.22  lineto
+  82.84  -186.73  lineto
+  74.39  -188.97  lineto
+  65.37  -190.86  lineto
+  55.76  -192.33  lineto
+  45.57  -193.28  lineto
+  34.77  -193.62  lineto
+  23.39  -193.23  lineto
+  11.45  -191.96  lineto
+  -1.00  -189.69  lineto
+ -13.86  -186.26  lineto
+ -27.01  -181.50  lineto
+ -40.27  -175.27  lineto
+ -53.42  -167.41  lineto
+ -66.15  -157.81  lineto
+ -78.10  -146.42  lineto
+ -88.81  -133.28  lineto
+ -97.79  -118.57  lineto
+-104.49  -102.65  lineto
+-108.43   -86.17  lineto
+-109.28   -70.04  lineto
+-107.03   -55.59  lineto
+-102.39   -44.49  lineto
+ -97.50   -38.36  lineto
+ -96.19   -37.13  lineto
+-101.97   -37.25  lineto
+-114.54   -32.84  lineto
+-129.09   -20.21  lineto
+-140.30    -0.28  lineto
+-145.52    23.49  lineto
+-144.71    47.91  lineto
+-138.99    70.96  lineto
+-129.71    91.65  lineto
+-118.01   109.66  lineto
+-104.80   124.97  lineto
+ -90.72   137.76  lineto
+ -76.29   148.25  lineto
+ -61.83   156.70  lineto
+ -47.60   163.38  lineto
+ -33.76   168.50  lineto
+ -20.43   172.31  lineto
+  -7.67   174.98  lineto
+   4.47   176.70  lineto
+  15.99   177.61  lineto
+  26.89   177.85  lineto
+  37.18   177.53  lineto
+  46.90   176.75  lineto
+  56.07   175.58  lineto
+  64.72   174.09  lineto
+  72.89   172.34  lineto
+  80.61   170.38  lineto
+  87.93   168.22  lineto
+  94.86   165.91  lineto
+ 101.44   163.46  lineto
+ 107.70   160.89  lineto
+ 113.64   158.19  lineto
+ 119.29   155.39  lineto
+ 124.66   152.49  lineto
+ 129.75   149.48  lineto
+ 134.57   146.38  lineto
+ 139.11   143.20  lineto
+ 143.36   139.95  lineto
+ 147.35   136.65  lineto
+ 151.05   133.32  lineto
+ 154.48   129.97  lineto
+ 157.65   126.63  lineto
+ 160.57   123.33  lineto
+ 163.25   120.06  lineto
+ 165.71   116.86  lineto
+ 167.97   113.73  lineto
+ 170.05   110.68  lineto
+ 171.96   107.71  lineto
+ stroke
+ [] 0 setdash
+ 218.70   -8.34  moveto
+ 218.70  -14.34  lineto
+ 212.70  -14.34  lineto
+ 212.70   -8.34  lineto
+ 218.70   -8.34  lineto
+ gsave    0.50  setgray fill grestore stroke
+ 215.64  -12.48 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 215.57  -13.63 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 215.49  -14.79 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 215.41  -15.94 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 215.32  -17.11 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 215.22  -18.27 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 215.12  -19.45 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 215.01  -20.63 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 214.89  -21.81 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 214.77  -23.00 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 214.64  -24.20 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 214.50  -25.41 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 214.35  -26.62 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 214.19  -27.84 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 214.03  -29.07 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 213.85  -30.31 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 213.67  -31.55 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 213.48  -32.81 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 213.28  -34.08 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 213.07  -35.36 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 212.85  -36.65 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 212.62  -37.95 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 212.38  -39.26 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 212.12  -40.59 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 211.86  -41.93 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 211.58  -43.28 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 211.29  -44.65 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 210.99  -46.03 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 210.68  -47.43 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 210.35  -48.84 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 210.00  -50.27 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 209.64  -51.72 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 209.27  -53.19 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 208.88  -54.67 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 208.47  -56.17 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 208.04  -57.70 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 207.59  -59.25 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 207.12  -60.81 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 206.64  -62.40 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 206.13  -64.02 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 205.60  -65.66 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 205.04  -67.32 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 204.46  -69.01 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 203.85  -70.73 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 203.21  -72.47 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 202.54  -74.24 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 201.85  -76.05 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 201.12  -77.88 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 200.35  -79.75 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 199.55  -81.65 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 198.71  -83.59 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 197.82  -85.56 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 196.90  -87.57 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 195.92  -89.61 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 194.90  -91.70 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 193.83  -93.83 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 192.70  -96.00 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 191.51  -98.21 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 190.26 -100.47 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 188.94 -102.77 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 187.55 -105.12 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 186.08 -107.52 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 184.54 -109.97 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 182.90 -112.47 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 181.18 -115.02 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 179.35 -117.62 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 177.42 -120.28 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 175.37 -122.99 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 173.20 -125.76 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 170.90 -128.58 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 168.46 -131.46 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 165.87 -134.39 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 163.11 -137.37 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 160.18 -140.41 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 157.05 -143.49 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 153.73 -146.62 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 150.18 -149.79 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 146.40 -152.99 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 142.36 -156.23 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 138.05 -159.48 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 133.44 -162.74 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 128.51 -166.00 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 123.23 -169.23 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 117.59 -172.43 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 111.55 -175.55 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 105.08 -178.58 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+  98.16 -181.49 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+  90.76 -184.22 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+  82.84 -186.73 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+  74.39 -188.97 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+  65.37 -190.86 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+  55.76 -192.33 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+  45.57 -193.28 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+  34.77 -193.62 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+  23.39 -193.23 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+  11.45 -191.96 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+  -1.00 -189.69 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ -13.86 -186.26 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ -27.01 -181.50 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ -40.27 -175.27 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ -53.42 -167.41 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ -66.15 -157.81 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ -78.10 -146.42 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ -88.81 -133.28 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ -97.79 -118.57 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+-104.49 -102.65 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+-108.43  -86.17 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+-109.28  -70.04 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+-107.03  -55.59 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+-102.39  -44.49 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ -97.50  -38.36 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ -96.19  -37.13 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+-101.97  -37.25 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+-114.54  -32.84 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+-129.09  -20.21 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+-140.30   -0.28 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+-145.52   23.49 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+-144.71   47.91 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+-138.99   70.96 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+-129.71   91.65 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+-118.01  109.66 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+-104.80  124.97 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ -90.72  137.76 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ -76.28  148.25 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ -61.83  156.70 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ -47.60  163.38 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ -33.76  168.50 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ -20.43  172.31 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+  -7.67  174.98 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+   4.47  176.70 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+  15.99  177.61 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+  26.89  177.85 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+  37.18  177.53 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+  46.90  176.75 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+  56.07  175.58 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+  64.72  174.09 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+  72.89  172.34 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+  80.61  170.38 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+  87.93  168.22 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+  94.86  165.91 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 101.44  163.46 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 107.70  160.89 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 113.64  158.19 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 119.29  155.39 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 124.66  152.49 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 129.75  149.48 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 134.57  146.38 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 139.11  143.20 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 143.36  139.95 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 147.35  136.65 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 151.05  133.32 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 154.48  129.97 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 157.65  126.63 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 160.57  123.33 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 163.25  120.06 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 165.71  116.86 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 167.97  113.73 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 170.05  110.68 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ 171.96  107.71 2 0 360 arc gsave 1.00 setgray fill grestore stroke
+ %%EndScript
+ showpage

@@ -1,0 +1,10 @@
+*** Analytical, numerical cable calculation (0,1) 
+0
+*** Calculation into the cable (0,1) 
+0
+*** Cable coordinates from the file 'cabcoor.asc' (0,1) 
+1
+*** Normal vectors, no. of segments, heights from the file 'cabnorm.asc' (0,1) 
+1
+*** Cable discription from the file 'cabdescr.asc' (0,1) 
+1
