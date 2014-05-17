@@ -23,7 +23,10 @@ inputPhase=inputPulse;
 kc = KE/2;                  % center of space
 kstart = kc;                % location, where the medium starts
 k0 = kc/2;                  % center of pulse
-sigma=200;                  % width of pulse
+sigma=20;                  % width of pulse
+Ekin=146*1.602e-19; 	% eV
+hc=1.98644568e-25; % h*c
+lambda=hc/Ekin;
 
 
 Vpot=0;	% eV
@@ -38,18 +41,21 @@ T = 0;                      % track of the total number
 m_e=9.2e-31;		% electron mass
 h_bar=1.055e-34;	% planck's constant
 
-
-
-
-ddx = 1e-10;          % cell size 
+ddx = 5e-10;          % cell size 
 ra=1/8;
 dt =0.25*(m_e/h_bar)*ddx^2;   % timestepsize for source 
+lambda_grid=lambda/ddx;
 
 printf("Cellsize = %e m\n",ddx);
 printf("dt = %e s\n",dt);
+printf("lambda = %d cells\n",lambda_grid);
 
+% init particle
 
-                            
+x=1:kstart;
+
+psi(x)=(cos(2*pi*(x-k0)/lambda_grid)+i*sin(2*pi*(x-k0)/lambda_grid)).*exp(-0.5*((x-k0)/sigma).^2);
+                
 nsteps=input('Steps:');
 
 
@@ -93,7 +99,7 @@ while  nsteps > 0
         
         for  k=2:KE
         	for m=1:3
-        		ft(k,m)=ft(k,m)+ex(k)*dt*exp(-i*2*pi*freq(m)*dt*T);  			
+        		ft(k,m)=ft(k,m)+ex(k)*dt*exp(-I*2*pi*freq(m)*dt*T);  			
         	end
        	end
         		
@@ -121,8 +127,8 @@ while  nsteps > 0
     
     figure(1);
     x=1:KE;
-    plot(x,ex);
-    title("E");
+    plot(x,psi);
+    title("Psi");
     
     %figure(2);
    % plot(x,hy);
